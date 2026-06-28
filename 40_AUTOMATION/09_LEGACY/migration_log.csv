@@ -1,0 +1,8 @@
+legacy_id,source_path,copied_at,status,notes
+LEGACY-001,H:\workspace\Agents\workbuddy_rules.md,2026-06-29T12:00:00Z,pending,Core agent rules - 6KB
+LEGACY-002,H:\workspace\00_Personal_OS\10_Command_Center\规则索引.md,2026-06-29T12:00:00Z,pending,Reasonix rule index - 27 rules
+LEGACY-003,H:\workspace\Automation\rag_prototype.py,2026-06-29T12:00:00Z,pending,RAG query engine - FAISS + DeepSeek
+LEGACY-004,H:\workspace\Automation\RAG\kb_add.py,2026-06-29T12:00:00Z,pending,Knowledge base entry tool
+LEGACY-005,H:\workspace\Automation\RAG\kb_status.py,2026-06-29T12:00:00Z,pending,Knowledge base status tool
+LEGACY-006,H:\workspace\Automation\Workflow\douyin_full_pipeline.py,2026-06-29T12:00:00Z,pending,TikTok transcription pipeline
+LEGACY-007,H:\workspace\Automation\Workflow\archive_workbuddy.py,2026-06-29T12:00:00Z,pending,WorkBuddy archive script

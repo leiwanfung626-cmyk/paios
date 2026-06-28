@@ -1,0 +1,12 @@
+{
+    "system": "PAIOS Platform",
+    "version": "1.0.0",
+    "schema_version": "1.0",
+    "metadata_version": "1.0",
+    "config_version": "1.0",
+    "template_version": "1.0",
+    "created": "2026-06-28T14:33:16Z",
+    "workspace": "F:/PAIOS",
+    "tools": "F:/Tools",
+    "architecture": "Frozen"
+}

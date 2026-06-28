@@ -1,0 +1,4 @@
+# Capability Registry
+# Each capability has a unique ID and status (pending|promoted|deprecated)
+
+capabilities: []

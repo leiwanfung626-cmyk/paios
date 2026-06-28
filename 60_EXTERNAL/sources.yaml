@@ -1,0 +1,39 @@
+# External Data Sources
+#
+# These are NOT copies — they are references to the original locations.
+# Always edit data at the source. F only manages projects and workflows.
+
+G_workspace:
+  path: "G:\workspace"
+  description: "工作业务系统 — 禁毒社工业务数据"
+  type: business_data
+  role: data_source
+  rule: "引用不复制 — Project 通过 source.md 引用 Excel 等业务数据"
+  key_assets:
+    - "01_Projects/鹤城镇吸毒人员档案_清洗后.xlsx"
+    - "01_Projects/鹤城镇吸毒人员档案_看板.xlsx"
+    - "01_Projects/工作记录/日记/"
+    - "02_Knowledge/知识库/"
+    - "02_Knowledge/素材库/"
+
+H_workspace:
+  path: "H:\workspace"
+  description: "历史知识资产 — 个人知识管理系统（退役系统）"
+  type: knowledge_archive
+  role: migration_source
+  rule: "按需迁移，验证后进入 20_KNOWLEDGE；迁移后 H 版标记 Legacy"
+  key_assets:
+    - "00_Personal_OS/01_人生原则与价值观/"
+    - "00_Personal_OS/03_SOP与模板/"
+    - "00_Personal_OS/04_Review/踩坑日志/"
+    - "00_Personal_OS/10_Command_Center/规则索引.md"
+    - "02_Reference/AI/"
+    - "02_Reference/考研/"
+    - "02_Reference/管理/"
+    - "02_Reference/禁毒政策法规/"
+
+migration_policy:
+  single_source_of_truth: true
+  daily_target: 5
+  validate_before_promote: true
+  mark_legacy_after_migration: true

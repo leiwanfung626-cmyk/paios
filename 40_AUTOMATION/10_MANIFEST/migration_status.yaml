@@ -1,0 +1,14 @@
+# Migration Status
+# Tracks H: drive → PAIOS promotion progress
+
+status:
+  legacy_assets: 7
+  promoted: 0
+  pending: 7
+  deprecated: 0
+  capabilities_created: 0
+  agents_created: 0
+  scripts_refactored: 0
+  completion_pct: 0
+
+last_updated: "2026-06-29"

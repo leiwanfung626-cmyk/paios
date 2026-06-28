@@ -1,0 +1,22 @@
+# PAIOS Automation Platform Manifest
+schema_version: "1.0"
+platform_version: "1.0"
+created: "2026-06-29"
+updated: "2026-06-29"
+description: "PAIOS Automation Platform v1.0"
+
+asset_counts:
+  capabilities: 0
+  agents: 0
+  scripts: 5
+  providers: 0
+  workflows: 0
+  legacy_assets: 7
+
+freeze_policy:
+  frozen_since: "2026-06-29"
+  adr_reference: "ADR-0002"
+  thaw_conditions:
+    - "Unresolvable technical defect"
+    - "Requirement cannot be met via Registry/Capability/Script/Workflow extension"
+    - "Significant long-term maintenance cost reduction + new ADR approval"

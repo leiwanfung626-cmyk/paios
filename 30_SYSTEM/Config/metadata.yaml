@@ -1,0 +1,25 @@
+schema_version: 1
+config_type: metadata
+created_at: "2026-06-28T14:33:17Z"
+updated_at: "2026-06-28T14:33:17Z"
+
+lifecycle_defaults:
+  draft: draft
+  review: review
+  validated: validated
+  active: active
+  deprecated: deprecated
+  archived: archived
+
+metadata_fields:
+  - id
+  - type
+  - topic
+  - lifecycle
+  - version
+  - created
+  - updated
+  - source
+  - tags
+  - attributes
+  - extensions

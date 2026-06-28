@@ -1,0 +1,4 @@
+# Agent Registry
+# Each agent = identity + capabilities (by ID) + workflow + provider
+
+agents: []
