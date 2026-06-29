@@ -1,1 +1,0 @@
-{"dirs_tried":["conversation_delivery","file_write_whitepaper","file_write_adr","word_conversion"],"pivots":[{"from":"conversation_only","to":"actual_file_writes","reason":"goal_mode_requires_execution"}],"stale_count":0}
