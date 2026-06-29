@@ -17,7 +17,7 @@ scripts:
   - id: SCRIPT-0004
     name: douyin_pipeline
     source: legacy/douyin_full_pipeline.py
-    status: pending
+    status: active
   - id: SCRIPT-0005
     name: archive_workbuddy
     source: legacy/archive_workbuddy.py

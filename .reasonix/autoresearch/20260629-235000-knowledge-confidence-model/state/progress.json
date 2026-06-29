@@ -1,0 +1,29 @@
+{
+  "task_id": "20260629-235000-knowledge-confidence-model",
+  "updated_at": "2026-06-29T23:55:00Z",
+  "iterations": 2,
+  "completed_success_criteria": [
+    "SC-1: _template.md has verification.status (unverified|partial|verified|deprecated)",
+    "SC-2: _template.md has verification.scope array",
+    "SC-3: _template.md has confidence (low|medium|high)",
+    "SC-4: _template.md has maintenance (owner, review_cycle_days, last_review, next_review)",
+    "SC-5: REF-0001 upgraded to schema_version=2 with all new fields",
+    "SC-6: REF-0001 verification.status=unverified, scope covers installation/cli/ci-cd",
+    "SC-7: REF-0001 confidence=medium (video source, not locally verified)",
+    "SC-8: REF-0001 maintenance.owner=wanfung, review_cycle=180d"
+  ],
+  "schema_version": 2,
+  "kcm_definition": {
+    "pillars": [
+      "Provenance — evidence_chain tracks knowledge origin",
+      "Verification — status + scope tracks what's been verified",
+      "Confidence — low|medium|high separates source trust from verification",
+      "Maintenance — owner + review_cycle ensures knowledge freshness",
+      "Lifecycle — draft|active|archived|deprecated"
+    ]
+  },
+  "evidence": [
+    "_template.md: schema_version=2, verification, confidence, maintenance fields",
+    "REF-0001: schema_version=2, verification.status=unverified, scope=3 items, confidence=medium, maintenance configured"
+  ]
+}

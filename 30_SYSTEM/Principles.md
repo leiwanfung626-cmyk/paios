@@ -25,6 +25,54 @@
    not pre-scanned.  All AI tools follow the same bootstrap convention
    to preserve tool independence.
 
+### Requirement Emergence Principle (需求涌现原则)
+
+> **Requirements are not input — they are output of iteration.**
+
+In complex knowledge work, user requirements typically do not exist
+fully-formed at the start of a task.  What exists initially is a
+direction, a dissatisfaction, or a vague goal.  The real requirement
+gradually emerges through cycles of feedback, validation, and iteration.
+
+PAIOS does not treat requirements as fixed input.  Instead, it treats
+requirement convergence as a primary goal of the workflow — supporting
+not just solution iteration, but also the ongoing clarification and
+redefinition of the problem itself.
+
+#### Dual-loop model
+
+```
+Loop 1 — Requirement refinement (the critical loop):
+   Vague idea → First implementation → See result →
+   Discover real problem → Redefine requirement → Re-implement →
+   Real need gradually converges
+
+Loop 2 — Implementation refinement (traditional view):
+   Known requirement → Design → Implement → Verify →
+   Fix bugs → Done
+```
+
+Many projects fail not because the implementation is poor, but because
+they have been optimizing a problem that was never well-defined.
+
+#### Relation to Need Driven Promotion
+
+| Principle | Focus | Answers |
+|-----------|-------|---------|
+| Need Driven Promotion | When to add features | Feature timing |
+| Requirement Emergence | How requirements form | Need discovery |
+
+#### System design implications
+
+1. The primary duty of the Decision Layer is not to choose among
+   solutions — it is to help the user discover their real need.
+2. The greatest value of Feedback is not bug-fixing — it is
+   continuously correcting the problem definition.
+3. The purpose of a Prototype is not to validate a solution —
+   it is to help the requirement converge.
+
+**Status**: Validated by Engineering Practice (PAIOS Platform v1.0.0)
+
 ## Architecture Freeze
 
 This architecture is frozen per the Architecture Freeze Policy:

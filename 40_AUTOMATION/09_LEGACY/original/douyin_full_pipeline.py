@@ -25,7 +25,12 @@ COOKIES_FILE = os.path.join(TEMP_DIR, "cookies_playwright.txt")
 os.makedirs(TEMP_DIR, exist_ok=True)
 
 def log(msg):
-    print(f"[pipeline] {msg}", flush=True)
+    try:
+        print(f"[pipeline] {msg}", flush=True)
+    except UnicodeEncodeError:
+        # Fallback for GBK terminals
+        safe = msg.encode('ascii', 'ignore').decode('ascii')
+        print(f"[pipeline] {safe}", flush=True)
 
 def extract_video_id(url):
     """从各类抖音 URL 中提取视频 ID"""
@@ -185,7 +190,7 @@ def download_audio_playwright_mp4(url, output_dir):
             browser.close()
 
         # 查找播放 URL
-        play_urls = re.findall(r'https?://www\.douyin\.com/aweme/v1/play/[^\\"\\'\\\\s>]+', content)
+        play_urls = re.findall(r'https?://www\.douyin\.com/aweme/v1/play/[^\s>"\']+', content)
         if not play_urls:
             log("❌ 未找到播放 URL")
             return None

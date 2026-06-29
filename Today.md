@@ -4,6 +4,11 @@
 
 ## Completed
 
+- [x] Bootstrap 序列执行完成 (Principles → ADR → Registry → Manifest)
+- [x] SCRIPT-0004 (douyin_pipeline) 晋级 active — 见 Inbox CodeTrust 条目
+- [x] 会话剪贴板归档 → 90_ARCHIVE/session-20260629-clipboard.txt
+- [x] CodeTrust 视频下载转写完成（1277 字，167s）→ References/CodeTrust-AI-CodeReview.md
+- [x] 捕获输入：CodeTrust AI 代码缺陷检测工具（见 Inbox，尚未转写）
 - [x] .gitignore updated (directory-based runtime ignores)
 - [x] SYNC_STRATEGY.md created (multi-device sync)
 - [x] DEPLOYMENT.md created (new machine setup guide)
