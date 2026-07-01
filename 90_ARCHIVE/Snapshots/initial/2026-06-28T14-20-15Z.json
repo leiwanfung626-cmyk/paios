@@ -1,0 +1,49 @@
+{
+  "created": "2026-06-28T14:20:15Z",
+  "session_id": "",
+  "target_dir": "F:\\PAIOS",
+  "manifest": {
+    "system": "PAIOS Platform",
+    "version": "1.0.0",
+    "schema_version": "1.0",
+    "metadata_version": "1.0",
+    "config_version": "1.0",
+    "template_version": "1.0",
+    "created": "2026-06-28T14:20:15Z",
+    "workspace": "F:/PAIOS",
+    "tools": "F:/Tools",
+    "architecture": "Frozen"
+  },
+  "config_files": [
+    {
+      "name": "agent.yaml",
+      "type": "file"
+    },
+    {
+      "name": "metadata.yaml",
+      "type": "file"
+    },
+    {
+      "name": "paths.yaml",
+      "type": "file"
+    },
+    {
+      "name": "rag.yaml",
+      "type": "file"
+    },
+    {
+      "name": "workflow.yaml",
+      "type": "file"
+    }
+  ],
+  "template_files": [],
+  "top_level_dirs": [
+    "00_CAPTURE",
+    "10_WORK",
+    "20_KNOWLEDGE",
+    "30_SYSTEM",
+    "40_AUTOMATION",
+    "50_DATA",
+    "90_ARCHIVE"
+  ]
+}
