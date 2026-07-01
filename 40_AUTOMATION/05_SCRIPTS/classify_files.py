@@ -3,7 +3,7 @@ r"""
 QuarkSync 文件自动分类脚本
 
 用法：
-    python classify_files.py                          # 默认扫描 E:\QuarkSync\DATA
+    python classify_files.py                          # 默认扫描 %PAIOS_DRIVE%:\QuarkSync\DATA
     python classify_files.py --dry-run                # 试运行，只显示不移动
     python classify_files.py --path D:\QuarkSync\DATA # 指定路径
 
@@ -26,7 +26,11 @@ from datetime import datetime, timezone
 
 
 # -- 配置 -------------------------------------------------
-DEFAULT_DATA_DIR = Path(os.environ.get("QUARK_DATA_DIR", "E:\\QuarkSync\\DATA"))
+# 盘符由环境变量 PAIOS_DRIVE 控制：evan=E, feng=F
+_PAIOS_DRIVE = os.environ.get("PAIOS_DRIVE", "E")
+DEFAULT_DATA_DIR = Path(
+    os.environ.get("QUARK_DATA_DIR", f"{_PAIOS_DRIVE}:\\QuarkSync\\DATA")
+)
 PROJECT_LIST_FILE = os.environ.get("QUARK_PROJECT_LIST", "") or (
     DEFAULT_DATA_DIR.parent / "PROJECT_LIST.md"
 )
