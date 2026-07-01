@@ -20,7 +20,7 @@
 1. 电脑A：`git init` → `git add` → `git commit` → `git tag v1.0.0`
 2. 电脑A：创建 remote（GitHub / GitLab / 自建）
 3. 电脑A：`git push`
-4. 电脑B：`git clone <remote> F:\PAIOS`
+4. 电脑B：`git clone <remote> E:\PAIOS`
 5. 电脑B：创建本地 Runtime（`70_TMP/`、`50_DATA/`、`venv/`）
 6. 电脑B：`python -m paios_installer doctor`
 7. 电脑B：`python -m paios_installer validate`
@@ -45,7 +45,7 @@ git push
 
 ## AI 工具工作区约定
 
-- 所有电脑统一：`F:\PAIOS`
+- 所有电脑统一：`E:\PAIOS`
 - Bootstrap 路径一致：Principles → ADR → Registry → Manifest
 
 ---
@@ -71,11 +71,11 @@ git push
 ```
 电脑A
 │
-├── F:\PAIOS              ← GitHub 同步
+├── E:\PAIOS              ← GitHub 同步
 │   ├── 50_DATA/          ← 本地运行时（不同步）
 │   └── 70_TMP/           ← 本地缓存（不同步）
 │
-└── F:\QuarkSync\DATA     ← 夸克云盘自动同步
+└── E:\QuarkSync\DATA     ← 夸克云盘自动同步
         ├── 项目档案/      ← 按项目分类（需填写项目清单）
         ├── 个案档案/      ← 文件名含「个案」「案主」
         ├── 工作报告/      ← 文件名含「月报」「报告」「总结」
@@ -98,18 +98,18 @@ git push
 ### 2️⃣ 克隆 PAIOS
 
 ```bash
-git clone https://github.com/leiwanfung626-cmyk/paios.git F:\PAIOS
+git clone https://github.com/leiwanfung626-cmyk/paios.git E:\PAIOS
 ```
 
 ### 3️⃣ 等待夸克同步
 
-夸克云盘同步目录（例如 `F:\QuarkSync\DATA`）同步完成后，两台电脑的业务数据完全一致。
+夸克云盘同步目录（例如 `E:\QuarkSync\DATA`）同步完成后，两台电脑的业务数据完全一致。
 
 ### 4️⃣ 创建本地运行时目录
 
 ```bash
-mkdir F:\PAIOS\50_DATA
-mkdir F:\PAIOS\70_TMP
+mkdir E:\PAIOS\50_DATA
+mkdir E:\PAIOS\70_TMP
 ```
 
 > Git 不同步运行时目录，每台电脑只需创建一次。
@@ -138,12 +138,12 @@ git push
 ### 🔄 第二台电脑继续工作
 
 ```
-打开电脑 → 等待夸克同步 → cd F:\PAIOS → git pull → 继续工作
+打开电脑 → 等待夸克同步 → cd E:\PAIOS → git pull → 继续工作
 ```
 
 ## 最佳实践
 
-- **业务数据**：统一放在夸克同步目录下（如 `F:\QuarkSync\DATA`），PAIOS 只引用不管理
+- **业务数据**：统一放在夸克同步目录下（如 `E:\QuarkSync\DATA`），PAIOS 只引用不管理
 - **避免冲突**：尽量不两台电脑同时编辑同一个业务文件，减少夸克产生冲突副本
 - **版本管理**：Git 只管理系统/知识/规则/配置，业务数据不进入 Git 仓库
 - **无需记忆**：日常只需记住两个步骤——开始工作时「等同步 + git pull」，结束时「add + commit + push」
@@ -152,18 +152,18 @@ git push
 
 ## 自动分类脚本
 
-> 将文件丢到 `F:\QuarkSync\DATA` 根目录，脚本自动归类到对应中文文件夹。
+> 将文件丢到 `E:\QuarkSync\DATA` 根目录，脚本自动归类到对应中文文件夹。
 
-**脚本位置**：`F:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py`
+**脚本位置**：`E:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py`
 
 ### 用法
 
 ```bash
 # 试运行（先看看会怎么分，不实际移动）
-python F:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py --dry-run
+python E:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py --dry-run
 
 # 实际分类
-python F:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py
+python E:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py
 ```
 
 ### 分类规则（优先级）
@@ -180,7 +180,7 @@ python F:\PAIOS\40_AUTOMATION\05_SCRIPTS\classify_files.py
 
 ### 项目清单
 
-在 `F:\PAIOS\QuarkSync\PROJECT_LIST.md` 中填写项目名，脚本会自动识别以项目名开头的文件。格式：
+在 `E:\PAIOS\QuarkSync\PROJECT_LIST.md` 中填写项目名，脚本会自动识别以项目名开头的文件。格式：
 
 ```markdown
 - 项目A名称

@@ -111,7 +111,7 @@
 ## AI Tool Bootstrap 流程
 
 ```
-Workspace: F:\PAIOS
+Workspace: E:\PAIOS
      ↓
 Bootstrap（加载平台治理信息）
   ├── Principles    — 了解平台规则

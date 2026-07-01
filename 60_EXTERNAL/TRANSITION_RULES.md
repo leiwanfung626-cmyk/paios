@@ -6,14 +6,14 @@
 
 所有 Codex/Reasonix/ChatGPT 会话，项目目录始终设为：
 ```
-F:\PAIOS
+E:\PAIOS
 ```
 
 ## 三盘定位
 
 | 盘 | 角色 | 编辑权 | 说明 |
 |----|------|--------|------|
-| **F:\PAIOS** | 唯一工作台 | ✅ 编辑 | 所有新内容、新项目、新脚本、新规则 |
+| **E:\PAIOS** | 唯一工作台 | ✅ 编辑 | 所有新内容、新项目、新脚本、新规则 |
 | **G:\workspace** | 业务数据源 | ⚠️ 只读改引用 | 26 个 Excel 不动，F 项目通过 source.md 引用 |
 | **H:\workspace** | 历史知识源 | ⚠️ 只读 | 按需迁移到 F 后标记 Legacy |
 
@@ -43,8 +43,8 @@ H:\workspace → 50_IMPORT/Pending → 验证 → 20_KNOWLEDGE → H 版标记 L
 
 | 场景 | 目录 |
 |------|------|
-| 日常 AI 协作 | `F:\PAIOS` |
-| 修改 Installer | `F:\PAIOS`（或引用 H:\...\installer\ 的源码路径） |
+| 日常 AI 协作 | `E:\PAIOS` |
+| 修改 Installer | `E:\PAIOS`（或引用 H:\...\installer\ 的源码路径） |
 | 处理 G 盘数据 | 工作台在 F，通过 source.md 引用 G |
 | 从 H 迁移知识 | 工作台在 F，从 H 读取 → 处理 → 写入 F |
 

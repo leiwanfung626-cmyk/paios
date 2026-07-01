@@ -7,20 +7,20 @@
 
 - Git
 - Python >= 3.10
-- F: 盘可用（或自定义路径）
+- PAIOS 所在盘可用（或自定义路径）
 
 ## 部署步骤
 
 ### Step 1: 获取平台
 
 ```bash
-git clone <remote> F:\PAIOS
+git clone <remote> E:\PAIOS
 ```
 
 ### Step 2: 创建 Runtime 环境
 
 ```bash
-cd F:\PAIOS
+cd E:\PAIOS
 python -m venv .venv
 .venv\Scripts\activate     # Windows
 pip install --upgrade pip
@@ -50,7 +50,7 @@ python -m paios_installer validate
 
 ```bash
 # 打开 Today.md，确认当天状态
-# AI 工具设置 Workspace = F:\PAIOS
+# AI 工具设置 Workspace = E:\PAIOS
 # 执行 Bootstrap: Principles → ADR → Registry → Manifest
 ```
 
@@ -70,7 +70,7 @@ git checkout v1.0.0
 **Q: Python 版本不够**
 A: 安装 Python 3.10+，确认 `python --version`
 
-**Q: F: 盘不存在**
+**Q: PAIOS 所在盘不存在**
 A: PAIOS 可部署到任意路径，修改 AI 工具的 Workspace 设置即可
 
 **Q: Doctor 报告 Ollama/FFmpeg 不存在**

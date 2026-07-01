@@ -5,7 +5,7 @@
 ### Initial Production Platform Baseline
 
 - PAIOS Platform v1.0.0 initialized
-- 7-layer directory structure deployed on F:\PAIOS
+- 7-layer directory structure deployed on E:\PAIOS
 - 30_SYSTEM: Principles (9), ADR (2), Config, Goals, Evolution
 - 40_AUTOMATION: Registry, Capabilities, Prompts, Agents, MCP, Scripts, Legacy, Manifest
 - 20_KNOWLEDGE: Concepts, Methods, SOP, Decisions, Models, References

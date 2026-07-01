@@ -19,5 +19,5 @@ as much as by a human operator.
 
 ## Tools
 
-Workspace: F:/PAIOS
-Tools: F:/Tools
+Workspace: E:/PAIOS
+Tools: E:/Tools

@@ -3,14 +3,14 @@ config_type: paths
 created_at: "2026-06-28T14:33:17Z"
 updated_at: "2026-06-28T14:33:17Z"
 
-workspace: "F:/PAIOS"
-tools: "F:/Tools"
+workspace: "E:/PAIOS"
+tools: "E:/Tools"
 
 targets:
-  capture: "F:/PAIOS/00_CAPTURE"
-  work: "F:/PAIOS/10_WORK"
-  knowledge: "F:/PAIOS/20_KNOWLEDGE"
-  system: "F:/PAIOS/30_SYSTEM"
-  automation: "F:/PAIOS/40_AUTOMATION"
-  data: "F:/PAIOS/50_DATA"
-  archive: "F:/PAIOS/90_ARCHIVE"
+  capture: "E:/PAIOS/00_CAPTURE"
+  work: "E:/PAIOS/10_WORK"
+  knowledge: "E:/PAIOS/20_KNOWLEDGE"
+  system: "E:/PAIOS/30_SYSTEM"
+  automation: "E:/PAIOS/40_AUTOMATION"
+  data: "E:/PAIOS/50_DATA"
+  archive: "E:/PAIOS/90_ARCHIVE"

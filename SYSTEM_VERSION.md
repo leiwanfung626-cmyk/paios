@@ -11,8 +11,8 @@
 | Config Version | 1.0 |
 | Template Version | 1.0 |
 | Created | 2026-06-28T14:33:16Z |
-| Workspace | F:/PAIOS |
-| Tools | F:/Tools |
+| Workspace | E:/PAIOS |
+| Tools | E:/Tools |
 | Architecture | Frozen |
 
 This architecture is frozen. Any modification to the top-level directory
