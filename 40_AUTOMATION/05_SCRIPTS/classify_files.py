@@ -12,7 +12,7 @@ QuarkSync 文件自动分类脚本
   2. 含「个案」「案主」 -> 个案档案/
   3. 含「月报」「报告」「总结」「汇报」 -> 工作报告/
   4. 含「财务」「发票」「报销」「账单」 -> 财务资料/
-  5. 以已知项目名开头 -> 项目档案/项目名/
+  5. 以项目名开头 或 含项目关键词 -> 项目档案/项目名/
   6. 超过 30 天未修改 -> 归档/
 """
 
@@ -26,8 +26,20 @@ from datetime import datetime, timezone
 
 
 # -- 配置 -------------------------------------------------
-# 盘符由环境变量 PAIOS_DRIVE 控制：evan=E, feng=F
-_PAIOS_DRIVE = os.environ.get("PAIOS_DRIVE", "E")
+# 自动检测 QuarkSync\DATA 所在盘符，也支持环境变量覆盖
+def _detect_drive():
+    env_drive = os.environ.get("PAIOS_DRIVE")
+    if env_drive:
+        path = Path(f"{env_drive}:\\QuarkSync\\DATA")
+        if path.exists():
+            return env_drive
+    for d in "FEDCBAZYX":
+        path = Path(f"{d}:\\QuarkSync\\DATA")
+        if path.exists():
+            return d
+    return os.environ.get("PAIOS_DRIVE", "E")  # fallback
+
+_PAIOS_DRIVE = _detect_drive()
 DEFAULT_DATA_DIR = Path(
     os.environ.get("QUARK_DATA_DIR", f"{_PAIOS_DRIVE}:\\QuarkSync\\DATA")
 )
@@ -53,7 +65,13 @@ ARCHIVE_DAYS = 30
 
 
 def load_project_list(project_file: Path) -> dict:
-    """从 PROJECT_LIST.md 加载项目名列表"""
+    """从 PROJECT_LIST.md 加载项目名和关键词列表
+    Returns: {name: {folder, keywords}}
+    只解析「## 项目列表」之后的内容。
+    支持两种格式：
+      - 简单列表:  "- 项目名"
+      - 扩展格式:  "项目名:\n  folder: 目录名\n  keywords: [kw1, kw2]"
+    """
     projects = {}
     if not project_file.exists():
         print(f"  [提示] 项目清单文件不存在: {project_file}")
@@ -61,18 +79,57 @@ def load_project_list(project_file: Path) -> dict:
         return projects
 
     content = project_file.read_text(encoding="utf-8")
+    current_project = None
+    in_project_section = False
+
     for line in content.splitlines():
-        line = line.strip()
-        m = re.match(r"^-\s+(.+?)$", line)
-        if m:
-            name = m.group(1).strip()
-            projects[name] = name
+        line_stripped = line.strip()
+
+        # Enter project section
+        if re.match(r"^##\s+项目列表", line_stripped):
+            in_project_section = True
             continue
-        m = re.match(r"^([^\s#:]+):", line)
+
+        # Exit at next major section
+        if in_project_section and re.match(r"^##\s+", line_stripped):
+            break
+
+        if not in_project_section:
+            continue
+
+        # Skip comments and separators
+        if line_stripped.startswith("<!--") or line_stripped.startswith("---"):
+            continue
+
+        # Simple list: "- 项目名"
+        m = re.match(r"^-\s+(.+?)$", line_stripped)
         if m:
             name = m.group(1).strip()
             if name and not name.startswith("#"):
-                projects[name] = name
+                projects[name] = {"folder": name, "keywords": []}
+            continue
+
+        # Extended format: "项目名:" (opens a block)
+        m = re.match(r"^([^\s#\->]+):$", line_stripped)
+        if m:
+            name = m.group(1).strip()
+            if name and not name.startswith("#"):
+                projects[name] = {"folder": name, "keywords": []}
+                current_project = name
+            continue
+
+        # Sub-field: "  folder: xxx"
+        m = re.match(r"^\s+folder:\s*(.+)$", line)
+        if m and current_project and current_project in projects:
+            projects[current_project]["folder"] = m.group(1).strip()
+            continue
+
+        # Sub-field: "  keywords: [kw1, kw2, ...]"
+        m = re.match(r"^\s+keywords:\s*\[(.+)\]$", line)
+        if m and current_project and current_project in projects:
+            kws = [k.strip() for k in m.group(1).split(",") if k.strip()]
+            projects[current_project]["keywords"] = kws
+            continue
 
     return projects
 
@@ -97,12 +154,26 @@ def get_classification(file_path: Path, projects: dict) -> tuple:
                 matched.append((folder, f"含关键词 [{kw}]"))
                 break
 
-    # 5. Project name prefix
-    for proj_name in projects:
+    # 5. Project match (name prefix OR keyword)
+    for proj_name, proj_info in projects.items():
+        folder_name = proj_info["folder"]
+        keywords = proj_info.get("keywords", [])
+
+        # Prefix match
         if name.startswith(proj_name):
-            target = f"项目档案/{proj_name}"
+            target = f"项目档案/{folder_name}"
             matched.append((target, f"以项目名 [{proj_name}] 开头"))
             break
+
+        # Keyword match
+        for kw in keywords:
+            if kw in name:
+                target = f"项目档案/{folder_name}"
+                matched.append((target, f"含项目关键词 [{proj_name}:{kw}]"))
+                break
+        else:
+            continue
+        break
 
     # 6. Older than 30 days
     if file_path.stat().st_mtime < time.time() - ARCHIVE_DAYS * 86400:
@@ -130,8 +201,10 @@ def classify(data_dir: Path, project_list_path: Path = None, dry_run: bool = Fal
     print(f"[扫描目录] {data_dir}")
     print(f"[已加载项目] {len(projects)} 个")
     if projects:
-        for p in projects:
-            print(f"  - {p}")
+        for p_name, p_info in projects.items():
+            kws = p_info.get("keywords", [])
+            kw_str = f" [关键词: {', '.join(kws)}]" if kws else ""
+            print(f"  - {p_name} -> {p_info['folder']}{kw_str}")
     print()
 
     # Only process files in root (not recursive)
