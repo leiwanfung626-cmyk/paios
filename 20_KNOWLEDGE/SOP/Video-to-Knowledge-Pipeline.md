@@ -5,18 +5,20 @@ lifecycle: active
 id: "SOP-2026-07-02-0001"
 created: "2026-07-02"
 updated: "2026-07-02"
-source: "REF-0001 + REF-0002 实践总结"
+revised: "2026-07-02 — Step 2 重写（抖音CSR反爬），新增 Step 2b 语音转写"
+source: "REF-0001 + REF-0002 + REF-0004 实践总结"
 tags: [sop, video, transcript, knowledge-capture, pipeline]
 attributes:
   trigger: "用户提供视频链接（抖音/B站/YouTube）"
   owner: "wanfung 发起，AI 执行"
   avg_duration: "5-10 分钟"
-  verified_runs: 2
+  verified_runs: 3
   run_log:
     - "2026-06-29 CodeTrust (REF-0001)"
     - "2026-07-02 NotebookLM (REF-0002)"
+    - "2026-07-02 自动化AI大脑 (REF-0004) — 首次使用 Playwright + Whisper 全链路"
 extensions:
-  related_refs: ["REF-0001", "REF-0002"]
+  related_refs: ["REF-0001", "REF-0002", "REF-0004"]
   related_principles: ["#4 知识验证", "#8 工具独立"]
   triggers_direction: "DEC-2026-07-02-0001 方向1（多模态捕获层）"
 ---
@@ -28,7 +30,7 @@ extensions:
 用户看到有价值的视频（抖音/B站/YouTube），想把内容变成 PAIOS 知识库中的永久资产。
 
 本 SOP 覆盖两种场景：
-- **循环 A（认知循环）**：视频 → 研究 → 知识入库。SOP Step 1-7。
+- **循环 A（认知循环）**：视频 → 研究 → 知识入库。SOP Step 1-7（含 Step 2b 语音转写）。
 - **循环 B（实践循环）**：知识触发工具采用 → 用工具工作 → 工作产物回流 PAIOS。SOP Step 8-11。
 
 循环 A 产出"知道"，循环 B 产出"做到"。不是每个视频都会进入循环 B——只有 Decision 中标记"采用"的工具才触发。
@@ -38,8 +40,11 @@ extensions:
 - 用户提供视频链接
 - AI 可访问 Web 搜索（用于交叉验证）
 - PAIOS 知识库目录可写
+- **ffmpeg**（已下载至 `70_TMP/ffmpeg.exe`；whisper 解码音频需要）
+- **Playwright**（用于无头浏览器获取抖音 cookies + 拦截API获取视频/音频直链）
+- **openai-whisper**（语音转写，推荐 base 模型）
 
-## 全链路 7 步
+## 全链路 8 步
 
 ### Step 1 — 捕获链接（Capture）
 
@@ -57,19 +62,101 @@ AI 动作：
 
 ### Step 2 — 信息提取（Extract）
 
-AI 用两种手段获取视频内容：
+#### 抖音特殊流程（平台 CSR 反爬）
 
-| 手段 | 适用场景 | 工具 |
-|------|---------|------|
-| WebFetch 视频页面 | 抖音/B站（页面含标题、描述、标签） | WebFetch |
-| WebSearch 关键词 | 所有平台（搜索视频主题，获取详细信息） | WebSearch |
+抖音 2026 年已升级为全站 Client-Side Rendering + 混淆 JSVM，服务端 `WebFetch` 无法获取任何内容。改用以下三层策略：
 
-提取目标：
+| 手段 | 工具 | 可用性 |
+|------|------|--------|
+| `curl -L` 短链解析 → 提取 videoID | curl/built-in | ✅ 始终可用 |
+| Playwright 无头浏览器加载页面，拦截 API 回包 | Playwright | ✅ 需 headless=False（抖音检测 headless） |
+| WebSearch 视频描述关键词（hashtag + 标题片段） | WebSearch | ✅ 兜底方案（信息量取决于搜索命中率） |
+
+#### 抖音视频/音频直链获取（Playwright 方案）
+
+```python
+# 核心逻辑
+page.on('response', lambda r: handle_api(r))  # 拦截 /aweme/v1/web/aweme/detail 响应
+await page.goto(video_url, wait_until='domcontentloaded')
+await asyncio.sleep(5)  # 等待API响应
+
+# 从 API 响应提取
+video_urls = aweme['video']['play_addr']['url_list']   # 视频下载直链
+audio_url  = aweme['music']['play_url']['url_list'][0]  # 音频下载直链
+title      = aweme['desc']                               # 标题
+author     = aweme['author']['nickname']                  # 作者
+hashtags   = [t['hashtag_name'] for t in aweme['text_extra']]  # 标签
+```
+
+> ⚠️ Playwright 需要 `headless=False`（抖音检测 headless 模式）。
+> ⚠️ 抖音视频直链有时效性（~1小时），下载需在获取后尽快进行。
+
+#### WebSearch 兜底
+
+当 Playwright 不可用时（如环境限制），使用 WebSearch 搜索视频描述中的 hashtag + 标题片段：
+
+```
+WebSearch: "每天省出一半工作时间 搭建自动化AI大脑 抖音"
+```
+
+提取目标（任一方案）：
 - 视频标题和主题
 - 视频描述/简介中的关键信息
 - 标签关键词
+- **视频/音频下载直链**（仅 Playwright 方案）
 
-### Step 3 — 交叉验证（Validate）
+### Step 2b — 语音转写（Transcribe）
+
+> 新增步骤 — 本 SOP 原始版本不含此步，REF-0004 首次跑通。
+
+抖音视频/音频下载后，使用 **Whisper** 将语音转为文字文稿。
+
+#### 下载音频
+
+```python
+import requests
+# 使用 Playwright 获取的音频直链（.mp3）
+r = requests.get(audio_url, headers={'Referer': 'https://www.douyin.com/'})
+with open('70_TMP/douyin_audio.mp3', 'wb') as f:
+    f.write(r.content)
+```
+
+> 也可下载视频（.mp4），whisper 同样支持视频文件直接输入。
+
+#### 转写
+
+```python
+import whisper, os
+os.environ['PATH'] += os.pathsep + os.path.abspath('70_TMP')  # ffmpeg 路径
+
+model = whisper.load_model('base')  # base 模型速度/精度均衡
+result = model.transcribe('70_TMP/douyin_audio.mp3', language='zh')
+
+# 输出
+print(result['text'])                     # 完整文稿
+for seg in result['segments']:            # 按时间分段
+    print(f'[{seg["start"]:.0f}s-{seg["end"]:.0f}s] {seg["text"]}')
+
+# 保存
+with open('70_TMP/douyin_transcript.txt', 'w', encoding='utf-8') as f:
+    f.write(result['text'])
+```
+
+#### 注意事项
+
+| 项目 | 说明 |
+|------|------|
+| 模型选择 | `tiny`（快但质量低）→ `base`（推荐）→ `small/medium`（更准但慢） |
+| 语言 | 中文视频指定 `language='zh'` |
+| ffmpeg | 必须可用（whisper 内部调用 ffmpeg 解码音频） |
+| 输出 | 原始文稿 + 按时间分段 + 同步保存到 `70_TMP/` |
+| 时长 | ~2-3 分钟视频用 base 模型转写约需 30-60 秒（CPU） |
+
+#### 转写产物用途
+
+- 完整文稿 → 分析视频内容、提取关键信息
+- 分段时间戳 → 便于引用视频具体片段
+- 原始转写文件 → 存档在 `70_TMP/douyin_transcript.txt`，归档时清理或移入知识库
 
 用 WebSearch 搜索视频主题，找到至少 1 个独立来源验证：
 
@@ -84,7 +171,28 @@ AI 用两种手段获取视频内容：
 - `medium` — 有部分独立来源，部分仅来自视频
 - `low` — 仅来自视频，无法独立验证
 
+### Step 3 — 交叉验证（Validate）
+
+> 原 Step 3，编号未变。
+
+用 WebSearch 搜索视频主题，找到至少 1 个独立来源验证：
+
+验证清单：
+- [ ] 视频提到的事实是否有独立来源确认？
+- [ ] 工具/产品是否存在？（官网、npm、GitHub）
+- [ ] 功能描述是否与官方文档一致？
+- [ ] 有没有视频中没有提到但重要的限制？
+
+置信度标注：
+- `high` — 有官方文档 + 多个独立来源
+- `medium` — 有部分独立来源，部分仅来自视频
+- `low` — 仅来自视频，无法独立验证
+
+转写文稿辅助验证：Step 2b 产出的完整文稿可用于精确提取视频中提到的工具名、术语、数据，辅助 WebSearch 精准搜索。
+
 ### Step 4 — 结构化写入 Reference（Store）
+
+> 原 Step 4，编号+1。
 
 写入 `20_KNOWLEDGE/References/` 目录，文件名格式：`{Topic}-{Descriptor}.md`
 
@@ -160,6 +268,7 @@ confidence: high | medium | low
 |--------|---------|
 | 来源标注 | evidence_chain 至少 2 个来源 |
 | 交叉验证 | 至少 1 个独立来源 |
+| 语音转写 | 抖音视频需有转写文稿（Step 2b 产物） |
 | 置信度 | 已标注 high/medium/low |
 | 未验证部分 | 已用 ⚠️ 标注 |
 | frontmatter | 必填字段完整 |
@@ -167,12 +276,13 @@ confidence: high | medium | low
 
 ## 两个验证案例
 
-### 案例 1：CodeTrust（2026-06-29）
+### 案例 1：CodeTrust（2026-06-29）— SOP v1（无语音转写）
 
 | 步骤 | 产物 |
 |------|------|
 | Capture | Inbox 条目 |
 | Extract | WebFetch 抖音页面 + WebSearch CodeTrust |
+| Transcribe | ⛔ 本 SOP 当时无此步骤 |
 | Validate | npm 官方页面交叉验证，标注 Node.js 未安装 |
 | Store | REF-0001 → References/CodeTrust-AI-CodeReview.md |
 | Process | 无额外产物（信息足够完整，无需对比） |
@@ -181,12 +291,13 @@ confidence: high | medium | low
 
 产出：1 个 Reference。置信度 medium（环境缺 Node.js 无法本地运行）。
 
-### 案例 2：NotebookLM（2026-07-02）
+### 案例 2：NotebookLM（2026-07-02）— SOP v1（无语音转写）
 
 | 步骤 | 产物 |
 |------|------|
 | Capture | Inbox 条目 |
 | Extract | WebFetch 抖音页面 + WebSearch NotebookLM |
+| Transcribe | ⛔ 本 SOP 当时无此步骤 |
 | Validate | penchan.co 完整教程交叉验证，多来源确认 |
 | Store | REF-0002 → References/NotebookLM-Google-AI-Notebook.md |
 | Process | KB-2026-07-02-0001（对比模型）+ DEC-2026-07-02-0001（决策记录） |
@@ -194,6 +305,21 @@ confidence: high | medium | low
 | Evolve | 工作日志 + Today.md 状态更新 |
 
 产出：1 Reference + 1 Model + 1 Decision。置信度 high（多来源交叉验证）。
+
+### 案例 3：自动化AI大脑（2026-07-02）— SOP v2（首次全链路 Playwright + Whisper）
+
+| 步骤 | 产物 |
+|------|------|
+| Capture | Inbox 条目 |
+| Extract | Playwright 拦截 API → 获取视频/音频直链 + title/author/hashtags |
+| Transcribe | Whisper base 中文转写 → 完整文稿 + 时间分段 |
+| Validate | WebSearch 关键词搜索 + 转写文稿辅助精确验证 |
+| Store | REF-0004 → References/AI-Brain-LLM-Hardware-Display-Setup.md |
+| Process | 无额外产物（主题与已有 REF-0003 互补，但不属于同一具体主题） |
+| Route | References/_index.md 更新 |
+| Evolve | 工作日志 + Today.md + Inbox 状态更新 |
+
+产出：1 Reference。首次实现从视频语音到结构化知识资产的完整自动化链路。
 
 ## 判断：什么时候不值得走全链
 
