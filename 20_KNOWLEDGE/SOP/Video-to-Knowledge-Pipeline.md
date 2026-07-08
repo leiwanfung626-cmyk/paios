@@ -17,8 +17,9 @@ attributes:
     - "2026-06-29 CodeTrust (REF-0001)"
     - "2026-07-02 NotebookLM (REF-0002)"
     - "2026-07-02 自动化AI大脑 (REF-0004) — 首次使用 Playwright + Whisper 全链路"
+    - "2026-07-06 Codex CLI 教程 (REF-0006) — 修复 ffmpeg PATH + 代理问题，v2.2"
 extensions:
-  related_refs: ["REF-0001", "REF-0002", "REF-0004"]
+  related_refs: ["REF-0001", "REF-0002", "REF-0004", "REF-0006"]
   related_principles: ["#4 知识验证", "#8 工具独立"]
   triggers_direction: "DEC-2026-07-02-0001 方向1（多模态捕获层）"
 ---
@@ -28,6 +29,25 @@ extensions:
 ## 适用场景
 
 用户看到有价值的视频（抖音/B站/YouTube），想把内容变成 PAIOS 知识库中的永久资产。
+
+## 一键执行脚本
+
+抖音视频推荐使用自动 Pipeline 脚本：
+
+```bash
+python F:\PAIOS\40_AUTOMATION\09_LEGACY\original\douyin_full_pipeline.py --url <抖音链接>
+```
+
+该脚本已注册为 `SCRIPT-0004`（`scripts.yaml`），支持 3 层下载回退策略：
+1. **yt-dlp**（从 Edge 浏览器获取 cookies）
+2. **Playwright cookies + yt-dlp**
+3. **Playwright 直接下载**（拦截 API）
+
+自动执行：下载视频 → 提取音频 → Whisper 转写 → 保存文本到 `70_TMP/`
+
+可选参数：
+- `--model small|base|tiny|medium|large` — 指定 Whisper 模型（默认 small）
+- `--file <本地路径>` — 跳过下载，直接转写本地视频文件
 
 本 SOP 覆盖两种场景：
 - **循环 A（认知循环）**：视频 → 研究 → 知识入库。SOP Step 1-7（含 Step 2b 语音转写）。

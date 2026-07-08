@@ -16,8 +16,11 @@ scripts:
     status: pending
   - id: SCRIPT-0004
     name: douyin_pipeline
-    source: legacy/douyin_full_pipeline.py
+    source: 09_LEGACY/original/douyin_full_pipeline.py
     status: active
+    wrappers:
+      - 05_SCRIPTS/douyin.bat (Windows)
+      - 05_SCRIPTS/douyin.sh (bash)
   - id: SCRIPT-0005
     name: archive_workbuddy
     source: legacy/archive_workbuddy.py
