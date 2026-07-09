@@ -83,7 +83,7 @@ E:/PAIOS
 ### 4.1 原始业务文件存这里
 
 ```
-E:\QuarkSync\DATA
+${PAIOS_DRIVE}:/QuarkSync/DATA
 ```
 
 类型：

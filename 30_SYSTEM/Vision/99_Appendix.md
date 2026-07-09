@@ -98,7 +98,7 @@ Draft → Reviewing → Approved → Active → Frozen → Deprecated → Archiv
 | Doctor Health Score | **94/100** | 系统健康度 |
 | Validate Status | **97/100（0 errors）** | 完整性校验 |
 | Principles | ✅ 9 条 | 全部就绪 |
-| ADR | ✅ 2 条（+8 条新增） | ADR-0001 ~ ADR-0009 + ADR-9999 |
+| ADR | ✅ 2 条（+8 条新增） | ADR-0002 ~ ADR-0009 + ADR-9999 |
 | Registry | ✅ 5 YAMLs | 全部可读 |
 | Templates | ✅ 6 套 | 覆盖全部知识类型 |
 

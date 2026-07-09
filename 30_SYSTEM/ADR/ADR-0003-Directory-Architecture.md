@@ -61,5 +61,4 @@ E:\PAIOS/
 ## Related
 - Principle #1: Directories express lifecycle, not content
 - Principle #6: Keep the top-level directory count low
-- ADR-0001: Core API Freeze
 - `paios-philosophy.md`

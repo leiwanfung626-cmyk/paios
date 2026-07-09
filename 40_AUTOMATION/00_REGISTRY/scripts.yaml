@@ -25,3 +25,18 @@ scripts:
     name: archive_workbuddy
     source: legacy/archive_workbuddy.py
     status: pending
+  - id: SCRIPT-0006
+    name: classify_files
+    source: 05_SCRIPTS/classify_files.py
+    status: active
+    note: QuarkSync DATA 自动分类器
+  - id: SCRIPT-0007
+    name: vision_query
+    source: 05_SCRIPTS/vision_query.py
+    status: active
+    note: reasonix 多模态任务的 GLM 视觉兜底出口
+  - id: SCRIPT-0008
+    name: check_vision_payload
+    source: 05_SCRIPTS/check_vision_payload.py
+    status: active
+    note: reasonix 400 多模态 payload 诊断

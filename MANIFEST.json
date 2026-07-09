@@ -6,7 +6,7 @@
     "config_version": "1.0",
     "template_version": "1.0",
     "created": "2026-06-28T14:33:16Z",
-    "workspace": "E:/PAIOS",
-    "tools": "E:/Tools",
+    "workspace": "${PAIOS_DRIVE}:/PAIOS",
+    "tools": "${PAIOS_DRIVE}:/Tools",
     "architecture": "Frozen"
 }

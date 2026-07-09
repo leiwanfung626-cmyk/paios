@@ -14,13 +14,13 @@
 ### Step 1: 获取平台
 
 ```bash
-git clone <remote> E:\PAIOS
+git clone <remote> ${PAIOS_DRIVE}:/PAIOS
 ```
 
 ### Step 2: 创建 Runtime 环境
 
 ```bash
-cd E:\PAIOS
+cd ${PAIOS_DRIVE}:/PAIOS
 python -m venv .venv
 .venv\Scripts\activate     # Windows
 pip install --upgrade pip
@@ -50,7 +50,7 @@ python -m paios_installer validate
 
 ```bash
 # 打开 Today.md，确认当天状态
-# AI 工具设置 Workspace = E:\PAIOS
+# AI 工具设置 Workspace = ${PAIOS_DRIVE}:/PAIOS
 # 执行 Bootstrap: Principles → ADR → Registry → Manifest
 ```
 

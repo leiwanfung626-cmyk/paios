@@ -1,6 +1,12 @@
 @echo off
-REM douyin.bat â€” æŠ–éŸ³è§†é¢‘ä¸‹è½½+è½¬å†™ä¸€é”®è„šæœ¬
-REM ç”¨æ³•: douyin <æŠ–éŸ³é“¾æŽ¥>
-REM ç¤ºä¾‹: douyin https://v.douyin.com/xxx/
+REM douyin.bat ¡ª ¶¶ÒôÊÓÆµÏÂÔØ+×ªÐ´Ò»¼ü½Å±¾
+REM ÓÃ·¨: douyin <¶¶ÒôÁ´½Ó>
+REM Ê¾Àý: douyin https://v.douyin.com/xxx/
 
-python F:\PAIOS\40_AUTOMATION\09_LEGACY\original\douyin_full_pipeline.py --url %1
+if defined PAIOS_DRIVE (
+    set PAIOS_PATH=%PAIOS_DRIVE%:\PAIOS
+) else (
+    set PAIOS_PATH=F:\PAIOS
+)
+
+python "%PAIOS_PATH%\40_AUTOMATION\09_LEGACY\original\douyin_full_pipeline.py" --url %1

@@ -127,7 +127,7 @@ superseded_by: <document-ref>       # Deprecated：被什么替代
 | `paios-philosophy.md` | accepted | **institutionalized** | 核心愿景，已制度化 |
 | `architecture-governance.md` | baseline | **institutionalized** | Governance 框架已生效 |
 | `architectural-invariants.md` | active | **institutionalized** | 不可违反的系统约束 |
-| ADR-0001 ~ ADR-0011, ADR-9999 | Active/Accepted | **validated-by-engineering-practice** | 已采纳但尚未经长期实战检验 |
+| ADR-0002 ~ ADR-0011, ADR-9999 | Active/Accepted | **validated-by-engineering-practice** | 已采纳但尚未经长期实战检验 |
 | `Design_Notes/ai-capability-architecture.md` | accepted | **observed** | 设计笔记，理论上通过但未多项目验证 |
 | `Design_Notes/retrieve-evolution.md` | accepted | **observed** | 设计笔记，待真实需求触发验证 |
 | `Engineering/Requirement_Emergence.md` | validated-by-engineering-practice | **validated-by-engineering-practice** | 已通过 PAIOS 自身开发循环验证 |

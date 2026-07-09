@@ -11,5 +11,5 @@
 - 20_KNOWLEDGE: Concepts, Methods, SOP, Decisions, Models, References
 - 00_CAPTURE: Inbox.md unified entry
 - Operations: Doctor (94/100), Validate (97/100), Snapshot, Upgrade
-- Governance: Core API Freeze (ADR-0001), Automation Platform Freeze (ADR-0002)
+- Governance: Automation Platform Freeze (ADR-0002)
 - Tool Independence: Principle #8, Bootstrap First: Principle #9

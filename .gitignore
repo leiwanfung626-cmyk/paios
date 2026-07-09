@@ -7,6 +7,8 @@
 .codebuddy/
 00_CAPTURE/Downloads/
 70_TMP/
+50_DATA/
+50_IMPORT/
 __pycache__/
 .venv/
 .DS_Store

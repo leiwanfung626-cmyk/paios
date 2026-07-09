@@ -115,7 +115,7 @@ This architecture is frozen per the Architecture Freeze Policy:
 #### 启动流程
 
 ```
-Workspace: E:\PAIOS
+Workspace: ${PAIOS_DRIVE}:/PAIOS
      ↓
 Bootstrap (加载平台治理信息)
   ├── Principles    — 了解平台规则
