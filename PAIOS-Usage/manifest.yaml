@@ -14,7 +14,7 @@ instance:
 usage:
   last_active: 2026-07-10
   active_days_30d: 8
-  git_commits_total: 18
+  git_commits_total: 21
 
 features:
   capture: true
@@ -65,9 +65,11 @@ evidence:
     level: Accepted
   - object: ADR-0012
     level: Accepted
-  - object: ADR-0013
-    level: Proposed
+  - object: ADR-0016
+    level: Accepted
   - object: ADR-0014
+    level: Proposed
+  - object: ADR-0013
     level: Proposed
   - object: ADR-0015
     level: Proposed
