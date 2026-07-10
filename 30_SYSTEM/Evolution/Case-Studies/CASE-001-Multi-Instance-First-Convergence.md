@@ -133,6 +133,28 @@ Phase B 完成后继续观察若干版本，若以下四项**连续多个版本�
 
 ---
 
+## 验证记录（Validation Log）
+
+> 本 Case 不仅记录问题，也记录整个验证过程（Discovery → Decision → Implementation → Validation → Closure），与 Architecture Lifecycle 一致。下列为运行期验证节点，非新决策。
+
+### Validation-01 — 2026-07-11
+
+**问题（Question）**：是否应提前启动 Git Cleanup（Commit 3），以清理远端 `origin/master` 中的历史架构债务？
+
+**证据（Evidence）**：
+- `git fetch` 后 `origin/master` 仍停在 `caf3033`，与上次核对完全一致；`HEAD..origin/master` 的 8 个提交均为已知旧发散（Case-02/03 的 v1.0.1 升级流），**无新提交**
+- 债务文件最后改动均来自已知历史提交：`10_WORK` / `20_KNOWLEDGE`（含考研正文）最后改动于 `caf3033`；`Today.md` / `PAIOS-Usage/manifest.yaml` 于 `1ddb28f`；仓库内 `Fleet/` 于 `a750af0`。tip 之后**无任何新增写入**
+- **未观察到**任何"持续向远端写入 Workspace / 覆盖 Manifest"的活动
+- **Hotfix 例外条件（持续污染）未触发**
+
+**决策（Decision）**：维持原计划——继续 Pilot（Case-01），**不启动 Git Cleanup**，**不触发 Hotfix**。
+
+**理由（Reason）**：远端债务为**历史遗留（frozen）**而非持续污染。现在清理会把"架构调整 + Git 收敛 + 历史清理"三件事混在一起，违反 Commit 纪律。Git Cleanup 的正确归属是 **Commit 3**（让 Git 同步已验证架构，而非决定架构）。
+
+**意义（Significance）**：本次核实是 CASE-001 原则的一次真实运行——**用证据而非担心驱动决策**。它验证了"Pilot 前不启动 Git Cleanup"这一既有决策仍然成立，而非产生新决策，故作为 Validation 节点，不升级为新 CASE / 新 ADR。
+
+---
+
 ## 决策影响（Decision Impact）
 
 - **Created**：ADR-0017（Platform Purity & Physical Separation）
