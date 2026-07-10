@@ -1,0 +1,78 @@
+manifest_version: 1
+
+instance:
+  id: "case-02"
+  version: "v1.0.1"
+  profile:
+    primary: personal
+    secondary:
+      - photo-organizing
+      - ai-visual
+  owner: "user-b"
+  privacy: share
+
+usage:
+  last_active: 2026-07-10
+  active_days_30d: 9
+  git_commits_total: 25
+
+features:
+  capture: true
+  knowledge: true
+  automation: true
+  git: true
+  photo: true
+  growth: true
+  review: false
+
+assets:
+  references: 11
+  concepts: 3
+  decisions: 4
+  models: 2
+  methods: 2
+  sops: 4
+  projects: 2
+
+projects:
+  - id: KAOYAN-2026
+    name: Kaoyan-2026
+    status: archived
+  - id: SAFETY-NET
+    name: Safety-Net
+    status: active
+
+evidence:
+  - object: ADR-0002
+    level: Accepted
+  - object: ADR-0003
+    level: Accepted
+  - object: ADR-0004
+    level: Accepted
+  - object: ADR-0005
+    level: Accepted
+  - object: ADR-0006
+    level: Accepted
+  - object: ADR-0007
+    level: Accepted
+  - object: ADR-0008
+    level: Accepted
+  - object: ADR-0009
+    level: Accepted
+  - object: ADR-0010
+    level: Accepted
+  - object: ADR-0011
+    level: Accepted
+  - object: ADR-0012
+    level: Accepted
+  - object: ADR-0016
+    level: Accepted
+  - object: ADR-0014
+    level: Proposed
+  - object: ADR-0013
+    level: Proposed
+  - object: ADR-0015
+    level: Proposed
+
+feedback:
+  pain_points: []
