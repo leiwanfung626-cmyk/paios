@@ -1,16 +1,16 @@
 schema: 1
 
 instance:
-  id: case-01
+  id: case-02
 
 profile:
-  primary: work
+  primary: personal
   secondary:
-    - office
-    - community-service
+    - photo-organizing
+    - ai-visual
 
 owner:
-  alias: user-a
+  alias: user-b
 
 privacy:
   manifest: share

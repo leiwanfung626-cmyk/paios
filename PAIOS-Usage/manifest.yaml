@@ -1,20 +1,20 @@
 manifest_version: 1
 
 instance:
-  id: "case-01"
+  id: "case-02"
   version: "v1.0.1"
   profile:
-    primary: work
+    primary: personal
     secondary:
-      - office
-      - community-service
-  owner: "user-a"
+      - photo-organizing
+      - ai-visual
+  owner: "user-b"
   privacy: share
 
 usage:
   last_active: 2026-07-10
   active_days_30d: 9
-  git_commits_total: 24
+  git_commits_total: 25
 
 features:
   capture: true
