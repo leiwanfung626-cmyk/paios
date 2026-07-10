@@ -19,6 +19,27 @@
 - **ADR-0017**：Platform Purity & Physical Separation（Accepted，Validated）—— Core/Workspace/Instance-State 三桶隔离 + Platform Purity Principle 判断标准
 - **Phase-B-Core-Workspace-Split.md v2**：按 ADR-0017 + 用户评审修正（20_KNOWLEDGE 拆内容不拆目录、10_WORK 全私有、Fleet 子结构、Manifest collect→publish、B1 逻辑→B2 物理分阶段）
 - 治理原则升级：确立 **Evidence-Driven Evolution（证据驱动演进）** 为治理方法论；将原先拟定的 "Evidence Before Architecture" 修正为更温和的表述——架构可基于原则进行前瞻设计，但是否成为正式平台能力须由真实运行证据验证（与 Need-Driven Promotion 一致，不否定前瞻性设计）
+- 治理节奏细化（同批 refine）：Commit 2 更名 `refactor(governance): establish Core/Workspace boundaries`（建立边界，非拆分）；新增 **Pilot Gate**（Case-01 单实例试点两周、验证 5 信号过闸后再 Rollout Case-02/03）；CASE 固定增 **Decision Impact** 章节（证据链 Traceability）；蓝图 Step2/3/4 对应 Git History 四段 Architecture→Governance→Git Cleanup→Physical Separation
+
+### Architecture Lifecycle & Blueprint Refinement (2026-07-11)
+
+- **新增 `30_SYSTEM/Governance/Architecture-Lifecycle.md`**：从 Phase B v2 的 Commit 纪律升华出的**平台级架构生命周期**（Evidence→Case→ADR→Blueprint→Freeze→Boundary→Pilot→Rollout→Validate 闭环），Phase C/D 全部复用；明确与 Governance 1.0（Asset Lifecycle）的纵切/横切互补关系
+- **Phase B v2 再精炼**：引入 **Asset Class（资产类别）** 抽象（Platform/Shared/Personal/Imported，零成本扩展）替代写死的 Platform/Personal；Registry 统一为 `Registry/`（capabilities/providers/workflow/schema），未来 Plugin/Tool/Agent 复用同一结构；Fleet 版本改为 **Manifest 自声明 `manifest_version`**（Fleet 不猜）；Pilot Gate 增 **Entry/Exit Criteria**（14 天 / 0 Critical / 0 Data Loss / Merge Normal / Manifest Stable）
+- **ADR-0017 D0 升级**：Platform Purity Principle 判断标准从"别人 pull 有价值吗"提升为"**是否在定义平台能力**"（两层级判断 + 归属表），更符合架构边界、长期更稳定
+
+### Governance Layer Extraction & Specifications (2026-07-11)
+
+用户终评 Phase B 已进入**可实施蓝图（Implementation Blueprint）**阶段（架构思想 10/10、治理模型 10/10、工程可实施性 9.7/10），提出三点长期可维护性增强，全部落地：
+
+- **Governance 抽离为独立层**：从 Phase B 蓝图内联内容中抽出平台级治理规范，置于 `30_SYSTEM/Governance/`，任何 Phase（B / C / D …）只引用、不复制：
+  - `Architecture-Lifecycle.md`：端到端演进闭环（Evidence→Case→ADR→Blueprint→Freeze→Boundary→Pilot→Rollout→Validate），Phase C/D 复用
+  - `Decision-Traceability.md`：ADR 强制四字段（Evidence / Implements / Frozen By / Supersedes）+ Blueprint 反向引用 + Commit 引用；制度化 **Reactive vs Proactive ADR** 区分（取代"Evidence 必须在 ADR 之前"的绝对表述）
+  - `Pilot-Gate.md`：试点 Entry / Exit Criteria + 单实例试点模式
+  - `Rollout.md`：全量推广前置条件 + 分批顺序 + Git History 四段展开
+  - `Change-Control.md`：变更分级（L1 / L2 / L3）+ 冻结策略 + 证据门禁 + Commit 纪律
+- **Asset Class 独立成规范**：`30_SYSTEM/Specifications/Asset-Class.md` 定义全平台内容分类轴（Platform / Shared / Personal / Imported），不隶属于 `20_KNOWLEDGE`，同样适用 `10_WORK/`、`Fleet/`；目录只是分类的实现。
+- **Phase B 蓝图改为引用式**：§1.1 / §4 Pilot Gate / §8 治理闭环均改为引用 Governance 层与 Asset-Class 规范，不再内联实现。
+- **ADR-0017 增加 Decision Traceability 四字段块**（Evidence: CASE-001 / Implements: Phase B Blueprint v2 / Frozen By: 472e53d / Supersedes: ADR-0016 §Phase B draft）+ 标注为 Reactive ADR。
 
 ### Release Flow & Fleet Separation (2026-07-10)
 

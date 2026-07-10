@@ -28,6 +28,22 @@ PAIOS 的演进方式已经转变（详见 CASE-001）：
 - **ADR = 决策**（基于证据，我们决定怎么做）
 - 一个 ADR 可由多个 Case 支撑；一个 Case 可触发多个 ADR。
 
+## 治理生命周期（Evidence-Driven Governance Lifecycle）
+
+PAIOS 的演进不是一次性设计，而是可重复的闭环。每一次真实演化都走完以下节奏：
+
+```
+真实运行 → 收集证据 → 提炼 Case（本目录）
+   → 形成 ADR → 冻结设计（Freeze）
+   → 小范围试点（Pilot：单实例 / 单场景）
+   → 全面实施（Rollout）
+   → 再次验证（Validate）
+   → 沉淀为新 Case → 触发下一轮 ADR
+```
+
+- **Pilot 优先于 Rollout**：设计冻结后，先让一个实例（如 Case-01 / Developer 角色）跑通，验证 manifest / Fleet / publish / registry / upgrade 全部正常，再推广到其他实例。
+- 本节奏比"增加功能"更重要：它让 PAIOS 从"设计平台"转向"演进平台"。
+
 ## 何时创建
 
 ✅ 满足以下任一条即可立 Case：
@@ -75,6 +91,10 @@ PAIOS 的演进方式已经转变（详见 CASE-001）：
 
 ## 后续验证指标（Validation Metrics）
 升级完成后继续观察什么，证明修复有效。
+
+## 决策影响（Decision Impact）
+本 Case 创建了哪些 ADR / 触发了哪些 Phase / 引入了哪些原则 / 影响了哪些文件。
+目的：形成**证据链（Evidence Traceability）**——未来追问"为什么有 ADR-00XX / 为什么开始 Phase X"，直接回溯本 Case。
 
 ## 最大价值（Significance）
 这次对 PAIOS 演进方法论本身的意义。

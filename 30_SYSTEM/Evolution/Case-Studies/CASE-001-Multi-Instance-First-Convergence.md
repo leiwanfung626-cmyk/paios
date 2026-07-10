@@ -130,6 +130,18 @@ Phase B 完成后继续观察若干版本，若以下四项**连续多个版本�
 
 ---
 
+## 决策影响（Decision Impact）
+
+- **Created**：ADR-0017（Platform Purity & Physical Separation）
+- **Triggered**：Phase B（Core / Workspace / Instance-State 物理隔离）
+- **Introduced**：Platform Purity Principle（"别人 pull 这文件有价值吗？"）
+- **Affected**：
+  - `30_SYSTEM/ADR/ADR-INDEX.md`
+  - `CHANGELOG.md`
+  - `30_SYSTEM/Evolution/Phase-B-Core-Workspace-Split.md`（蓝图 v2）
+  - `30_SYSTEM/Evolution/Case-Studies/README.md`（Case 公约）
+- **Evidence Traceability**：任何"为什么有 ADR-0017 / 为什么开始 Phase B"的追问，都回溯到本 Case。
+
 ## 最大价值（Significance）
 
 从 PAIOS 演进角度看，这次真正重要的**不是 Git 冲突本身**，而是架构治理方式的变化：
