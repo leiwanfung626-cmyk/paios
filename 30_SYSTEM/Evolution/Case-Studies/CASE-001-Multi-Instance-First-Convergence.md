@@ -9,6 +9,8 @@
 - 触发版本：PAIOS v1.0.1
 - 证据等级：**Validated**（三实例真实运行，数据可复现）
 - 关联 ADR：ADR-0016（架构基线，提出 Phase B 触发条件）· ADR-0017（平台纯度与物理隔离，本 Case 直接支撑）
+- **Evidence Commit**：`472e53d`（Phase B v2 设计冻结点）
+- **Severity**：`Major`（Manifest 单路径冲突已真实发生；若将来出现真实数据丢失则升为 Critical）
 
 ---
 

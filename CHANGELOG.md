@@ -41,6 +41,17 @@
 - **Phase B 蓝图改为引用式**：§1.1 / §4 Pilot Gate / §8 治理闭环均改为引用 Governance 层与 Asset-Class 规范，不再内联实现。
 - **ADR-0017 增加 Decision Traceability 四字段块**（Evidence: CASE-001 / Implements: Phase B Blueprint v2 / Frozen By: 472e53d / Supersedes: ADR-0016 §Phase B draft）+ 标注为 Reactive ADR。
 
+### Architecture Lifecycle v1.0 冻结 (2026-07-11)
+
+用户终评 Architecture Lifecycle 为"PAIOS 至今最重要治理文档"，给予架构思想 10/10、可复用性 10/10、长期治理成熟度 9.8/10，**建议冻结（后续修改须走新 CASE→ADR→新版本 Lifecycle，不得随手改）**。本轮为冻结前的最后一轮结构增强，仅落实用户点名 6 项，不引入 Canary/Sandbox/Release Ring 等新概念：
+
+- **`lifecycle_version: 1.0`**：文件头增加版本字段；Blueprint 未来通过 `lifecycle:` 声明所遵循版本，避免混用。
+- **Gate Owner 列**：各阶段 Gate 表新增 Owner 列（Evidence/Case=任何操作员；ADR/Blueprint/Freeze/Retrospective=Architect；Boundary/Pilot=Developer；Rollout/Validate=Maintainer+Fleet）；单操作员现状下由 Evan 兼任，字段为多人协同预留。
+- **Evidence Severity**：新增四级严重度（Critical / Major / Minor / Observation），用于决定流程可跳过范围；CASE-001 的 Manifest 冲突判为 **Major**。
+- **Retrospective Outcome**：回顾结论固定四选一（Accepted / Adjusted / Rejected / Deferred），CASE-002 将携带 `Outcome` 字段。
+- **双向 Traceability**：`Decision-Traceability.md` 新增 §1.5 **CASE 追溯字段**（Evidence Commit / Triggered ADR / Severity），CASE-001 已补 `Evidence Commit: 472e53d`；闭环图改为 commit ↔ Blueprint ↔ ADR ↔ CASE 双向反查。
+- **元治理原则（Meta-Governance）**：文档末 §6 新增——"Lifecycle 本身也是平台资产，任何修改都应遵循本 Lifecycle"，确立自洽的元治理基础；v1.0 当前冻结，待新 CASE 触发才升级。
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）

@@ -1,6 +1,7 @@
 ---
 title: "Architecture Lifecycle — 平台级架构生命周期"
 status: Active
+lifecycle_version: 1.0
 created: 2026-07-11
 related:
   - architecture-governance.md
@@ -85,19 +86,47 @@ related:
 
 ### 各阶段职责与门槛（Gate）
 
-| 阶段 | 输入 | 动作 | 输出 | 进入下一阶段的门槛（Gate） |
-|------|------|------|------|----------------------------|
-| **Evidence** | 真实运行 | 观察、记录客观事实 | 带数字的事实 | 足够显著，值得固化 |
-| **Case** | Evidence | 写 CASE-NNN（固定结构 + Decision Impact） | 架构证据 | 通过"是否验证/证伪某原则"判定 |
-| **ADR** | Case | 决策（含 D0/D1…），记录证据等级 | 冻结的决策 | status = Accepted |
-| **Blueprint** | ADR | 写可实施蓝图（分阶段、命令纪律） | 设计文档 | 覆盖对应 Phase 触发条件 |
-| **Freeze** | Blueprint | 仅提交文档，不碰物理 | 设计冻结 commit | 评审通过 |
-| **Boundary** | Freeze | Establish Boundaries（不物理拆分） | 目录/Registry/.gitignore 就位 | 备份锚点 + Rollback Ready |
-| **Pilot** | Boundary | 单实例跑新边界 | 试点信号 | **Exit Criteria 全满足** |
-| **Rollout** | Pilot 过闸 | 展开为 Git History 四段 + 物理隔离 | 多实例升级 | 所有实例升级完成 |
-| **Validate** | Rollout | 连续观察 | 验证结论 | 缺陷连续多版本未复现 |
-| **Retrospective** | Validate | 回顾（决策/边界/规则/新问题），形成 CASE-NNN，判定是否进入下一 Phase | 回顾结论 + 下一 Phase 建议 | 回顾完成且结论明确 |
-| **（闭环）** | Retrospective | 沉淀新 Case | 下一轮 Evidence | — |
+| 阶段 | 输入 | 动作 | 输出 | 进入下一阶段的门槛（Gate） | Owner |
+|------|------|------|------|----------------------------|-------|
+| **Evidence** | 真实运行 | 观察、记录客观事实 | 带数字的事实 | 足够显著，值得固化 | 任何实例操作员 |
+| **Case** | Evidence | 写 CASE-NNN（固定结构 + Decision Impact） | 架构证据 | 通过"是否验证/证伪某原则"判定 | 任何实例操作员 |
+| **ADR** | Case | 决策（含 D0/D1…），记录证据等级 | 冻结的决策 | status = Accepted | Architect |
+| **Blueprint** | ADR | 写可实施蓝图（分阶段、命令纪律） | 设计文档 | 覆盖对应 Phase 触发条件 | Architect |
+| **Freeze** | Blueprint | 仅提交文档，不碰物理 | 设计冻结 commit | 评审通过 | Architect |
+| **Boundary** | Freeze | Establish Boundaries（不物理拆分） | 目录/Registry/.gitignore 就位 | 备份锚点 + Rollback Ready | Developer |
+| **Pilot** | Boundary | 单实例跑新边界 | 试点信号 | **Exit Criteria 全满足** | Developer |
+| **Rollout** | Pilot 过闸 | 展开为 Git History 四段 + 物理隔离 | 多实例升级 | 所有实例升级完成 | Maintainer |
+| **Validate** | Rollout | 连续观察 | 验证结论 | 缺陷连续多版本未复现 | Maintainer + Fleet |
+| **Retrospective** | Validate | 回顾（决策/边界/规则/新问题），形成 CASE-NNN，判定是否进入下一 Phase | 回顾结论 + 下一 Phase 建议 | 回顾完成且结论明确 | Architect |
+| **（闭环）** | Retrospective | 沉淀新 Case | 下一轮 Evidence | — | — |
+
+> **Owner 说明**：Gate 必须有人拍板，避免多人协同时互相等待。当前 PAIOS 为单操作员（Evan）兼任 Architect / Developer / Maintainer，Fleet 为自动化健康信号；Owner 字段为未来多人协同预留，不改变现有职责。
+
+### Evidence Severity（证据严重度）
+
+每条 Evidence（进而每条 CASE）应标注严重度，用于判断流程可跳过的范围：
+
+| Severity       | 含义 | 示例 | 流程影响 |
+|----------------|------|------|----------|
+| **Critical**   | 数据丢失 / 安全违约 | 真实数据丢失 | 立即暂停相关流程，优先修复 |
+| **Major**      | 架构违约已真实发生 | 本次 Manifest 单路径冲突 | 必须走完整 Lifecycle |
+| **Minor**      | 局部不一致 | 文档措辞冲突 | 可走精简版（省略 Pilot） |
+| **Observation**| 观察记录 | 某能力使用率低 | 仅入 Case，不必然触发 ADR |
+
+> 本次 CASE-001 的 Manifest 单路径冲突属 **Major**——已真实发生，必须走完整闭环。
+
+### Retrospective Outcome（回顾结论，固定四选一）
+
+回顾必须给出明确结论，不允许"模糊收尾"：
+
+| Outcome    | 含义 | 示例 |
+|------------|------|------|
+| **Accepted**  | 决策/边界被证明正确，固化为平台规范 | Platform Purity 通过验证 |
+| **Adjusted**  | 部分需调整，生成修订 ADR/Blueprint | Pilot 失败，收紧某边界 |
+| **Rejected**  | 决策被证伪，回滚 | — |
+| **Deferred**  | 证据不足，留待下一轮 | 某规则观察周期不够 |
+
+> CASE-002（Rollout 后回顾）将携带 `Outcome` 字段；其取值直接决定下一 Phase 走向。
 
 ---
 
@@ -137,3 +166,17 @@ related:
 ## 5. 一句话
 
 Architecture Lifecycle 是 PAIOS 的"演进操作系统"——把每一次重大升级从一次性设计，变成可重复、可追溯、可审计的闭环。
+
+---
+
+## 6. 元治理原则（Meta-Governance）
+
+> **Lifecycle 本身也是平台资产。任何修改都应遵循本 Lifecycle。**
+
+这意味着治理规则自身也必须接受治理：不仅平台功能受 Lifecycle 约束，**Lifecycle 文档自身的演进也必须通过 Evidence → Case → ADR → Blueprint → Freeze 的流程**——不能"想到什么就改 Lifecycle"。
+
+- **唯一合法入口**：修改 Lifecycle 的入口是新的 CASE + ADR，而非直接编辑本文档。
+- **版本化**：文档头部 `lifecycle_version` 随每次正式升级递增（如 1.0 → 2.0）；Blueprint 通过 `lifecycle:` 字段声明其所遵循的版本，避免混用。
+- **当前状态**：`lifecycle_version: 1.0`，已冻结；待新 CASE 触发才升级。
+
+这使 Architecture Lifecycle 真正成为 PAIOS 的**元治理（meta-governance）基础**——一个自洽的系统：治理规则，也被治理。

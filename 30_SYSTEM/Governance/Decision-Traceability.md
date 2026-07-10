@@ -40,6 +40,26 @@ Supersedes: ADR-0016 §Phase B draft
 
 ---
 
+## 1.5 CASE 追溯字段（所有 Case 必须有）
+
+每个 CASE 在元数据区固定声明与决策的双向链接，使 **CASE → ADR → Blueprint → Commit** 形成闭环：
+
+| 字段 | 含义 | 取值 |
+|------|------|------|
+| **Evidence Commit** | 触发/冻结本证据的关联 commit（设计冻结点或采集点） | commit hash（如 `472e53d`） |
+| **Triggered ADR** | 本 Case 直接支撑/触发的 ADR | `ADR-0017` |
+| **Severity** | 证据严重度（见 Lifecycle §Evidence Severity） | `Major` / `Critical` / … |
+
+**示例（CASE-001）**：
+
+```
+Evidence Commit: 472e53d (design freeze of Phase B v2)
+Triggered ADR:   ADR-0017
+Severity:        Major (Manifest 单路径冲突已真实发生)
+```
+
+---
+
 ## 2. 反向引用（所有 Blueprint 必须有）
 
 每个 Blueprint 在头部固定声明它 **Implements** 哪个 ADR：
@@ -81,7 +101,7 @@ Git History 因此天然成为"决策索引"。
 ## 5. 闭环（Traceability Loop）
 
 ```
-CASE-NNN (Evidence)
+CASE-NNN (Evidence, Evidence Commit: 472e53d, Triggered ADR: ADR-XXXX, Severity: Major)
    │  validated
    ▼
 ADR-XXXX (Evidence / Implements / Frozen By / Supersedes)
@@ -92,7 +112,7 @@ Blueprint (Implements: ADR-XXXX)
    ▼
 commit hash (ref: ADR-XXXX, CASE-NNN)
    │
-   └──────────── 反查链：commit → Blueprint → ADR → CASE ────────────┘
+   └──────────── 双向反查：commit ↔ Blueprint ↔ ADR ↔ CASE ────────────┘
 ```
 
 任意一端（commit / CASE / ADR / Blueprint）都能沿链追到另一端。
@@ -103,5 +123,6 @@ commit hash (ref: ADR-XXXX, CASE-NNN)
 
 - **所有 L3（Architecture）级 ADR**：四字段必填，缺失则评审不通过。
 - **Blueprint / SOP / Specification**：头部 `Implements` 必填。
+- **CASE**：元数据必含 `Evidence Commit` / `Triggered ADR` / `Severity` 三字段（见 §1.5）。
 - **架构相关 commit**：message 必带 `ADR-XXXX`（必要时 `CASE-XXX`）。
 - 本规范与 `Architecture-Lifecycle.md` 配套：Lifecycle 管"节奏"，Traceability 管"证据链"。
