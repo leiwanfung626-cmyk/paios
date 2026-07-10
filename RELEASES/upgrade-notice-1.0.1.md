@@ -68,6 +68,18 @@ python 40_AUTOMATION/05_SCRIPTS/collect_manifest.py
 
 生成 `PAIOS-Usage/manifest.yaml`，里面有 `core_version: 1.0.1` 即表示升级登记完成。
 
+### 第三步：回传 Manifest（新增）
+
+生成 manifest 后，请提交并推送，让开发者知道你已经完成升级：
+
+```bash
+git add PAIOS-Usage/
+git commit -m "v1.0.1 upgrade: <你的 case ID>"
+git push
+```
+
+> 不需要等其他人，也不需要再 pull 任何东西。开发者收到 manifest 后会确认升级完成。
+
 ---
 
 ## 我不做会怎样？

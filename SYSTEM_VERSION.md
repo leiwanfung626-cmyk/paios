@@ -21,4 +21,8 @@ structure requires meeting at least two of the following criteria:
 2. Two or more real projects exposing the same structural issue
 3. Clear benefit with acceptable migration cost
 
-> **v1.0.1 (2026-07-10)**: Non-breaking feature addition (ADR-0013 FIM, ADR-0014 Upgrade Mechanism). No top-level structure change; compliant with freeze policy.
+> **v1.0.1 (2026-07-10)**: **Architecture + Release Management.** PAIOS 第一次拥有了完整的版本治理：
+>   - ADR-0012~0016 构成 Platform Evolution 专题（平台化 → 多实例架构冻结）
+>   - Release 机制（CHANGELOG / RELEASE / Upgrade Notice / Manifest）
+>   - 标志 PAIOS 从"一个项目"进入"一个可以持续发布的软件"
+>   - Non-breaking feature addition; no top-level structure change; compliant with freeze policy.

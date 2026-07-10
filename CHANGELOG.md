@@ -12,6 +12,16 @@
 - 新增 PAIOS-Usage/profile.yaml：实例身份声明（场景画像）
 - 非破坏性功能新增；不影响现有使用方式，不修改知识库
 
+### Architecture Review Fixes (2026-07-10)
+
+- **ADR-INDEX.md**：按 Foundation / Platform Evolution / Governance 三组重新组织，新增 Layer 列标识 4 层归属
+- **30_SYSTEM/Specifications/FIM-v1.md**：正式定义 FIM v1 为平台级协议（字段/类型/版本兼容性/实现契约）
+- **60_REFERENCE_CASES/**：建立官方验证案例目录（Case-01~03），含 Stage 1 完成条件
+- **RELEASES/1.0.1.md**：增加 Compatibility 字段（Core / Manifest / Workspace / Migration）
+- **SYSTEM_VERSION.md**：版本总结强调"项目→可发布软件"的转变
+- **empty dirs**：`40_AUTOMATION/02_PROMPTS/*/` 增加 README 标记 Reserved；删除 Claw/ 游离目录
+- **manifest version fix**：manifest.yaml 版本不一致修复（v1.0.0 → v1.0.1）
+
 ## v1.0.0 (2026-06-29)
 
 ### Initial Production Platform Baseline
