@@ -12,6 +12,14 @@
 - 新增 PAIOS-Usage/profile.yaml：实例身份声明（场景画像）
 - 非破坏性功能新增；不影响现有使用方式，不修改知识库
 
+### Architecture Evidence & Phase B Blueprint (2026-07-11)
+
+- **新增 `30_SYSTEM/Evolution/Case-Studies/`**：架构证据目录（README 定义 Case 公约）
+- **CASE-001-Multi-Instance-First-Convergence.md**：第一次真实多实例并流证据（Validated 级），支撑 Phase B 触发
+- **ADR-0017**：Platform Purity & Physical Separation（Accepted，Validated）—— Core/Workspace/Instance-State 三桶隔离 + Platform Purity Principle 判断标准
+- **Phase-B-Core-Workspace-Split.md v2**：按 ADR-0017 + 用户评审修正（20_KNOWLEDGE 拆内容不拆目录、10_WORK 全私有、Fleet 子结构、Manifest collect→publish、B1 逻辑→B2 物理分阶段）
+- 治理原则升级：确立 **Evidence-Driven Evolution（证据驱动演进）** 为治理方法论；将原先拟定的 "Evidence Before Architecture" 修正为更温和的表述——架构可基于原则进行前瞻设计，但是否成为正式平台能力须由真实运行证据验证（与 Need-Driven Promotion 一致，不否定前瞻性设计）
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）
