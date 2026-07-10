@@ -5,7 +5,7 @@
 | Field | Value |
 |-------|-------|
 | System | PAIOS Platform |
-| Version | 1.0.0 |
+| Version | 1.0.1 |
 | Schema Version | 1.0 |
 | Metadata Version | 1.0 |
 | Config Version | 1.0 |
@@ -20,3 +20,5 @@ structure requires meeting at least two of the following criteria:
 1. 3+ months of continuous use
 2. Two or more real projects exposing the same structural issue
 3. Clear benefit with acceptable migration cost
+
+> **v1.0.1 (2026-07-10)**: Non-breaking feature addition (ADR-0013 FIM, ADR-0014 Upgrade Mechanism). No top-level structure change; compliant with freeze policy.

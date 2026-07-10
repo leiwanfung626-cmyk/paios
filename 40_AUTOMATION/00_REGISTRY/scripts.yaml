@@ -40,3 +40,8 @@ scripts:
     source: 05_SCRIPTS/check_vision_payload.py
     status: active
     note: reasonix 400 多模态 payload 诊断
+  - id: SCRIPT-0009
+    name: collect_manifest
+    source: 05_SCRIPTS/collect_manifest.py
+    status: active
+    note: PAIOS Fleet FIM 采集器（ADR-0013），只读现有结构生成 PAIOS-Usage/manifest.yaml，用户零行为改变
