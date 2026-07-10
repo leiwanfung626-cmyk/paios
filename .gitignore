@@ -10,3 +10,19 @@
 __pycache__/
 .venv/
 .DS_Store
+.env
+
+# photos_organizer — data files (source code IS tracked, data is NOT)
+10_WORK/photos_organizer/database/
+10_WORK/photos_organizer/models/
+10_WORK/photos_organizer/inputs/
+10_WORK/photos_organizer/outputs/
+10_WORK/photos_organizer/face_index/face_index.db
+10_WORK/photos_organizer/face_index/faiss_index.bin
+10_WORK/photos_organizer/face_index/*.npy
+10_WORK/photos_organizer/face_index/faces/
+10_WORK/photos_organizer/face_index/export/
+10_WORK/photos_organizer/face_index/extract_full.log
+10_WORK/photos_organizer/face_index/retrieval/
+10_WORK/photos_organizer/scripts/*.log
+10_WORK/photos_organizer/scripts/*.txt

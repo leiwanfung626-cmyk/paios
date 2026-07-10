@@ -25,6 +25,18 @@
    not pre-scanned.  All AI tools follow the same bootstrap convention
    to preserve tool independence.
 
+10. **Immutable Original Principle (原图不可变原则).**
+   Original media files must never be modified, overwritten, renamed, or
+   deleted by any automated process.  All AI outputs (tags, categories,
+   captions, embeddings, face clusters, quality scores) are written to
+   metadata stores (SQLite, YAML, JSON) — not to the original files.
+   When classification is wrong or AI models are upgraded, the correct
+   action is to DELETE outdated metadata and regenerate it, not to
+   re-process the original files.  This principle enables the system to
+   evolve over decades without ever risking data loss.
+
+   > **Metadata Evolves, Assets Don't.** — 元数据演进，资产不变。
+
 ### Requirement Emergence Principle (需求涌现原则)
 
 > **Requirements are not input — they are output of iteration.**

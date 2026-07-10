@@ -1,0 +1,284 @@
+# PAIOS 照片分类政策 (Classification Policy)
+# 版本: v1.0-draft
+# 状态: 初稿，待第一次全量审查后填充实际规则
+#
+# 核心原则：
+#   1. Policy 是分类的最终裁决层，AI 输出只是候选
+#   2. 流程：图片 → CLIP/GLM(候选) → Policy(裁决) → 最终分类
+#   3. 规则来源：人工审核纠偏 → 模式提取 → Policy 更新 → 冻结
+#   4. Metadata Evolves, Assets Don't
+#
+# 用法：
+#   - 04_classify.py 加载此文件作为分类后处理层
+#   - AI 输出 primary_category 后，Policy 检查是否符合规则
+#   - 不符合 → 规则修正 → 记录修正原因到 photo_versions
+#   - 每次纠偏积累后，人工提取模式 → 更新此文件 → 新版本号
+#
+# 版本历史：
+#   v1.0-draft: 2026-07-08 初始框架，待第一次审查填充
+#   v1.1: 2026-07-08 第一次审查模式提取 — 固化"禁毒宣教→工作"强特征规则
+
+version: "1.1"
+updated_at: "2026-07-08"
+updated_by: "Evan"
+
+# ══════════════════════════════════════════════════════════
+# 一、Source 规则（物理目录归属）
+# ══════════════════════════════════════════════════════════
+# Source 决定照片的物理存储位置
+# 决策优先级：路径启发式 > Policy 规则 > AI 建议 > 默认 Personal
+
+source_rules:
+  01_Personal:
+    description: "个人生活照片"
+    include:
+      - family          # 家庭活动
+      - friends         # 朋友聚会
+      - travel          # 旅行出游
+      - daily_life      # 日常生活
+      - food            # 美食餐饮
+      - pets            # 宠物
+      - hobby           # 爱好娱乐
+    exclude:
+      - meeting         # 正式工作会议
+      - office_document # 办公文档
+      - training        # 职业培训
+      - work_event      # 工作活动（即使私人聚餐在公司）
+    # 关键区分规则（待第一次审查填充）
+    edge_cases:
+      - condition: "公司/单位聚餐且无工作议题"
+        decision: "01_Personal"
+        reason: "员工私人活动，即使地点在公司"
+      - condition: "公司旅游/团建娱乐部分"
+        decision: "01_Personal"
+        reason: "非工作目的的集体活动"
+      - condition: "办公室自拍/日常随拍"
+        decision: "01_Personal"
+        reason: "不是工作目的的照片"
+
+  02_Work:
+    description: "工作相关照片"
+    include:
+      - workplace       # 办公环境（工作目的）
+      - meeting         # 正式会议
+      - training        # 职业培训/讲座
+      - project_event   # 项目活动/验收/检查
+      - work_document   # 工作文档/证件
+      - uniform         # 穿制服/工装的工作照
+    exclude:
+      - private_party   # 即使在公司举办的私人聚会
+      - family_photo    # 家人照片（即使拍在办公室）
+      - casual_selfie   # 随意自拍（即使穿工装）
+    edge_cases:
+      - condition: "穿制服但非工作场景"
+        decision: "01_Personal"
+        reason: "制服不是判定标准，场景和目的才是"
+      - condition: "会议结束后的聚餐合影"
+        decision: "01_Personal"
+        reason: "私人社交而非工作"
+      - condition: "禁毒宣传活动"
+        decision: "02_Work"
+        reason: "职务行为，无论是否带家人"
+      - condition: "户外广场/校园禁毒宣教（横幅+制服+学生/儿童群体）"
+        decision: "02_Work"
+        reason: "65 张人工纠偏一致确认，CLIP 原误判为其他"
+
+  03_Screenshots:
+    description: "屏幕截图"
+    include:
+      - screenshot      # 手机/电脑截屏
+      - app_capture     # 应用截图
+      - chat_record     # 聊天记录截图
+      - qr_code         # 二维码
+      - payment         # 支付/红包截图
+    exclude:
+      - photo_of_screen # 拍屏幕的照片（不是截图）
+
+  04_Downloads:
+    description: "网络下载/微信保存"
+    include:
+      - meme            # 表情包
+      - wallpaper       # 壁纸/背景图
+      - saved_image     # 微信保存的图片
+      - downloaded      # 网络下载图片
+    exclude:
+      - original_photo  # 自己拍的照片（即使通过微信传输）
+
+  05_Documents:
+    description: "文档类图片"
+    include:
+      - id_card         # 身份证件
+      - receipt         # 发票/收据
+      - certificate     # 证书/执照
+      - form            # 表格/合同
+    exclude:
+      - photo_of_text   # 拍的文字但不是正式文档
+
+  06_Videos:
+    description: "视频文件"
+    include:
+      - video           # 任何视频
+    exclude: []
+
+  07_ToReview:
+    description: "待人工审核"
+    include: []  # AI 不主动分配到此目录
+    exclude: []
+    # 只有低置信度 + 无启发式 + Policy 无法裁决时才降级到此
+
+# ══════════════════════════════════════════════════════════
+# 二、Category 规则（语义分类）
+# ══════════════════════════════════════════════════════════
+# Category 决定照片的语义标签，独立于 Source
+# 一张"办公室聚餐"可以同时是：Category=美食 + Source=01_Personal
+
+category_rules:
+  人物:
+    description: "以人为主体的照片"
+    prompt_text: "单人或多人的照片、合照、家庭合影、朋友合影、自拍"
+    exclude:
+      - "背影/远景中的人（人不是主体）"
+
+  工作:
+    description: "工作目的产生的照片"
+    prompt_text: "会议、培训、办公、工作现场、签到打卡、项目验收、禁毒宣传活动、户外广场集会、横幅与宣传板、穿制服的学生或儿童群体"
+    include:
+      - "禁毒宣传活动（横幅/宣传板/制服/学生/儿童/户外广场/人群）"
+      - "含横幅或宣传板 + 多人/学生/儿童群体 → 工作（强特征，不落其他）"
+    exclude:
+      - "公司聚餐（非工作目的）"
+      - "团建娱乐部分（非工作目的）"
+      - "穿制服的自拍（非工作场景）"
+
+  旅行:
+    description: "外出旅行游玩"
+    prompt_text: "景点、旅行、度假、出游、观光、异地风景"
+    include:
+      - "出差期间的景点游览"
+    exclude:
+      - "出差工作现场（归工作）"
+
+  美食:
+    description: "餐饮食物"
+    prompt_text: "饭菜、美食、零食、饮品、甜点、水果、烹饪"
+    include:
+      - "饮品和甜点（扩充原词表）"
+      - "水果（扩充原词表）"
+
+  文档:
+    description: "文字内容为主的图片"
+    prompt_text: "截图、证件、发票、表单、合同、通知、二维码"
+    exclude:
+      - "带少量文字的风景照（文字不是主体）"
+
+  风景:
+    description: "自然或城市风光"
+    prompt_text: "山、海、天空、花草、城市夜景、日出日落、自然风光"
+    exclude:
+      - "有人物为主体（归人物/旅行）"
+
+  网络素材:
+    description: "网络下载或保存的图片"
+    prompt_text: "表情包、壁纸、网图、美图收藏、漫画、设计素材"
+    exclude:
+      - "自己拍的照片（即使微信转发）"
+
+  其他:
+    description: "无法归入以上类别的照片"
+    # 这个类别应该是最后兜底，不应大量存在
+    # 如果"其他"超过 5%，说明分类需要改进
+    max_threshold: 0.05  # 超过5%触发分类改进警报
+
+# ══════════════════════════════════════════════════════════
+# 三、CLIP Prompt 优化模板
+# ══════════════════════════════════════════════════════════
+# CLIP 分类不是用单字标签，而是用描述性 prompt
+# 中英双语对 CLIP ViT-B-16 都有效
+
+clip_prompts:
+  人物: "一张有人物的照片，包括单人、合照、家庭合影、自拍"
+  工作: "工作会议、办公培训、工作现场、签到打卡、禁毒宣传活动、户外广场横幅集会、穿制服的学生或儿童群体的照片"
+  旅行: "旅行出游、景点观光、度假休闲的照片"
+  美食: "美食餐饮、饭菜食物、饮品甜点的照片"
+  文档: "截图、证件、发票、文字为主的图片"
+  风景: "自然风光、山川河流、城市风景的照片"
+  网络素材: "表情包、壁纸、网络下载的图片"
+  其他: "无法明确分类的照片"
+
+# ══════════════════════════════════════════════════════════
+# 四、Policy 裁决规则（优先级）
+# ══════════════════════════════════════════════════════════
+# 当 AI 输出与 Policy 规则冲突时的裁决逻辑
+
+policy_priority:
+  - path_heuristic    # 路径启发式（最高优先级，文件名/目录名包含明确线索）
+  - policy_rules      # Classification Policy 规则（本文件）
+  - tag_mapping       # 标签→source 映射（vocabulary 表的 mapping 字段）
+  - ai_suggestion     # AI 输出（最低优先级，仅作为候选）
+
+# 当 Policy 裁决修正 AI 输出时：
+#   classifier 记录为 "policy_override"
+#   classifier_version 记录为 "policy-v{version}"
+#   confidence 保持 AI 原始值，不修改（修正原因记在 photo_versions）
+
+# ══════════════════════════════════════════════════════════
+# 五、迭代计划
+# ══════════════════════════════════════════════════════════
+# v1.0-draft: 框架搭建，待第一次审查数据填充
+# v1.1: 第一次审查后，填充 edge_cases + 扩充 category_rules
+# v1.2: CLIP prompt 换成描述性文本 + Policy 裁决层集成
+# frozen: 规则稳定后冻结，不再随意修改
+
+iteration_plan:
+  v1.0:
+    status: "running"
+    task: "全量 AI 分类，积累数据"
+  v1.0-review:
+    status: "pending"
+    task: "人工审查 ~400 张样本，记录纠偏"
+  v1.1:
+    status: "in_progress"
+    task: "提取模式(已完成) → 更新 Policy(已完成) → 修改 CLIP prompt → 局部重跑(待触发)"
+  v1.2:
+    status: "pending"
+    task: "集成 Policy 裁决层到 04_classify.py"
+  frozen:
+    status: "pending"
+    task: "规则稳定，冻结 Policy，不再迭代"
+
+# ══════════════════════════════════════════════════════════
+# 六、审查提取的纠偏模式（v1.1 — 2026-07-08）
+# ══════════════════════════════════════════════════════════
+# 数据来源：corrections 表（累计 205 条，category 字段 68 条）
+# 提取工具：07_analyze_corrections.py
+# 完整报告：outputs/correction_analysis.json
+
+extracted_patterns:
+  - id: "P001-工作类宣教误判"
+    severity: "high"
+    pattern: "其他 → 工作"
+    count: 65
+    trigger_features:
+      - "横幅 / 宣传板"
+      - "制服"
+      - "学生 / 儿童群体"
+      - "户外广场 / 人群"
+    root_cause: "CLIP 把'工作类禁毒宣教照片'整体误判为'其他'(conf 0.0)，全部落入 07_ToReview 待审桶"
+    policy_action: "已在 category_rules.工作 + source_rules.02_Work 固化强特征规则"
+    source_mapping: "07_ToReview → Work (65 次纠偏支持，宣教类应直接路由 Work 而非待审)"
+
+  - id: "P002-纯风景误判"
+    severity: "medium"
+    pattern: "其他 → 风景"
+    count: 2
+    trigger_features: ["无人物", "无文字物料", "自然/城市风光"]
+    root_cause: "纯风景无人物/无文字 → CLIP 判为'其他'"
+    policy_action: "CLIP prompt 需强化'风景'描述性文本"
+
+  - id: "P003-随手记录归文档"
+    severity: "medium"
+    pattern: "其他 → 文档"
+    count: 1
+    trigger_features: ["主体为拍摄文字占画面大部分"]
+    root_cause: "随手记录若主体是文字应归文档，非第9类"
+    policy_action: "已在对话中确认规则，待更多样本固化"

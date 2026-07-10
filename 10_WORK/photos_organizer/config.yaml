@@ -1,0 +1,95 @@
+# 照片整理工具配置文件 (V1.1 多标签架构)
+# 目标：E:\待整理照片 (100GB 混合媒体库) → 去重/多标签分类 → E:\QuarkSync\照片归档
+
+paths:
+  input: "E:\\待整理照片"
+  output: "E:\\QuarkSync\\照片归档"
+  db: "E:\\PAIOS\\10_WORK\\photos_organizer\\database\\photo_index.db"
+  temp: "E:\\PAIOS\\10_WORK\\photos_organizer\\inputs"
+
+# 媒体类型识别
+media_types:
+  video: [".mp4", ".3gp", ".mov", ".avi", ".mkv", ".flv"]
+  livephoto: [".livp"]
+  raw: [".cr2", ".nef", ".arw", ".dng", ".raf"]
+  photo: [".jpg", ".jpeg", ".png", ".webp", ".bmp", ".gif"]
+  document: [".pdf", ".ppt", ".pptx", ".doc", ".docx"]
+  archive: [".rar", ".zip", ".7z"]
+
+# 物理目录（source = 归档目标目录）
+source_categories:
+  "01_Personal":    "个人生活/家庭/旅行"
+  "02_Work":        "工作活动/会议/培训"
+  "03_Screenshots": "截图（微信/支付/网页/AI）"
+  "04_Downloads":   "网络图片/壁纸/素材/表情包"
+  "05_Documents":   "证件/合同/发票拍照"
+  "06_Videos":      "视频（mp4/mov/3gp/livp）"
+  "07_ToReview":    "AI 置信度低，待人工确认"
+  "90_Trash":       "重复/模糊/无价值"
+
+# 主类别（primary_category，8 类覆盖日常场景）
+primary_categories:
+  - 人物    # 有人出现的照片
+  - 工作    # 工作相关
+  - 旅行    # 旅行出游
+  - 美食    # 餐饮食物
+  - 文档    # 截图/证件/发票
+  - 网络素材 # 表情包/壁纸
+  - 风景    # 纯自然风景
+  - 其他    # 无法归类
+
+# 多标签词表（VLM 从词表中选择标签，约束输出）
+# 详细词表存储在 DB vocabulary 表中（91 个标签）
+# 这里是简要参考
+vocabulary_summary:
+  scene: 29个（海边/山顶/公园/校园/办公室/会议室/酒店/餐厅/厨房/卧室/客厅/医院/机场/高铁站/商场/博物馆/体育馆/婚礼/生日/春节/中秋/雪景/夜景/农田/工地/训练场/景区/街道）
+  people: 10个（自己/家人/父亲/母亲/孩子/同事/朋友/多人/单人/情侣）
+  object: 16个（食物/宠物/汽车/证件/发票/电脑/手机/投影仪/旗帜/二维码/红包/衣服/玩具/书籍/乐器/花卉）
+  activity: 15个（旅行/会议/培训/聚餐/运动/购物/自拍/演讲/签到/团建/钓鱼/爬山/烧烤/装修）
+  attribute: 15个（横屏/竖屏/白天/夜晚/室内/户外/近景/远景/模糊/修图/黑白/拼图/水印/表情包/壁纸）
+
+# 标签 → source 规则映射（在 04_classify.py TAG_TO_SOURCE_RULES 中）
+# 只有标签明确指向 Work/Documents/Screenshots/Downloads 时才覆盖启发式 Personal
+
+# 去重配置
+dedup:
+  md5_exact: true
+  phash_threshold: 90
+  dhash_threshold: 90
+  auto_delete_exact: false
+  auto_delete_perceptual: false
+
+# 分类引擎（V1.1 多标签 hybrid）
+classification:
+  provider: hybrid              # hybrid | local_clip | glm4v_flash | baidu
+  confidence_threshold: 0.35    # 低于此值归 07_ToReview
+  fallback_threshold: 0.40     # CLIP 置信度低于此值时 GLM 补判
+  # ── 本地 CLIP（主类别快速通道）──
+  local_clip:
+    model: "ViT-B-16"
+    temperature: 0.02
+  # ── 智谱 GLM-4V-Flash（多标签补判）──
+  glm4v_flash:
+    model: "glm-4v-flash"
+    api_key_env: "ZHIPU_API_KEY"
+    max_retries: 3
+    retry_delay: 2.0
+    max_tokens: 100             # VLM 输出 token 上限
+  # ── 百度（备用）──
+  baidu:
+    endpoint: "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"
+    api_key_env: "BAIDU_API_KEY"
+    secret_key_env: "BAIDU_SECRET_KEY"
+    rate_limit_per_sec: 5
+
+# 增量处理
+incremental:
+  enabled: true
+  batch_id: "auto"
+
+# 价值分级
+value_levels:
+  A: "永久保存"
+  B: "重要"
+  C: "普通"
+  D: "垃圾"
