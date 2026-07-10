@@ -459,16 +459,17 @@
 <h2>四-1. 架构能力验证（已通过的测试）</h2>
 
 <table>
-  <tr><th>测试</th><th>场景</th><th>结果</th></tr>
-  <tr><td>多领域收纳</td><td>AI工具→育儿→路由→禁毒→财务</td><td><span class="tag tag-green">通过</span></td></tr>
-  <tr><td>知识管线运转</td><td>抖音视频→转录→验证→归档</td><td><span class="tag tag-green">通过 · 7次</span></td></tr>
-  <tr><td>决策记录机制</td><td>NotebookLM 方向 / 路由器架构 / 平台化</td><td><span class="tag tag-green">通过 · 3次</span></td></tr>
-  <tr><td>真实项目承载</td><td>考研2026 三件套 + 真实沟通记录</td><td><span class="tag tag-green">通过</span></td></tr>
-  <tr><td>双盘协同路由</td><td>禁毒文件 F→G，PAIOS 内容留 F</td><td><span class="tag tag-green">通过</span></td></tr>
-  <tr><td>双电脑协作</td><td>Evan(E) ↔ Feng(F) 路径自动适配</td><td><span class="tag tag-green">通过</span></td></tr>
-  <tr><td>版本管理</td><td>15 commits + SSH push</td><td><span class="tag tag-green">通过</span></td></tr>
-  <tr><td>自动化管线</td><td>classify_files / vision_query / 抖音下载</td><td><span class="tag tag-green">通过</span></td></tr>
-  <tr><td>自我审计</td><td>架构审查 → 发现 6 类文档漂移 → 全部修复</td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><th>测试</th><th>场景</th><th>证据等级</th><th>结果</th></tr>
+  <tr><td>多领域收纳</td><td>AI工具→育儿→路由→禁毒→财务</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>知识管线运转</td><td>抖音视频→转录→验证→归档</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过 · 7次</span></td></tr>
+  <tr><td>决策记录机制</td><td>NotebookLM 方向 / 路由器架构 / 平台化方向</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过 · 3次</span></td></tr>
+  <tr><td>真实项目承载</td><td>考研2026 三件套 + 真实沟通记录</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>双盘协同路由</td><td>禁毒文件 F→G，PAIOS 内容留 F</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>双电脑协作</td><td>Evan(E) ↔ Feng(F) 路径自动适配</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>版本管理</td><td>15 commits + SSH push</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>自动化管线</td><td>classify_files / vision_query / 抖音下载</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>自我审计</td><td>架构审查 → 发现 6 类文档漂移 → 全部修复</td><td><span class="tag tag-green">Verified</span></td><td><span class="tag tag-green">通过</span></td></tr>
+  <tr><td>平台化方向</td><td>Growth OS 概念 + ADR-0012 推理</td><td><span class="tag tag-blue">Proposed</span></td><td><span class="tag tag-blue">方向识别</span></td></tr>
 </table>
 
 <h2>四-2. 架构限制暴露（真实约束）</h2>
@@ -491,20 +492,51 @@
 <p>7月9日的架构审计不是外部驱动的——是系统自己检查自己，发现了文档漂移、幽灵引用、遗漏注册，然后自己修好了。这比任何一条新 ADR 都更能证明系统"活"了。</p>
 <br>
 <p><strong>3. 需求驱动演进的实践验证</strong></p>
-<p>Growth OS 不是从零设计的——它是从"0岁早教要点"这个具体的、当下的需求里自然长出来的。然后引出 ADR-0012，然后引出平台化架构。整个过程没有丝毫推测性设计——这是 Necessity-Gated Architecture 最漂亮的实例。</p>
+<p>Growth OS 不是从零设计的——它是从"0岁早教要点"这个具体的、当下的需求里自然长出来的。然后引出 ADR-0012，然后引出平台化架构。整个过程没有丝毫推测性设计——这是 Necessity-Gated Architecture 原则的一次实际演示。</p>
 <br>
-<p><strong>4. 从单系统到平台化的种子</strong></p>
-<p>两周前 PAIOS 是一个"个人 AI 系统"。两周后，它已经展现了容纳 Photo OS / Growth OS / Study OS 的能力。ADR-0012 不是蓝图，是对已发生事实的归纳。</p>
+    <p><strong>4. 平台化方向的出现（方向识别，非架构验证）</strong></p>
+    <p>Growth OS 概念的提出触发了一次有价值的架构讨论：PAIOS 是否有潜力成为应用平台？ADR-0012 记录了这个方向的完整推理——但需要明确：Growth OS 目前仅存在于概念层（1 份 Concept 文档 + 1 份 ADR），Photo OS / Study OS / Family OS 等更是远期愿景。这不是平台能力的验证，而是平台方向的一次严肃识别。真正的验证需要至少一个独立应用完成从概念到运行的全生命周期。</p>
 </div>
+
+<h2>五、Evidence Level（证据等级分层）</h2>
+
+<p style="color:var(--muted); font-size:0.9rem; margin-bottom:16px;">PAIOS 一直缺少的一层：区分哪些已存在、哪些只是规划。以下按本节所述，对两周运营中涉及的所有关键概念做一次证据等级归类。</p>
+
+<table>
+  <tr><th>内容</th><th>描述</th><th>证据等级</th></tr>
+  <tr><td>Git 版本管理</td><td>15 commits + SSH push，每天在运行</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>双电脑协作</td><td>Evan(E) ↔ Feng(F) 路径适配，已落地</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>视频→知识 Pipeline</td><td>7 次管线运转，SOP 已固化</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>Knowledge 体系</td><td>22 篇文档，6 种类型，索引正常更新</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>决策记录机制</td><td>3 次决策，每次有 ADR / DEC 记录</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>记忆系统</td><td>9 天日志 + MEMORY.md，日更</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>自我审计能力</td><td>7/9 审计发现 6 类漂移并全部修复</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>考研真实项目</td><td>三件套建立，儿子有真实反馈</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>Safety-Net 保障</td><td>三件套建立，真实背景驱动</td><td><span class="tag tag-green">✅ Verified</span></td></tr>
+  <tr><td>Growth OS</td><td>1 Concept + 1 ADR，0 仓库，0 用户，0 运行</td><td><span class="tag tag-blue">💡 Proposed</span></td></tr>
+  <tr><td>PAIOS 平台化</td><td>ADR-0012 推理完整，但仅 1 个应用概念，未达到 2+ 应用验证门槛</td><td><span class="tag tag-blue">💡 Emerging</span></td></tr>
+  <tr><td>Photo OS</td><td>照片整理方向提及，无独立文档</td><td><span class="tag tag-purple">📝 Vision</span></td></tr>
+  <tr><td>Study OS / Health OS 等</td><td>平台化讨论中列举的方向，未启动</td><td><span class="tag tag-purple">📝 Vision</span></td></tr>
+</table>
+
+<p style="color:var(--muted); font-size:0.8rem; margin-top:8px;">
+  <strong>等级定义：</strong>
+  Verified = 有可验证的运行数据 · 
+  Proposed = 有文档/ADR，推理完整，但无运行实例 · 
+  Emerging = 方向明确，至少一个 Proposed 实例在推进 · 
+  Vision = 远期方向，仅概念层面提及
+</p>
 
 <div class="verdict">
   <div class="score" style="font-size:2rem; -webkit-text-fill-color: #e8f0ff; background: none;">系统成长评估</div>
   <p>
-    如果 6月29日是"出生"——架构完整但没有运行数据的婴儿<br>
-    那么 7月10日是"学会走路"——能承载真实世界的多样性，能自我检查，能自然演化<br><br>
+    如果 6月29日是"架构设计图"——完整但没有运行数据<br>
+    那么 7月10日是"开始运转"——知识管线/决策记录/记忆系统在真实运行<br><br>
+    <strong>最大的收获不是 Growth OS 的提出，而是 PAIOS 第一次完成了从"架构设计"到"持续运行"的跨越。</strong><br>
     <strong>不是爆发式成长，而是验证式成长。</strong><br>
     系统没爆炸成超级仓库，没新增一堆推测性架构，每条增长都对应真实需求。<br>
-    这本身就是 Necessity-Gated Architecture 的成功。
+    这本身就是 Necessity-Gated Architecture 的成功。<br><br>
+    <span style="font-size:0.85rem; opacity:0.75;">Growth OS / 平台化是方向，不是已验证的能力。真正验证的是：知识管线运转、决策记录机制、自我审计、记忆系统——这些每天在跑。</span>
   </p>
 </div>
 
@@ -520,7 +552,8 @@
 
 <hr>
 <p style="text-align:center; color:var(--muted); font-size:0.85rem;">
-  PAIOS v1.0.0 · 运营第12天 · Buddy 🔧 生成于 2026-07-10
+  PAIOS v1.0.0 · 运营第12天 · Buddy 🔧 生成于 2026-07-10<br>
+  <span style="font-size:0.75rem;">修订 v1.1 — 2026-07-10 10:41 · 增加 Evidence Level 分层，修正平台化/Growth OS 证据等级（Proposed → Verified），调低 verdict 中平台化措辞</span>
 </p>
 
 </body>
