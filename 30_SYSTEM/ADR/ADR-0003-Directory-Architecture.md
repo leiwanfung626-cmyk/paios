@@ -16,7 +16,7 @@ PAIOS 需要一套表达知识生命周期的目录结构，而非传统的按�
 采用 7 层目录架构，外加 2 个辅助目录：
 
 ```
-E:\PAIOS/
+${PAIOS_DRIVE}:/PAIOS/
 ├── 00_CAPTURE/     # 信息入口（Inbox）
 ├── 10_WORK/        # 工作区（临时）
 ├── 20_KNOWLEDGE/   # 知识库（已验证）
@@ -61,5 +61,4 @@ E:\PAIOS/
 ## Related
 - Principle #1: Directories express lifecycle, not content
 - Principle #6: Keep the top-level directory count low
-- ADR-0001: Core API Freeze
 - `paios-philosophy.md`

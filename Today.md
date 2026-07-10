@@ -2,7 +2,7 @@
 
 > **Phase**: Platform Operations v1.0 — Daily Operations
 > **Computer**: evan (E:\PAIOS)
-> **Git**: pull 后待提交大量变更
+> **Git**: ✅ 已提交并推送（f56008a + merge f9edc9f）
 
 ## Today's Plan
 
@@ -32,12 +32,22 @@
 - [x] v1.1_plan.md 从 30_SYSTEM 移回项目
 - [x] scripts 临时产物清理
 - [x] Today/Metrics/Goals/Inbox 刷新
+- [x] Git merge 冲突解决（Inbox/Today/reasonix.toml）
+
+## feng 归档记录（2026-07-08，覆盖 7/6–7/8）
+
+远端合并入的归档记录（来自老电脑 feng）：
+- **References 补录**：REF-0008 OpenWRT 教程、REF-0009 Codex 最佳实践
+- **Decision 新增**：DEC-2026-07-08-0001 — 360 T7 OpenWrt 代理+去广告架构
+- **游离清理**：根目录 `2026-07-06-11-47-18/` 已移入 `70_TMP/archive-cleanup-2026-07-08/`
+- **索引更新**：References / Decisions 两处 `_index.md` 已同步
+- 既有资产：REF-0006 Codex CLI、REF-0007 WorkBuddy 省积分、KB-2026-07-06-0001 方法
 
 ## Status Snapshot
 
 | Check | Value |
 |-------|-------|
-| Git | 待提交（清理 + 归档 + 文档更新） |
+| Git | ✅ f56008a + merge f9edc9f，已推送 |
 | Directories | 根目录已清理，7层结构完整 |
 | Inbox | 已清空 |
 | Memory | 2026-07-10.md 已更新 |

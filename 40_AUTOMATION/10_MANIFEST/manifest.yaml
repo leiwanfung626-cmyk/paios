@@ -2,13 +2,13 @@
 schema_version: "1.0"
 platform_version: "1.0"
 created: "2026-06-29"
-updated: "2026-06-29"
+updated: "2026-07-09"
 description: "PAIOS Automation Platform v1.0"
 
 asset_counts:
   capabilities: 0
   agents: 0
-  scripts: 5
+  scripts: 8
   providers: 0
   workflows: 0
   legacy_assets: 7

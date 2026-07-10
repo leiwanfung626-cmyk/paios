@@ -1,0 +1,16 @@
+schema: 1
+
+instance:
+  id: case-01
+
+profile:
+  primary: work
+  secondary:
+    - office
+    - community-service
+
+owner:
+  alias: user-a
+
+privacy:
+  manifest: share

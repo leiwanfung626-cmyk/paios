@@ -16,9 +16,32 @@ scripts:
     status: pending
   - id: SCRIPT-0004
     name: douyin_pipeline
-    source: legacy/douyin_full_pipeline.py
+    source: 09_LEGACY/original/douyin_full_pipeline.py
     status: active
+    wrappers:
+      - 05_SCRIPTS/douyin.bat (Windows)
+      - 05_SCRIPTS/douyin.sh (bash)
   - id: SCRIPT-0005
     name: archive_workbuddy
     source: legacy/archive_workbuddy.py
     status: pending
+  - id: SCRIPT-0006
+    name: classify_files
+    source: 05_SCRIPTS/classify_files.py
+    status: active
+    note: QuarkSync DATA 自动分类器
+  - id: SCRIPT-0007
+    name: vision_query
+    source: 05_SCRIPTS/vision_query.py
+    status: active
+    note: reasonix 多模态任务的 GLM 视觉兜底出口
+  - id: SCRIPT-0008
+    name: check_vision_payload
+    source: 05_SCRIPTS/check_vision_payload.py
+    status: active
+    note: reasonix 400 多模态 payload 诊断
+  - id: SCRIPT-0009
+    name: collect_manifest
+    source: 05_SCRIPTS/collect_manifest.py
+    status: active
+    note: PAIOS Fleet FIM 采集器（ADR-0013），只读现有结构生成 PAIOS-Usage/manifest.yaml，用户零行为改变

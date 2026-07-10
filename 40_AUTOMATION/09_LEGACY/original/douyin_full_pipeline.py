@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-抖音全自动转写 Pipeline v2.1
+抖音全自动转写 Pipeline v2.2
 用法: python douyin_full_pipeline.py --url <抖音短链接>
 可选: --model small|base|tiny|large (默认 small)
       --file <本地.mp4>  跳过下载，直接转写本地视频
@@ -17,9 +17,9 @@ import time
 import shutil
 
 # ── 路径常量 ──────────────────────────────────────────────
-FFMPEG = r"G:\workspace\Infrastructure\bin\ffmpeg.exe"
-WHISPER_CACHE = r"H:\workspace\.cache\whisper"
-TEMP_DIR = r"G:\workspace\.temp_douyin"
+FFMPEG = r"F:\PAIOS\70_TMP\ffmpeg.exe"
+WHISPER_CACHE = r"F:\PAIOS\70_TMP\.cache\whisper"
+TEMP_DIR = r"F:\PAIOS\70_TMP"
 COOKIES_FILE = os.path.join(TEMP_DIR, "cookies_playwright.txt")
 
 os.makedirs(TEMP_DIR, exist_ok=True)
@@ -287,6 +287,9 @@ def transcribe(wav_path, model_name="small"):
     """Whisper 转写"""
     log(f"加载模型: {model_name} (缓存: {WHISPER_CACHE})")
     import whisper
+    # 确保 ffmpeg 在 PATH 中（Whisper 内部依赖 ffmpeg）
+    ffmpeg_dir = os.path.dirname(FFMPEG)
+    os.environ["PATH"] = ffmpeg_dir + os.pathsep + os.environ.get("PATH", "")
     model = whisper.load_model(model_name, download_root=WHISPER_CACHE)
     log("开始转写...")
     start = time.time()
@@ -325,6 +328,10 @@ def transcribe_local_file(file_path, model_name):
     return text, vid
 
 def main():
+    # 清除系统代理（避免代理干扰抖音 API 请求）
+    for key in ["HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy"]:
+        os.environ.pop(key, None)
+
     parser = argparse.ArgumentParser(description="抖音全自动转写 Pipeline")
     parser.add_argument("--url", help="抖音短链接/完整链接")
     parser.add_argument("--file", help="本地视频/音频文件路径 (跳过下载)")

@@ -63,7 +63,7 @@ PAIOS 的核心关注点不是"存储知识"，而是"做出更好的决策"。�
 
 | 记录类型 | 用途 | 结构程度 | 示例 |
 |---------|------|---------|------|
-| **ADR** | 正式、不可逆的重大决策 | 高度结构化 | ADR-0001~ADR-0009 |
+| **ADR** | 正式、不可逆的重大决策 | 高度结构化 | ADR-0002~ADR-0009 |
 | **Decision Log** | 轻量级日常决策 | 模板化 | 20_KNOWLEDGE/Decisions/ |
 | **Decision Template** | 决策输入标准化 | 结构化模板 | 20_KNOWLEDGE/Decisions/_template.md |
 
