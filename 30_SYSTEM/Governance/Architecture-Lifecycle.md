@@ -72,6 +72,12 @@ related:
   ┌──────────┐                                                  │
   │ Validate │  连续多版本观察：缺陷不再复现 → 验证完成           │
   └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │Retrospect│  回顾：哪些决策证明正确 / 哪些边界需调整 /        │
+  │ (Review) │  哪些规则可固化为平台规范 / 是否浮现新架构问题     │
+  │          │  产出 CASE-NNN + 是否进入下一 Phase（如 Phase C） │
+  └────┬─────┘                                                  │
        │                                                        │
        └──────────────► 沉淀为新 Case ──► 触发下一轮 ADR ──┐
                                                     （回到 Evidence）
@@ -90,7 +96,8 @@ related:
 | **Pilot** | Boundary | 单实例跑新边界 | 试点信号 | **Exit Criteria 全满足** |
 | **Rollout** | Pilot 过闸 | 展开为 Git History 四段 + 物理隔离 | 多实例升级 | 所有实例升级完成 |
 | **Validate** | Rollout | 连续观察 | 验证结论 | 缺陷连续多版本未复现 |
-| **（闭环）** | Validate | 沉淀新 Case | 下一轮 Evidence | — |
+| **Retrospective** | Validate | 回顾（决策/边界/规则/新问题），形成 CASE-NNN，判定是否进入下一 Phase | 回顾结论 + 下一 Phase 建议 | 回顾完成且结论明确 |
+| **（闭环）** | Retrospective | 沉淀新 Case | 下一轮 Evidence | — |
 
 ---
 

@@ -164,8 +164,13 @@ def count_md(dir_path):
 
 
 def get_assets():
-    """统计 20_KNOWLEDGE 各子类文档数。"""
-    kbase = os.path.join(PAIOS_ROOT, "20_KNOWLEDGE")
+    """统计 20_KNOWLEDGE 各子类文档数。
+
+    注意：Phase B 将平台知识迁入 20_KNOWLEDGE/Platform/（按类型子目录
+    Concepts/Methods/SOP/Decisions/Models/References 组织），个人知识迁入
+    20_KNOWLEDGE/Personal/。故资产统计基准为 Platform/。
+    """
+    kbase = os.path.join(PAIOS_ROOT, "20_KNOWLEDGE", "Platform")
     mapping = {
         "references": "References",
         "concepts": "Concepts",
@@ -202,7 +207,7 @@ def get_features():
         "photo": os.path.isdir(os.path.join(PAIOS_ROOT, "Photo-OS"))
                  or os.path.isfile(os.path.join(PAIOS_ROOT, "PAIOS-Usage", "feature-photo")),
         "growth": os.path.isfile(os.path.join(
-            PAIOS_ROOT, "20_KNOWLEDGE", "Concepts", "Growth-OS-Life-Companion.md")),
+            PAIOS_ROOT, "20_KNOWLEDGE", "Platform", "Concepts", "Growth-OS-Life-Companion.md")),
         "review": os.path.isdir(os.path.join(PAIOS_ROOT, "40_AUDIT"))
                   and any(f.endswith(".md") for f in os.listdir(os.path.join(PAIOS_ROOT, "40_AUDIT"))),
     }

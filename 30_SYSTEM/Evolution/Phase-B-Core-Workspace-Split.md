@@ -45,7 +45,7 @@ PAIOS Core 仓库
 │   ├─ SOP/              发布/采集等平台 SOP
 │   ├─ Evolution/        路线图 / 复盘 / Case-Studies（方法论，非个人状态）
 │   ├─ Patterns/         ⭐ 新增：平台模式库
-│   └─ Registry/         ⭐ 新增：统一注册表（未来 Plugin/Tool/Agent 复用同一结构）
+│   └─ Registry/         ⭐ 统一注册表（当前已落地于 `40_AUTOMATION/00_REGISTRY/`：agents/capabilities/providers/workflows/scripts.yaml；未来 Plugin/Tool/Agent 复用同一结构，不再另起 `30_SYSTEM/Registry/`）
 │        ├─ capabilities/   能力注册表
 │        ├─ providers/      Provider 注册表
 │        ├─ workflow/       工作流注册表

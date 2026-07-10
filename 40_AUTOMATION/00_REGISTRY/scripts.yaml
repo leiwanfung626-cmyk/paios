@@ -44,4 +44,4 @@ scripts:
     name: collect_manifest
     source: 05_SCRIPTS/collect_manifest.py
     status: active
-    note: PAIOS Fleet FIM 采集器（ADR-0013），只读现有结构生成 PAIOS-Usage/manifest.yaml，用户零行为改变
+    note: PAIOS Fleet FIM 采集器（ADR-0013）。只读结构生成 PAIOS-Usage/manifest.yaml（manifest_version:1，资产统计基准 20_KNOWLEDGE/Platform/）；由 publish 步复制到 F:\Fleet\incoming\case-XX.yaml（见 SOP）。Phase B 起为 canonical manifest 生成器，旧 40_AUTOMATION/10_MANIFEST/ 已废弃。
