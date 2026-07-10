@@ -59,6 +59,24 @@ Knowledge / Photo / Daily Log / 项目内容**全部留本地**，永不离开�
 
 ---
 
+## 职责边界与 Fleet 归属
+
+基于"PAIOS 不收集用户数据，只收集主动共享的实例状态"，各组件归属与同步范围如下：
+
+| 组件 | 属于谁 | 是否同步给用户 |
+|------|--------|----------------|
+| **Core** | 平台（Developer 维护） | ✅ 是（`git pull`） |
+| **Workspace** | 用户 | ❌ 否（各自维护，不入库） |
+| **PAIOS-Usage（Manifest）** | 用户生成 | ✅ 仅 Manifest 回传给 Developer |
+| **Release（Notes + Notice）** | 平台 | ✅ 所有用户同步（随 Core 仓库分发） |
+| **Fleet（manifests / reports / aggregate.py）** | Developer 运营 | ❌ 不同步给用户 |
+
+**Fleet 物理位置**：`F:\Fleet`，**独立于 `F:\PAIOS` Core 仓库**。用户实例没有这个目录，也不会 `pull` 它。这让"用户 `git pull` 升级"不会把 `fleet.md` 反向同步回用户——Fleet 是产品运营资产，不是用户实例的一部分。
+
+**Manifest 单向流（铁律）**：User → Developer。开发者拉取 manifest 后生成 Fleet 周报，**绝不反向推回用户**。用户关心的是自己的 Self Dashboard，不是 Fleet Dashboard。
+
+---
+
 ## 收集方式（不是上传数据库）
 
 每周（或每天）在用户本机执行：
@@ -103,17 +121,24 @@ features:
 ## 汇总方式（三种模式）
 
 ### 模式一：Git（推荐）
+
+**传输通道**（用户 → 开发者，单向）：
+- 用户升级后，`collect_manifest.py` 生成 `PAIOS-Usage/manifests/case-XX.yaml`（按 `instance.id` 命名，避免共享仓库同名覆盖）
+- 用户 `git commit` 仅 `PAIOS-Usage/` → `git push` 到 Core 仓库
+- 开发者 `git pull` Core 仓库 → 取得三个 manifest → 复制到 **`F:\Fleet\manifests\`**
+
+**聚合位置**（开发者私有，用户不 pull）：
 ```
-Fleet/
+F:\Fleet\
     manifests/
         case-01.yaml
         case-02.yaml
         case-03.yaml
+    reports/
+        fleet-2026-W28.md
 ```
-- 用户：`git push`（只推自己的 manifest）
-- 开发者：`git pull`
-- Aggregator：读取 `Fleet/manifests/` 即可
-- **无需服务器。**
+- Aggregator：读取 `F:\Fleet\manifests/` 即可
+- **无需服务器。Fleet 不在 Core 仓库内，用户永远不会拉到它。**
 
 ### 模式二：共享网盘（Quark 等）
 ```
@@ -146,7 +171,7 @@ Fleet/
 **不建 Web 服务。直接生成 HTML 文件，浏览器打开即 Dashboard。**
 
 ```
-Fleet/
+F:\Fleet\
     dashboard/
         index.html
 ```
@@ -252,7 +277,7 @@ Case-01
 | 风险 | 缓解 |
 |------|------|
 | 过度收集（误把 Knowledge/Photo 推上 Fleet） | 铁律：Aggregator 只解析 manifest 协议字段；脚本不改即无法读到内容 |
-| 用户误 `git push` 整个 Workspace | 汇总仓库 `Fleet/` 与用户 `Workspace` 物理分离；用户只推 `manifests/` 子目录 |
+| 用户误 `git push` 整个 Workspace 或 Fleet 回传用户 | ① 用户 push 范围限定为 `PAIOS-Usage/`（manifest + profile），Workspace 不入库；② Fleet 物理位于 `F:\Fleet`（独立目录），不在用户 pull 范围内，杜绝回推 |
 | Dashboard 范围蔓延（想看正文） | 权限边界表写死：Developer 也看不到知识正文 |
 | 过早建中心服务 | 模式三（HTTP API）明确推迟到 Phase C |
 | 单实例下建 Aggregator 无意义 | Phase B 触发条件绑定"第二实例出现" |

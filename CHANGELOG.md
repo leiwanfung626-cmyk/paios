@@ -12,6 +12,13 @@
 - 新增 PAIOS-Usage/profile.yaml：实例身份声明（场景画像）
 - 非破坏性功能新增；不影响现有使用方式，不修改知识库
 
+### Release Flow & Fleet Separation (2026-07-10)
+
+- 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）
+- 新增 `RELEASES/upgrade-receipt-1.0.1.md`：升级回执，跟踪三用户升级 / 回传状态
+- 新增 `F:\Fleet\`（独立于 Core 仓库的 Developer 运营目录：`manifests/` + `reports/`）
+- 明确职责边界：Core 同步用户 / Workspace 不碰 / Manifest 单向回传 / Fleet 不回推用户（写入 ADR-0015 + SOP）
+
 ### Architecture Review Fixes (2026-07-10)
 
 - **ADR-INDEX.md**：按 Foundation / Platform Evolution / Governance 三组重新组织，新增 Layer 列标识 4 层归属
