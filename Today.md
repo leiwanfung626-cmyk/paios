@@ -41,7 +41,25 @@
 - **Decision 新增**：DEC-2026-07-08-0001 — 360 T7 OpenWrt 代理+去广告架构
 - **游离清理**：根目录 `2026-07-06-11-47-18/` 已移入 `70_TMP/archive-cleanup-2026-07-08/`
 - **索引更新**：References / Decisions 两处 `_index.md` 已同步
-- 既有资产：REF-0006 Codex CLI、REF-0007 WorkBuddy 省积分、KB-2026-07-06-0001 方法
+- 既有资产：REF-0006 Codex CLI、REF-0007 WorkBuddy 省积分、KB-2026-07-06-0001 方法、7/8 执行归档 `10_WORK/Done/`
+
+## Completed（2026-07-08）
+
+- [x] **网络路由**：PC 有线连接 OpenWrt LAN，默认网关 192.168.1.1
+  - 无线已关闭，路由表无冲突
+  - 静态 IP 192.168.1.100，DNS 114.114.114.114
+- [x] **SSH 免密**：`id_ed25519` → OpenWrt `/etc/dropbear/authorized_keys`
+- [x] **mihomo/nikki 代理** (v1.26.1)
+  - Mihomo Meta alpha-1686d56，36 个代理节点（港/新/美/日/台/韩/加/澳/德/英等）
+  - Rule 模式，国内直连 + 国外代理
+  - TUN mixed 模式，混合端口 7890
+- [x] **AdGuard Home** (v0.107.57)
+  - Web 管理 http://192.168.1.1:3000 (admin / Lyf201314lyf)
+  - DNS 端口 5353，上游 127.0.0.1:1053 (mihomo)
+  - 广告过滤规则已加载
+- [x] **DNS 链**：dnsmasq(53) → AGH(5353) → mihomo(1053) 全链路打通
+- [x] **视频转写 SOP（REF-0015）**：抖音「山岳老师」数据科学考研择校/27难度视频 → 按 Video-to-Knowledge-Pipeline 入库（⚠️ 本沙箱缺 whisper/ffmpeg，Step 2b 未跑，WebSearch 兜底+多源验证；主服务器 F:\PAIOS 可执行真实转写）
+
 
 ## Status Snapshot
 

@@ -1,16 +1,18 @@
 schema: 1
 
 instance:
-  id: case-02
+  id: case-03
 
 profile:
-  primary: personal
+  primary: study
   secondary:
-    - photo-organizing
-    - ai-visual
+    - kaoyan
+    - math
+    - english
+    - politics
 
 owner:
-  alias: user-b
+  alias: user-c
 
 privacy:
   manifest: share

@@ -1,7 +1,7 @@
 # References — Index
 
 > **Generated**: 2026-06-28T14:33:16Z
-> **Last Updated**: 2026-07-10 (REF-0010 0岁早教要点 added)
+> **Last Updated**: 2026-07-10 (REF-0008/0009 OpenWRT/Codex added; REF-0010 0岁早教要点 added; REF-0011~0014 考研四科知识库 added; REF-0015 数据科学考研择校情报 added)
 
 | ID | Topic | Lifecycle | Created |
 |----|-------|-----------|---------|
@@ -15,3 +15,8 @@
 | REF-0008 | OpenWRT 从入门到精通 — 教程与玩法大全（含 360 T7 专属） | active | 2026-07-06 |
 | REF-0009 | OpenAI Codex 最佳实践 — 官方教程知识归档 | active | 2026-07-06 |
 | REF-0010 | 0 岁婴儿早教要点 — 五大感官领域与关键原则 | active | 2026-07-10 |
+| REF-0011 | 考研英语二 — 复习知识库 | active | 2026-07-08 |
+| REF-0012 | 考研数学三 — 复习知识库 | active | 2026-07-08 |
+| REF-0013 | 考研统计学（专业课）— 复习知识库 | active | 2026-07-08 |
+| REF-0014 | 考研政治 — 复习知识库 | active | 2026-07-08 |
+| REF-0015 | 数据科学考研择校与27考研难度预测 — 山岳老师抖音情报 | active | 2026-07-08 |

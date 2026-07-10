@@ -1,20 +1,22 @@
 manifest_version: 1
 
 instance:
-  id: "case-02"
+  id: "case-03"
   version: "v1.0.1"
   profile:
-    primary: personal
+    primary: study
     secondary:
-      - photo-organizing
-      - ai-visual
-  owner: "user-b"
+      - kaoyan
+      - math
+      - english
+      - politics
+  owner: "user-c"
   privacy: share
 
 usage:
   last_active: 2026-07-10
   active_days_30d: 9
-  git_commits_total: 25
+  git_commits_total: 27
 
 features:
   capture: true
@@ -26,7 +28,7 @@ features:
   review: false
 
 assets:
-  references: 11
+  references: 16
   concepts: 3
   decisions: 4
   models: 2
