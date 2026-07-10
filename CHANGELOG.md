@@ -52,6 +52,12 @@
 - **双向 Traceability**：`Decision-Traceability.md` 新增 §1.5 **CASE 追溯字段**（Evidence Commit / Triggered ADR / Severity），CASE-001 已补 `Evidence Commit: 472e53d`；闭环图改为 commit ↔ Blueprint ↔ ADR ↔ CASE 双向反查。
 - **元治理原则（Meta-Governance）**：文档末 §6 新增——"Lifecycle 本身也是平台资产，任何修改都应遵循本 Lifecycle"，确立自洽的元治理基础；v1.0 当前冻结，待新 CASE 触发才升级。
 
+### CASE-001 复盘背景说明（面向 Case-02/03）(2026-07-11)
+
+- 新增 `30_SYSTEM/Evolution/Case-Studies/CASE-001-Retrospective.md`：把第一次真实多实例并流事件写成**面向未参与讨论实例（Case-02 Personal / Case-03 Study）的背景说明**，回答三个问题——① 为什么会走到这一步（单实例架构假设在多实例并流下失效）② 为什么不是立即修而是分阶段修（问题在架构边界而非 Git，先治理再修复）③ 他们接下来该做什么、不该做什么。
+- 内容涵盖：事件背景、第一次 Manifest 收集（git fetch + git show 只读汇总，非 merge）、四个问题（Manifest 单路径冲突 / Fleet 边界不清 / Workspace 泄漏进 Core / 两套 Manifest=Platform Drift）、为何不立即修、治理成果链（CASE-001→ADR-0017→Phase B Blueprint→Freeze）、四 Commit 纪律（Architecture→Governance→Git Cleanup→Physical Separation）、为何仅 Case-01 作 Pilot、Case-02/03 当前动作清单（该做=正常使用 / 不该做=merge·gitignore·rm cached·目录迁移·自行升级 / 真实进度表）。
+- CASE-001 顶部增加配套文档引用链接，形成"技术证据 ↔ 背景说明"双向可达。
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）
