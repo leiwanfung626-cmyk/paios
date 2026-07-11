@@ -180,3 +180,52 @@ Architecture Lifecycle 是 PAIOS 的"演进操作系统"——把每一次重大
 - **当前状态**：`lifecycle_version: 1.0`，已冻结；待新 CASE 触发才升级。
 
 这使 Architecture Lifecycle 真正成为 PAIOS 的**元治理（meta-governance）基础**——一个自洽的系统：治理规则，也被治理。
+
+---
+
+## 7. 交叉审查原则（Cross-Review Requirement）
+
+> **任何 AI 引擎对 PAIOS 架构的变更，必须由至少一个未参与执行的引擎进行事后审查。**
+
+### 背景
+
+PAIOS 已进入多引擎协作阶段（Reasonix、WorkBuddy、Codex 等交替执行）。各自独立修复时，自审自改存在单点盲区——执行者倾向于相信自己写对了。
+
+交叉审查（Cross-Review）将审查与执行解耦，复用多引擎优势，避免"修的人也是审的人"。
+
+### 触发条件
+
+满足以下任一条即触发交叉审查：
+
+| 条件 | 示例 |
+|------|------|
+| **ADR 级别变更**（新建或修改 ADR） | ADR-0017 新增 |
+| **Phase 级别变更**（推进到下一阶段） | B1→B2 推进 |
+| **核心脚本修改**（`40_AUTOMATION/05_SCRIPTS/` 下脚本） | `collect_manifest.py` 涉 manifest 协议 |
+| **治理文档变更**（Governance/ 目录下任何文件） | Architecture-Lifecycle / Change-Control 等 |
+| **`.gitignore` / Registry / 目录结构调整** | 新增 Phase B 排除规则 |
+
+### 审查要求
+
+- 审查引擎与执行引擎**不得为同一实例**（Reasonix 修 → WorkBuddy 审；WorkBuddy 修 → Reasonix 审）
+- 审查应聚焦：**架构正确性**（是否违反已冻结的 ADR 原则）、**完整性**（是否有遗漏的边界情况）、**可追溯性**（CASE→ADR→Commit 链路是否完整）
+- 审查结果应记录为 **Architecture Evidence**（Case Study 或 Audit Note），与变更 commit 可追溯关联
+- 审查结论为 **Accept / Reject / Revise**：
+  - **Accept** → 变更可提交或进入下一阶段
+  - **Reject** → 退回执行引擎修订后重新审查
+  - **Revise** → 执行引擎按审查意见修改后，可免二次审查直接通过
+
+### 与现有治理的关系
+
+| 治理文档 | 交叉审查的补充点 |
+|---------|----------------|
+| `Decision-Traceability.md` | 追溯链保证"谁改了"可查；交叉审查保证"改得对不对"有人看 |
+| `Change-Control.md` | 变更控制定义"走什么流程"；交叉审查定义"谁来看结果" |
+| `Pilot-Gate.md` | Pilot 门禁保证单实例试点通过；交叉审查保证试点方案本身无设计缺陷 |
+| `Architecture-Lifecycle.md`（本文件） | Lifecycle 定义演进节奏；交叉审查嵌入 Retrospective 阶段作为固化动作 |
+
+### 例外
+
+- **L1（Content）级变更**（知识库增删、日常文档编辑）不强制交叉审查——争议性内容除外。
+- **紧急修复**（Critical Severity，数据丢失/安全违约）可先修后补审查，事后 24h 内补交。
+- 执行引擎与审查引擎同一实例时，须在 commit message 中标注 `[self-reviewed]` 并说明原因。

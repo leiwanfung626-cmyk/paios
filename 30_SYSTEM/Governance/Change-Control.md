@@ -48,6 +48,7 @@ related:
 - Rollout 在 Git History 上展开为四段：Architecture / Governance / Git Cleanup / Physical Separation（见 `Rollout.md` §3）。
 - "建立边界（Establish Boundaries）" ≠ "物理拆分（Physical Separation）"；前者只调目录 / Registry / `.gitignore`，后者才 `git rm --cached`。
 - 架构相关 commit message 必带 `ADR-XXXX`（见 `Decision-Traceability.md` §3）。
+- **交叉审查提交（Cross-Review Commit）**：L2 及以上变更在 commit message 中标注审查引擎 ID，格式 `Reviewed-by: <engine-name>`（如 `Reviewed-by: reasonix`）。未标注的视为未审查。
 
 ---
 
