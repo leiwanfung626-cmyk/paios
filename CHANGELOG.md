@@ -71,6 +71,12 @@
 - **新增 `30_SYSTEM/SOP/User-Role-Model-Speed-View.html`**：给 Case-02/03 看的角色模型速览信息图（角色表 + 单向数据流 + 受保护/自有文件 + 黄金纪律），可随 Release 分发、浏览器直接打开。
 - **新增 `30_SYSTEM/SOP/SOP-2026-07-11-0002-User-Iron-Rules-One-Pager.md`**：开机提醒式铁律一页纸（三条铁律 / 每日能做 / 升级步骤 / 改进通道 / 受保护与自有文件 / 黄金纪律），配套 `SOP-2026-07-11-0001` 使用。
 
+### User-Facing Distribution Mechanisms (2026-07-11)
+
+- **新增 `RELEASES/RELEASE-NOTES-TEMPLATE.md`**：Release Notes 模板，强制含「📋 用户须知（Case-02/03 必读）」段（三条铁律 + 升级步骤 + 速览图/一页纸链接）。每次发版依此生成，确保用户每轮升级都看到角色模型与黄金纪律。
+- **新增 `30_SYSTEM/SOP/User-Boot-Reminder.cmd`**：便携开机提醒启动器，随 Core 仓库 `git pull` 到达用户机器；快捷方式放进 Windows 启动文件夹即每次开机弹「角色模型速览图」。用户侧自选动作，Developer 不强制、不代部署。
+- **修订 `SOP-2026-07-10-0001-Release-Flow.md`**：关联补 ADR-0018 / 模板 / 启动器；关键约束增「Release Notes 必含用户须知」「开机提醒可选分发」两条，把"用户须知随发版自动送达"固化为发布流程。
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）

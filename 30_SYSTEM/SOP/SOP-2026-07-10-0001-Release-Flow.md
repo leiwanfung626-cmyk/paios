@@ -3,7 +3,7 @@
 - **状态**：Active（v1.0.1 首次启用；Phase B 新增 publish 阶段）
 - **日期**：2026-07-10（publish 阶段 2026-07-11 增补）
 - **Owner**：Developer（Evan）
-- **关联**：`ADR-0014`（升级机制）· `ADR-0015`（聚合与查看）· `ADR-0016`（架构基线）· `ADR-0017`（平台纯度 / 物理隔离）· `RELEASES/1.0.1.md` · `RELEASES/upgrade-receipt-1.0.1.md` · `F:\Fleet\README.md`
+- **关联**：`ADR-0014`（升级机制）· `ADR-0015`（聚合与查看）· `ADR-0016`（架构基线）· `ADR-0017`（平台纯度 / 物理隔离）· `ADR-0018`（角色模型）· `RELEASES/1.0.1.md` · `RELEASES/RELEASE-NOTES-TEMPLATE.md` · `RELEASES/upgrade-receipt-1.0.1.md` · `F:\Fleet\README.md` · `30_SYSTEM/SOP/User-Boot-Reminder.cmd`
 - **修订 (2026-07-11, ADR-0018)**：本 SOP 第 ② ③ 步原描述「User `git push` 自己的 `PAIOS-Usage/` 到 Core 仓库」——该机制被 **ADR-0018（角色模型）** 取代：User 对 Core 仅 `git pull`（读），Manifest 改由 **out-of-band publish → `F:\Fleet\incoming\`** 回流（不经 Core 仓库）。用户侧完整操作见 `SOP-2026-07-11-0001-User-Daily-Operations.md`。
 
 ---
@@ -69,6 +69,8 @@ Git Repository  ──►         commit                  commit
 - **Manifest 版本自声明**：manifest 自带 `manifest_version`（当前 1），Fleet 不解析兼容逻辑、只按声明版本归档；`collect_manifest.py` 升级时 bump 该字段。
 - **Fleet 物理位置**：`F:\Fleet`（**独立于 `F:\PAIOS` Core 仓库**）。用户无此目录、不 pull。
 - **升级回执**：`RELEASES/upgrade-receipt-1.0.1.md` 实时记录谁升级 / 谁回传，替代「靠记忆跟踪」。
+- **Release Notes 必须含「用户须知」**：每次发版用 `RELEASES/RELEASE-NOTES-TEMPLATE.md` 生成 Release Notes，**强制包含「📋 用户须知（Case-02/03 必读）」段**（三条铁律 + 升级步骤 + 速览图/一页纸链接）。确保用户每轮升级都看到角色模型与黄金纪律，而非只在某次文档里出现过。
+- **开机提醒（可选分发）**：`30_SYSTEM/SOP/User-Boot-Reminder.cmd` 随 Core 仓库 `git pull` 到达用户机器；把它的快捷方式放进 Windows 启动文件夹即可每次开机弹「角色模型速览图」。属用户侧自选动作，Developer 不强制、不代部署。
 
 ---
 
