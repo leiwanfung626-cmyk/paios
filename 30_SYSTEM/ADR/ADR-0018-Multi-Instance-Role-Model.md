@@ -20,7 +20,7 @@ related:
 
 - **Evidence**: CASE-001 (Multi-Instance First Convergence, Validated) —— 根因：三实例均以 Developer 身份操作，互相污染
 - **Implements**: Architecture Lifecycle（Role / Owner 模型）+ 扩展 ADR-0017（Platform Purity 的"谁能动 Core"补充）
-- **Frozen By**: <ASSIGN_ON_COMMIT>
+- **Frozen By**: c49cd54 (design freeze, unpushed)
 - **Supersedes**: `SOP-2026-07-10-0001-Release-Flow.md` 第 ② ③ 步「User 推送 PAIOS-Usage/ 至 Core 仓库」的用户 push 机制（改为 out-of-band publish → Fleet）
 
 > 类型：**Reactive ADR**——由 CASE-001 暴露的真实根因（三实例同权 → 互相污染）触发，非前瞻预判。
