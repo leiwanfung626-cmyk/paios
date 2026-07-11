@@ -16,7 +16,7 @@ instance:
 usage:
   last_active: 2026-07-10
   active_days_30d: 9
-  git_commits_total: 27
+  git_commits_total: 29
 
 features:
   capture: true
@@ -39,7 +39,7 @@ assets:
 projects:
   - id: KAOYAN-2026
     name: Kaoyan-2026
-    status: archived
+    status: active
   - id: SAFETY-NET
     name: Safety-Net
     status: active
