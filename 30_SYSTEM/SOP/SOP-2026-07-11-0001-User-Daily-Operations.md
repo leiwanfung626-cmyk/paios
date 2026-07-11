@@ -135,3 +135,7 @@ publish Manifest  publish Manifest
 ---
 
 _本 SOP 是 Case-02/03 的用户侧操作标准，任何版本沿用此结构。平台侧发布见 `SOP-2026-07-10-0001-Release-Flow.md`。_
+
+**配套速览（随 Release 分发）**
+- 一张图看懂：`<../SOP/User-Role-Model-Speed-View.html>`（角色表 + 单向流 + 黄金纪律）
+- 开机一页纸：`<SOP-2026-07-11-0002-User-Iron-Rules-One-Pager.md>`（铁律 + 每日操作）

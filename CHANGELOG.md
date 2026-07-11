@@ -66,6 +66,11 @@
 - **`SOP-2026-07-10-0001-Release-Flow.md` 修订（ADR-0018）**：移除原「User `git push` PAIOS-Usage/ 至 Core 仓库」步骤——该机制本身是污染向量，改由 out-of-band publish → `F:\Fleet\incoming\`；User 对 Core 仅 `git pull`。
 - ADR-0018 与 ADR-0017 构成"平台不被污染"的双重保险：内容分离（Purity）+ 角色分离（Role）。
 
+### User-Facing Quick References (2026-07-11)
+
+- **新增 `30_SYSTEM/SOP/User-Role-Model-Speed-View.html`**：给 Case-02/03 看的角色模型速览信息图（角色表 + 单向数据流 + 受保护/自有文件 + 黄金纪律），可随 Release 分发、浏览器直接打开。
+- **新增 `30_SYSTEM/SOP/SOP-2026-07-11-0002-User-Iron-Rules-One-Pager.md`**：开机提醒式铁律一页纸（三条铁律 / 每日能做 / 升级步骤 / 改进通道 / 受保护与自有文件 / 黄金纪律），配套 `SOP-2026-07-11-0001` 使用。
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）
