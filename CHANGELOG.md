@@ -58,6 +58,14 @@
 - 内容涵盖：事件背景、第一次 Manifest 收集（git fetch + git show 只读汇总，非 merge）、四个问题（Manifest 单路径冲突 / Fleet 边界不清 / Workspace 泄漏进 Core / 两套 Manifest=Platform Drift）、为何不立即修、治理成果链（CASE-001→ADR-0017→Phase B Blueprint→Freeze）、四 Commit 纪律（Architecture→Governance→Git Cleanup→Physical Separation）、为何仅 Case-01 作 Pilot、Case-02/03 当前动作清单（该做=正常使用 / 不该做=merge·gitignore·rm cached·目录迁移·自行升级 / 真实进度表）。
 - CASE-001 顶部增加配套文档引用链接，形成"技术证据 ↔ 背景说明"双向可达。
 
+### Multi-Instance Role Model (ADR-0018) (2026-07-11)
+
+- **ADR-0018 — Multi-Instance Role Model（Developer/User）& One-Way Flow**（Accepted，Validated，Reactive）：CASE-001 根因不是"某人手滑"，而是**三实例同权（都以 Developer 运行）→ 互相污染**；修复方式是重新定义角色而非加行为规则——Case-01 = Platform Maintainer（Core 唯一写入口），Case-02/03 = Platform User（只读 Core、写 Workspace、out-of-band publish Manifest）。配套单向数据流 + 平台受保护文件清单 + 黄金纪律"Workspace 可每天变化；Platform 只能经 Release 变化"。
+- **新增 `30_SYSTEM/Governance/Operating-Model.md`**：多实例角色与数据流模型——角色表、单向流、受保护文件、用户自有文件、改进通道、Developer 职责转变（Maintainer 非天天改）。与 ADR-0017（内容维度）、Asset-Class（分类维度）正交互补。
+- **新增 `30_SYSTEM/SOP/SOP-2026-07-11-0001-User-Daily-Operations.md`**：面向 Case-02/03 的用户侧日常 SOP（9 节 + 铁律），把"不要 push / 不要 merge / 不要改平台"落在可操作步骤上。
+- **`SOP-2026-07-10-0001-Release-Flow.md` 修订（ADR-0018）**：移除原「User `git push` PAIOS-Usage/ 至 Core 仓库」步骤——该机制本身是污染向量，改由 out-of-band publish → `F:\Fleet\incoming\`；User 对 Core 仅 `git pull`。
+- ADR-0018 与 ADR-0017 构成"平台不被污染"的双重保险：内容分离（Purity）+ 角色分离（Role）。
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）

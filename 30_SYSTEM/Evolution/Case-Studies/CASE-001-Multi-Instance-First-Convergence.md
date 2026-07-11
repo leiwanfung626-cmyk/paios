@@ -8,7 +8,7 @@
 - 时间：2026-07-11
 - 触发版本：PAIOS v1.0.1
 - 证据等级：**Validated**（三实例真实运行，数据可复现）
-- 关联 ADR：ADR-0016（架构基线，提出 Phase B 触发条件）· ADR-0017（平台纯度与物理隔离，本 Case 直接支撑）
+- 关联 ADR：ADR-0016（架构基线，提出 Phase B 触发条件）· ADR-0017（平台纯度与物理隔离，本 Case 直接支撑）· ADR-0018（多实例角色模型，本 Case 根因的结构性修复）
 - **Evidence Commit**：`472e53d`（Phase B v2 设计冻结点）
 - **Severity**：`Major`（Manifest 单路径冲突已真实发生；若将来出现真实数据丢失则升为 Critical）
 - **配套文档**：[CASE-001 复盘（给 Case-02/03 的背景说明）](./CASE-001-Retrospective.md) —— 面向未参与讨论的实例，回答"为什么走到这一步 / 为什么分阶段修 / 你们该做什么"
@@ -157,7 +157,7 @@ Phase B 完成后继续观察若干版本，若以下四项**连续多个版本�
 
 ## 决策影响（Decision Impact）
 
-- **Created**：ADR-0017（Platform Purity & Physical Separation）
+- **Created**：ADR-0017（Platform Purity & Physical Separation）· ADR-0018（Multi-Instance Role Model —— 本 Case 根因"三实例同权→互相污染"的结构性修复：重新定义角色使写 Core 能力只存在于 Case-01，而非加行为规则）
 - **Triggered**：Phase B（Core / Workspace / Instance-State 物理隔离）
 - **Introduced**：Platform Purity Principle（"别人 pull 这文件有价值吗？"）
 - **Affected**：

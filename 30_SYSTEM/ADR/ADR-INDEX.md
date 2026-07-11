@@ -22,6 +22,7 @@
 | ADR-0012 | Accepted | 2026-07-10 | Platform-Application Architecture (Core + Applications) | L1 Platform |
 | ADR-0016 | Accepted | 2026-07-10 | Multi-Instance Architecture Baseline (4-layer model) | L1–L4 |
 | ADR-0017 | Accepted | 2026-07-11 | Platform Purity & Physical Separation (Core/Workspace/Instance-State) | L1–L4 |
+| ADR-0018 | Accepted | 2026-07-11 | Multi-Instance Role Model (Developer/User) & One-Way Flow | L1–L4 |
 | ADR-0014 | Proposed | 2026-07-10 | Upgrade Mechanism (Core/Workspace/Upgrade) | L1 Platform |
 | ADR-0013 | Proposed | 2026-07-10 | Federated Instance Manifest (FIM — Instance State) | L3 Manifest |
 | ADR-0015 | Proposed | 2026-07-10 | Federated Aggregation & Viewing | L4 Fleet |
