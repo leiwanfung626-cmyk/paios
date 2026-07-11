@@ -77,6 +77,11 @@
 - **新增 `30_SYSTEM/SOP/User-Boot-Reminder.cmd`**：便携开机提醒启动器，随 Core 仓库 `git pull` 到达用户机器；快捷方式放进 Windows 启动文件夹即每次开机弹「角色模型速览图」。用户侧自选动作，Developer 不强制、不代部署。
 - **修订 `SOP-2026-07-10-0001-Release-Flow.md`**：关联补 ADR-0018 / 模板 / 启动器；关键约束增「Release Notes 必含用户须知」「开机提醒可选分发」两条，把"用户须知随发版自动送达"固化为发布流程。
 
+### Pilot Launch Checklist (2026-07-11)
+
+- **新增 `30_SYSTEM/SOP/SOP-2026-07-11-0003-Pilot-Launch-Checklist.md`**：Pilot-Gate 的执行层 companion。4 段可勾选清单——①启动前置（Day 0）②每日观察项模板（Day 1–14，验证 Core 写入口唯一性 + Workspace 不被 Purity 误卡）③每周回顾（Day 7/14）④Exit Criteria 勾选表（5 标准 + 观察完整）。附过闸后 Git History 四段（Git Cleanup → Physical Separation → Rollout → Validate → Retrospective）与 Pilot 期间铁律（不 push / 不 merge / 不 rm cached / 异常即停）。
+- **修订 `30_SYSTEM/Governance/Pilot-Gate.md`**：§6 末加配套指针，指向本清单 SOP（本规范为权威阈值，清单为执行形态）。
+
 ### Release Flow & Fleet Separation (2026-07-10)
 
 - 新增 `30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md`：v1.0.1 标准发布 SOP（5 步 + 职责边界表 + Manifest 单向流）

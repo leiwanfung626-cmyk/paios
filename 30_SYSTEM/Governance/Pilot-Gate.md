@@ -81,3 +81,5 @@ Pilot 实例需持续正常输出以下信号（以 Phase B 为例，其他 Phas
 - 任何 L3 级变更：Pilot 不可跳过。
 - Pilot 期间发现设计缺陷：回到 Blueprint / ADR 修订，重新 Freeze，不带着缺陷 Rollout。
 - 本规范与 `Architecture-Lifecycle.md`（Pilot 阶段）、`Rollout.md`（过闸后）配套。
+
+> **配套操作清单**：`../SOP/SOP-2026-07-11-0003-Pilot-Launch-Checklist.md` — 把本规范 §2/§4 变成可勾选的启动前置 / 每日观察 / Exit Criteria 表，Pilot 期间照此执行。本规范是权威阈值，清单是执行形态。
