@@ -11,6 +11,7 @@ collect_manifest.py — PAIOS Federated Instance Manifest (FIM) MVP
 用法：
   python collect_manifest.py            # 生成 PAIOS-Usage/manifest.yaml 并输出到 stdout
   python collect_manifest.py --print    # 仅输出到 stdout，不写文件
+  python collect_manifest.py --add-evidence "OBJECT" "note"  # 增加自定义证据行
 
 依赖：仅 Python 标准库（无 pyyaml / git 外部调用通过 subprocess）
 """
@@ -274,14 +275,14 @@ def get_usage():
     }
 
 
-def build_manifest():
-    """组装 manifest 字典。"""
+def build_manifest(extra_evidence=None):
+    """组装 manifest 字典（可选 extra_evidence：{object, level, note}）。"""
     profile = load_profile()
     inst_id = get_instance_id(profile)
     prof = get_profile(profile)
     owner = profile.get("owner", {}).get("alias") if profile else None
     privacy = profile.get("privacy", {}).get("manifest") if profile else None
-    return {
+    m = {
         "manifest_version": 1,
         "instance": {
             "id": inst_id,
@@ -297,6 +298,9 @@ def build_manifest():
         "evidence": get_evidence(),
         "feedback": {"pain_points": []},
     }
+    if extra_evidence:
+        m["evidence"].append(extra_evidence)
+    return m
 
 
 def to_yaml(m):
@@ -349,6 +353,8 @@ def to_yaml(m):
         for e in m["evidence"]:
             lines.append("  - object: %s" % e["object"])
             lines.append("    level: %s" % e["level"])
+            if e.get("note"):
+                lines.append('    note: "%s"' % e["note"])
     else:
         lines.append("  []")
     lines.append("")
@@ -359,7 +365,12 @@ def to_yaml(m):
 
 
 def main():
-    m = build_manifest()
+    extra = None
+    for i, a in enumerate(sys.argv):
+        if a == "--add-evidence" and i + 2 < len(sys.argv):
+            extra = {"object": sys.argv[i + 1], "level": "Validated",
+                     "note": sys.argv[i + 2]}
+    m = build_manifest(extra_evidence=extra)
     yaml_text = to_yaml(m)
     if "--print" not in sys.argv:
         os.makedirs(USAGE_DIR, exist_ok=True)
