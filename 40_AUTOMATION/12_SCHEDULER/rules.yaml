@@ -1,0 +1,103 @@
+# Scheduler Rules（调度规则）
+# ADR-0018: Engine Scheduling
+# 降级链 + 超时 + 特殊规则
+
+rules_version: 1
+updated_at: "2026-07-11T12:00:00+08:00"
+
+# ════════════════════════════════════════════
+# Fallback Chains（降级链）
+# 当首选引擎不可用时，沿 fallback 链自动降级
+# ════════════════════════════════════════════
+
+fallback_chains:
+
+  # ── 照片整理: Phase C 人物策展 ──────────────
+  - step_id: "curation"
+    workflow_id: "photo_organizer_flow"
+    primary: "reasonix"
+    fallback:
+      - engine: "workbuddy"
+        degrade_note: "仅能执行基础整理，FAISS 索引需跳过"
+    max_retries: 2
+    timeout_minutes: 60
+
+  # ── 照片整理: Phase D 持续标注 ──────────────
+  - step_id: "annotation"
+    workflow_id: "photo_organizer_flow"
+    primary: "any"             # 任何引擎都可以标注
+    fallback: []
+    max_retries: 1
+    timeout_minutes: 30
+
+  # ── 通用编码任务 ────────────────────────────
+  - step_id: "code_gen"
+    workflow_id: "any"
+    primary: "reasonix"
+    fallback:
+      - engine: "codex"
+        degrade_note: "使用云端编码能力"
+    max_retries: 2
+    timeout_minutes: 15
+
+  # ── 通用对话/写作任务 ──────────────────────
+  - step_id: "conversation"
+    workflow_id: "any"
+    primary: "workbuddy"
+    fallback:
+      - engine: "codex"
+        degrade_note: "使用通用对话能力"
+    max_retries: 1
+    timeout_minutes: 10
+
+# ════════════════════════════════════════════
+# Capability 映射（业务步骤 → 所需能力）
+# ════════════════════════════════════════════
+
+capability_mapping:
+  # 由 Workflow Registry 中的步骤定义 required_capability
+  # 此映射为兼容旧版 workflow（尚无 required_capability 字段）
+  # 新 workflow 直接在 steps 中声明 required_capability
+
+  capture_flow:
+    capture: ["file_ops", "markdown"]
+    classify: ["reasoning", "classification"]
+    route: ["file_ops", "decision"]
+
+  knowledge_flow:
+    validate: ["reasoning", "document_analysis"]
+    index: ["file_ops", "knowledge_query"]
+    review: ["reasoning", "writing"]
+
+  archive_flow:
+    complete: ["file_ops", "state_tracking"]
+    freeze: ["file_ops", "state_tracking"]
+
+  photo_organizer_flow:
+    ingest: ["python", "shell"]
+    face_detection: ["python", "shell"]
+    face_clustering: ["python", "shell"]
+    curation: ["reasoning", "file_ops"]
+    annotation: ["reasoning", "any"]
+
+  quick_task:
+    define: ["reasoning", "planning"]
+    execute: ["any"]
+    close: ["decision", "file_ops"]
+
+# ════════════════════════════════════════════
+# 特殊规则
+# ════════════════════════════════════════════
+
+special_rules:
+  # 要求特定引擎的任务（能力无法自动匹配时）
+  - step_id: "face_detection"
+    workflow_id: "photo_organizer_flow"
+    require_engine: "reasonix"      # 需要本地 InsightFace + onnxruntime
+    reason: "依赖本地 GPU 和 Python 库，云端不可替代"
+
+  # 任何引擎都可执行的任务
+  - step_id: "annotation"
+    workflow_id: "photo_organizer_flow"
+    require_engine: "any"
+    reason: "标注是纯决策工作，不依赖特定运行时"

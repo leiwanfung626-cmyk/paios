@@ -1,0 +1,113 @@
+# Adapter Schema（适配器接口定义）
+# ADR-0017: Cross-Engine Work Context Inheritance
+# Adapter 是引擎与 PAIOS 之间的统一接口层。
+# 版本: 1
+
+schema:
+  name: "adapter_definition"
+  version: 1
+  description: "引擎适配器定义 — 将引擎私有格式转换为 PAIOS 统一接口"
+
+fields:
+
+  # ── 适配器标识 ───────────────────────────────────
+
+  - name: "adapter_id"
+    type: "string"
+    required: true
+    format: "kebab-case"
+    example: "reasonix-adapter"
+    description: "全局唯一适配器 ID"
+
+  - name: "engine_id"
+    type: "string"
+    required: true
+    description: "适配的目标引擎 ID（对应 agents.yaml 中的 engine_id）"
+
+  - name: "version"
+    type: "string"
+    required: true
+    description: "适配器版本"
+
+  - name: "status"
+    type: "string"
+    required: true
+    enum: ["active", "draft", "deprecated"]
+    description: "适配器状态：active=可用, draft=开发中, deprecated=不再维护"
+
+  - name: "description"
+    type: "string"
+    required: false
+    description: "适配器功能描述"
+
+  # ── 接口定义 ─────────────────────────────────────
+
+  - name: "interfaces"
+    type: "object"
+    required: true
+    description: "四个统一接口"
+
+    fields:
+      - name: "read_trace"
+        type: "string"
+        required: true
+        format: "environment_type"
+        enum: ["python_script", "shell_command", "mcp_tool", "manual"]
+        description: >
+          从引擎私有格式读取痕迹 → 返回统一 TraceRecord。
+          python_script: 执行 adapter 目录中的 Python 脚本。
+          shell_command: 执行 Shell 命令。
+          mcp_tool: 通过 MCP 工具调用。
+          manual: 手动操作（引擎不提供可编程接口时）。
+
+      - name: "read_trace_entry"
+        type: "string"
+        required: false
+        description: "执行入口（脚本路径或命令模板）"
+
+      - name: "write_trace"
+        type: "string"
+        required: true
+        enum: ["python_script", "shell_command", "mcp_tool", "manual"]
+        description: "写入痕迹（写入引擎私有格式 + 更新 Index）"
+
+      - name: "write_trace_entry"
+        type: "string"
+        required: false
+        description: "执行入口"
+
+      - name: "export_context"
+        type: "string"
+        required: true
+        enum: ["python_script", "shell_command", "mcp_tool", "manual"]
+        description: "导出工作上下文 → 标准 Handoff 格式"
+
+      - name: "export_context_entry"
+        type: "string"
+        required: false
+        description: "执行入口"
+
+      - name: "import_context"
+        type: "string"
+        required: true
+        enum: ["python_script", "shell_command", "mcp_tool", "manual"]
+        description: "从标准 Handoff 格式导入上下文 → 恢复引擎状态"
+
+      - name: "import_context_entry"
+        type: "string"
+        required: false
+        description: "执行入口"
+
+  # ── 能力探测 ─────────────────────────────────────
+
+  - name: "capability_probe"
+    type: "string"
+    required: false
+    description: >
+      运行时探测引擎能力的方法入口。
+      返回能力标签列表，不写死在 Registry 中。
+      例如：执行 'reasonix-adapter probe' 返回 ['reasoning', 'code_gen', 'shell']
+
+# ── 文件组织 ─────────────────────────────────────
+
+file_location: "40_AUTOMATION/00_REGISTRY/adapters.yaml（注册表）+ 50_RUNTIME/adapters/{adapter_id}/（脚本）"

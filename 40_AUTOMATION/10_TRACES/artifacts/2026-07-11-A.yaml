@@ -1,0 +1,93 @@
+# Artifact Reference Index — 2026-07-11
+# 轻量引用，指向引擎原生产物。内容不在 artifact 中，在 URI 指向的位置。
+# 格式参见 artifact-schema.yaml
+
+artifacts:
+
+  # ADR-0017 实施工作
+  - artifact_id: "20260711T120000-workbuddy-1"
+    engine: "workbuddy"
+    timestamp: "2026-07-11T12:00:00+08:00"
+    type: "milestone"
+    summary: "重写 ADR-0017：四层架构（Engine→Adapter→Task→Knowledge）"
+    uri: ".workbuddy/memory/2026-07-11.md"
+    task_id: "adr-0017-implementation"
+    workflow_id: "quick_task"
+    workflow_step: "define"
+    tags: ["system", "adr", "architecture", "cross-engine"]
+    continuation: "见 10_WORK/adr-0017-implementation/handoff.yaml（如存在）"
+
+  - artifact_id: "20260711T123000-workbuddy-2"
+    engine: "workbuddy"
+    timestamp: "2026-07-11T12:30:00+08:00"
+    type: "milestone"
+    summary: "简化 agents.yaml（ID + Adapter 引用 + Tags）+ 重写 workflows.yaml（纯业务步骤）"
+    uri: ".workbuddy/memory/2026-07-11.md"
+    task_id: "adr-0017-implementation"
+    workflow_id: "quick_task"
+    workflow_step: "execute"
+    tags: ["system", "registry", "workflow"]
+    continuation: "见 10_WORK/adr-0017-implementation/handoff.yaml（如存在）"
+
+  - artifact_id: "20260711T124500-workbuddy-3"
+    engine: "workbuddy"
+    timestamp: "2026-07-11T12:45:00+08:00"
+    type: "milestone"
+    summary: "创建 Adapter 注册表 + Reasonix/WorkBuddy Adapter 桩脚本"
+    uri: ".workbuddy/memory/2026-07-11.md"
+    task_id: "adr-0017-implementation"
+    workflow_id: "quick_task"
+    workflow_step: "execute"
+    tags: ["system", "adapter", "cross-engine"]
+    continuation: "见 10_WORK/adr-0017-implementation/handoff.yaml（如存在）"
+
+  - artifact_id: "20260711T130000-workbuddy-4"
+    engine: "workbuddy"
+    timestamp: "2026-07-11T13:00:00+08:00"
+    type: "milestone"
+    summary: "创建 Trace Index 种子数据 + Handoff 模板"
+    uri: ".workbuddy/memory/2026-07-11.md"
+    task_id: "adr-0017-implementation"
+    workflow_id: "quick_task"
+    workflow_step: "close"
+    tags: ["system", "seed", "cross-engine"]
+    continuation: "本次实施完成"
+
+  # photos_organizer 任务状态（已有工作，新建索引引用）
+  - artifact_id: "20260711T080000-reasonix-photo"
+    engine: "reasonix"
+    timestamp: "2026-07-11T08:00:00+08:00"
+    type: "checkpoint"
+    summary: "照片整理：Phase C 人物策展进行中"
+    uri: ".reasonix/desktop-topic-auto-title-meta.json"
+    task_id: "photo-organize"
+    workflow_id: "photo_organizer_flow"
+    workflow_step: "curation"
+    tags: ["photo", "organizer", "ppip", "face"]
+    continuation: "下一步：事件聚合 + search.py"
+
+  # Cross-Engine Handoff 实验（Reasonix 完成部分）
+  - artifact_id: "20260711T121500-reasonix-handoff-1"
+    engine: "reasonix"
+    timestamp: "2026-07-11T12:15:00+08:00"
+    type: "milestone"
+    summary: "Reasonix 完成 handoff 合规审查 + 写 handoff.yaml"
+    uri: "10_WORK/TASK-20260711-001/handoff.yaml"
+    task_id: "TASK-20260711-001"
+    workflow_id: "cross_engine_handoff"
+    workflow_step: "handoff_compliance_review"
+    tags: ["experiment", "handoff", "reasonix-workbuddy"]
+    continuation: "见 10_WORK/TASK-20260711-001/handoff.yaml（交 WorkBuddy 验证）"
+
+  # Cross-Engine Handoff 实验（WorkBuddy 验证完成）
+  - artifact_id: "20260711T123000-workbuddy-handoff-1"
+    engine: "workbuddy"
+    timestamp: "2026-07-11T12:30:00+08:00"
+    type: "milestone"
+    summary: "WorkBuddy 验证上下文继承通过：Exit Criteria PASS"
+    uri: "10_WORK/TASK-20260711-001/outputs/context-verification-report.md"
+    task_id: "TASK-20260711-001"
+    workflow_id: "cross_engine_handoff"
+    workflow_step: "handoff_context_verification"
+    tags: ["experiment", "handoff", "reasonix-workbuddy", "verification"]
+    continuation: "实验完成，生成最终报告"

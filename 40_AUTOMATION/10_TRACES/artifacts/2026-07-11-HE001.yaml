@@ -1,0 +1,25 @@
+# Artifact — 手递实验 Phase 1
+# 引用: handoff-experiment-001
+
+artifacts:
+  - artifact_id: "20260711T160200-workbuddy-1"
+    engine: "workbuddy"
+    type: "document"
+    timestamp: "2026-07-11T16:02:00+08:00"
+    task_id: "TASK-20260711-HE001"
+    workflow_id: "photo_organizer_flow"
+    workflow_step: "face_retrieval_audit"
+    summary: "WorkBuddy 写 handoff v1 — 照片整理上下文全记录"
+    uri: "10_WORK/handoff-experiment-001/handoff.yaml"
+    tags: ["experiment", "handoff-validation", "phase-1"]
+
+  - artifact_id: "20260711T160200-workbuddy-2"
+    engine: "workbuddy"
+    type: "document"
+    timestamp: "2026-07-11T16:02:00+08:00"
+    task_id: "TASK-20260711-HE001"
+    workflow_id: "photo_organizer_flow"
+    workflow_step: "face_retrieval_audit"
+    summary: "Task 定义 + 实验协议"
+    uri: "10_WORK/handoff-experiment-001/task.yaml"
+    tags: ["experiment", "handoff-validation", "phase-1"]

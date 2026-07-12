@@ -1,0 +1,78 @@
+# Adapter Registry（适配器注册表）
+# 每个引擎对应一个 Adapter，提供四个统一接口。
+# 参见 ADR-0017: Cross-Engine Work Context Inheritance
+# 接口定义见 adapter-schema.yaml
+
+registry_version: 1
+updated_at: "2026-07-11T12:00:00+08:00"
+
+adapters:
+
+  # ── Reasonix Adapter ─────────────────────────────────
+  - adapter_id: "reasonix-adapter"
+    engine_id: "reasonix"
+    version: "1.0"
+    status: "active"
+    description: "Reasonix 引擎适配器 — 从 .reasonix/ session JSON 读写痕迹"
+
+    interfaces:
+      read_trace: "python_script"
+      read_trace_entry: "50_RUNTIME/adapters/reasonix-adapter/read_trace.py"
+      write_trace: "python_script"
+      write_trace_entry: "50_RUNTIME/adapters/reasonix-adapter/write_trace.py"
+      export_context: "python_script"
+      export_context_entry: "50_RUNTIME/adapters/reasonix-adapter/export_context.py"
+      import_context: "python_script"
+      import_context_entry: "50_RUNTIME/adapters/reasonix-adapter/import_context.py"
+
+    capability_probe: "50_RUNTIME/adapters/reasonix-adapter/probe.py"
+    tags: ["adapter", "reasonix", "stable"]
+
+  # ── WorkBuddy Adapter ────────────────────────────────
+  - adapter_id: "workbuddy-adapter"
+    engine_id: "workbuddy"
+    version: "1.0"
+    status: "active"
+    description: "WorkBuddy 引擎适配器 — 从 .workbuddy/memory/ 日志读写痕迹"
+
+    interfaces:
+      read_trace: "python_script"
+      read_trace_entry: "50_RUNTIME/adapters/workbuddy-adapter/read_trace.py"
+      write_trace: "python_script"
+      write_trace_entry: "50_RUNTIME/adapters/workbuddy-adapter/write_trace.py"
+      export_context: "python_script"
+      export_context_entry: "50_RUNTIME/adapters/workbuddy-adapter/export_context.py"
+      import_context: "python_script"
+      import_context_entry: "50_RUNTIME/adapters/workbuddy-adapter/import_context.py"
+
+    capability_probe: "50_RUNTIME/adapters/workbuddy-adapter/probe.py"
+    tags: ["adapter", "workbuddy", "stable"]
+
+  # ── Codex Adapter ────────────────────────────────────
+  - adapter_id: "codex-adapter"
+    engine_id: "codex"
+    version: "1.0"
+    status: "draft"
+    description: "Codex 引擎适配器（开发中）— 从对话历史读写痕迹"
+
+    interfaces:
+      read_trace: "manual"
+      write_trace: "manual"
+      export_context: "manual"
+      import_context: "manual"
+
+    tags: ["adapter", "codex", "draft"]
+
+  # ── 新引擎 Adapter 模板 ──────────────────────────────
+  # - adapter_id: "new-engine-adapter"
+  #   engine_id: "new_engine"
+  #   version: "1.0"
+  #   status: "draft"
+  #   description: "新引擎适配器"
+  #   interfaces:
+  #     read_trace: "manual"        # 实现后改为 python_script
+  #     write_trace: "manual"
+  #     export_context: "manual"
+  #     import_context: "manual"
+  #   capability_probe: ""
+  #   tags: ["adapter"]

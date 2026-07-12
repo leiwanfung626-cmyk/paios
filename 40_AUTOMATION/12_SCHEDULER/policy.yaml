@@ -1,0 +1,40 @@
+# Scheduler Policy（调度策略配置）
+# ADR-0018: Engine Scheduling
+# 调度评分权重 + 用户偏好
+
+scheduler_version: 1
+updated_at: "2026-07-11T12:00:00+08:00"
+
+scoring:
+  # 评分权重（总和 = 1.0）
+  priority_weight: 0.4       # 用户偏好权重
+  cost_weight: 0.3           # 成本权重（本地=低, API=高）
+  latency_weight: 0.2        # 延迟权重
+  reliability_weight: 0.1    # 可靠性权重（基于历史 error_rate）
+
+preferences:
+  # 用户偏好：特定任务类型优先使用哪个引擎
+  code_task: "reasonix"
+  writing_task: "workbuddy"
+  conversation_task: "codex"
+  default: "workbuddy"
+
+  # 按工作流偏好
+  workflow_preferences:
+    capture_flow: "any"           # 任何引擎
+    knowledge_flow: "workbuddy"   # WorkBuddy 更擅长知识沉淀
+    photo_organizer_flow: "reasonix"  # 需要 Python + 本地库
+    archive_flow: "any"
+
+cost_map:
+  # 相对成本（本地执行 = 1.0）
+  reasonix: 1.0       # 本地，零成本
+  workbuddy: 1.0      # 本地，零成本
+  codex: 2.0          # API 调用
+  claude: 3.0         # API 调用，高价
+  chatgpt: 2.5        # API 调用
+
+availability:
+  probe_interval_minutes: 15      # 状态探测间隔
+  offline_timeout_minutes: 5      # 无响应即标记为 offline
+  degrade_threshold_error_rate: 0.1  # 错误率超过 10% 标记为 degraded
