@@ -1,0 +1,51 @@
+{
+  "packet_id": "PAIOS-2026-0712-WORKSPACE-RESET-001",
+  "executed_at": "2026-07-12T16:30:00+08:00",
+  "phases": {
+    "phase_0_snapshot": {
+      "status": "completed",
+      "output": "80_HISTORY/SNAPSHOTS/10_WORK-pre-reset-manifest.json"
+    },
+    "phase_1_runtime_cleanup": {
+      "status": "completed",
+      "removed": [
+        ".venv (人像照片安全, photo-archive-cleanup partial)",
+        "__pycache__ (all)",
+        "faces/ (thousands of generated JPGs)",
+        "missed/, retrieval/ (generated face data)",
+        "models/, cache/ (OFA-Sys, huggingface)",
+        "outputs/, inputs/ (Runtime/ dirs)",
+        "review_standalone/ (thumbnail JPGs)",
+        "BACKUP-CASE02-20260712 (1GB backup)"
+      ],
+      "remaining": "photo-archive-cleanup/.venv (python.exe locked by another process)"
+    },
+    "phase_2a_migrate_50_DATA": {
+      "status": "completed",
+      "target": "50_DATA/face-index/",
+      "files": 8,
+      "total_size_mb": 383
+    },
+    "phase_2b_migrate_20_KNOWLEDGE": {
+      "status": "completed",
+      "targets": [
+        "20_KNOWLEDGE/Platform/References/photo-organizer/",
+        "20_KNOWLEDGE/Platform/References/photo-archive-cleanup/"
+      ]
+    },
+    "phase_2c_migrate_80_HISTORY": {
+      "status": "completed",
+      "target": "80_HISTORY/handoff-records/"
+    },
+    "phase_3_workspace_reset": {
+      "status": "completed",
+      "final_structure": [
+        "10_WORK/Active/ (6 projects with source files)",
+        "10_WORK/Runtime/ (empty, ready for new projects)",
+        "10_WORK/Done/ (clean archive)",
+        "10_WORK/README.md (usage rules)"
+      ]
+    }
+  },
+  "estimated_space_reclaimed_mb": 3500
+}

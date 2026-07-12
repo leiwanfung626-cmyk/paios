@@ -1,0 +1,98 @@
+# Engine Registry（引擎注册表）
+# 所有接入 PAIOS 的 AI 引擎在此注册。
+# 轻量级：只记录身份、运行时路径、Adapter 引用、能力标签。
+# 细粒度能力由 Adapter 运行时探测，不写死在此文件中。
+# 参见 ADR-0017: Cross-Engine Work Context Inheritance
+
+registry_version: 2
+updated_at: "2026-07-11T12:00:00+08:00"
+
+engines:
+
+  # ── Reasonix ──────────────────────────────────────────
+  - engine_id: "reasonix"
+    display_name: "Reasonix"
+    version: "1.0"
+    description: "推理编码引擎 — 代码生成、调试、Shell 执行"
+    status: "active"
+    runtime_path: ".reasonix/"           # 私有运行状态目录
+    adapter: "reasonix-adapter"          # 指向 adapters.yaml
+    capability_tags:                     # 轻量标签，用于快速筛选
+      - "reasoning"
+      - "code_gen"
+      - "shell"
+      - "session_persistence"
+      - "trace_aware"
+    tags: ["engine", "core"]
+
+  # ── WorkBuddy ─────────────────────────────────────────
+  - engine_id: "workbuddy"
+    display_name: "WorkBuddy"
+    version: "1.0"
+    description: "PAIOS 平台引擎 — 记忆管理、自动化编排、项目状态跟踪"
+    status: "active"
+    runtime_path: ".workbuddy/"
+    adapter: "workbuddy-adapter"
+    capability_tags:
+      - "memory"
+      - "automation"
+      - "orchestration"
+      - "state_tracking"
+      - "daily_log"
+      - "trace_aware"
+    tags: ["engine", "platform", "core"]
+
+  # ── Codex ─────────────────────────────────────────────
+  - engine_id: "codex"
+    display_name: "Codex"
+    version: "1.0"
+    description: "编码与对话引擎 — 代码生成、解释、通用 AI 对话"
+    status: "active"
+    runtime_path: ""                     # 无独立私有目录
+    adapter: "codex-adapter"
+    capability_tags:
+      - "code_gen"
+      - "conversation"
+      - "knowledge_query"
+    tags: ["engine", "coding"]
+
+  # ── Future Engine 注册模板 ────────────────────────────
+  # 新引擎只需填写以下信息即可接入 PAIOS：
+  #
+  # - engine_id: "new_engine"
+  #   display_name: "New Engine"
+  #   version: "1.0"
+  #   description: "引擎描述"
+  #   status: "active"
+  #   runtime_path: ".new_engine/"
+  #   adapter: "new-engine-adapter"      # 需同时注册 adapter
+  #   capability_tags:
+  #     - "tag1"
+  #     - "tag2"
+  #   tags: ["engine"]
+
+# ── 未来演进：Engine + Execution Context ────────────────────
+# 当前实现：不同账号 = 不同 engine_id（如 chatgpt-work, chatgpt-personal）
+# 未来演进：engine_id 保留为工具名，context_id 标识执行环境
+#
+# - engine_id: "chatgpt"
+#   display_name: "ChatGPT"
+#   adapter: "chatgpt-adapter"
+#   contexts:
+#     - context_id: "work"
+#       display_name: "工作号"
+#       runtime_path: ".chatgpt-work/"
+#     - context_id: "personal"
+#       display_name: "个人号"
+#       runtime_path: ".chatgpt-personal/"
+#     - context_id: "api"
+#       display_name: "API"
+#       runtime_path: ".chatgpt-api/"
+#
+# 演进影响：
+# - artifacts/ 增加 context_id 字段（可选，兼容现有记录）
+# - handoff.yaml 增加 context_id 字段（可选）
+# - Adapter 不变（同一工具共用一套 adapter）
+# - Scheduler 可在 policy 中按 context_id 配置不同成本/权重
+# - 现有 chatgpt-work 格式可自然迁移为 engine=chatgpt + context=work
+# 向后兼容：不断开现有引用，不要求立即迁移。

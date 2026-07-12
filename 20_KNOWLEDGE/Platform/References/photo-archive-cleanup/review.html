@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>照片归档清理 · 审查清单</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --panel:#ffffff; --border:#e2e5ea; --text:#1f2329; --muted:#6b7280;
+    --net:#2563eb; --scr:#16a34a; --sml:#d97706; --qr:#9333ea; --junk:#9ca3af;
+    --keep:#dcfce7; --keepb:#16a34a; --del:#fee2e2; --delb:#dc2626;
+    --chip:#eef2f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.5 -apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+  header{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--border);padding:12px 18px}
+  h1{font-size:17px;margin:0 0 8px}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .fbtn{border:1px solid var(--border);background:var(--chip);color:var(--text);padding:5px 11px;border-radius:16px;cursor:pointer;font-size:13px}
+  .fbtn.active{background:var(--text);color:#fff;border-color:var(--text)}
+  .fbtn .n{opacity:.6;font-size:11px;margin-left:3px}
+  input[type=search]{flex:1;min-width:160px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px}
+  .sum{font-size:12px;color:var(--muted);margin-top:8px;display:flex;gap:14px;flex-wrap:wrap}
+  .sum b{color:var(--text)}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--border);background:#fafbfc}
+  .tbtn{border:1px solid var(--border);background:#fff;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:13px}
+  .tbtn:hover{background:var(--chip)}
+  .tbtn.primary{background:var(--delb);color:#fff;border-color:var(--delb)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;padding:16px 18px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:box-shadow .15s}
+  .card:hover{box-shadow:0 4px 14px rgba(0,0,0,.12)}
+  .card.dec-keep{border-color:var(--keepb);box-shadow:0 0 0 2px var(--keepb) inset}
+  .card.dec-del{border-color:var(--delb);box-shadow:0 0 0 2px var(--delb) inset}
+  .thumb{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#eee}
+  .meta{padding:7px 9px}
+  .fn{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .badges{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+  .badge{font-size:10px;padding:1px 6px;border-radius:10px;color:#fff}
+  .b-net{background:var(--net)} .b-scr{background:var(--scr)} .b-sml{background:var(--sml)}
+  .b-qr{background:var(--qr)} .b-junk{background:var(--junk)}
+  .sz{font-size:11px;color:var(--muted)}
+  .decflag{position:absolute;top:6px;right:6px;font-size:11px;padding:2px 7px;border-radius:10px;font-weight:600}
+  .dec-keep .decflag{background:var(--keep);color:var(--keepb)}
+  .dec-del .decflag{background:var(--del);color:var(--delb)}
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(20,22,28,.92);display:none;z-index:50;flex-direction:column}
+  .lb.open{display:flex}
+  .lb-top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;color:#eee}
+  .lb-top .nav button{background:#2a2e37;color:#fff;border:none;padding:7px 14px;border-radius:8px;cursor:pointer;margin:0 4px;font-size:14px}
+  .lb-mid{flex:1;display:flex;min-height:0}
+  .lb-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;min-width:0;padding:8px}
+  .lb-img-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+  .lb-side{width:300px;background:#1b1e25;color:#ddd;padding:16px;overflow:auto;font-size:13px}
+  .lb-side h3{margin:0 0 8px;color:#fff;font-size:15px;word-break:break-all}
+  .lb-side .row{margin:6px 0;word-break:break-all}
+  .lb-side .k{color:#9aa3b2;font-size:11px}
+  .lb-side .acts{margin-top:16px;display:flex;gap:8px}
+  .lb-side .acts button{flex:1;padding:10px;border-radius:8px;border:none;cursor:pointer;font-size:14px;font-weight:600}
+  .act-keep{background:var(--keepb);color:#fff}
+  .act-del{background:var(--delb);color:#fff}
+  .act-clear{background:#3a3f4a;color:#fff}
+  .act-keep.on{outline:3px solid #fff}
+  .act-del.on{outline:3px solid #fff}
+  .hint{font-size:11px;color:#8b93a3;margin-top:10px}
+  @media(max-width:640px){.lb-side{width:100%}.lb-mid{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <h1>照片归档清理 · 可删除审查清单</h1>
+  <div class="bar">
+    <div class="filters" id="filters"></div>
+    <input type="search" id="search" placeholder="搜索文件名 / 来源类目…">
+  </div>
+  <div class="sum" id="summary"></div>
+</header>
+
+<div class="toolbar">
+  <button class="tbtn" id="selAllDel">标记可见为「删除」</button>
+  <button class="tbtn" id="selAllKeep">标记可见为「保留」</button>
+  <button class="tbtn" id="clearDec">清除我的标记</button>
+  <button class="tbtn primary" id="export">导出审查结论 (CSV)</button>
+  <span class="hint">标记仅存于本机浏览器(localStorage)，不影响磁盘。确认后由 cleanup_archive.py --yes 执行。</span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="lb" id="lb">
+  <div class="lb-top">
+    <div class="nav">
+      <button id="prev">‹ 上一张</button>
+      <span id="lbpos" style="color:#ccc;margin:0 6px"></span>
+      <button id="next">下一张 ›</button>
+    </div>
+    <button class="tbtn" id="lbclose" style="color:#fff;background:#2a2e37;border-color:#2a2e37">关闭 ✕</button>
+  </div>
+  <div class="lb-mid">
+    <div class="lb-img-wrap"><img id="lbimg" alt=""></div>
+    <div class="lb-side">
+      <h3 id="lbfn"></h3>
+      <div class="row"><span class="k">来源类目</span><br><span id="lbsrc"></span></div>
+      <div class="row"><span class="k">命中原因</span><br><span id="lbreasons"></span></div>
+      <div class="row"><span class="k">体积</span><br><span id="lbsize"></span></div>
+      <div class="row"><span class="k">相对路径</span><br><span id="lbrel"></span></div>
+      <div class="row"><span class="k">磁盘路径</span><br><span id="lbabs" style="font-size:11px;color:#9aa3b2"></span></div>
+      <div class="row"><span class="k">MD5</span><br><span id="lbmd5" style="font-size:11px;color:#9aa3b2"></span></div>
+      <div class="acts">
+        <button class="act-keep" id="lbKeep">保留</button>
+        <button class="act-del" id="lbDel">删除</button>
+        <button class="act-clear" id="lbClear">取消标记</button>
+      </div>
+      <div class="hint">「删除」= 同意 quarantine 到 90_Trash（可逆）；「保留」= 从清理中排除。</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LS_KEY = "paios_cleanup_review_v1";
+let DATA = [], DEC = {}, FILTER = "all", QUERY = "";
+const BUCKET_META = {
+  network:{label:"网络图片",cls:"b-net"}, screenshot:{label:"截图",cls:"b-scr"},
+  small:{label:"过小",cls:"b-sml"}, junk:{label:"垃圾/非图片",cls:"b-junk"}
+};
+const FILTERS = [
+  {key:"all",label:"全部"},{key:"network",label:"网络图片"},{key:"screenshot",label:"截图"},
+  {key:"small",label:"过小"},{key:"qr",label:"含二维码"},{key:"junk",label:"垃圾/非图片"},{key:"imageonly",label:"仅图片"}
+];
+
+function loadDec(){ try{DEC=JSON.parse(localStorage.getItem(LS_KEY)||"{}")}catch(e){DEC={}} }
+function saveDec(){ localStorage.setItem(LS_KEY, JSON.stringify(DEC)); }
+
+function filtered(){
+  return DATA.filter(d=>{
+    if(FILTER==="imageonly" && d.is_image!=="Y") return false;
+    if(FILTER==="junk" && d.bucket_disp!=="junk") return false;
+    if(FILTER==="qr" && !d.reasons.split("+").includes("qr")) return false;
+    if(["network","screenshot","small"].includes(FILTER) && d.bucket_disp!==FILTER) return false;
+    if(QUERY){
+      const q=QUERY.toLowerCase();
+      if(!(d.filename.toLowerCase().includes(q)||d.source.toLowerCase().includes(q)||d.rel.toLowerCase().includes(q))) return false;
+    }
+    return true;
+  });
+}
+
+function fmtSize(n){ return n<1024?n+" B":n<1048576?(n/1024).toFixed(0)+" KB":(n/1048576).toFixed(1)+" MB"; }
+
+function renderFilters(){
+  const c=document.getElementById("filters"); c.innerHTML="";
+  const cnt={all:DATA.length,network:0,screenshot:0,small:0,qr:0,junk:0,imageonly:0};
+  DATA.forEach(d=>{
+    if(d.bucket_disp in cnt) cnt[d.bucket_disp]++;
+    if(d.reasons.split("+").includes("qr")) cnt.qr++;
+    if(d.is_image==="Y") cnt.imageonly++;
+  });
+  FILTERS.forEach(f=>{
+    const b=document.createElement("button");
+    b.className="fbtn"+(FILTER===f.key?" active":"");
+    b.innerHTML=`${f.label}<span class="n">${cnt[f.key]||0}</span>`;
+    b.onclick=()=>{FILTER=f.key;renderFilters();renderGrid();};
+    c.appendChild(b);
+  });
+}
+
+function renderSummary(){
+  const s=document.getElementById("summary");
+  const keep=Object.values(DEC).filter(v=>v==="keep").length;
+  const del=Object.values(DEC).filter(v=>v==="delete").length;
+  const pend=DATA.length-keep-del;
+  s.innerHTML=`<span>总计 <b>${DATA.length}</b></span><span>待定 <b>${pend}</b></span>`+
+    `<span style="color:var(--keepb)">保留 <b>${keep}</b></span><span style="color:var(--delb)">删除 <b>${del}</b></span>`;
+}
+
+function renderGrid(){
+  const grid=document.getElementById("grid"); grid.innerHTML="";
+  const list=filtered();
+  list.forEach(d=>{
+    const card=document.createElement("div");
+    card.className="card"+(DEC[d.md5]?(" dec-"+DEC[d.md5]):"");
+    const dec=DEC[d.md5];
+    const flag=dec?`<div class="decflag">${dec==="keep"?"保留":"删除"}</div>`:"";
+    const reasons=d.reasons.split("+").map(r=>{
+      const m=r==="qr"?{label:"二维码",cls:"b-qr"}:(BUCKET_META[d.bucket_disp]||{label:r,cls:"b-junk"});
+      return `<span class="badge ${m.cls}">${m.label}</span>`;
+    }).join("");
+    card.innerHTML=`${flag}<img class="thumb" src="${d.thumb}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221%22 height=%221%22/>'">
+      <div class="meta"><div class="fn" title="${d.filename}">${d.filename}</div>
+      <div class="badges">${reasons}</div>
+      <div class="sz">${fmtSize(d.size)} · ${d.source}</div></div>`;
+    card.onclick=()=>openLB(d.md5);
+    grid.appendChild(card);
+  });
+}
+
+let LB_LIST=[], LB_IDX=0;
+function openLB(md5){
+  LB_LIST=filtered();
+  LB_IDX=LB_LIST.findIndex(d=>d.md5===md5);
+  showLB(); document.getElementById("lb").classList.add("open");
+}
+function showLB(){
+  const d=LB_LIST[LB_IDX]; if(!d) return;
+  document.getElementById("lbimg").src=d.orig;
+  document.getElementById("lbfn").textContent=d.filename;
+  document.getElementById("lbsrc").textContent=d.source;
+  document.getElementById("lbreasons").textContent=d.reasons;
+  document.getElementById("lbsize").textContent=fmtSize(d.size);
+  document.getElementById("lbrel").textContent=d.rel;
+  document.getElementById("lbabs").textContent=d.abs;
+  document.getElementById("lbmd5").textContent=d.md5;
+  document.getElementById("lbpos").textContent=`${LB_IDX+1} / ${LB_LIST.length}`;
+  const dec=DEC[d.md5];
+  document.getElementById("lbKeep").classList.toggle("on",dec==="keep");
+  document.getElementById("lbDel").classList.toggle("on",dec==="delete");
+}
+function setDec(md5,val){
+  if(val) DEC[md5]=val; else delete DEC[md5];
+  saveDec(); renderGrid(); renderSummary();
+  // 同步灯箱按钮态
+  const dec=DEC[md5];
+  document.getElementById("lbKeep").classList.toggle("on",dec==="keep");
+  document.getElementById("lbDel").classList.toggle("on",dec==="delete");
+}
+
+document.getElementById("prev").onclick=()=>{if(LB_IDX>0){LB_IDX--;showLB();}};
+document.getElementById("next").onclick=()=>{if(LB_IDX<LB_LIST.length-1){LB_IDX++;showLB();}};
+document.getElementById("lbclose").onclick=()=>document.getElementById("lb").classList.remove("open");
+document.getElementById("lbKeep").onclick=()=>setDec(LB_LIST[LB_IDX].md5,"keep");
+document.getElementById("lbDel").onclick=()=>setDec(LB_LIST[LB_IDX].md5,"delete");
+document.getElementById("lbClear").onclick=()=>setDec(LB_LIST[LB_IDX].md5,null);
+document.addEventListener("keydown",e=>{
+  if(!document.getElementById("lb").classList.contains("open"))return;
+  if(e.key==="ArrowLeft"&&LB_IDX>0){LB_IDX--;showLB();}
+  if(e.key==="ArrowRight"&&LB_IDX<LB_LIST.length-1){LB_IDX++;showLB();}
+  if(e.key==="Escape")document.getElementById("lb").classList.remove("open");
+  if(e.key==="k")setDec(LB_LIST[LB_IDX].md5,"keep");
+  if(e.key==="d")setDec(LB_LIST[LB_IDX].md5,"delete");
+});
+document.getElementById("search").oninput=e=>{QUERY=e.target.value.trim();renderGrid();};
+
+document.getElementById("selAllDel").onclick=()=>{filtered().forEach(d=>DEC[d.md5]="delete");saveDec();renderGrid();renderSummary();};
+document.getElementById("selAllKeep").onclick=()=>{filtered().forEach(d=>DEC[d.md5]="keep");saveDec();renderGrid();renderSummary();};
+document.getElementById("clearDec").onclick=()=>{DEC={};saveDec();renderGrid();renderSummary();};
+document.getElementById("export").onclick=()=>{
+  const rows=[["md5","rel","filename","bucket","reasons","size","source","decision"]];
+  DATA.forEach(d=>rows.push([d.md5,d.rel,d.filename,d.bucket,d.reasons,d.size,d.source,DEC[d.md5]||"pending"]));
+  const csv="\uFEFF"+rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
+  const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="review_decisions.csv";a.click();
+};
+
+loadDec();
+fetch("/api/list").then(r=>r.json()).then(d=>{
+  DATA=d; renderFilters(); renderGrid(); renderSummary();
+}).catch(e=>{document.getElementById("grid").innerHTML="<p style='padding:20px'>加载失败："+e+"</p>";});
+</script>
+</body>
+</html>

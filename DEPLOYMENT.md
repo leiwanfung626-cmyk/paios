@@ -51,7 +51,7 @@ python -m paios_installer validate
 ```bash
 # 打开 Today.md，确认当天状态
 # AI 工具设置 Workspace = ${PAIOS_DRIVE}:/PAIOS
-# 执行 Bootstrap: Principles → ADR → Registry → Manifest
+# 执行 Bootstrap: Principles → ADR-INDEX（会话启动）；数据放置规则由工作区配置强制执行
 ```
 
 ## 跨电脑同步

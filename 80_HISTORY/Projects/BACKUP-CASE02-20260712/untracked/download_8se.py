@@ -6,7 +6,7 @@ import os
 import time
 import sys
 
-SAVE_DIR = r"E:\QuarkSync\DATA\李丽珍_Reminicsence"
+SAVE_DIR = r"E:\PAIOS\李丽珍_Reminicsence"
 BASE_URL = "https://img.xchina.io/photos2/668da3eb393c5/{:04d}.jpg"
 TOTAL = 102
 

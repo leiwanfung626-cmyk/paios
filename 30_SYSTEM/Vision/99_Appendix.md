@@ -8,7 +8,7 @@
 | **DRS** | Decision Replica System（前身，原 Digital Replica System） |
 | **ADR** | Architecture Decision Record — 架构决策记录 |
 | **Inbox** | `00_CAPTURE/Inbox.md` — 统一输入缓冲区 |
-| **Bootstrap** | 会话启动时加载治理信息（Principles → ADR → Registry → Manifest） |
+| **Bootstrap** | 会话启动读取 AI_STARTUP.md → Principles → ADR-INDEX；数据放置规则由工作区配置全局强制执行 |
 | **Invariant** | 不可违反的系统约束 |
 | **Impact Level** | 变更影响等级（L0-L4） |
 | **Registry** | `40_AUTOMATION/00_REGISTRY/` — 资产注册中心 |

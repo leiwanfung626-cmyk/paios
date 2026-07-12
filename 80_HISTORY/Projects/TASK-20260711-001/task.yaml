@@ -1,0 +1,21 @@
+# Task: 跨引擎手递验证
+task_id: "TASK-20260711-001"
+display_name: "Cross-Engine Handoff Validation"
+created_at: "2026-07-11T12:00:00+08:00"
+status: "active"
+workflow_id: "cross_engine_handoff"
+
+goals:
+  - "验证 handoff.yaml 格式完整度"
+  - "验证引擎 B 读取 handoff 后能准确恢复上下文"
+  - "验证 artifact 索引记录正确"
+
+scope: |
+  本机双引擎（Reasonix → WorkBuddy）手递实验。
+  不涉及外部 API，不依赖网络。
+
+acceptance:
+  - "WorkBuddy 读取 handoff.yaml 后能准确说出 Reasonix 的完成进度"
+  - "WorkBuddy 能正确识别下一步步骤"
+  - "WorkBuddy 能列出已知问题"
+  - "artifact 索引记录包含正确的 URI 引用"

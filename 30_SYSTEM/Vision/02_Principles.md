@@ -15,7 +15,7 @@
 | 6 | **Keep the top-level directory count low** | 顶层目录冻结为 00-90 十层模型，不随意增加 |
 | 7 | **Metadata is the primary classification system** | 元数据是主要分类手段，而非目录结构 |
 | 8 | **Tool Independence** | 平台不依赖任何特定 AI 工具，所有资产使用开放格式（Markdown/YAML/JSON/Python） |
-| 9 | **Bootstrap First** | 每次会话必须先加载平台治理信息（Principles → ADR → Registry → Manifest） |
+| 9 | **Bootstrap First** | 会话启动：读取 AI_STARTUP.md → Principles → ADR-INDEX；数据放置规则由工作区配置全局强制执行，各引擎通过自身机制遵守 |
 
 ## 工程实践原则
 
@@ -110,19 +110,31 @@
 
 ## AI Tool Bootstrap 流程
 
+Bootstrap 分两层：**会话启动层**（每次新会话执行）和 **工作区配置层**（全局默认遵守，永不重读）。
+
 ```
 Workspace: ${PAIOS_DRIVE}:/PAIOS
      ↓
-Bootstrap（加载平台治理信息）
-  ├── Principles    — 了解平台规则
-  ├── ADR           — 了解架构约束
-  ├── Registry      — 发现可用能力
-  └── Manifest      — 确认平台版本
+【会话启动层 — 每次会话，5 分钟】
+Bootstrap（轻量加载）
+  ├── AI_STARTUP        — 一页纸启动规则（所有引擎通用，根目录）
+  ├── Principles        — 了解平台规则（快速浏览）
+  └── ADR-INDEX         — 了解架构约束在哪（快速浏览）
+     ↓
+【工作区配置层 — 全局默认遵守，永不重读】
+  ├── SYNC_STRATEGY     — 数据放置规则
+  ├── EXTERNAL/         — 外部数据源位置
+  ├── Registry          — 可用能力（按需读取）
+  └── Manifest          — 平台版本（按需读取）
      ↓
 Read only what the current task requires
      ↓
 Start working
 ```
+
+> **注意**：Reasonix 通过 `reasonix.toml` 权限白名单强制执行路径约束；
+> 其他引擎（WorkBuddy、Codex、ChatGPT 等）通过读取 AI_STARTUP.md 了解规则，
+> 但实际遵守程度取决于引擎自身的配置能力。
 
 ---
 

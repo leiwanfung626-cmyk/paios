@@ -1,5 +1,9 @@
 # External Data Sources
 #
+# Bootstrap 必读：本文件定义 PAIOS 的外部数据源位置。
+# AI 工具在开始工作前必须先读取本文件。
+# 阅读顺序：Principles → ADR-INDEX（会话启动）。本文件已编入工作区配置。
+#
 # These are NOT copies — they are references to the original locations.
 # Always edit data at the source. F only manages projects and workflows.
 

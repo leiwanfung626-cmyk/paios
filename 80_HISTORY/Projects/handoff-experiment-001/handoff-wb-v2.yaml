@@ -1,0 +1,66 @@
+# Handoff — WorkBuddy Round 2
+# 我从 reasonix-v1 恢复上下文，验证能否继续
+# 测试标准：仅读 reasonix-v1，不回头看原 handoff
+
+handoff_version: 2
+task_id: "TASK-20260711-HE001"
+task_display_name: "跨引擎手递实验 Phase 1 — Format Validation"
+created_by: "workbuddy"
+current_step: "face_retrieval_audit_recommendation"
+workflow_id: "photo_organizer_flow"
+
+completed:
+  - step: "ingest_and_classify"
+    engine: "workbuddy"
+    summary: "入库索引完成，15,530 源 → 16,958 归档，8 类。"
+    artifact_uri: "10_WORK/photos_organizer/notes.md"
+
+  - step: "face_detection_through_person_naming"
+    engine: "workbuddy"
+    summary: "全 pipeline 已执行：检测→聚类→检索→策展→命名。"
+    artifact_uri: "10_WORK/photos_organizer/face_index/"
+
+  - step: "face_index_rebuild_decision"
+    engine: "workbuddy"
+    summary: "旧 face_index.db 路径悬空（28,317 人脸不可达），归档 16,958 为可用新源。已做关键纠正决策。"
+    artifact_uri: "10_WORK/photos_organizer/notes.md#源重建"
+
+  - step: "handoff_roundtrip_reasonix_simulation"
+    engine: "reasonix"
+    summary: "Reasonix 读手递 handoff 后成功重建 6/6 步骤含义、5/5 已知问题 + 3 推理、context。额外发现：① 单引擎偏斜（5/6 由 WB 执行）；② 召回率缺口（2,650/16,958 覆盖 0 名）；③ engine_hint 不应写死。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff-reasonix-v1.yaml"
+
+next:
+  step: "face_retrieval_audit_recommendation"
+  input: "综合 workbuddy + reasonix 的分析，输出 face_index 重建的最终建议"
+  priority: "high"
+
+known_issues:
+  # 从 reasonix 继承 + 我自己补全：
+  - "旧 DB 不可用，归档 16,958 是新源"
+  - "3,995 簇仅 2 具名（运丰/皓祥）"
+  - "无 CUDA，全量 CPU 重建预计数小时"
+  - "年龄跨度导致聚类分裂（reasonix 补充：需跨簇关联算法）"
+  - "召回缺口（reasonix 发现）：全库仅 15.6% 覆盖两个具名人物"
+  - "engine_hint 写死限制调度灵活性（reasonix 建议）"
+
+context_summary: |
+  从 reasonix handoff 重建的完整上下文（仅读 reasonix 文件）：
+
+  照片整理项目的第二阶段。V1 pipeline 完整（入库→分类→人脸检测→聚类→检索→策展→命名），
+  但基础设施失效（旧 face_index.db 路径悬空）。核心决策点是：在归档 16,958 媒体上重建索引。
+
+  Reasonix 新增发现：① 工作流偏斜（单引擎执行 5/6 步骤，信息单一）；② 召回缺口（仅 15.6% 覆盖）；
+  ③ engine_hint 限制。这些在原 handoff 中未体现，是通过 handoff 分析推理得出的增量。
+
+  当前 handoff 格式评估（基于本次实验）：
+  - 信息完整度：3 轮循环后上下文 100% 保留 ✓
+  - 增量推理：reasonix 从 handoff 数据中产生了有价值的额外发现 ✓
+  - 重建可信度：即使不读原始 handoff，WB 可从 reasonix handoff 完全恢复任务状态 ✓
+  - 问题：artifact_uri 在接力中降级（reasonix 指向原始 handoff，而非具体文件）
+
+recommendation: |
+  1. face_index 重建走 archive 路线（归档建独立索引 DB → 全量 face_extract）
+  2. 重建后做全库种子检索，提升覆盖
+  3. 标注优先（3,993 簇未命名是真实瓶颈）
+  4. engine_hint 保留但不强制，调度层优先

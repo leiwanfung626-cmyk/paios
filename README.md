@@ -87,7 +87,7 @@ PAIOS 支持多实例部署（ADR-0016~0018）：
 6. **顶层目录数量保持最少**（当前冻结为 00-90 十层模型）
 7. **元数据是主要分类系统**
 8. **工具独立**：PAIOS 是平台，AI 工具是客户端
-9. **Bootstrap First**：AI 工具必须先加载平台治理信息
+9. **Bootstrap First**：会话启动读取 AI_STARTUP.md → Principles → ADR-INDEX；数据放置规则由工作区配置全局强制执行
 
 > 详见 [Principles](30_SYSTEM/Principles.md)
 
