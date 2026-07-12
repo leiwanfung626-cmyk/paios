@@ -134,8 +134,9 @@ origin_assessment:
    60% user ownership on critical path, 80% AI on implementation layer."
 
 market_overlap:
-  "No single existing product provides:
-   ADR governance + multi-instance role model + AI fleet governance."
+  "No single product has been observed combining ADR governance
+   + multi-instance role model + AI fleet governance in this way.
+   This claim requires ongoing market validation — it is not a definitive statement."
 
 unique_value:
   "Three-layer governance integration:
