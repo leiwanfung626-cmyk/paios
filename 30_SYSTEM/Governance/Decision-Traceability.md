@@ -9,6 +9,7 @@ related:
   - Change-Control.md
   - ../ADR/ADR-0017-Platform-Purity-Physical-Separation.md
   - ../Evolution/Case-Studies/README.md
+  - ../Evolution/Stories/README.md
 ---
 
 # Decision Traceability（决策可追溯性）
@@ -24,7 +25,7 @@ related:
 
 | 字段 | 含义 | 取值 |
 |------|------|------|
-| **Evidence** | 支撑本决策的证据来源 | `CASE-NNN` / 实测 / 文档；Reactive 必填 |
+| **Evidence** | 支撑本决策的证据来源 | `CASE-NNN` / `Story-NNN` / 实测 / 文档；Reactive 必填 |
 | **Implements** | 本 ADR 落实了哪个蓝图 / 原则 | `Phase B Blueprint` / `ADR-0012` / … |
 | **Frozen By** | 设计冻结的 commit（未 push 也算） | commit hash（如 `472e53d`） |
 | **Supersedes** | 被本 ADR 取代 / 修正的文档 | `ADR-0016 Phase B draft` / `—` |
@@ -42,7 +43,7 @@ Supersedes: ADR-0016 §Phase B draft
 
 ## 1.5 CASE 追溯字段（所有 Case 必须有）
 
-每个 CASE 在元数据区固定声明与决策的双向链接，使 **CASE → ADR → Blueprint → Commit** 形成闭环：
+每个 CASE 在元数据区固定声明与决策的双向链接，使 **CASE → ADR → Story → Blueprint → Commit** 形成闭环：
 
 | 字段 | 含义 | 取值 |
 |------|------|------|
@@ -102,17 +103,20 @@ Git History 因此天然成为"决策索引"。
 
 ```
 CASE-NNN (Evidence, Evidence Commit: 472e53d, Triggered ADR: ADR-XXXX, Severity: Major)
-   │  validated
-   ▼
+   |  validated
+   v
 ADR-XXXX (Evidence / Implements / Frozen By / Supersedes)
-   │  implemented by
-   ▼
+   |  archived-as
+   v
+Story-NNN (Architecture Story)
+   |  implemented by
+   v
 Blueprint (Implements: ADR-XXXX)
-   │  frozen by
-   ▼
+   |  frozen by
+   v
 commit hash (ref: ADR-XXXX, CASE-NNN)
-   │
-   └──────────── 双向反查：commit ↔ Blueprint ↔ ADR ↔ CASE ────────────┘
+
+双向反查: commit - Blueprint - Story - ADR - CASE
 ```
 
 任意一端（commit / CASE / ADR / Blueprint）都能沿链追到另一端。

@@ -1,6 +1,6 @@
 ---
-title: "ADR-0018 — Multi-Instance Role Model (Developer / User) & One-Way Flow"
-status: Accepted
+title: "ADR-0018 — Multi-Instance Role Model (Maintainer / Developer / Pilot User) & One-Way Flow"
+status: Accepted (v2 — 2026-07-12: 升级为 Maintainer / Developer / Pilot User 三级模型)
 evidence_level: Validated
 date: 2026-07-11
 related:
@@ -31,8 +31,9 @@ CASE-001 暴露的四个缺陷（Manifest 单路径冲突 / Workspace 泄漏 / F
 
 本 ADR 的决策不是"告诉 Case-02/03 不要 push"（一条行为规则，压力下必破），而是**重新定义角色，让污染能力从结构上不存在**：
 
-- **Case-01 = Platform Maintainer（Developer）**：Core 的唯一写入口。
-- **Case-02 = Platform User（Personal）** / **Case-03 = Platform User（Study）**：只使用平台、只反馈，永不写 Core。
+- **Case-01 = Platform Maintainer**：Core 的唯一合并入口，负责 Review、Release、Governance。
+- **Case-02 = Platform Developer & Primary Integration Environment**：第二开发环境、跨环境集成验证、新功能实验，通过 Proposal 提交变更。
+- **Case-03 = Pilot User**：安装、升级、使用、反馈、Issue 报告，永不修改系统。
 
 配套建立**单向数据流**与**平台受保护文件清单**，使多实例协作形成清晰、可持续的治理模式。
 
@@ -51,39 +52,57 @@ CASE-001（§新发现）记录三个实例把共享仓库当成自己的 Worksp
 
 ### D0 — 角色模型（Role Model）
 
-| Case | 角色 | 平台权限 | 职责 |
+| Case | 角色 | Core 权限 | 职责 |
 |------|------|----------|------|
-| Case-01 | **Platform Maintainer（Developer）** | 读写 Core 全权 | 平台开发、架构、发布、聚合 Fleet、决策 CASE |
-| Case-02 | **Platform User（Personal）** | 只读 Core，写 Workspace | 使用平台、反馈问题、提交 Manifest |
-| Case-03 | **Platform User（Study）** | 只读 Core，写 Workspace | 使用平台、反馈问题、提交 Manifest |
+| Case-01 | **Platform Maintainer** | 读写 + 合并 | 架构设计、治理、Review、Release、ADR、聚合 Fleet、决策 CASE |
+| Case-02 | **Platform Developer & Primary Integration Environment** | 可写（Feature Branch）但不能合并到主线 | 第二开发环境、跨环境集成验证、新功能实验、通过 Proposal 提交变更 |
+| Case-03 | **Pilot User** | 只读 Core，写 Workspace | 安装、使用、反馈、Issue、Bug 报告、升级验证 |
 
-> **核心转变**：Case-02/03 从"平台开发者"归位为"平台使用者"。它们不再拥有改 Core 的能力，因此不会因一次日常操作把 Workspace 内容带回 Core。
+> **核心转变**：Case-02 从 User 升级为 Developer（但有提交边界），Case-03 保留为纯用户。三者形成完整的"开发—治理—验证"闭环。
 
-### D1 — 单向数据流（One-Way Flow）
+### D1 — 单向数据流与 Proposal 流程（One-Way Flow & Proposal Pipeline）
 
 ```
-                Core
-                  │  (git pull，只读)
+                Core（平台能力）
+                  │  git pull
                   ▼
-         Case-01（Developer / Maintainer）
+         Case-01（Platform Maintainer）
                   │
-           发布 Release（Tag vX.Y.Z）
+           发布 Release（Tag vX.Y.Z + Release Notes）
+                  │
+      ┌───────────┴────────────────────┐
+      ▼                                ▼
+Case-02（Platform Developer）    Case-03（Pilot User）
+      │                                │
+  开发 Feature Branch              git pull 升级
+      │  新功能实验                   使用平台
+      │  跨环境验证                   反馈 / Issue
+      │  提交 Proposal                提交 Manifest
+      │                                │
+      └───────────┬────────────────────┘
+                  │
+                  ▼
+          Proposal Pool
+                  │
+         Case-01 Review
                   │
       ┌───────────┴───────────┐
       ▼                       ▼
-Case-02（User）         Case-03（User）
-      │  (日常写 Workspace)     │  (日常写 Workspace)
+   Approved              Rejected
       │                       │
-      └───────────┬───────────┘
-                  │  publish Manifest（out-of-band）
-                  ▼
-             F:\Fleet\incoming\
-                  │
-             Developer Review（聚合 / 统计）
+ 进入 Integration Validation 记录为 Observation
+（Case-02 Pull + Full Test）
+      │
+      ▼
+ 进入 Release
+   New Release → git pull → 所有实例
 ```
 
-- **User 永远不直接修改 Core，永不 push Core，永不 merge 远端。**
-- Manifest 通过 **out-of-band publish**（collect_manifest → publish → `F:\Fleet\incoming`）回流，不经 Core 仓库（见 D6）。
+**原则**
+
+- **Case-02 可以开发任何内容**，但不得直接修改 Core 主线
+- 所有希望进入平台的能力，必须经过 **Proposal → Review → Promote → Release** 流程
+- Case-03 永远不修改系统——任何系统修改需求不得直接实现，只能以 Feedback 或 Issue 提出
 
 ### D2 — 平台受保护文件（Platform Protected Files，User 只读）
 
@@ -112,18 +131,30 @@ Case-02（User）         Case-03（User）
 
 - 日常工作（写知识、做项目、拍照、考研）**不会污染平台**——因为 Workspace 与 Core 在权限上已隔离。
 - 平台升级**都有版本、有验证、有回滚**——因为 Platform 的唯一写入口是 Developer 的 Release。
-- Case-02/03 **永远不会因为一次日常操作，把 Workspace 内容带回 Core**——因为写 Core 的能力不存在。
+- Case-02 可以开发 Feature Branch 但不能直接合并到 Core 主线
+- Case-03 永远不会因为一次日常操作把 Workspace 内容带回 Core——因为写 Core 的能力不存在。
 
 ### D5 — 平台改进通道（Improvement Channel）
 
-User 若想到平台改进：
+三实例各有不同的改进通道：
 
-1. **记录**（Issue / Feedback / Observation），**不自主改**。
-2. **发给 Developer**（Case-01）。
-3. Developer 决定是否进入 **CASE → ADR → Blueprint → Release**。
-4. User 在下一轮 **Release** 中 `git pull` 获得能力。
+**Case-02（Developer & Integration Environment）**
+1. 在 Feature Branch 上开发和测试新功能
+2. 验证完成后提交 Proposal 给 Case-01
+3. Case-01 Review -> 通过则进入 Integration Validation / 拒绝则记录为 Observation
+4. **Integration Validation**：Case-02 Pull 变更并在本机全环境验证（Windows / Git / Manifest / Workspace / Automation / SOP）
+5. 确认无误后 Case-01 打 Tag 进入 Release
+6. Case-02 不直接合并到 Core 主线
 
-User **不得**直接改：ADR / Automation / Registry / Architecture / Lifecycle。
+**Case-03（Pilot User）**
+1. 记录 Issue / Feedback / Observation / Experience Report
+2. 发给 Maintainer（Case-01）——**不得直接实现任何系统修改**
+3. Case-01 决定是否进入 Proposal Pool
+4. 在下一轮 Release 中 git pull 获得能力
+
+**共同约束**：任何实例不得直接修改 30_SYSTEM/、40_AUTOMATION/、RELEASES/ 等受保护平台文件。
+
+**Case-03 铁律**：任何系统修改需求不得直接实现，只能以 Feedback 或 Issue 提出——一旦开始自己修，用户视角就消失了。
 
 ### D6 — 取代"用户 push Core"机制
 

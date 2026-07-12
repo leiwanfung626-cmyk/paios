@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "paios-platform"
+version = "1.0.1"
+description = "Personal AI Operating System — 个人人工智能操作系统"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["ai", "knowledge-management", "personal-os", "lifecycle-management"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Office/Business :: Knowledge Management",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/leiwanfung626-cmyk/paios"
+Repository = "https://github.com/leiwanfung626-cmyk/paios"
+Changelog = "https://github.com/leiwanfung626-cmyk/paios/blob/master/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = []  # PAIOS is a platform, not a Python package — scripts are standalone
+
+[tool.pytest.ini_options]
+testpaths = ["40_AUTOMATION/08_TESTS"]
+python_files = ["test_*.py"]

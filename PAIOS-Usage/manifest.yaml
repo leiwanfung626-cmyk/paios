@@ -12,9 +12,9 @@ instance:
   privacy: share
 
 usage:
-  last_active: 2026-07-10
-  active_days_30d: 8
-  git_commits_total: 21
+  last_active: 2026-07-11
+  active_days_30d: 9
+  git_commits_total: 35
 
 features:
   capture: true
@@ -26,9 +26,9 @@ features:
   review: false
 
 assets:
-  references: 11
-  concepts: 3
-  decisions: 3
+  references: 9
+  concepts: 2
+  decisions: 2
   models: 2
   methods: 2
   sops: 2
@@ -66,6 +66,10 @@ evidence:
   - object: ADR-0012
     level: Accepted
   - object: ADR-0016
+    level: Accepted
+  - object: ADR-0017
+    level: Accepted
+  - object: ADR-0018
     level: Accepted
   - object: ADR-0014
     level: Proposed
