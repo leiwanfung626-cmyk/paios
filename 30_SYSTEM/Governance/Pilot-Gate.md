@@ -70,7 +70,44 @@ Pilot 实例需持续正常输出以下信号（以 Phase B 为例，其他 Phas
 
 ---
 
-## 5. 单实例试点模式
+## 5. Engineering Pilot 里程碑
+
+14 天 Pilot 不是等待时间，而是完成 5 个里程碑：
+
+| 里程碑 | 内容 | 完成标志 |
+|--------|------|----------|
+| **M1** | 单实例治理稳定 | 治理体系（ADR/SOP/Stories/Journal/Pilot Report）能在 Case-01 上正常运行 3 天 |
+| **M2** | AI Operating Model 跑通 | 至少 1 次完整流程：Idea -> Proposal -> Dev -> Review -> Audit -> Maintainer |
+| **M3** | Case-02 Developer 验证 | Case-02 按 Developer 角色完成 1 次 Feature Branch + Proposal 流程 |
+| **M4** | Case-03 Pilot User 验证 | Case-03 按 Pilot User 角色完成升级 + 使用 + Issue 反馈流程 |
+| **M5** | Engineering Pilot Exit | 全部 Exit Criteria 满足，pilot 分支合并回 master |
+
+### Daily Pilot Cycle
+
+每天形成完整闭环：
+
+```
+上午：WorkBuddy 日常工作
+  |  发现需求
+  v
+ChatGPT 架构讨论 -> Proposal
+  v
+Reasonix 开发实现
+  v
+ChatGPT Review + Code Review
+  v
+Commit 到 pilot 分支
+  v
+Pilot Report（每天一篇）
+  v
+结束
+```
+
+**纪律**：每天结束前，`pilot` 分支必须能独立运行——不可留下半成品代码导致无法工作。
+
+---
+
+## 6. 单实例试点模式
 
 利用实例天然角色差异选 Pilot：
 
@@ -79,7 +116,7 @@ Pilot 实例需持续正常输出以下信号（以 Phase B 为例，其他 Phas
 
 ---
 
-## 6. 复用规则
+## 7. 复用规则
 
 - 任何 L3 级变更：Pilot 不可跳过。
 - Pilot 期间发现设计缺陷：回到 Blueprint / ADR 修订，重新 Freeze，不带着缺陷 Rollout。

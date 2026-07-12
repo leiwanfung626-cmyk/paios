@@ -25,11 +25,24 @@ feature/*       ●──●──●   ●──●──●
 feature/cross-engine-runtime ●────●────●
 ```
 
-### master（主分支）
+### master（主分支——生产就绪）
 
-- **始终可发布**。Master 上的每次提交都应处于可发布状态。
-- 所有 Release Tag 从 master 打出。
-- 禁止直接在 master 上开发——所有变更经 PR 或 feature 分支合并。
+- **唯一可发布的分支**。Master 始终处于生产就绪状态。
+- 所有 Release Tag 仅从 master 打出。
+- 禁止直接在 master 上开发——变更须经由 pilot 或 feature 分支。
+- Pilot 期间 master 保持冻结，仅接受 Pilot 过闸后的合并。
+
+### pilot（工程试运行分支）
+
+- 命名：`pilot`（固定名称）
+- 用途：**Engineering Pilot** 期间的全部开发在此进行
+- 生命周期：从 master 分出 -> 每日 Commit -> Pilot Exit -> 合并回 master -> 删除
+- **纪律**：
+  - Commit - 每天结束前所有修改需提交
+  - Push - Pilot 期间不推送到 origin
+  - Merge to master - 仅 Pilot Exit 后合并
+  - 每天结束前 pilot 分支必须能独立运行（不可留下半成品代码）
+- 适用阶段：L3 架构变更后的 Engineering Pilot 阶段
 
 ### feature/*（功能分支）
 
