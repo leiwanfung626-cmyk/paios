@@ -9,9 +9,9 @@ related:
   - ../Evolution/Phase-B-Core-Workspace-Split.md
 ---
 
-# Pilot Gate（试点门槛）
+# Pilot Gate（试点门槛）—— Engineering Pilot
 
-> 设计冻结之后、全量推广之前，**必须**经过单实例试点。
+> **Engineering Pilot**（工程试运行）：设计冻结之后、全量推广之前，必须经过工程试运行。
 > Pilot 不是"感觉没问题就过"，而是**满足固定 Exit Criteria 才过闸**。
 > 本规范独立于任何 Phase，Phase B / C / D 复用。
 
@@ -55,13 +55,16 @@ Pilot 实例需持续正常输出以下信号（以 Phase B 为例，其他 Phas
 
 **全部满足**才允许 Rollout：
 
-| 标准 | 阈值 |
-|------|------|
-| 试点时长 | 连续 **14 天** 无中断 |
-| Critical 缺陷 | **0**（无数据丢失、无 manifest 冲突、无 Workspace 泄漏） |
-| Data Loss | **0**（物理隔离类操作前已验证磁盘保留） |
-| Merge | **Normal**（与远端可分叉正常合并，无 Workspace 写回） |
-| Manifest | **Stable**（`manifest_version` 稳定，schema 无漂移） |
+| 类别 | 标准 | 阈值 |
+|------|------|------|
+| 技术 | Critical 缺陷 | **0**（无数据丢失、无 manifest 冲突、无 Workspace 泄漏） |
+| 数据 | Data Loss | **0**（物理隔离类操作前已验证磁盘保留） |
+| Git | 分支污染 | **0**（与远端可分叉正常合并，无 Workspace 写回）；**无长期未解决的 merge conflict** |
+| Git | 时间 | 连续 **14 天** 无中断 |
+| Manifest | Schema 稳定性 | **Stable**（`manifest_version` 稳定，schema 无漂移） |
+| 治理 | ADR / SOP / Stories | 能支撑真实开发（至少 1 次完整 Proposal→Dev→Review→Audit→Merge 流程验证） |
+| AI | AI Operating Model | 至少完整跑通 **3 次** 任务路由（Idea→Proposal→Dev→Review→Audit→Maintainer） |
+| Human | 多实例流程 | Case-01/02/03 角色验证完成（每个角色至少 1 次按 Operating Model 操作） |
 
 > 过闸靠**满足标准**，不靠"感觉"。未满足则延长 Pilot，不强行 Rollout。
 
