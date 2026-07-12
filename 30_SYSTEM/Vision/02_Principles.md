@@ -12,7 +12,7 @@
 | 3 | **The workspace is always temporary** | 工作区（10_WORK）永远是临时缓冲区 |
 | 4 | **Knowledge must be validated before entering the knowledge base** | 知识必须经过验证才能进入 20_KNOWLEDGE |
 | 5 | **Automation stores workflows, not knowledge** | 自动化层只存放工作流，不存放知识 |
-| 6 | **Keep the top-level directory count low** | 顶层目录冻结为 7 个，不随意增加 |
+| 6 | **Keep the top-level directory count low** | 顶层目录冻结为 00-90 十层模型，不随意增加 |
 | 7 | **Metadata is the primary classification system** | 元数据是主要分类手段，而非目录结构 |
 | 8 | **Tool Independence** | 平台不依赖任何特定 AI 工具，所有资产使用开放格式（Markdown/YAML/JSON/Python） |
 | 9 | **Bootstrap First** | 每次会话必须先加载平台治理信息（Principles → ADR → Registry → Manifest） |

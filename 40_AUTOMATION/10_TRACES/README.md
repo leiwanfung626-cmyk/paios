@@ -88,8 +88,8 @@ Task 是 **PAIOS 的跨引擎继承单元**。
 | `10_WORK/{task}/task.yaml` | 任务定义（不变） | 目标、范围、创建时间 |
 | `10_WORK/{task}/handoff.yaml` | 交接文件（可变） | 当前进度、已完成、下一步、已知问题 |
 | `10_TRACES/artifacts/` | Artifact 引用（轻量） | 引擎 + 时间 + URI 引用 |
-| `50_RUNTIME/adapters/` | 引擎适配器（接口层） | read_trace / export_context / probe |
-| `50_RUNTIME/engines/` | 引擎运行时配置 | 引擎调度、状态 |
+| `40_AUTOMATION/04_ADAPTERS/` | 引擎适配器（接口层） | read_trace / export_context / probe |
+| `40_AUTOMATION/11_ENGINES/` | 引擎运行时配置 | 引擎调度、状态 |
 | `.reasonix/` | Reasonix 私有痕迹 | session JSON（内容实际存储处） |
 | `.workbuddy/memory/` | WorkBuddy 私有日志 | Markdown 日志（内容实际存储处） |
 
@@ -99,4 +99,4 @@ Task 是 **PAIOS 的跨引擎继承单元**。
 - `00_REGISTRY/agents.yaml`（引擎注册表）
 - `00_REGISTRY/workflows.yaml`（工作流注册表）
 - `00_REGISTRY/adapters.yaml`（Adapter 注册表）
-- `50_RUNTIME/adapters/`（Adapter 脚本）
+- `04_ADAPTERS/`（Adapter 脚本）

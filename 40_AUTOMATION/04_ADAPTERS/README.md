@@ -1,7 +1,8 @@
-# 此目录已迁移
+# 适配器目录
 
-Adapters 已移至 `50_RUNTIME/adapters/`。
+Adapters 位于 `04_ADAPTERS/`（40_AUTOMATION 子层）。
 
-**原因**：Adapter 属于平台运行时（Platform Runtime），不属于自动化层（Automation）。
+**定位**：Adapter 是平台运行时与自动化引擎之间的接口层，
+属于 40_AUTOMATION 的能力执行域。
 
-见 ADR-0017 + 50_RUNTIME/adapters/README.md
+见 ADR-0017 + 04_ADAPTERS/README.md

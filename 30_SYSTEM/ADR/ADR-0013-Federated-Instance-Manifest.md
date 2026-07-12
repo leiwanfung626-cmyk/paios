@@ -203,7 +203,7 @@ Fleet Dashboard 应输出：
 
 最小可行，不建复杂 Dashboard：
 
-1. **`collect_manifest.py`**：遍历 `20_KNOWLEDGE/*` 计数、`git log` 取 commits/active days、读 `10_WORK/Active` 取项目 → 输出 `PAIOS-Usage/manifest.yaml`
+1. **`collect_manifest.py`**：遍历 `20_KNOWLEDGE/*` 计数、`git log` 取 commits/active days、读 `10_WORK/Active` 取项目 → 输出 `30_SYSTEM/PAIOS-Usage/manifest.yaml`
 2. **`fleet/aggregate.py`**：读所有 `manifests/*.yaml` → 合并成 `fleet-YYYY-Www.md` 周报
 3. 先在当前单实例跑通验证脚本正确性，再扩展到多实例
 

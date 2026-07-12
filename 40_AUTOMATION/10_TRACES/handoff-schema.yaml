@@ -159,11 +159,11 @@ handoff_protocol:
   handoff_out:
     - "更新 handoff.yaml 中的所有字段"
     - "写入 artifacts/ 记录（指向引擎原生产物）"
-    - "可选：写 50_RUNTIME/engines/{task_id}/state.yaml 保存执行状态"
+    - "可选：写 40_AUTOMATION/11_ENGINES/{task_id}/state.yaml 保存执行状态"
 
   handoff_in:
     - "读取 handoff.yaml → 恢复上下文"
     - "读取 artifacts/ 记录 → 了解历史工作"
-    - "读取 50_RUNTIME/engines/{task_id}/state.yaml（如有）→ 恢复执行状态"
+    - "读取 40_AUTOMATION/11_ENGINES/{task_id}/state.yaml（如有）→ 恢复执行状态"
     - "执行工作"
     - "更新 handoff.yaml"

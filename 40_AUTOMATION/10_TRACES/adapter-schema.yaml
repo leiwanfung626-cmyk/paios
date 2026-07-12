@@ -110,4 +110,4 @@ fields:
 
 # ── 文件组织 ─────────────────────────────────────
 
-file_location: "40_AUTOMATION/00_REGISTRY/adapters.yaml（注册表）+ 50_RUNTIME/adapters/{adapter_id}/（脚本）"
+file_location: "40_AUTOMATION/00_REGISTRY/adapters.yaml（注册表）+ 40_AUTOMATION/04_ADAPTERS/{adapter_id}/（脚本）"

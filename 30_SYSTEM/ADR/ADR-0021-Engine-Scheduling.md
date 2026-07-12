@@ -1,9 +1,15 @@
-# ADR-0018: 引擎调度层（Engine Scheduling）
+# ADR-0021: 引擎调度层（Engine Scheduling）
 
 ## Status
 Experimental
 
 > 2026-07-11: Scheduler 已实现（policy.yaml + rules.yaml），但尚未经多引擎运行时验证。进入 Experimental 阶段。
+>
+> **2026-07-12: 50_RUNTIME 内容已合并至 40_AUTOMATION。**
+> Engine Scheduler → `40_AUTOMATION/12_SCHEDULER/`
+> Engine Status   → `40_AUTOMATION/11_ENGINES/`
+> Adapter 脚本    → `40_AUTOMATION/04_ADAPTERS/`
+> 目录 50_RUNTIME/ 已删除。任何后续实现请直接写入 40_AUTOMATION/ 下对应子目录。
 
 ---
 
@@ -24,7 +30,7 @@ Workflow 定义:  photo_organizer_flow.ingest
                  ↓
 谁来选?          ❌ 人工选（当前做法）
                  ❌ 写死在 workflow 里（ADR-0017 v1 的错误）
-                 ✅ 调度层自动选（需要 ADR-0018）
+                 ✅ 调度层自动选（需要 ADR-0021）
 ```
 
 调度决策需要考虑的因素：

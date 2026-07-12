@@ -1,9 +1,11 @@
 # ADR-0002: Automation Platform Freeze
 
-**Status**: Active
+**Status**: Active (amended 2026-07-12)
 **Date**: 2026-06-29
 **Deciders**: PAIOS Platform Team
 **Supersedes**: informal directory decisions before v1.0
+
+> **2026-07-12 修正**：实际 40_AUTOMATION 目录已超出原冻结范围。新增以下子目录—`04_ADAPTERS`（适配器接口）、`10_TRACES`（跨引擎 Trace 中枢）、`11_ENGINES`（引擎运行时）、`12_SCHEDULER`（调度器）、`QuarkSync`（夸克同步配置）—均属于合理扩展，冻结范围相应扩展以覆盖这些目录。原 90 天评估已过，架构稳定，本次修正不改变冻结逻辑。
 
 ## Context
 

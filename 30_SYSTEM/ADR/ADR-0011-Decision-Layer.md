@@ -40,8 +40,8 @@ PAIOS 的核心关注点是决策而非知识存储。传统系统优先优化"�
 
 | 系统层级 | ADR 对应 | Impact Level |
 |---------|---------|-------------|
-| Philosophy | ADR-??? | L4 |
-| Architecture | ADR-0003~0011 | L3 |
+| Philosophy | ADR-（未分配） | L4 |
+| Architecture | ADR-0003~0021 | L3 |
 | Behavior | ADR-0002（Freeze） | L2 |
 | Configuration | 无需 ADR | L1 |
 | Documentation | 无需 ADR | L0 |

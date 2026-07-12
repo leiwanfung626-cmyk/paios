@@ -1,9 +1,14 @@
-# ADR-0017: 跨引擎工作上下文继承标准（Cross-Engine Work Context Inheritance）
+# ADR-0020: 跨引擎工作上下文继承标准（Cross-Engine Work Context Inheritance）
 
 ## Status
 Experimental
 
 > 2026-07-11: 从 Accepted 降级为 Experimental。50_RUNTIME 是新增平台层，需验证后方可成为 Core。
+>
+> **2026-07-12: 50_RUNTIME 已合并至 40_AUTOMATION，不再作为独立平台层。**
+> Adapter 接口 → `40_AUTOMATION/04_ADAPTERS/`
+> Trace 中枢   → `40_AUTOMATION/10_TRACES/`
+> 目录 50_RUNTIME/ 已删除。后续 Trace/Adapter 实现请直接写入 40_AUTOMATION/。
 
 ---
 
@@ -268,7 +273,7 @@ engines:
 
 ### Migration
 
-- 旧版 ADR-0017 的 `10_TRACES/traces/` 目录保留但标记为 deprecated
+- 旧版（原 ADR-0017）的 `10_TRACES/traces/` 目录保留但标记为 deprecated
 - `10_TRACES/sessions/` 替换为 `10_TRACES/tasks/`
 - 各引擎逐步添加 Adapter 实现
 - `engine_hints` 从 workflow 定义中移除，改为调度层配置

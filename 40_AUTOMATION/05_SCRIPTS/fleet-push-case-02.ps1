@@ -53,7 +53,7 @@ $null = New-Item -ItemType Directory -Path $FLEET_DIR -Force
 # 带日期戳的历史副本
 $datedFile = "$FLEET_DIR\case-02-$TODAY.yaml"
 try {
-    Copy-Item "$PAIOS_ROOT\PAIOS-Usage\manifest.yaml" -Destination $datedFile -Force
+    Copy-Item "$PAIOS_ROOT\30_SYSTEM\PAIOS-Usage\manifest.yaml" -Destination $datedFile -Force
     Write-Log "[OK] 历史副本: case-02-$TODAY.yaml"
 } catch {
     Write-Log "[WARN] 历史副本写入失败: $_"
@@ -62,7 +62,7 @@ try {
 # 最新版（始终覆盖）
 $latestFile = "$FLEET_DIR\case-02.yaml"
 try {
-    Copy-Item "$PAIOS_ROOT\PAIOS-Usage\manifest.yaml" -Destination $latestFile -Force
+    Copy-Item "$PAIOS_ROOT\30_SYSTEM\PAIOS-Usage\manifest.yaml" -Destination $latestFile -Force
     Write-Log "[OK] 最新版: case-02.yaml"
 } catch {
     Write-Log "[WARN] 最新版写入失败: $_"

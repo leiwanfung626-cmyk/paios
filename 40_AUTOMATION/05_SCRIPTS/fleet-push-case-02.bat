@@ -41,7 +41,7 @@ echo [OK] Manifest generated
 REM --- Step 2: publish to FleetExchange ---
 echo [%TIME%] [2/3] Publishing to FleetExchange... >> "%LOG_FILE%"
 echo [2/3] Publishing to FleetExchange...
-copy /Y "%PAIOS_ROOT%\PAIOS-Usage\manifest.yaml" "%FLEET_EXCHANGE%\manifest.yaml" > nul
+copy /Y "%PAIOS_ROOT%\30_SYSTEM\PAIOS-Usage\manifest.yaml" "%FLEET_EXCHANGE%\manifest.yaml" > nul
 if %ERRORLEVEL% equ 0 (
     echo [%TIME%] [OK] FleetExchange: manifest.yaml >> "%LOG_FILE%"
     echo [OK] FleetExchange: manifest.yaml
@@ -53,7 +53,7 @@ if %ERRORLEVEL% equ 0 (
 REM --- Step 3: local archive ---
 echo [%TIME%] [3/3] Local archive... >> "%LOG_FILE%"
 echo [3/3] Local archive...
-copy /Y "%PAIOS_ROOT%\PAIOS-Usage\manifest.yaml" "%FLEET_DIR%\case-02-%TODAY%.yaml" > nul
+copy /Y "%PAIOS_ROOT%\30_SYSTEM\PAIOS-Usage\manifest.yaml" "%FLEET_DIR%\case-02-%TODAY%.yaml" > nul
 if %ERRORLEVEL% equ 0 (
     echo [%TIME%] [OK] Archive: case-02-%TODAY%.yaml >> "%LOG_FILE%"
     echo [OK] Archive: case-02-%TODAY%.yaml
@@ -61,7 +61,7 @@ if %ERRORLEVEL% equ 0 (
     echo [%TIME%] [WARN] Archive write failed >> "%LOG_FILE%"
     echo [WARN] Archive write failed
 )
-copy /Y "%PAIOS_ROOT%\PAIOS-Usage\manifest.yaml" "%FLEET_DIR%\case-02.yaml" > nul
+copy /Y "%PAIOS_ROOT%\30_SYSTEM\PAIOS-Usage\manifest.yaml" "%FLEET_DIR%\case-02.yaml" > nul
 if %ERRORLEVEL% equ 0 (
     echo [%TIME%] [OK] Latest: case-02.yaml >> "%LOG_FILE%"
     echo [OK] Latest: case-02.yaml

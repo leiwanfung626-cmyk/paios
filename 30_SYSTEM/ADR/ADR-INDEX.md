@@ -5,7 +5,7 @@
 | ADR | Status | Date | Title |
 |-----|--------|------|-------|
 | ADR-0002 | Active | 2026-06-29 | Automation Platform Freeze |
-| ADR-0003 | Accepted | 2026-06-29 | Directory Architecture (7-Layer) |
+| ADR-0003 | Accepted | 2026-06-29 | Directory Architecture (10-Layer 00-90) |
 | ADR-0004 | Accepted | 2026-06-29 | Knowledge Layer Design |
 | ADR-0005 | Accepted | 2026-06-29 | Workflow Pipeline |
 | ADR-0006 | Accepted | 2026-06-29 | Metadata Standard |
@@ -33,6 +33,13 @@
 | ADR | Status | Date | Title |
 |-----|--------|------|-------|
 | ADR-9999 | Accepted | 2026-06-29 | Legacy Retention Policy |
+
+## Experimental / Historical（实验性 / 已吸收）
+
+| ADR | Status | Date | Title | Note |
+|-----|--------|------|-------|------|
+| ADR-0020 | Experimental | 2026-07-11 | Cross-Engine Trace & Work Context Inheritance | 原 ADR-0017（冲突编号）。四层 Trace 架构实验，50_RUNTIME 合并至 40_AUTOMATION 后已吸收 |
+| ADR-0021 | Experimental | 2026-07-11 | Engine Scheduling & Runtime Management | 原 ADR-0018（冲突编号）。Engine Scheduler 实验，内容已移至 40_AUTOMATION/11_ENGINES/ + 12_SCHEDULER/ |
 
 ## Architecture Evidence（架构证据 / Case Studies）
 

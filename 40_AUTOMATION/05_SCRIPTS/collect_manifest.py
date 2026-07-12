@@ -31,7 +31,7 @@ if not os.path.isdir(os.path.join(PAIOS_ROOT, "20_KNOWLEDGE")):
     # 允许通过环境变量覆盖
     PAIOS_ROOT = os.environ.get("PAIOS_ROOT", PAIOS_ROOT)
 
-USAGE_DIR = os.path.join(PAIOS_ROOT, "PAIOS-Usage")
+USAGE_DIR = os.path.join(PAIOS_ROOT, "30_SYSTEM", "PAIOS-Usage")
 ID_FILE = os.path.join(USAGE_DIR, "instance-id.txt")
 PROFILE_FILE = os.path.join(USAGE_DIR, "profile.yaml")
 MANIFEST_FILE = os.path.join(USAGE_DIR, "manifest.yaml")
