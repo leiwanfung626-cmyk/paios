@@ -10,6 +10,7 @@ related:
   - ../Principles.md
   - ../SOP/SOP-2026-07-10-0001-Release-Flow.md
   - ../Governance/AI-Operating-Model.md
+  - ../Specifications/AI-Packets/README.md
 ---
 
 # ADR-0019 — AI Engine Role Model（AI 引擎角色模型）
@@ -35,6 +36,7 @@ PAIOS 长期同时使用多个 AI 引擎（WorkBuddy、Reasonix、ChatGPT Web、
 - **AI Engine 不拥有平台权限，只拥有角色权限**
 - **Engine may change. Role remains.**
 - **AI 负责专业意见，人（Case-01 Maintainer）负责最终决策**
+- **结构化 AI 通信**：AI 与 AI 的协作应传递结构化成果（Proposal、Decision、Review、Context Packet），而不是完整聊天记录
 
 ---
 

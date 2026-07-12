@@ -41,14 +41,16 @@ Engine Registry
     └── Access Scope（可访问的目录/文件范围）
 ```
 
-### 1.2 两层结构
+### 1.2 三层结构
 
 ```
 AI Operating Model
     ├── Layer 1: Static Role（静态角色定义）
     │   └── 谁负责什么
-    └── Layer 2: Task Routing（动态任务路由）
-        └── 一个 Task 如何流动
+    ├── Layer 2: Task Routing（动态任务路由）
+    │   └── 一个 Task 如何流动
+    └── Layer 3: Structured Communication（结构化通信）
+        └── AI 之间如何高效传递信息
 ```
 
 ---
@@ -265,7 +267,60 @@ context_packet:
 
 ---
 
-## 8. 与 Human Role Model 的关系
+## 8. Layer 3: 结构化 AI 通信（Structured AI Communication）
+
+### 8.1 问题
+
+当前 AI 引擎间采用**人工中继**模式——ChatGPT 的讨论结果需人工复制给 Reasonix，几轮后 Token 膨胀、信息丢失、效率下降。
+
+### 8.2 原则
+
+> **AI 与 AI 的协作，应传递结构化成果（Proposal、Decision、Review、Context Packet），而不是完整聊天记录。**
+
+### 8.3 Packet 协议
+
+AI 之间传递四种标准 Packet（详见 `30_SYSTEM/Specifications/AI-Packets/`）：
+
+| Packet | 用途 | 发送方 -> 接收方 |
+|--------|------|-----------------|
+| **Task Packet** | 指派具体开发/修改任务 | Architect -> Developer |
+| **Decision Packet** | 记录讨论结论和取舍 | Architect -> 所有参与方 |
+| **Review Packet** | 发起审查请求 | Developer -> Reviewer |
+| **Context Packet** | 任务流转时携带的上下文 | 引擎间传递 |
+
+### 8.4 文档流模型
+
+AI 之间不直接聊天，而是通过文档交互：
+
+```
+ChatGPT（Architect）
+    |  输出 Proposal.md
+    v
+Proposal.md（结构化任务）
+    |  读取 + 执行
+    v
+Reasonix（Developer）
+    |  输出 Review.md（如有审查需求）
+    v
+Review.md（结构化审查请求）
+    |  读取 + 审查
+    v
+ChatGPT（Reviewer）
+```
+
+### 8.5 传递规则
+
+| 可以传递 | 不建议传递 |
+|----------|-----------|
+| Task Packet | 30 轮聊天记录 |
+| Decision Packet | 全部推理过程 |
+| Review Packet | 全部历史上下文 |
+| Context Packet | 整个聊天窗口 |
+| Diff / Proposal | 未结构化的长篇讨论 |
+
+---
+
+## 9. 与 Human Role Model 的关系
 
 ```
                  Human Layer（ADR-0018）
