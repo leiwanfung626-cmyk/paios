@@ -1,0 +1,35 @@
+# Task Packet Schema
+# AI 自动生成，用于 Architect -> Developer 的任务指派
+
+task:
+  type: object
+  required: [id, title, background, need, expected_output]
+  fields:
+    id:
+      type: string
+      pattern: "PAIOS-\\d{8}-\\d{3}"
+      description: "任务唯一标识，AI 自动生成"
+    title:
+      type: string
+      max_length: 80
+      description: "简短的标题"
+    background:
+      type: text
+      description: "为什么需要做这件事？当前状态 + 触发原因"
+    question:
+      type: text
+      description: "需要解决什么问题？"
+    current_decision:
+      type: text
+      description: "已经确定的方案（如有）"
+    need:
+      type: list
+      items: string
+      description: "需要修改哪些文件/模块"
+    constraints:
+      type: text
+      description: "不修改的范围 / 必须遵守的原则"
+    expected_output:
+      type: list
+      items: string
+      description: "期望的输出（修改后的文件 / Diff / 风险说明）"

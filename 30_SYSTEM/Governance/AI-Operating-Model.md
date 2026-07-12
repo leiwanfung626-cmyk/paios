@@ -276,10 +276,14 @@ context_packet:
 ### 8.2 原则
 
 > **AI 与 AI 的协作，应传递结构化成果（Proposal、Decision、Review、Context Packet），而不是完整聊天记录。**
+>
+> **Packet 由 AI 自动生成，人工只负责批准/否决——不是让人学会填写 Packet，而是让 AI 在协作过程中自动生成结构化交接信息。**
+
+详见 [AI-Communication-Protocol.md](AI-Communication-Protocol.md) 和 [Packet-Schemas/](Packet-Schemas/)。
 
 ### 8.3 Packet 协议
 
-AI 之间传递四种标准 Packet（详见 `30_SYSTEM/Specifications/AI-Packets/`）：
+AI 之间传递四种标准 Packet（详见 Packet-Schemas/ 和 AI-Communication-Protocol.md）：
 
 | Packet | 用途 | 发送方 -> 接收方 |
 |--------|------|-----------------|
@@ -317,6 +321,39 @@ ChatGPT（Reviewer）
 | Review Packet | 全部历史上下文 |
 | Context Packet | 整个聊天窗口 |
 | Diff / Proposal | 未结构化的长篇讨论 |
+
+### 8.6 自动生成 + 人工审批模型
+
+**Packet 由 AI 自动生成，人工只负责批准/否决。**
+
+```
+AI-1（ChatGPT）
+    |  讨论 -> 自动生成 Decision Packet
+    v
+Inbox（Human Review）—— 批准 / 否决
+    |
+    v
+AI-2（Reasonix）
+    |  按 Task Packet 实现 -> 自动生成 Review Packet
+    v
+Inbox（Human Review）—— 批准 / 否决
+    |
+    v
+AI-3（Codex / CloudCore）
+    |  Review -> 自动生成 Audit Report
+    v
+Inbox（Human Review）—— 批准 / 否决
+    |
+    v
+Human（Case-01 Maintainer）
+    最终决策 -> Release
+```
+
+**约束**：
+- AI 自动生成但**不得自动修改核心文档**
+- 所有平台文件修改须经 Human Review
+- Packet 可审计——每次交接有明确输入、输出和决策依据
+- 详见 [AI-Communication-Protocol.md](AI-Communication-Protocol.md)
 
 ---
 

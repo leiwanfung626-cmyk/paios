@@ -1,0 +1,33 @@
+# Review Packet Schema
+# AI 自动生成，用于 Developer -> Reviewer 的审查请求
+
+review:
+  type: object
+  required: [author, target, summary, question, need_feedback]
+  fields:
+    author:
+      type: string
+      description: "提交审查的引擎名称"
+    target:
+      type: string
+      description: "被审查的文件/模块"
+    summary:
+      type: text
+      description: "修改了什么？一句话概括"
+    question:
+      type: text
+      description: "需要 Reviewer 重点关注什么"
+    need_feedback:
+      type: object
+      required: [type, focus]
+      fields:
+        type:
+          type: enum
+          values: [architecture, code, independent]
+          description: "审查类型"
+        focus:
+          type: text
+          description: "审查焦点描述"
+    context:
+      type: text
+      description: "补充上下文（可选）"
