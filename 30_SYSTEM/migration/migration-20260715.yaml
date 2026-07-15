@@ -8,12 +8,15 @@ migration:
 
   # ── 状态机 ──────────────────────────────────────────
   # INIT → AUDITED → CONVERGED → GOVERNED → STABLE → REFACTORED → COMPLETED
-  state: INIT
+  state: AUDITED
 
   state_history:
     - state: INIT
       date: 2026-07-15T20:00:00+08:00
       note: "骨架建立，路径协议写入"
+    - state: AUDITED
+      date: 2026-07-15T20:15:00+08:00
+      note: "Packet 文档完成，Phase 1 Init 全部交付"
 
   # ── 来源实例 ────────────────────────────────────────
   source_instances:
@@ -53,7 +56,7 @@ migration:
   phases:
     - phase: 1
       name: Init
-      state: INIT
+      state: AUDITED
       status: completed
       description: "骨架建立、git clone、分支创建、路径协议写入"
 
