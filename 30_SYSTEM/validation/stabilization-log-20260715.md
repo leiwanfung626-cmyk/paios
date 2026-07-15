@@ -89,6 +89,26 @@ Three indicators to watch during validation. More important than code bugs.
 
 ---
 
+## Portable Runtime Validation
+
+Specific to U盘 operation across multiple computers.
+
+### 1. Drive Letter Changes
+- Validate that `$PAIOS_ROOT` is the sole entry point — no hardcoded `D:` paths anywhere
+- Test on feng (likely D:) and evan (may differ)
+
+### 2. Git on Removable Media
+- `git status` — confirm no ownership errors, no mass file mode changes, no CRLF flood
+- Windows + U盘最常见的陷阱: "1000 files changed" 实际只是换行符
+
+### 3. Alternating Workflow
+At least one cross-machine cycle before Day 7:
+- feng: create task → commit
+- evan: insert U盘 → pull → continue work
+- Verify PAIOS behaves like a portable identity, not a fixed-machine install
+
+---
+
 ## Acceptance Criteria (Day 7)
 
 - [ ] **System Layer**: git normal, manifest valid, migration state accurate
@@ -106,4 +126,4 @@ Items discovered during Phase 4 that belong in Phase 5. See also `30_SYSTEM/Gove
 
 | Date | Type | Description | Target Phase |
 |------|------|-------------|-------------|
-| — | — | — | Phase-5 |
+| 2026-07-15 | architecture | INDEX路径与资产路径跨机器绑定问题。建议Phase 5引入ASSET_REGISTRY.yaml | Phase-5 |

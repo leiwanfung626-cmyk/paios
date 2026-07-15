@@ -119,3 +119,11 @@ backlog:
     issue: "审计报告引用 F:\PAIOS 路径，当时为 Case-01 feng。现需确认审计结论是否仍适用于 PAIOS-PORTABLE"
     priority: P2
     action: review_later
+
+  # ── P2 架构：INDEX 路径与资产绑定 ────────────
+  - id: ARCH-INDEX-PATH-BINDING
+    category: architecture
+    issue: "INDEX/face-index 中的照片路径引用可能绑定到原电脑盘符 (E:/F:)。双电脑切换时路径可能失效"
+    proposal: "Phase 5 引入 ASSET_REGISTRY.yaml，按 machine 声明资产路径。例如: photo_library: { locations: [{machine: feng, path: E:/照片}, {machine: evan, path: F:/照片}] }"
+    priority: P2
+    action: Phase-5
