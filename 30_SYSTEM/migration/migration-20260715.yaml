@@ -8,7 +8,7 @@ migration:
 
   # ── 状态机 ──────────────────────────────────────────
   # INIT → AUDITED → CONVERGED → GOVERNED → STABLE → REFACTORED → COMPLETED
-  state: CONVERGED
+  state: GOVERNED
 
   state_history:
     - state: INIT
@@ -20,6 +20,9 @@ migration:
     - state: CONVERGED
       date: 2026-07-15T20:45:00+08:00
       note: "双实例 git 合并 + 资产复制完成，MERGE-LOG-001 已生成"
+    - state: GOVERNED
+      date: 2026-07-15T21:00:00+08:00
+      note: "Phase 3 治理审计完成。asset-review.yaml + refactor-backlog.yaml + 差异报告已生成"
 
   # ── 来源实例 ────────────────────────────────────────
   source_instances:
@@ -69,11 +72,17 @@ migration:
       status: completed
       description: "双实例资产合并（pilot + case-02-dev → portable-master）"
 
+    - phase: 2.5
+      name: Freeze Check
+      state: CONVERGED
+      status: completed
+      description: "Git 完整性确认 + CONVERGED 快照"
+
     - phase: 3
       name: Governance
       state: GOVERNED
-      status: pending
-      description: "资产治理审计（Keep/Merge/Refactor/Archive/Deprecate）"
+      status: completed
+      description: "资产治理审计，生成 asset-review.yaml + refactor-backlog.yaml + 差异报告"
 
     - phase: 4
       name: Stabilize
