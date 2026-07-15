@@ -10,6 +10,7 @@
 | 1 | **数据不进 PAIOS** | 下载的文件、图片、视频 → `E:\QuarkSync\DATA\` |
 | 2 | **Cache 不进 Active** | .venv、模型缓存、临时输出 → `10_WORK/Runtime/` 或 `70_TMP/` |
 | 3 | **衍生数据不进 Git** | 人脸索引、嵌入向量等 → `50_DATA/`（不同步） |
+| 4 | **外部数据只读** | `G:\workspace` `H:\workspace` 只读不写，经 `source.md` 引用 |
 
 ## 详细
 
@@ -29,6 +30,14 @@
 - ❌ 把下载文件放到 `E:\PAIOS\` 根目录
 - ❌ 把 .venv 放在项目源码目录（放 `Runtime/`）
 - ❌ 把 git 不跟踪的大文件提交到仓库
+- ❌ 向 `G:\workspace` / `H:\workspace` 写入任何文件（只引用，不修改）
+
+### 外部数据源（只读引用）
+
+- `G:\workspace` / `H:\workspace` 的业务数据：**只读，绝不写入**
+- 引用方式：在对应知识文档用 `source.md` 指向原路径，不复制、不迁移
+- 如需纳入长期资产：摘取要点写入 `20_KNOWLEDGE/`，原文件标记 `Legacy`
+- ⚠️ 当前 evan 机（E:）未挂载 G:/H: 盘，此规则在对应机器生效
 
 ### 设计哲学
 
