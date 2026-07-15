@@ -127,3 +127,4 @@ Items discovered during Phase 4 that belong in Phase 5. See also `30_SYSTEM/Gove
 | Date | Type | Description | Target Phase |
 |------|------|-------------|-------------|
 | 2026-07-15 | architecture | INDEX路径与资产路径跨机器绑定问题。建议Phase 5引入ASSET_REGISTRY.yaml | Phase-5 |
+| 2026-07-15 | runtime | AI启动时需手动说明实例/阶段/治理规则，建议标准化Context输出 (PAIOS-2026-0715-PORTABLE-AI-CONTEXT-BOOTSTRAP-001) | Phase-5 |

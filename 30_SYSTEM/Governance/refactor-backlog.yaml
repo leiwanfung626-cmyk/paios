@@ -127,3 +127,14 @@ backlog:
     proposal: "Phase 5 引入 ASSET_REGISTRY.yaml，按 machine 声明资产路径。例如: photo_library: { locations: [{machine: feng, path: E:/照片}, {machine: evan, path: F:/照片}] }"
     priority: P2
     action: Phase-5
+
+  # ── P2 Runtime: AI Context Bootstrap ────────────
+  - id: RUNTIME-CONTEXT-BOOTSTRAP
+    category: architecture/runtime
+    packet: PAIOS-2026-0715-PORTABLE-AI-CONTEXT-BOOTSTRAP-001
+    issue: "每次更换电脑或AI引擎需人工说明实例/阶段/治理规则，缺少标准化上下文加载机制"
+    proposal: "生成 30_SYSTEM/context/current_context.md 作为AI引擎通用启动上下文"
+    source_phase: Phase-4-Stabilize
+    evidence: "真实使用中发现上下文恢复成本"
+    priority: P2
+    action_phase: Phase-5
