@@ -1,18 +1,29 @@
-schema_version: 1
+schema_version: 2
 config_type: paths
 created_at: "2026-06-28T14:33:17Z"
-updated_at: "2026-06-28T14:33:17Z"
+updated_at: "2026-07-15T20:00:00Z"
 
-# 盘符由环境变量 PAIOS_DRIVE 控制
-# evan: PAIOS_DRIVE=E   feng: PAIOS_DRIVE=F
-workspace: "${PAIOS_DRIVE}:/PAIOS"
-tools: "${PAIOS_DRIVE}:/Tools"
+# PAIOS-PORTABLE 路径协议
+# 不绑定任何固定盘符，通过以下两变量定位：
+#   $PAIOS_ROOT       = PAIOS-PORTABLE/Core   （系统根目录）
+#   $PAIOS_ASSET_ROOT = PAIOS-PORTABLE/ASSETS  （大文件资产根目录）
+#
+# 当前实例：H:\PAIOS-PORTABLE
+# 迁移后可通过整盘复制部署到 G:/NAS/Cloud，仅需改变上层变量
+workspace: "${PAIOS_ROOT}"
+tools: "${PAIOS_ROOT}/../ASSETS/Tools"
+assets: "${PAIOS_ASSET_ROOT}"
+index: "${PAIOS_ROOT}/../INDEX"
 
 targets:
-  capture: "${PAIOS_DRIVE}:/PAIOS/00_CAPTURE"
-  work: "${PAIOS_DRIVE}:/PAIOS/10_WORK"
-  knowledge: "${PAIOS_DRIVE}:/PAIOS/20_KNOWLEDGE"
-  system: "${PAIOS_DRIVE}:/PAIOS/30_SYSTEM"
-  automation: "${PAIOS_DRIVE}:/PAIOS/40_AUTOMATION"
-  data: "${PAIOS_DRIVE}:/PAIOS/50_DATA"
-  archive: "${PAIOS_DRIVE}:/PAIOS/90_ARCHIVE"
+  capture: "${PAIOS_ROOT}/00_CAPTURE"
+  work: "${PAIOS_ROOT}/10_WORK"
+  knowledge: "${PAIOS_ROOT}/20_KNOWLEDGE"
+  system: "${PAIOS_ROOT}/30_SYSTEM"
+  automation: "${PAIOS_ROOT}/40_AUTOMATION"
+  archive: "${PAIOS_ROOT}/90_ARCHIVE"
+  assets_photos: "${PAIOS_ASSET_ROOT}/Photos"
+  assets_videos: "${PAIOS_ASSET_ROOT}/Videos"
+  assets_documents: "${PAIOS_ASSET_ROOT}/Documents"
+  index_photo: "${PAIOS_ROOT}/../INDEX/photo_index.db"
+  index_document: "${PAIOS_ROOT}/../INDEX/document_index.json"
