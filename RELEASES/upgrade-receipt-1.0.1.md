@@ -15,7 +15,7 @@
 | Case | 主场景 | 使用者 | Core Version | Profile | Manifest | 状态 |
 |------|--------|--------|--------------|---------|----------|------|
 | Case-01（工作） | work | user-a | ✅ 1.0.1 | ✅ | ✅ | 完成 |
-| Case-02（个人） | personal | user-b | ⏳ | ⏳ | ⏳ | 待升级 |
+| Case-02（个人） | personal | user-b | ✅ 1.0.1 | ✅ | ✅ | 完成 |
 | Case-03（考研） | study | user-c | ✅ 1.0.1 | ✅ | ✅ | 完成 |
 
 ## 更新规则
@@ -27,9 +27,10 @@
 
 ## 汇总（每次更新后重算）
 
-- 已升级：2 / 3
-- 已回传 Manifest：2 / 3
-- 待跟进：Case-03
+- 已升级：**3 / 3** ✅
+- 已回传 Manifest：**3 / 3** ✅
+- 待跟进：无（Stage 1 数据目标达成）
+- ⚠️ 遗留：分发层结构问题（共享路径冲突 / Fleet 双位置 / Workspace 入库）— 见 `F:\Fleet\reports\fleet-2026-W28.md` 第四节，待 Phase B 决策
 
 ---
 

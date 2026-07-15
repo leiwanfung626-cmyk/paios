@@ -1,45 +1,43 @@
 manifest_version: 1
 
 instance:
-  id: "case-03"
+  id: "case-01"
   version: "v1.0.1"
   profile:
-    primary: study
+    primary: work
     secondary:
-      - kaoyan
-      - math
-      - english
-      - politics
-  owner: "user-c"
+      - office
+      - community-service
+  owner: "user-a"
   privacy: share
 
 usage:
-  last_active: 2026-07-10
-  active_days_30d: 9
-  git_commits_total: 29
+  last_active: 2026-07-12
+  active_days_30d: 10
+  git_commits_total: 42
 
 features:
   capture: true
   knowledge: true
   automation: true
   git: true
-  photo: true
+  photo: false
   growth: true
   review: false
 
 assets:
-  references: 16
-  concepts: 3
-  decisions: 4
+  references: 9
+  concepts: 2
+  decisions: 2
   models: 2
   methods: 2
-  sops: 4
+  sops: 2
   projects: 2
 
 projects:
   - id: KAOYAN-2026
     name: Kaoyan-2026
-    status: active
+    status: archived
   - id: SAFETY-NET
     name: Safety-Net
     status: active
@@ -68,6 +66,12 @@ evidence:
   - object: ADR-0012
     level: Accepted
   - object: ADR-0016
+    level: Accepted
+  - object: ADR-0017
+    level: Accepted
+  - object: ADR-0018
+    level: Accepted
+  - object: ADR-0019
     level: Accepted
   - object: ADR-0014
     level: Proposed

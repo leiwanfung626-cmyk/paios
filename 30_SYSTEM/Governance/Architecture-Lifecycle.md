@@ -1,0 +1,231 @@
+---
+title: "Architecture Lifecycle — 平台级架构生命周期"
+status: Active
+lifecycle_version: 1.0
+created: 2026-07-11
+related:
+  - architecture-governance.md
+  - ../ADR/ADR-0017-Platform-Purity-Physical-Separation.md
+  - ../Evolution/Phase-B-Core-Workspace-Split.md
+  - ../Evolution/Case-Studies/README.md
+---
+
+# Architecture Lifecycle（平台级架构生命周期）
+
+> 本文档从 **Phase B v2** 的 Commit 纪律中升华而来。
+>
+> Phase B 把"Commit"变成了治理对象（Architecture → Governance → Git Cleanup → Physical Separation）。
+> 但那只是"一次升级的 Git History 形状"。真正可复用的是**整轮架构演进的闭环节奏**——
+> 它不只服务 Phase B，**Phase C / D / … 全部复用同一套生命周期**。
+
+---
+
+## 1. 它解决什么问题
+
+以前 PAIOS 的演进是：先画大图 → 等未来验证。证据散落聊天记录，难以复用。
+现在 PAIOS 的演进是：真实运行 → 暴露证据 → 固化 Case → 决策 ADR → 冻结蓝图 → 建边界 → 试点 → 推广 → 再验证。
+
+**Architecture Lifecycle 把这条路径抽成平台级规范**，让每一轮重大升级都套同一个模板，而不是每次重新发明流程。
+
+---
+
+## 2. 生命周期（闭环）
+
+```
+        ┌───────────────────────────────────────────────────────┐
+        │                                                       │
+        ▼                                                       │
+  ┌──────────┐                                                  │
+  │ Evidence │  真实运行暴露的客观事实（带数字，可验证）            │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │  Case    │  固化成 CASE-NNN（架构证据，非会议纪要）           │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │   ADR    │  基于证据决策（Accepted / Rejected）              │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │ Blueprint│  可实施的架构蓝图（分阶段、有命令纪律）            │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │  Freeze  │  设计冻结：仅文档，不碰物理文件                   │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │ Boundary │  Establish Boundaries（Governance）：明确职责 /  │
+  │ (Gov)    │  调目录 / 写 .gitignore / 更新 Registry，不拆物理 │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │  Pilot   │  单实例试点（如 Case-01 / Developer），跑 Exit   │
+  │          │  Criteria 全部满足才过闸                         │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐   Rollout 内部展开为 Git History 四段：          │
+  │ Rollout  │   Architecture → Governance → Git Cleanup →      │
+  │          │   Physical Separation（git rm --cached）         │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │ Validate │  连续多版本观察：缺陷不再复现 → 验证完成           │
+  └────┬─────┘                                                  │
+       ▼                                                        │
+  ┌──────────┐                                                  │
+  │Retrospect│  回顾：哪些决策证明正确 / 哪些边界需调整 /        │
+  │ (Review) │  哪些规则可固化为平台规范 / 是否浮现新架构问题     │
+  │          │  产出 CASE-NNN + 是否进入下一 Phase（如 Phase C） │
+  └────┬─────┘                                                  │
+       │                                                        │
+       └──────────────► 沉淀为新 Case ──► 触发下一轮 ADR ──┐
+                                                    （回到 Evidence）
+```
+
+### 各阶段职责与门槛（Gate）
+
+| 阶段 | 输入 | 动作 | 输出 | 进入下一阶段的门槛（Gate） | Owner |
+|------|------|------|------|----------------------------|-------|
+| **Evidence** | 真实运行 | 观察、记录客观事实 | 带数字的事实 | 足够显著，值得固化 | 任何实例操作员 |
+| **Case** | Evidence | 写 CASE-NNN（固定结构 + Decision Impact） | 架构证据 | 通过"是否验证/证伪某原则"判定 | 任何实例操作员 |
+| **ADR** | Case | 决策（含 D0/D1…），记录证据等级 | 冻结的决策 | status = Accepted | Architect |
+| **Blueprint** | ADR | 写可实施蓝图（分阶段、命令纪律） | 设计文档 | 覆盖对应 Phase 触发条件 | Architect |
+| **Freeze** | Blueprint | 仅提交文档，不碰物理 | 设计冻结 commit | 评审通过 | Architect |
+| **Boundary** | Freeze | Establish Boundaries（不物理拆分） | 目录/Registry/.gitignore 就位 | 备份锚点 + Rollback Ready | Developer |
+| **Pilot** | Boundary | 单实例跑新边界 | 试点信号 | **Exit Criteria 全满足** | Developer |
+| **Rollout** | Pilot 过闸 | 展开为 Git History 四段 + 物理隔离 | 多实例升级 | 所有实例升级完成 | Maintainer |
+| **Validate** | Rollout | 连续观察 | 验证结论 | 缺陷连续多版本未复现 | Maintainer + Fleet |
+| **Retrospective** | Validate | 回顾（决策/边界/规则/新问题），形成 CASE-NNN，判定是否进入下一 Phase | 回顾结论 + 下一 Phase 建议 | 回顾完成且结论明确 | Architect |
+| **（闭环）** | Retrospective | 沉淀新 Case | 下一轮 Evidence | — | — |
+
+> **Owner 说明**：Gate 必须有人拍板，避免多人协同时互相等待。当前 PAIOS 为单操作员（Evan）兼任 Architect / Developer / Maintainer，Fleet 为自动化健康信号；Owner 字段为未来多人协同预留，不改变现有职责。
+
+### Evidence Severity（证据严重度）
+
+每条 Evidence（进而每条 CASE）应标注严重度，用于判断流程可跳过的范围：
+
+| Severity       | 含义 | 示例 | 流程影响 |
+|----------------|------|------|----------|
+| **Critical**   | 数据丢失 / 安全违约 | 真实数据丢失 | 立即暂停相关流程，优先修复 |
+| **Major**      | 架构违约已真实发生 | 本次 Manifest 单路径冲突 | 必须走完整 Lifecycle |
+| **Minor**      | 局部不一致 | 文档措辞冲突 | 可走精简版（省略 Pilot） |
+| **Observation**| 观察记录 | 某能力使用率低 | 仅入 Case，不必然触发 ADR |
+
+> 本次 CASE-001 的 Manifest 单路径冲突属 **Major**——已真实发生，必须走完整闭环。
+
+### Retrospective Outcome（回顾结论，固定四选一）
+
+回顾必须给出明确结论，不允许"模糊收尾"：
+
+| Outcome    | 含义 | 示例 |
+|------------|------|------|
+| **Accepted**  | 决策/边界被证明正确，固化为平台规范 | Platform Purity 通过验证 |
+| **Adjusted**  | 部分需调整，生成修订 ADR/Blueprint | Pilot 失败，收紧某边界 |
+| **Rejected**  | 决策被证伪，回滚 | — |
+| **Deferred**  | 证据不足，留待下一轮 | 某规则观察周期不够 |
+
+> CASE-002（Rollout 后回顾）将携带 `Outcome` 字段；其取值直接决定下一 Phase 走向。
+
+---
+
+## 3. 与现有治理文档的关系
+
+- `architecture-governance.md`（Governance 1.0）：定义 **单资产的 Impact Levels + Asset Lifecycle（Draft→Active→Frozen→Archived）**——管"一个东西怎么变状态"。
+- 本文档（Architecture Lifecycle）：定义 **一轮架构演进的端到端节奏**——管"一次升级怎么走完闭环"，跨资产、跨时间。
+- 两者互补：Governance 1.0 是纵切（单资产状态机），Lifecycle 是横切（跨资产演进流）。
+
+### 3.1 Governance 子层（本 Lifecycle 的配套规范）
+
+本 Lifecycle 已从 Phase B 抽离为**独立治理层**，以下文件共同构成 PAIOS 治理骨架，任何 Phase 复用、不复制：
+
+| 文件 | 职责 |
+|------|------|
+| `Architecture-Lifecycle.md`（本文件） | 一轮架构演进的端到端节奏（横切） |
+| `Decision-Traceability.md` | 决策证据链：ADR 四字段 + Blueprint 反向引用 + Commit 引用 + Reactive/Proactive |
+| `Pilot-Gate.md` | 试点门槛：Entry / Exit Criteria，单实例试点模式 |
+| `Rollout.md` | 全量推广：前置条件 + 分批顺序 + Git History 四段展开 |
+| `Change-Control.md` | 变更控制：分级 + 冻结策略 + 证据门禁 + Commit 纪律 |
+| `../Specifications/Asset-Class.md` | 全平台内容分类轴（Platform / Shared / Personal / Imported） |
+
+> 各 Phase（B / C / D …）只**引用**这些规范，不内联实现；规范本身独立演进。
+
+---
+
+## 4. 复用规则
+
+- **任何 L3（Architecture）级变更**都走完整 Lifecycle。
+- **L2（Behavior）级变更**可走精简版（Evidence→ADR→Blueprint→Freeze→Rollout→Validate），省略 Pilot。
+- **证据门禁（Reactive / Proactive）**：Reactive ADR 必须有证据支撑；Proactive ADR 必须明确验证条件，并在真实运行后完成验证或修订（详见 `Decision-Traceability.md` §4）。不否定前瞻设计，但前瞻决策须自带验证条件。
+- **Pilot 不可跳过**：设计冻结后，至少单实例跑通 Exit Criteria 再过闸。
+- **Commit 是治理对象**：Rollout 阶段在 Git History 上展开为四段（Architecture / Governance / Git Cleanup / Physical Separation），使历史一眼可读、便于审计。
+
+---
+
+## 5. 一句话
+
+Architecture Lifecycle 是 PAIOS 的"演进操作系统"——把每一次重大升级从一次性设计，变成可重复、可追溯、可审计的闭环。
+
+---
+
+## 6. 元治理原则（Meta-Governance）
+
+> **Lifecycle 本身也是平台资产。任何修改都应遵循本 Lifecycle。**
+
+这意味着治理规则自身也必须接受治理：不仅平台功能受 Lifecycle 约束，**Lifecycle 文档自身的演进也必须通过 Evidence → Case → ADR → Blueprint → Freeze 的流程**——不能"想到什么就改 Lifecycle"。
+
+- **唯一合法入口**：修改 Lifecycle 的入口是新的 CASE + ADR，而非直接编辑本文档。
+- **版本化**：文档头部 `lifecycle_version` 随每次正式升级递增（如 1.0 → 2.0）；Blueprint 通过 `lifecycle:` 字段声明其所遵循的版本，避免混用。
+- **当前状态**：`lifecycle_version: 1.0`，已冻结；待新 CASE 触发才升级。
+
+这使 Architecture Lifecycle 真正成为 PAIOS 的**元治理（meta-governance）基础**——一个自洽的系统：治理规则，也被治理。
+
+---
+
+## 7. 交叉审查原则（Cross-Review Requirement）
+
+> **任何 AI 引擎对 PAIOS 架构的变更，必须由至少一个未参与执行的引擎进行事后审查。**
+
+### 背景
+
+PAIOS 已进入多引擎协作阶段（Reasonix、WorkBuddy、Codex 等交替执行）。各自独立修复时，自审自改存在单点盲区——执行者倾向于相信自己写对了。
+
+交叉审查（Cross-Review）将审查与执行解耦，复用多引擎优势，避免"修的人也是审的人"。
+
+### 触发条件
+
+满足以下任一条即触发交叉审查：
+
+| 条件 | 示例 |
+|------|------|
+| **ADR 级别变更**（新建或修改 ADR） | ADR-0017 新增 |
+| **Phase 级别变更**（推进到下一阶段） | B1→B2 推进 |
+| **核心脚本修改**（`40_AUTOMATION/05_SCRIPTS/` 下脚本） | `collect_manifest.py` 涉 manifest 协议 |
+| **治理文档变更**（Governance/ 目录下任何文件） | Architecture-Lifecycle / Change-Control 等 |
+| **`.gitignore` / Registry / 目录结构调整** | 新增 Phase B 排除规则 |
+
+### 审查要求
+
+- 审查引擎与执行引擎**不得为同一实例**（Reasonix 修 → WorkBuddy 审；WorkBuddy 修 → Reasonix 审）
+- 审查应聚焦：**架构正确性**（是否违反已冻结的 ADR 原则）、**完整性**（是否有遗漏的边界情况）、**可追溯性**（CASE→ADR→Commit 链路是否完整）
+- 审查结果应记录为 **Architecture Evidence**（Case Study 或 Audit Note），与变更 commit 可追溯关联
+- 审查结论为 **Accept / Reject / Revise**：
+  - **Accept** → 变更可提交或进入下一阶段
+  - **Reject** → 退回执行引擎修订后重新审查
+  - **Revise** → 执行引擎按审查意见修改后，可免二次审查直接通过
+
+### 与现有治理的关系
+
+| 治理文档 | 交叉审查的补充点 |
+|---------|----------------|
+| `Decision-Traceability.md` | 追溯链保证"谁改了"可查；交叉审查保证"改得对不对"有人看 |
+| `Change-Control.md` | 变更控制定义"走什么流程"；交叉审查定义"谁来看结果" |
+| `Pilot-Gate.md` | Pilot 门禁保证单实例试点通过；交叉审查保证试点方案本身无设计缺陷 |
+| `Architecture-Lifecycle.md`（本文件） | Lifecycle 定义演进节奏；交叉审查嵌入 Retrospective 阶段作为固化动作 |
+
+### 例外
+
+- **L1（Content）级变更**（知识库增删、日常文档编辑）不强制交叉审查——争议性内容除外。
+- **紧急修复**（Critical Severity，数据丢失/安全违约）可先修后补审查，事后 24h 内补交。
+- 执行引擎与审查引擎同一实例时，须在 commit message 中标注 `[self-reviewed]` 并说明原因。
