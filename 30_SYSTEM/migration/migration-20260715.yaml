@@ -1,0 +1,96 @@
+# PAIOS Portable Master Migration
+# Architecture packet: PAIOS-2026-0715-PORTABLE-MASTER-MIGRATION-PLAN-001
+---
+migration:
+  id: MIG-2026-0715-001
+  title: "PAIOS 双实例收敛到 Portable Master"
+  packet: "PAIOS-2026-0715-PORTABLE-MASTER-MIGRATION-PLAN-001"
+
+  # ── 状态机 ──────────────────────────────────────────
+  # INIT → AUDITED → CONVERGED → GOVERNED → STABLE → REFACTORED → COMPLETED
+  state: INIT
+
+  state_history:
+    - state: INIT
+      date: 2026-07-15T20:00:00+08:00
+      note: "骨架建立，路径协议写入"
+
+  # ── 来源实例 ────────────────────────────────────────
+  source_instances:
+    - id: CASE-01-WORK
+      computer: feng
+      role: "Platform Maintainer / 开发工作"
+      path: "F:/PAIOS"
+      git_branch: pilot
+      description: "日常开发、社区事务、工作流验证"
+
+    - id: CASE-02-PERSONAL
+      computer: evan
+      role: "个人知识管理 / 工作场景"
+      path: "G:/2in1/PAIOS"
+      git_branch: feature/case-02-dev
+      description: "个人知识库、照片整理、工作项目"
+
+  # ── 目标实例 ────────────────────────────────────────
+  target:
+    id: PAIOS-PORTABLE-001
+    path: "H:/PAIOS-PORTABLE/Core"
+    root: "H:/PAIOS-PORTABLE"
+    structure:
+      core: "H:/PAIOS-PORTABLE/Core"
+      assets: "H:/PAIOS-PORTABLE/ASSETS"
+      index: "H:/PAIOS-PORTABLE/INDEX"
+    git_branch: portable-master
+    description: "便携主实例，不绑定硬件，可部署到 SSD/NAS/Cloud"
+
+  # ── 路径协议 ────────────────────────────────────────
+  path_protocol:
+    PAIOS_ROOT: "H:/PAIOS-PORTABLE/Core"
+    PAIOS_ASSET_ROOT: "H:/PAIOS-PORTABLE/ASSETS"
+    note: "迁移后仅需改变这两个变量，无需修改系统内部路径"
+
+  # ── 阶段规划 ────────────────────────────────────────
+  phases:
+    - phase: 1
+      name: Init
+      state: INIT
+      status: completed
+      description: "骨架建立、git clone、分支创建、路径协议写入"
+
+    - phase: 2
+      name: Converge
+      state: CONVERGED
+      status: pending
+      description: "双实例资产合并（pilot + case-02-dev → portable-master）"
+
+    - phase: 3
+      name: Governance
+      state: GOVERNED
+      status: pending
+      description: "资产治理审计（Keep/Merge/Refactor/Archive/Deprecate）"
+
+    - phase: 4
+      name: Stabilize
+      state: STABLE
+      status: pending
+      description: "功能冻结，≥7天真实工作验证"
+
+    - phase: 5
+      name: Refactor
+      state: REFACTORED
+      status: pending
+      description: "执行治理决策，自动化重构（绞杀者模式）"
+
+    - phase: 6
+      name: Identity Upgrade
+      state: COMPLETED
+      status: pending
+      description: "升级 Identity.md 为 PAIOS-PORTABLE-001，复制到 SSD"
+
+  # ── 重要约束 ────────────────────────────────────────
+  constraints:
+    - "Phase 1-4 不重构代码"
+    - "Phase 4 需要 ≥7 天真实工作验证"
+    - "portable-master 分支保留 pilot 和 case-02-dev 独立历史"
+    - "Identity.md 在验证通过后才升级"
+    - "原 F:/PAIOS 和 G:/2in1/PAIOS 保留 30 天只读备份"
