@@ -33,9 +33,46 @@ Prove that PAIOS-PORTABLE can serve as the sole working instance.
 
 ## Daily Checks
 
-| Date | Work Completed | Issues | Stable? |
-|------|---------------|--------|---------|
-| 2026-07-15 | Phase 4 initiated, framework created | None | ✅ |
+Keep it to one minute per day.
+
+```
+## 2026-07-16
+
+完成:
+- 
+
+发现:
+- 
+
+稳定性:
+✅ 稳定
+
+是否进入 Phase-5:
+否
+```
+
+| Date | Completed | Findings | Stable? | Phase-5? |
+|------|-----------|----------|---------|----------|
+| 2026-07-15 | Phase 4 initiated, framework created | None | ✅ | No |
+
+---
+
+## Phase 4 Observation Metrics
+
+Three indicators to watch during validation. More important than code bugs.
+
+### 1. Usage Friction (使用摩擦)
+- Can't find files / don't know where to put things / SOP doesn't apply
+- AI doesn't understand context
+- **Risk**: system becomes complex, user stops maintaining it
+
+### 2. Knowledge Growth Quality (知识增长质量)
+- Does new knowledge flow smoothly: 00_CAPTURE → 10_WORK → 20_KNOWLEDGE?
+- Are there: duplicate knowledge entries / new SOP overwriting old ones / projects not reusing past experience?
+
+### 3. AI Compliance (AI 遵循度)
+- Does AI follow ADR / Principles / Governance / Phase constraints?
+- If AI suggests "restructure directories" or "rewrite scripts" during Phase 4: record it, don't execute it.
 
 ---
 
