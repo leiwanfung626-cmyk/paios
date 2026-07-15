@@ -8,7 +8,7 @@ migration:
 
   # ── 状态机 ──────────────────────────────────────────
   # INIT → AUDITED → CONVERGED → GOVERNED → STABLE → REFACTORED → COMPLETED
-  state: AUDITED
+  state: CONVERGED
 
   state_history:
     - state: INIT
@@ -17,6 +17,9 @@ migration:
     - state: AUDITED
       date: 2026-07-15T20:15:00+08:00
       note: "Packet 文档完成，Phase 1 Init 全部交付"
+    - state: CONVERGED
+      date: 2026-07-15T20:45:00+08:00
+      note: "双实例 git 合并 + 资产复制完成，MERGE-LOG-001 已生成"
 
   # ── 来源实例 ────────────────────────────────────────
   source_instances:
@@ -63,7 +66,7 @@ migration:
     - phase: 2
       name: Converge
       state: CONVERGED
-      status: pending
+      status: completed
       description: "双实例资产合并（pilot + case-02-dev → portable-master）"
 
     - phase: 3
