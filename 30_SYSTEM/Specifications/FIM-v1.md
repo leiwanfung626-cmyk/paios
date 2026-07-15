@@ -36,7 +36,7 @@ PAIOS Core
 Manifest is produced as a **local file** at:
 
 ```
-PAIOS-Usage/manifest.yaml
+30_SYSTEM/PAIOS-Usage/manifest.yaml
 ```
 
 **Only this file ever leaves the instance** — and only when the user

@@ -1,0 +1,76 @@
+# Handoff — WorkBuddy → 下一引擎
+# ADR-0017 Cross-Engine Work Context Inheritance
+# 版本: 2
+# 用途：验证 handoff 格式承载能力
+
+handoff_version: 2
+task_id: "TASK-20260711-HE001"
+task_display_name: "跨引擎手递实验 Phase 1 — Format Validation"
+created_by: "workbuddy"
+current_step: "face_retrieval_audit"
+workflow_id: "photo_organizer_flow"
+
+completed:
+  - step: "ingest_and_classify"
+    engine: "workbuddy"
+    summary: "入库索引完成，15,530 张源照片 → 16,958 张归档媒体（8 类：01_Family=4176, 02_Children=5450, 03_Screenshots=713, 04_Downloads=1145, 05_Outings=446, 06_Life=1120, 07_ToReview=1312, 08_Old_Photos=296）"
+    artifact_uri: "10_WORK/photos_organizer/notes.md#入库索引"
+    output: "E:/QuarkSync/照片归档/"
+
+  - step: "face_detection"
+    engine: "workbuddy"
+    summary: "人脸检测完成（InsightFace buffalo_l, CPU），11,954 张 master 照片 → ~19,800 人脸"
+    artifact_uri: "10_WORK/photos_organizer/face_index/faces/"
+    output: "10_WORK/photos_organizer/face_index/face_index.db"
+
+  - step: "face_clustering"
+    engine: "workbuddy"
+    summary: "FAISS 聚类完成，3,995 个簇。20 年年龄跨度导致同人聚类分裂（多簇对应同一人），不追求自动认人"
+    artifact_uri: "10_WORK/photos_organizer/face_index/cluster.py"
+    output: "10_WORK/photos_organizer/face_index/"
+
+  - step: "seed_retrieval"
+    engine: "workbuddy"
+    summary: "种子检索完成。运丰 962 候选、皓祥 1,688 候选。运丰已落地文件夹（466 张，2002–2026）含可编辑时间线"
+    artifact_uri: "10_WORK/photos_organizer/face_index/retrieval/"
+    output: "E:/待整理照片/运丰/"
+
+  - step: "person_naming"
+    engine: "workbuddy"
+    summary: "person_judgments 累计 1,352 条人工判定。仅 2 具名人物（运丰、皓祥）。标注密度是真实瓶颈——3,995 簇中仅 2 具名"
+    artifact_uri: "10_WORK/photos_organizer/database/photo_index.db#persons"
+    known_issue_heuristic: "person_judgments 在 DB 中但未完全映射到具名 person_id；需先 mapping 才能用于微调"
+
+  - step: "face_index_rebuild_decision"
+    engine: "workbuddy"
+    summary: "关键纠正：face_index.db 源路径指向已消失的 E:\\待整理照片（路径全悬空）。归档 16,958 张是可用新源。正确路径：先对归档 orchestrate 建独立索引 DB → face_extract --db <新db> --out <新face_index.db> → full pipeline"
+    artifact_uri: "10_WORK/photos_organizer/notes.md#源重建"
+    known_issue_heuristic: "旧 face_index.db 28317 人脸路径全悬空，已标记不可用。新源重建预计数小时（CPU only）"
+
+next:
+  step: "face_retrieval_audit"
+  input: "定相: face_index 源重建走 archive 路线还是种子检索权宜法"
+  engine_hint: "workbuddy"
+  priority: "high"
+
+known_issues:
+  - "旧 face_index.db 路径全悬空（指向已消失的 E:\\待整理照片），不可用"
+  - "归档 16,958 张媒体已就位，但未建独立索引 DB"
+  - "3,995 簇仅 2 具名人物，标注密度是真实瓶颈"
+  - "无 CUDA（CMP 40HX 无 CUDA 运行时），全量 CPU 重跑预计数小时"
+  - "Person A = 运丰 / Person B = 皓祥（已确认）"
+
+required_input:
+  - "10_WORK/photos_organizer/face_index/face_index.db（旧，路径悬空）"
+  - "E:/QuarkSync/照片归档/（新源 16,958 媒体）"
+  - "10_WORK/photos_organizer/database/photo_index.db"
+
+context_summary: |
+  照片整理项目第二阶段（人脸检索与检索）已基本完成。V1.0 pipeline 包含：
+  入库索引 → 混合分类(CLIP+GLM) → 人脸检测(InsightFace buffalo_l) → 
+  FAISS 聚类(3,995 簇) → 种子检索(运丰+皓祥) → 人物文件夹策展(运丰已落地)。
+
+  当前最大瓶颈：源库路径悬空，face_index.db 需在归档 16,958 媒体上重建。
+  建议方向：① 重建 face_index（基础设施）；② 持续人物命名标注（提升标注密度）；
+  ③ 统一检索层 search.py（SQL 优先）；④ 事件聚合 events 表。
+  不继续更换人脸模型（收益递减，20 年年龄跨度非模型能治）。

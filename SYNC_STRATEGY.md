@@ -1,5 +1,9 @@
 # SYNC_STRATEGY — PAIOS 跨设备同步策略
 
+> **Bootstrap 必读**：本文件定义 PAIOS 的数据放置规则。
+> AI 工具在开始工作前必须先读取本文件，否则可能将数据写入错误位置。
+> 阅读顺序：Principles → ADR-INDEX（会话启动）。SYNC_STRATEGRY 和 EXTERNAL/ 已编入工作区配置。
+
 > **适用场景**：两台或多台电脑共享同一个 PAIOS 平台
 > **核心原则**：Platform 同步，Runtime 本地
 
@@ -46,7 +50,7 @@ git push
 ## AI 工具工作区约定
 
 - 所有电脑统一：`${PAIOS_DRIVE}:/PAIOS`
-- Bootstrap 路径一致：Principles → ADR → Registry → Manifest
+- Bootstrap 路径一致：Principles → ADR → SYNC_STRATEGY → EXTERNAL/ → Registry → Manifest
 
 ---
 

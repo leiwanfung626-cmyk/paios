@@ -1,0 +1,52 @@
+# Cross-Engine Handoff — completed
+# Chain: Reasonix → WorkBuddy
+# Schema: handoff-schema.yaml v2
+
+handoff_version: 2
+task_id: "TASK-20260711-001"
+task_display_name: "Cross-Engine Handoff Validation"
+created_by: "reasonix, workbuddy"
+context_id: "local"
+
+current_step: "completed"
+workflow_id: "cross_engine_handoff"
+
+completed:
+  - step: "setup"
+    engine: "reasonix"
+    summary: "实验任务创建完成：task.yaml + 目录结构"
+    artifact_uri: "10_WORK/TASK-20260711-001/task.yaml"
+    output: "10_WORK/TASK-20260711-001/task.yaml"
+
+  - step: "handoff_compliance_review"
+    engine: "reasonix"
+    summary: "审查 handoff-schema.yaml v2 格式合规性：9 项检查全部通过"
+    artifact_uri: "10_WORK/TASK-20260711-001/outputs/handoff-compliance-report.md"
+    output: "10_WORK/TASK-20260711-001/outputs/handoff-compliance-report.md"
+
+  - step: "handoff_context_verification"
+    engine: "workbuddy"
+    summary: "上下文继承验证通过：能准确回答 3 个问题（进度/下一步/已知问题）"
+    artifact_uri: "10_WORK/TASK-20260711-001/outputs/context-verification-report.md"
+    output: "10_WORK/TASK-20260711-001/outputs/context-verification-report.md"
+
+next:
+  step: "generate_experiment_report"
+  input: "全部产出物"
+  engine_hint: "reasonix"
+  priority: "normal"
+
+known_issues:
+  - "首次双引擎手递实验，handoff 格式为 v2，尚无 v1→v2 迁移用例"
+  - "context_id 字段暂未使用（当前走方案 A：不同账号=不同 engine_id）"
+  - "实验仅覆盖 Reasonix→WorkBuddy 单向接力，暂未测试回环和多类型"
+
+required_input:
+  - "10_WORK/TASK-20260711-001/outputs/handoff-compliance-report.md"
+  - "10_WORK/TASK-20260711-001/outputs/context-verification-report.md"
+
+context_summary: |
+  跨引擎手递验证实验已完成 Reasonix→WorkBuddy 单向接力。
+  Exit Criteria 通过：WorkBuddy 能准确描述 Reasonix 的进度、下一步、已知问题。
+  实验结论：handoff.yaml v2 格式有效，跨引擎上下文继承机制可行。
+  下一步：生成实验报告，将结论记录到知识库。

@@ -1,0 +1,77 @@
+# Task Schema（任务定义格式）
+# ADR-0017: Cross-Engine Work Context Inheritance
+# Task = PAIOS 的跨引擎继承单元。25% 信息、75% 上下文。
+# 版本: 2
+
+schema:
+  name: "task_definition"
+  version: 2
+  description: "任务定义格式 — 与 10_WORK/{task_id}/ 目录对齐"
+
+fields:
+
+  # ── 任务标识 ─────────────────────────────────────
+
+  - name: "task_id"
+    type: "string"
+    required: true
+    format: "TASK-YYYYMMDD-{seq} 或 kebab-case"
+    example: "TASK-20260711-001"
+    description: >
+      全局唯一稳定 Task ID。与目录名解耦 — 目录可改名，Task ID 不变。
+      新任务推荐使用 TASK-YYYYMMDD-{seq} 格式。
+      旧任务可沿用 10_WORK 目录名（如 photo-organize），逐步迁移。
+
+  - name: "display_name"
+    type: "string"
+    required: true
+    example: "照片整理"
+    description: "人类可读名称。可随时改名，不影响 task_id 引用。"
+
+  - name: "created_at"
+    type: "string"
+    required: true
+    format: "ISO 8601"
+    description: "任务创建时间"
+
+  - name: "status"
+    type: "string"
+    required: true
+    enum: ["draft", "active", "in_progress", "frozen", "deprecated", "archived"]
+    description: "任务生命周期状态（对应 ADR-0007）"
+
+  - name: "goals"
+    type: "list<string>"
+    required: true
+    min_items: 1
+    example:
+      - "完成照片入库索引"
+      - "实现人脸检索与人物策展"
+    description: "任务目标列表。引擎读取 goals 理解任务意图"
+
+  - name: "scope"
+    type: "string"
+    required: false
+    description: "任务范围说明"
+
+  - name: "acceptance"
+    type: "list<string>"
+    required: false
+    description: "完成标准列表"
+
+  - name: "workflow_id"
+    type: "string"
+    required: false
+    example: "photo_organizer_flow"
+    description: "关联的工作流 ID（可选，任务可独立于工作流存在）"
+
+  - name: "tags"
+    type: "list<string>"
+    required: false
+    description: "分类标签"
+
+# ── 文件组织 ─────────────────────────────────────
+
+file_location: "10_WORK/{task_id}/task.yaml"
+description: "与 10_WORK/ 目录中的任务文件夹共存"
+note: "task.yaml 创建后基本不变。进度变更写入 handoff.yaml，不修改 task.yaml"

@@ -4,15 +4,15 @@
 scripts:
   - id: SCRIPT-0001
     name: rag_query
-    source: legacy/rag_prototype.py
+    source: 09_LEGACY/original/rag_prototype.py
     status: pending
   - id: SCRIPT-0002
     name: kb_add
-    source: legacy/kb_add.py
+    source: 09_LEGACY/original/kb_add.py
     status: pending
   - id: SCRIPT-0003
     name: kb_status
-    source: legacy/kb_status.py
+    source: 09_LEGACY/original/kb_status.py
     status: pending
   - id: SCRIPT-0004
     name: douyin_pipeline
@@ -23,7 +23,7 @@ scripts:
       - 05_SCRIPTS/douyin.sh (bash)
   - id: SCRIPT-0005
     name: archive_workbuddy
-    source: legacy/archive_workbuddy.py
+    source: 09_LEGACY/original/archive_workbuddy.py
     status: pending
   - id: SCRIPT-0006
     name: classify_files

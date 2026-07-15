@@ -1,0 +1,43 @@
+# Architecture Decision Record Index
+
+## Foundation Layer（基础架构）
+
+| ADR | Status | Date | Title |
+|-----|--------|------|-------|
+| ADR-0002 | Active | 2026-06-29 | Automation Platform Freeze |
+| ADR-0003 | Accepted | 2026-06-29 | Directory Architecture (7-Layer) |
+| ADR-0004 | Accepted | 2026-06-29 | Knowledge Layer Design |
+| ADR-0005 | Accepted | 2026-06-29 | Workflow Pipeline |
+| ADR-0006 | Accepted | 2026-06-29 | Metadata Standard |
+| ADR-0007 | Accepted | 2026-06-29 | Lifecycle Model |
+| ADR-0008 | Accepted | 2026-06-29 | Automation Layer |
+| ADR-0009 | Accepted | 2026-06-29 | Governance Model |
+| ADR-0010 | Accepted | 2026-06-29 | Evolution Strategy |
+| ADR-0011 | Accepted | 2026-06-29 | Decision Layer |
+
+## Platform Evolution（平台演进 — 多实例架构）
+
+| ADR | Status | Date | Title | Layer |
+|-----|--------|------|-------|-------|
+| ADR-0012 | Accepted | 2026-07-10 | Platform-Application Architecture (Core + Applications) | L1 Platform |
+| ADR-0016 | Accepted | 2026-07-10 | Multi-Instance Architecture Baseline (4-layer model) | L1–L4 |
+| ADR-0014 | Proposed | 2026-07-10 | Upgrade Mechanism (Core/Workspace/Upgrade) | L1 Platform |
+| ADR-0013 | Proposed | 2026-07-10 | Federated Instance Manifest (FIM — Instance State) | L3 Manifest |
+| ADR-0015 | Proposed | 2026-07-10 | Federated Aggregation & Viewing | L4 Fleet |
+
+## Integration & Interoperability（集成与互操作）
+
+| ADR | Status | Date | Title | Layer |
+|-----|--------|------|-------|-------|
+| ADR-0017 | Experimental | 2026-07-11 | Cross-Engine Trace & Workflow Inheritance | L2 Engine |
+| ADR-0018 | Experimental | 2026-07-11 | Engine Scheduling | L2 Engine |
+
+## Governance（治理）
+
+| ADR | Status | Date | Title |
+|-----|--------|------|-------|
+| ADR-9999 | Accepted | 2026-06-29 | Legacy Retention Policy |
+
+> **状态说明**：Experimental = 已实现但尚未经多实例验证，不可视为平台基线。
+>
+> **注意（2026-07-09 维护）**：ADR-0001（Core API Freeze）从未实际创建——git 历史中无该文件记录，`Necessity_Impact_Audit.md` 已注明"不含 ADR-0001"。本索引原将其列为 Active 属历史遗漏，已移除该行。其余文档中对 ADR-0001 的引用已于 2026-07-09 统一清理（`99_Appendix.md`、`06_Governance.md`、`05_Decision_Layer.md`、`ADR-0003-Directory-Architecture.md` 及同源的 `CHANGELOG.md`、`Evidence_Level_System.md` 引用）。

@@ -1,0 +1,178 @@
+# Workflow Registry（工作流注册表）
+# 工作流只定义业务步骤，不绑定具体引擎。
+# 由 Engine Scheduler（引擎调度层）动态决定每步由谁执行。
+# 参见 ADR-0017: Cross-Engine Work Context Inheritance
+# 参见 ADR-0005: Workflow Pipeline（9 阶段生命周期）
+
+registry_version: 2
+updated_at: "2026-07-11T12:00:00+08:00"
+
+workflows:
+
+  # ── Capture Flow（捕获流）──────────────────────────────
+  - workflow_id: "capture_flow"
+    display_name: "捕获流"
+    description: "从外部来源捕获信息 → 写入 Inbox → 分类 → 路由到工作区"
+    phase: "capture"
+    status: "active"
+
+    steps:
+      - step_id: "capture"
+        name: "捕获"
+        description: "接收外部来源信息，写入 00_CAPTURE/Inbox.md"
+        input: "外部来源（URL/文件/剪贴板/语音输入）"
+        output: "Inbox 条目"
+
+      - step_id: "classify"
+        name: "分类"
+        description: "对 Inbox 内容进行类型标注（任务/知识/参考/自动化）"
+        input: "Inbox 条目（未分类）"
+        output: "已分类条目（含 type/tags/priority）"
+
+      - step_id: "route"
+        name: "路由"
+        description: "根据分类结果将内容路由到 10_WORK/ 或直接归档"
+        input: "已分类条目"
+        output: "路由目标路径"
+
+    tags: ["workflow", "capture", "inbox"]
+
+  # ── Knowledge Flow（知识流）────────────────────────────
+  - workflow_id: "knowledge_flow"
+    display_name: "知识流"
+    description: "将 10_WORK 的完成工作沉淀为 20_KNOWLEDGE 知识条目"
+    phase: "store"
+    status: "active"
+
+    steps:
+      - step_id: "validate"
+        name: "验证"
+        description: "验证工作成果的完整性和正确性"
+        input: "10_WORK 任务完成产出"
+        output: "验证结果（pass/fail + notes）"
+
+      - step_id: "index"
+        name: "索引"
+        description: "将已验证的知识写入 20_KNOWLEDGE 对应子目录"
+        input: "已验证的知识内容 + 目标目录"
+        output: "知识库文件/条目"
+
+      - step_id: "review"
+        name: "评审"
+        description: "评审知识条目的质量、完整性、可维护性"
+        input: "新写入的知识条目"
+        output: "评审结论 + 改进建议"
+
+    tags: ["workflow", "knowledge", "store"]
+
+  # ── Archive Flow（归档流）──────────────────────────────
+  - workflow_id: "archive_flow"
+    display_name: "归档流"
+    description: "将生命周期结束的资产移至 90_ARCHIVE 并记录归档元数据"
+    phase: "archive"
+    status: "active"
+
+    steps:
+      - step_id: "complete"
+        name: "完结"
+        description: "确认工作已完成或废弃，准备归档"
+        input: "待归档资产路径"
+        output: "归档准备确认 + 归档元数据"
+
+      - step_id: "freeze"
+        name: "冻结"
+        description: "将资产状态设为只读，移至 90_ARCHIVE"
+        input: "归档准备确认"
+        output: "已归档资产（90_ARCHIVE/）"
+
+    tags: ["workflow", "archive", "lifecycle"]
+
+  # ── Photo Organizer Flow（照片整理流）──────────────────
+  - workflow_id: "photo_organizer_flow"
+    display_name: "照片整理流"
+    description: "照片整理全流程：入库索引 → 人脸检索 → 人物策展 → 持续标注"
+    phase: "process"
+    status: "active"
+
+    steps:
+      - step_id: "ingest"
+        name: "入库索引"
+        description: "扫描源目录，提取元数据、CLIP 分类、写入 photo_index.db"
+        input: "源照片目录"
+        output: "photo_index.db (photos + tags + vocabulary + jobs)"
+
+      - step_id: "face_detection"
+        name: "人脸检测"
+        description: "InsightFace 人脸检测 + 特征提取"
+        input: "photo_index.db（已入库照片）"
+        output: "人脸特征向量 + 缩略图"
+
+      - step_id: "face_clustering"
+        name: "人脸聚类"
+        description: "FAISS 建索引 + 人物聚类"
+        input: "人脸特征向量"
+        output: "FAISS 索引 + 聚类结果"
+
+      - step_id: "curation"
+        name: "人物策展"
+        description: "人物命名、共现网络、时间轴、事件聚合"
+        input: "聚类结果 + FAISS 索引"
+        output: "person_judgments + 人物档案 + 共现网络"
+
+      - step_id: "annotation"
+        name: "持续标注"
+        description: "标注密度提升 — 命名新人物、校正误判、补充元数据（持续循环）"
+        input: "人物档案 + 未命名簇"
+        output: "更新后的 person_judgments"
+
+    tags: ["workflow", "photo", "organizer", "ppip"]
+
+  # ── Quick Task（快速任务流）────────────────────────────
+  - workflow_id: "quick_task"
+    display_name: "快速任务流"
+    description: "无需完整生命周期的一次性任务 — 从定义到完成的轻量流程"
+    phase: "process"
+    status: "active"
+
+    steps:
+      - step_id: "define"
+        name: "定义"
+        description: "明确任务目标和范围"
+        input: "任务需求"
+        output: "任务定义（target/scope/acceptance）"
+
+      - step_id: "execute"
+        name: "执行"
+        description: "按定义完成任务"
+        input: "任务定义"
+        output: "任务产出"
+
+      - step_id: "close"
+        name: "关闭"
+        description: "确认完成，决定沉淀或归档"
+        input: "任务产出"
+        output: "完成状态 + 去向（knowledge/archive）"
+
+    tags: ["workflow", "quick", "lightweight"]
+
+  # ── Cross-Engine Handoff（跨引擎交接）───────────────────
+  - workflow_id: "cross_engine_handoff"
+    display_name: "跨引擎交接"
+    description: "引擎切换时的标准接力流程模板"
+    phase: "process"
+    status: "active"
+
+    steps:
+      - step_id: "handoff_out"
+        name: "交出"
+        description: "当前引擎更新 handoff.yaml，写入 index 记录，交出控制权"
+        input: "当前引擎的工作产出"
+        output: "更新后的 handoff.yaml + index 记录"
+
+      - step_id: "handoff_in"
+        name: "接入"
+        description: "下一引擎读取 handoff.yaml 恢复上下文，继续工作"
+        input: "handoff.yaml + index 记录"
+        output: "恢复的引擎上下文"
+
+    tags: ["workflow", "handoff", "cross-engine"]

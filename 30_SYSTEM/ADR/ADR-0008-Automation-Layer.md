@@ -3,6 +3,10 @@
 ## Status
 Accepted
 
+> **2026-07-12 修正**：实际目录已扩展至 16 个子目录。
+> 新增 `04_ADAPTERS`（适配器接口）、`10_TRACES`（跨引擎 Trace 中枢）、`11_ENGINES`（引擎运行时状态）、`12_SCHEDULER`（调度器）、`QuarkSync`（夸克同步配置）。
+> 以下目录树已更新以反映当前结构。
+
 ---
 
 ## Context
@@ -11,21 +15,26 @@ Accepted
 ---
 
 ## Decision
-自动化层采用 **Registry First 架构**，包含 11 个子目录：
+自动化层采用 **Registry First 架构**，包含 16 个子目录：
 
 ```
 40_AUTOMATION/
-├── 00_REGISTRY/     # 注册中心（agents/capabilities/providers/scripts/workflows）
+├── 00_REGISTRY/     # 注册中心（agents/capabilities/providers/scripts/workflows/adapters）
 ├── 01_CAPABILITIES/ # 能力定义
 ├── 02_PROMPTS/      # 提示词库（coder/planner/reviewer/system/teacher/writer）
 ├── 03_AGENTS/       # Agent 定义
+├── 04_ADAPTERS/     # 引擎适配器（read_trace/export_context/probe） ⭐
 ├── 04_MCP/          # MCP 接口（Reasonix 预留）
-├── 05_SCRIPTS/      # 脚本（Dashboard/Import/Knowledge/Maintenance/Media）
+├── 05_SCRIPTS/      # 脚本（fleet-push/classify_files/vision_query 等）
 ├── 06_PROVIDERS/    # 提供商定义
 ├── 07_WORKFLOWS/    # 工作流定义
 ├── 08_TESTS/        # 测试
 ├── 09_LEGACY/       # 历史资产（deprecated/original/pending/promoted）
-└── 10_MANIFEST/     # 清单与状态
+├── 10_MANIFEST/     # 清单与状态
+├── 10_TRACES/       # 跨引擎 Trace 中枢（handoff/artifact/schema） ⭐
+├── 11_ENGINES/      # 引擎运行时状态 ⭐
+├── 12_SCHEDULER/    # 引擎调度器（policy/rules/log） ⭐
+└── QuarkSync/       # 夸克同步配置
 ```
 
 核心规则：

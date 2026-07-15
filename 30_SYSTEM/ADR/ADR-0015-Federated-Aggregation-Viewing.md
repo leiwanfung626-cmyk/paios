@@ -3,6 +3,8 @@ adr: "0015"
 status: "Proposed"
 date: "2026-07-10"
 evidence_level: "Emerging"
+
+> **2026-07-12 修正**：PAIOS-Usage 已移至 `30_SYSTEM/PAIOS-Usage/`；Fleet 实际位于 `E:\FleetExchange\`。本 ADR 中的 `F:\Fleet\` 和 `PAIOS-Usage/` 路径需按此修正理解。`RELEASES/` 已移至 `20_KNOWLEDGE/RELEASES/`。
 ---
 
 # ADR-0015: 联邦式聚合与查看（Federated Aggregation & Viewing）— 三级架构 + 权限边界

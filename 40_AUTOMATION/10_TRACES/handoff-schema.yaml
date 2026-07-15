@@ -1,0 +1,169 @@
+# Handoff Schema（交接文件标准格式）
+# ADR-0017: Cross-Engine Work Context Inheritance
+# 任何引擎打开 handoff.yaml 即可恢复上下文继续工作。
+# 这是整个跨引擎继承体系中最核心的文件。
+# 版本: 2
+
+schema:
+  name: "handoff"
+  version: 2
+  description: >
+    跨引擎交接文件标准格式。
+    所有工作上下文在此文件中标准化表达。
+    引擎切换时不需要重新解释，打开即继续。
+
+fields:
+
+  # ── 版本和标识 ──────────────────────────────────
+
+  - name: "handoff_version"
+    type: "integer"
+    required: true
+    example: 2
+    description: >
+      Handoff Schema 版本号。用于 Schema 升级时的兼容性判断。
+      版本升级规则：仅新增 optional 字段时 bump minor（+1）；
+      修改/删除现有字段时 bump major。不向下兼容时需同时更新 handoff_v1_to_v2 等迁移工具。
+
+  - name: "task_id"
+    type: "string"
+    required: true
+    example: "TASK-20260711-001"
+    description: >
+      全局唯一稳定 Task ID。与目录名解耦 — 目录可改名，Task ID 不变。
+      推荐格式：TASK-YYYYMMDD-{seq} 或沿用 10_WORK 目录名（旧兼容）。
+
+  - name: "task_display_name"
+    type: "string"
+    required: false
+    example: "照片整理"
+    description: "人类可读的任务显示名。与 task_id 解耦，可随时改名。"
+
+  - name: "created_by"
+    type: "string"
+    required: false
+    example: "reasonix"
+    description: "创建此 handoff 的引擎 ID。用于跟踪责任链。"
+
+  - name: "context_id"
+    type: "string"
+    required: false
+    example: "work"
+    description: >
+      执行环境标识（未来扩展）。当 engine 为工具名时，context_id 标识具体执行环境。
+      如 engine=chatgpt, context_id=personal。向后兼容：当前 engine 字段可直接写 chatgpt-personal。
+
+  - name: "current_step"
+    type: "string"
+    required: true
+    example: "face_clustering"
+    description: "当前正在执行的步骤。新引擎从此处开始"
+
+  - name: "workflow_id"
+    type: "string"
+    required: false
+    example: "photo_organizer_flow"
+    description: "关联的工作流 ID（可选）"
+
+  - name: "completed"
+    type: "list"
+    required: true
+    description: "已完成步骤列表，按顺序排列"
+
+    items:
+      type: "object"
+      fields:
+        - name: "step"
+          type: "string"
+          required: true
+          description: "步骤 ID"
+
+        - name: "engine"
+          type: "string"
+          required: false
+          description: "执行此步骤的引擎"
+
+        - name: "summary"
+          type: "string"
+          required: true
+          description: "完成摘要（一行）"
+
+        - name: "artifact_uri"
+          type: "string"
+          required: false
+          example: ".reasonix/session-xxx.json"
+          description: "指向引擎原生产物的引用"
+
+        - name: "output"
+          type: "string"
+          required: false
+          description: "此步骤的关键产出路径"
+
+  - name: "next"
+    type: "object"
+    required: true
+    description: "下一步信息"
+
+    fields:
+      - name: "step"
+        type: "string"
+        required: true
+        description: "下一步步骤 ID"
+
+      - name: "input"
+        type: "string"
+        required: false
+        description: "下一步需要的输入描述"
+
+      - name: "engine_hint"
+        type: "string"
+        required: false
+        description: "建议引擎（非强制绑定，调度层可覆盖）"
+
+      - name: "priority"
+        type: "string"
+        required: false
+        enum: ["low", "medium", "high", "critical"]
+
+  - name: "known_issues"
+    type: "list<string>"
+    required: false
+    description: >
+      已知问题和注意事项。这是跨引擎继承中最有价值的信息。
+      例如："Person A 不确定是运丰"、"年龄跨度导致同人聚类分裂"。
+
+  - name: "required_input"
+    type: "list<string>"
+    required: false
+    example:
+      - "E:/PAIOS/10_WORK/photos_organizer/face_index/face_index.db"
+    description: "下一步所需输入文件/数据的路径列表"
+
+  - name: "context_summary"
+    type: "string"
+    required: false
+    format: "markdown"
+    description: >
+      项目上下文汇总（3-5 句话）。
+      新引擎读取此字段快速了解项目全貌，不必从零阅读所有历史。
+
+# ── 文件组织 ─────────────────────────────────────
+
+file_location: "10_WORK/{task_id}/handoff.yaml"
+update_frequency: "频繁更新（每次引擎交接时）"
+owner: "当前正在工作的引擎"
+
+# ── 交接协议 ─────────────────────────────────────
+
+handoff_protocol:
+  handoff_out:
+    - "更新 handoff.yaml 中的所有字段"
+    - "写入 artifacts/ 记录（指向引擎原生产物）"
+    - "可选：写 40_AUTOMATION/11_ENGINES/{task_id}/state.yaml 保存执行状态"
+
+  handoff_in:
+    - "读取 handoff.yaml → 恢复上下文"
+    - "读取 artifacts/ 记录 → 了解历史工作"
+    - "读取 40_AUTOMATION/11_ENGINES/{task_id}/state.yaml（如有）→ 恢复执行状态"
+    - "执行工作"
+    - "更新 handoff.yaml"

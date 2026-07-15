@@ -8,6 +8,8 @@ related:
   - ../Governance/Operating-Model.md
   - ../SOP/SOP-2026-07-11-0001-User-Daily-Operations.md
   - ../SOP/SOP-2026-07-10-0001-Release-Flow.md
+
+> **2026-07-12 修正**：`RELEASES/` 已移至 `20_KNOWLEDGE/RELEASES/`；`PAIOS-Usage/` 已移至 `30_SYSTEM/PAIOS-Usage/`。本 ADR 正文中根目录下的 `RELEASES/` 和 `PAIOS-Usage/` 引用请按此修正理解。
   - ../Evolution/Case-Studies/CASE-001-Multi-Instance-First-Convergence.md
   - Architecture-Lifecycle.md
 ---

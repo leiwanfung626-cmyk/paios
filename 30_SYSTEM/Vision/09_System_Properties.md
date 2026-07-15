@@ -18,7 +18,7 @@ PAIOS 确保任何时间点都可重建系统状态：
 
 | 保证机制 | 说明 |
 |---------|------|
-| **Bootstrap First** | 每次会话加载相同治理信息（Principles → ADR → Registry → Manifest） |
+| **Bootstrap First** | 会话启动读取 AI_STARTUP.md → Principles → ADR-INDEX；数据放置规则由工作区配置全局强制执行 |
 | **Registry** | 反映所有资产的精确状态 |
 | **Manifest + SYSTEM_VERSION** | 记录平台版本、Schema 版本、配置版本 |
 | **Git 版本管理** | 所有文本资产受版本控制 |

@@ -10,6 +10,8 @@ related:
   - ADR-0015-Federated-Aggregation-Viewing.md
   - ADR-0016-Multi-Instance-Architecture-Baseline.md
   - ../Evolution/Case-Studies/CASE-001-Multi-Instance-First-Convergence.md
+
+> **2026-07-12 修正**：`PAIOS-Usage/` 已移至 `30_SYSTEM/PAIOS-Usage/`；`Fleet/` 已移至 `30_SYSTEM/Fleet/`。本 ADR 正文中所有根目录下的 `PAIOS-Usage/` 和 `Fleet/` 引用请按此修正理解。PAIOS-Usage 物理位于 Core 树（30_SYSTEM/）下，但其内容性质属于 Workspace（仅 Manifest 回传 Developer）。
   - ../Evolution/Phase-B-Core-Workspace-Split.md
 ---
 

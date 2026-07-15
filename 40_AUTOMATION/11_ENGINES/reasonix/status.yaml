@@ -1,0 +1,19 @@
+# Engine Runtime Status
+# ADR-0018: Engine Scheduling
+# 由 Scheduler 定期更新（通过 Adapter probe()）
+
+engine_id: "reasonix"
+status: "online"           # online / offline / degraded
+last_probe: "2026-07-11T12:00:00+08:00"
+last_online: "2026-07-11T12:00:00+08:00"
+
+capabilities:
+  - "reasoning"
+  - "code_gen"
+  - "shell"
+  - "session_persistence"
+  - "trace_aware"
+
+latency_ms: 850
+error_rate: 0.02
+current_load: "idle"       # idle / busy / saturated

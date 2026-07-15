@@ -1,0 +1,132 @@
+# Artifact Schema（产物引用格式定义）
+# ADR-0017: Cross-Engine Work Context Inheritance
+# Artifact = 对某引擎产生或引用的产物的轻量引用。
+# 内容在 URI 指向的引擎私有目录中，不在 Artifact 中。
+# 可引用：conversation / document / image / video / git_commit / issue / adr / ...
+# 版本: 2
+
+schema:
+  name: "artifact"
+  version: 2
+  description: "产物引用记录格式 — 轻量引用，指向任何类型的引擎产物"
+
+fields:
+
+  # ── 必填字段 ──────────────────────────────────────
+
+  - name: "artifact_id"
+    type: "string"
+    required: true
+    format: "YYYYMMDDTHHMMSS-{engine}-{seq}"
+    example: "20260711T090000-reasonix-1"
+    description: "全局唯一引用 ID，按时间+引擎+序号确保不重复"
+
+  - name: "engine"
+    type: "string"
+    required: true
+    description: "产生此产物的引擎 ID（对应 agents.yaml 中的 engine_id）"
+
+  - name: "timestamp"
+    type: "string"
+    required: true
+    format: "ISO 8601"
+    example: "2026-07-11T09:00:00+08:00"
+    description: "产物产生时间，用于全局排序"
+
+  - name: "type"
+    type: "string"
+    required: true
+    description: >
+      产物类型。不限于以下枚举 — 新类型可随时添加。
+    known_types:
+      - "conversation"    # AI 对话会话
+      - "session"         # 引擎 session 记录
+      - "decision"        # 技术决策
+      - "milestone"       # 里程碑标记
+      - "checkpoint"      # 检查点
+      - "error"           # 错误记录
+      - "document"        # 文档/笔记
+      - "image"           # 图片
+      - "video"           # 视频
+      - "git_commit"      # Git 提交
+      - "issue"           # 问题/Issue
+      - "adr"             # 架构决策记录
+      - "sop"             # 操作流程
+      - "code"            # 代码文件
+      - "data"            # 数据文件
+      - "config"          # 配置文件
+      - "automation"      # 自动化规则
+      - "state_change"    # 状态变更
+      - "handoff"         # 引擎交接
+
+  - name: "summary"
+    type: "string"
+    required: true
+    max_length: 120
+    example: "完成人脸检测脚本编写"
+    description: "一行摘要"
+
+  - name: "uri"
+    type: "string"
+    required: true
+    example: ".reasonix/topics/photo-face-detection"
+    description: >
+      指向引擎原生产物的路径。这是 artifact 的核心 — 内容在此 URI 处。
+      可指向任何位置：引擎私有目录 / 10_WORK / 20_KNOWLEDGE / Git 引用。
+
+  # ── 可选字段 ──────────────────────────────────────
+
+  - name: "task_id"
+    type: "string"
+    required: false
+    example: "photo-organize"
+    description: "关联的 Task ID（指向 10_WORK/{task_id}/）"
+
+  - name: "workflow_id"
+    type: "string"
+    required: false
+    description: "所属工作流 ID"
+
+  - name: "workflow_step"
+    type: "string"
+    required: false
+    description: "工作流步骤 ID"
+
+  - name: "context_id"
+    type: "string"
+    required: false
+    example: "work"
+    description: >
+      执行环境标识（未来扩展）。当 engine 为工具名 + context_id 为执行环境时使用。
+      向后兼容：当前 engine 字段可直接写 chatgpt-work；未来可拆为 engine=chatgpt + context_id=work。
+
+  - name: "tags"
+    type: "list<string>"
+    required: false
+    description: "过滤标签"
+
+  - name: "continuation"
+    type: "string"
+    required: false
+    example: "见 10_WORK/photo-organize/handoff.yaml"
+    description: "如何继续 — 通常指向 handoff.yaml 路径"
+
+# ── 文件组织 ─────────────────────────────────────
+
+file_organization:
+  path: "40_AUTOMATION/10_TRACES/artifacts/YYYY-MM-DD-A.yaml"
+  description: "按日期分文件。A 后缀标记为 Artifact"
+  entry_structure: |
+    artifacts:
+      - artifact_id: "..."
+        engine: "..."
+        timestamp: "..."
+        type: "..."
+        uri: "..."
+        # ...
+
+# ── 核心约束 ─────────────────────────────────────
+
+constraints:
+  no_content_duplication: "Artifact 不保存产物的完整内容。内容只存在于 URI 指向的位置。"
+  single_source_of_truth: "引擎私有目录是原生格式的唯一数据源。Artifact 只是引用索引。"

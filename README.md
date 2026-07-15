@@ -46,9 +46,11 @@ PAIOS 拥有 ~115 个 Markdown 文档分布在系统的各个生命周期层中�
 | **Work** | `10_WORK/` | 活跃工作区——进行中的项目、处理中任务 |
 | **Knowledge** | `20_KNOWLEDGE/` | 正式知识库——经过验证的知识资产 |
 | **System** | `30_SYSTEM/` | 系统内核——治理、ADR、原则、演进证据 |
-| **Automation** | `40_AUTOMATION/` | 自动化引擎——脚本、Agent、Registry、Prompts |
+| **Automation** | `40_AUTOMATION/` | 自动化引擎——脚本、Agent、Registry、Prompts、Scheduler、Engines |
 | **Data** | `50_DATA/` | 数据基础设施 |
-| **History** | `60_HISTORY/` | 工程历史档案（Engineering Journal + 版本历史） |
+| **External** | `60_EXTERNAL/` | 外部引用 |
+| **TMP** | `70_TMP/` | 运行时临时文件 |
+| **History** | `80_HISTORY/` | 工程历史档案（Engineering Journal + 版本历史） |
 | **Archive** | `90_ARCHIVE/` | 历史归档 |
 
 ### Multi-Instance Model
@@ -82,10 +84,10 @@ PAIOS 支持多实例部署（ADR-0016~0018）：
 3. **工作区始终是临时的**
 4. **知识必须经过验证才能进入知识库**
 5. **自动化存储工作流，不存储知识**
-6. **顶层目录数量保持最少**（冻结为 7 个）
+6. **顶层目录数量保持最少**（当前冻结为 00-90 十层模型）
 7. **元数据是主要分类系统**
 8. **工具独立**：PAIOS 是平台，AI 工具是客户端
-9. **Bootstrap First**：AI 工具必须先加载平台治理信息
+9. **Bootstrap First**：会话启动读取 AI_STARTUP.md → Principles → ADR-INDEX；数据放置规则由工作区配置全局强制执行
 
 > 详见 [Principles](30_SYSTEM/Principles.md)
 
@@ -166,7 +168,9 @@ PAIOS/
 │   ├── 05_SCRIPTS/      # 自动化脚本
 │   └── ...
 ├── 50_DATA/             # 数据基础设施
-├── 60_HISTORY/          # 工程历史档案
+├── 60_EXTERNAL/         # 外部引用
+├── 70_TMP/              # 运行时临时文件
+├── 80_HISTORY/          # 工程历史档案
 │   └── JOURNAL/         # 工程日志（Engineering Journal）
 ├── 90_ARCHIVE/          # 历史归档
 ├── CHANGELOG.md         # 变更日志

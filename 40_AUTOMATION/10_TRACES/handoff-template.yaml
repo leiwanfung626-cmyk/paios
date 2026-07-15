@@ -1,0 +1,56 @@
+# Handoff Template — 交接文件标准格式
+# 这是格式参考模板。实际使用时复制到 10_WORK/{task_id}/handoff.yaml。
+# 任何引擎打开即可恢复上下文继续工作。
+# 格式参见 handoff-schema.yaml
+
+# ===== 示例：照片整理任务交接 =====
+
+handoff_version: 2
+task_id: "TASK-20260711-001"
+task_display_name: "照片整理"
+created_by: "workbuddy"
+current_step: "face_clustering"
+workflow_id: "photo_organizer_flow"
+
+completed:
+  - step: "ingest"
+    engine: "workbuddy"
+    summary: "入库索引完成，11,954 张照片已写入 photo_index.db"
+    trace_uri: ".workbuddy/memory/2026-07-08.md"
+    output: "10_WORK/photos_organizer/database/photo_index.db"
+
+  - step: "face_detection"
+    engine: "reasonix"
+    summary: "人脸检测完成，19,842 个人脸特征已提取"
+    trace_uri: ".reasonix/topics/photo-face-detection"
+    output: "10_WORK/photos_organizer/face_index/faces/"
+
+next:
+  step: "face_clustering"
+  input: "人脸特征向量 + FAISS 索引"
+  engine_hint: "reasonix"       # 建议引擎，非强制绑定
+  priority: "high"
+
+known_issues:
+  - "20年年龄跨度可能使同人聚类分裂，需后期用种子图校正"
+  - "Person A = 运丰（不确定，需人工确认）"
+  - "低质量缩略图（< 64px）跳过，不影响主流程"
+
+required_input:
+  - "10_WORK/photos_organizer/face_index/face_index.db"
+  - "10_WORK/photos_organizer/face_index/faiss_index.bin"
+
+context_summary: |
+  照片整理项目第二阶段。已完成入库索引（11,954 张）和人脸检测（19,842 个人脸）。
+  下一步对检测到的人脸进行聚类（FAISS IndexFlatIP + 余弦相似度）。
+  聚类完成后进行人物命名、共现网络构建、事件聚合。
+  标注密度是当前主要瓶颈——仅 2 具名人物 / 3,995 簇。
+
+# ===== 使用说明 =====
+# 1. 接手引擎读取此文件 → 恢复上下文
+# 2. 完成 face_clustering 后更新此文件：
+#    - 将 face_clustering 从 next 移到 completed
+#    - 更新 next 为下一阶段（curation）
+#    - 更新 current_step
+#    - 更新 known_issues（如有）
+# 3. 在 40_AUTOMATION/10_TRACES/index/ 中添加索引记录

@@ -1,0 +1,34 @@
+# Task Definition — 跨引擎手递实验 Phase 1
+# Created: 2026-07-11
+
+task_id: "TASK-20260711-HE001"
+display_name: "跨引擎手递实验 Phase 1 — Format Validation"
+created_at: "2026-07-11T16:02:00+08:00"
+created_by: "workbuddy"
+status: "in_progress"   # ADR-0007 lifecycle: Draft → Experimental → ...
+
+goals:
+  - "验证 handoff.yaml 格式能承载完整工作上下文"
+  - "模拟 WorkBuddy → Reasonix → WorkBuddy 回环"
+  - "记录上下文盲测结果（B 方阅读 A 方 handoff 后能否准确恢复上下文）"
+  - "产出格式改进建议（如有）"
+
+experiment_design:
+  phase: 1
+  type: "format_validation"
+  protocol: "四步回环法"
+  steps:
+    - round: 1
+      actor: "WorkBuddy"
+      action: "写 handoff（已知上下文），写 artifact 引用"
+    - round: 2
+      actor: "Reasonix (simulated)"
+      action: "读 handoff → 重建理解 → 写续接 handoff"
+    - round: 3
+      actor: "WorkBuddy"
+      action: "读 Reasonix handoff → 验证上下文恢复准确率"
+    - round: 4
+      actor: "Report"
+      action: "输出实验报告 + 格式改进建议"
+
+  context_source: "photo_organizer face_retrieval pipeline（真实状态）"

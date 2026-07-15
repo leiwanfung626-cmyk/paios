@@ -1,0 +1,94 @@
+# Handoff — Reasonix (simulated) → WorkBuddy
+# 我从 handoff-v1（WorkBuddy 侧）仅读取以下信息：
+#   - completed[].summary（6 步骤）
+#   - context_summary（3 段）
+#   - known_issues（5 条）
+#   - current_step / next / required_input
+# 不依赖任何外部记忆或对话历史。以下是我（Reasonix）能重建的上下文：
+
+handoff_version: 2
+task_id: "TASK-20260711-HE001"
+task_display_name: "跨引擎手递实验 Phase 1 — Format Validation"
+created_by: "reasonix"
+current_step: "face_retrieval_audit"
+workflow_id: "photo_organizer_flow"
+
+completed:
+  - step: "ingest_and_classify"
+    engine: "reasonix"
+    summary: "由 handoff 理解：入库 15,530 源 → 16,958 归档，8 类。已完成。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff.yaml#step-ingest"
+    output: "（据 handoff 记录）E:/QuarkSync/照片归档/"
+
+  - step: "face_detection"
+    engine: "reasonix"
+    summary: "由 handoff 理解：InsightFace buffalo_l CPU，11,954 master 照片 → ~19,800 人脸，已完成。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff.yaml#step-face"
+    output: "（据 handoff 记录）10_WORK/photos_organizer/face_index/face_index.db"
+
+  - step: "face_clustering"
+    engine: "reasonix"
+    summary: "由 handoff 理解：FAISS 聚类 3,995 簇，20 年年龄跨度致分裂，不追自动认人。已完成。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff.yaml#step-cluster"
+
+  - step: "seed_retrieval"
+    engine: "reasonix"
+    summary: "由 handoff 理解：种子检索完成。运丰 962 候选/皓祥 1,688。运丰已落地（466 张 + 时间线）。已完成。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff.yaml#step-retrieval"
+
+  - step: "person_naming"
+    engine: "reasonix"
+    summary: "由 handoff 理解：1,352 人工判定，仅 2 具名（运丰/皓祥）。标注密度是瓶颈。已完成。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff.yaml#step-naming"
+
+  - step: "face_index_rebuild_decision"
+    engine: "workbuddy"
+    summary: "由 handoff 理解：旧 face_index.db 路径全悬空（指向 E:\\待整理照片 已消失）。归档是可用新源。关键纠正。已完成。"
+    artifact_uri: "10_WORK/handoff-experiment-001/handoff.yaml#step-rebuild"
+
+# --- Reasonix 基于 handoff 的分析 ---
+
+next:
+  step: "face_retrieval_audit"
+  input: "决策：face_index 重建走 archive 路线还是种子检索权宜法"
+  engine_hint: "workbuddy"
+  priority: "high"
+
+known_issues:
+  # 我能从 handoff 读出的问题：
+  - "旧 face_index.db 28317 人脸路径全悬空（指向已消失的 E:\\待整理照片），不可用"
+  - "归档 16,958 张媒体就位但未建独立索引 DB"
+  - "3,995 簇仅 2 具名人物（运丰/皓祥）；3,993 簇未命名"
+  - "无 CUDA runtime（CMP 40HX），全量 CPU 重跑预计数小时"
+  - "Person A = 运丰, Person B = 皓祥（已确认具名）"
+
+  # 我能从 handoff 推理出的额外问题：
+  - "完成步骤中 5/6 由 workbuddy 执行 → 信息可能有单引擎偏斜"
+  - "聚类分裂（年龄跨度）意味着同人恢复算法需跨簇关联，FAISS 纯聚类不够"
+  - "种子检索的召回率未知：全库 16,958 中仅运丰 962 + 皓祥 1,688 = 2,650 → 5,391/16,958 未覆盖任何人物"
+
+required_input:
+  - "10_WORK/photos_organizer/face_index/face_index.db（handoff 注明：路径悬空，不可用）"
+  - "E:/QuarkSync/照片归档/（handoff 注明：新源 16,958 媒体）"
+  - "10_WORK/photos_organizer/database/photo_index.db"
+
+context_summary: |
+  从 handoff 重建的理解：
+
+  这是 PAIOS 照片整理项目的第二阶段（人脸检索）。全 pipeline 已完成 V1.0：
+  入库索引 → 混合分类(CLIP+GLM) → 人脸检测(InsightFace buffalo_l CPU) → 
+  FAISS 聚类(3,995 簇) → 种子检索(运丰/皓祥) → 人物策展(运丰文件夹已落地)。
+
+  当前最大问题是**基础设施失效**：旧 face_index.db 路径指向已消失的源目录，
+  所有 28,317 个人脸记录的路径均不可达。归档路径 E:/QuarkSync/照片归档/ 是唯一存活源。
+
+  handoff 建议方向：① 重建 face_index at archive；② 持续命名标注；
+  ③ search.py 统一检索层；④ events 事件聚合。不折腾模型升级。
+
+  handoff 还告诉我这个任务本身是"跨引擎手递实验"——验证我能不能看懂它写的内容。
+  基于我能重建的信息密度，评估如下：
+  - completed steps: 6/6 步骤我能恢复含义 ✓
+  - known_issues: 5/5 明确 + 3 推理 ✓
+  - context_summary: 高密度，无歧义 ✓
+  - next step: 明确 ✓
+  - 关键限制：engine_hint 写死为 workbuddy，但我作为 reasonix 其实可以建议替代方案（如 python 计算密集型任务）
