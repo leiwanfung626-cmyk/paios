@@ -1,0 +1,140 @@
+# PAIOS-PORTABLE Asset Governance Review
+# Generated: 2026-07-15 Phase 3 Governance
+# State: CONVERGED → GOVERNED
+
+assets:
+  # ===== 40_AUTOMATION — Scripts =====
+  - id: AUTO-SCRIPT-collect_manifest
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/collect_manifest.py
+    decision: Keep
+    reason: "核心能力 — Fleet FIM 采集器 (ADR-0013)，持续使用中"
+    registry_id: SCRIPT-0009
+
+  - id: AUTO-SCRIPT-classify_files
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/classify_files.py
+    decision: Keep
+    reason: "核心能力 — QuarkSync 自动分类器，持续使用中"
+    registry_id: SCRIPT-0006
+
+  - id: AUTO-SCRIPT-vision_query
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/vision_query.py
+    decision: Keep
+    reason: "reasonix 多模态视觉兜底出口，持续使用中"
+    registry_id: SCRIPT-0007
+
+  - id: AUTO-SCRIPT-check_vision_payload
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/check_vision_payload.py
+    decision: Keep
+    reason: "reasonix 400 多模态诊断工具，持续使用中"
+    registry_id: SCRIPT-0008
+
+  - id: AUTO-SCRIPT-douyin_bat
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/douyin.bat
+    decision: Refactor
+    reason: "硬编码 F:\PAIOS 路径。需改为 $PAIOS_ROOT 协议"
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-douyin_sh
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/douyin.sh
+    decision: Keep
+    reason: "Bash 版本的 douyin 入口，路径使用相对引用"
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-fleet_push_bat
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/fleet-push-case-02.bat
+    decision: Refactor
+    reason: "Case-02 专用推送脚本，硬编码 E:\ 路径。合并到统一 fleet-push CLI"
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-fleet_push_ps1
+    category: automation/script
+    file: 40_AUTOMATION/05_SCRIPTS/fleet-push-case-02.ps1
+    decision: Refactor
+    reason: "PowerShell 版，与 bat 功能重复。硬编码 E:\ 路径"
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-douyin_legacy
+    category: automation/script
+    file: 40_AUTOMATION/09_LEGACY/original/douyin_full_pipeline.py
+    decision: Keep
+    reason: "被 douyin.bat/sh 包装调用，向后兼容需要保留"
+    registry_id: SCRIPT-0004
+
+  - id: AUTO-SCRIPT-rag_prototype
+    category: automation/script
+    file: 40_AUTOMATION/09_LEGACY/original/rag_prototype.py
+    decision: Archive
+    reason: "RAG 原型，status:pending，长期未使用。保留参考价值"
+    registry_id: SCRIPT-0001
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-kb_add
+    category: automation/script
+    file: 40_AUTOMATION/09_LEGACY/original/kb_add.py
+    decision: Archive
+    reason: "知识库添加工具，status:pending，长期未使用"
+    registry_id: SCRIPT-0002
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-kb_status
+    category: automation/script
+    file: 40_AUTOMATION/09_LEGACY/original/kb_status.py
+    decision: Archive
+    reason: "知识库状态查询，status:pending，长期未使用"
+    registry_id: SCRIPT-0003
+    action_phase: Phase-5
+
+  - id: AUTO-SCRIPT-archive_workbuddy
+    category: automation/script
+    file: 40_AUTOMATION/09_LEGACY/original/archive_workbuddy.py
+    decision: Archive
+    reason: "WorkBuddy 归档工具，status:pending，长期未使用"
+    registry_id: SCRIPT-0005
+    action_phase: Phase-5
+
+  # ===== 40_AUTOMATION — Directory Structure =====
+  - id: AUTO-DIR-10_MANIFEST
+    category: automation/directory
+    file: 40_AUTOMATION/10_MANIFEST/
+    decision: Deprecate
+    reason: "manifest.yaml 描述为 '旧 40_AUTOMATION/10_MANIFEST/ 已废弃' (见 collect_manifest.py 注释)"
+    action_phase: Phase-5
+
+  - id: AUTO-DIR-10_TRACES
+    category: automation/directory
+    file: 40_AUTOMATION/10_TRACES/
+    decision: Review
+    reason: "跨引擎 trace 目录，含运行时数据。需确认是否仍在使用"
+    action_phase: Phase-5
+
+  # ===== 20_KNOWLEDGE — Knowledge Assets =====
+  - id: KNOW-Personal-Kaoyan
+    category: knowledge
+    file: 20_KNOWLEDGE/Personal/Kaoyan-100Day-Simulation.md
+    decision: Keep
+    reason: "双实例均有，内容一致（仅换行符差异）"
+
+  - id: KNOW-Personal-Kaoyan-PDF
+    category: knowledge
+    file: 20_KNOWLEDGE/Personal/PAIOS-Kaoyan-100Day-Guide.pdf
+    decision: Keep
+    reason: "Case-01 独有，考研资料"
+
+  - id: KNOW-Personal-Proxy
+    category: knowledge
+    file: 20_KNOWLEDGE/Personal/Proxy-Setup-Guide-一楼PC.md
+    decision: Keep
+    reason: "Case-01 独有，网络配置记录"
+
+  - id: KNOW-Personal-ReadingIndex
+    category: knowledge
+    file: 20_KNOWLEDGE/Personal/阅读目录索引.md
+    decision: Keep
+    reason: "Case-01 独有，阅读管理"

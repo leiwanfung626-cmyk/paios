@@ -1,0 +1,81 @@
+# PAIOS-PORTABLE Refactor Backlog
+# Generated: 2026-07-15 Phase 3 Governance
+# Items to address in Phase 5 Refactor
+
+backlog:
+  # ── P0 硬编码路径 ──────────────────────────
+  - id: AUTO-HARDCODE-001
+    category: hardcoded_path
+    file: 40_AUTOMATION/05_SCRIPTS/douyin.bat
+    line: 9
+    issue: "set PAIOS_PATH=F:\PAIOS 应改为 $PAIOS_ROOT 环境变量"
+    priority: P0
+    action: Phase-5
+
+  - id: AUTO-HARDCODE-002
+    category: hardcoded_path
+    file: 40_AUTOMATION/05_SCRIPTS/fleet-push-case-02.bat
+    lines: [4, 7, 78, 85]
+    issue: "多处 E:\PAIOS 和 E:\FleetExchange 硬编码"
+    priority: P0
+    action: Phase-5
+
+  - id: AUTO-HARDCODE-003
+    category: hardcoded_path
+    file: 40_AUTOMATION/05_SCRIPTS/fleet-push-case-02.ps1
+    lines: [8, 13]
+    issue: "E:\PAIOS 硬编码"
+    priority: P0
+    action: Phase-5
+
+  - id: AUTO-HARDCODE-004
+    category: hardcoded_path
+    file: 40_AUTOMATION/05_SCRIPTS/check_vision_payload.py
+    line: 52
+    issue: "print 消息中的 F:\PAIOS 路径引用"
+    priority: P1
+    action: Phase-5
+
+  # ── P1 重复/废弃脚本 ──────────────────────
+  - id: AUTO-DUPLICATE-001
+    category: duplicate
+    files:
+      - 40_AUTOMATION/05_SCRIPTS/fleet-push-case-02.bat
+      - 40_AUTOMATION/05_SCRIPTS/fleet-push-case-02.ps1
+    issue: "两个文件功能完全重复（bat + PowerShell），应合并为一个统一 CLI"
+    priority: P1
+    action: Phase-5
+
+  - id: AUTO-DEPRECATE-001
+    category: deprecated
+    file: 40_AUTOMATION/10_MANIFEST/
+    issue: "manifest.yaml 描述自身为 '已废弃'。确认后移入 09_LEGACY"
+    priority: P1
+    action: Phase-5
+
+  # ── P2 待评估 ────────────────────────────
+  - id: AUTO-REVIEW-001
+    category: review
+    file: 40_AUTOMATION/10_TRACES/
+    issue: "跨引擎 trace 目录，含运行时数据。需确认是否仍在使用"
+    priority: P2
+    action: review_later
+
+  - id: AUTO-LEGACY-001
+    category: legacy
+    files:
+      - 40_AUTOMATION/09_LEGACY/original/rag_prototype.py
+      - 40_AUTOMATION/09_LEGACY/original/kb_add.py
+      - 40_AUTOMATION/09_LEGACY/original/kb_status.py
+      - 40_AUTOMATION/09_LEGACY/original/archive_workbuddy.py
+    issue: "4 个脚本 status:pending，长期未使用。保留至 Phase 5 归档"
+    priority: P2
+    action: Phase-5
+
+  # ── P2 规则清理 ──────────────────────────
+  - id: RULE-CLEANUP-001
+    category: rule_outdated
+    file: "各 ADR/Principle 文件"
+    issue: "搜索 '必须运行在 F 盘' 类硬编码盘符约束"
+    priority: P2
+    action: Phase-5
