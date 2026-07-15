@@ -79,3 +79,43 @@ backlog:
     issue: "搜索 '必须运行在 F 盘' 类硬编码盘符约束"
     priority: P2
     action: Phase-5
+
+  # ── P0 SOP 硬编码路径 ─────────────────────
+  - id: SOP-HARDCODE-001
+    category: hardcoded_path
+    file: 30_SYSTEM/SOP/PAIOS执行宪法.md
+    lines: [10, 67]
+    issue: "E:/PAIOS 硬编码，应改为 $PAIOS_ROOT"
+    priority: P0
+    action: Phase-5
+
+  - id: SOP-HARDCODE-002
+    category: hardcoded_path
+    file: 30_SYSTEM/Governance/Reasonix多模态传图规则.md
+    line: 49
+    issue: "python F:\PAIOS\... 硬编码路径"
+    priority: P0
+    action: Phase-5
+
+  # ── P1 Fleet 路径引用需确认 ─────────────────
+  - id: SOP-FLEET-PATHS
+    category: hardcoded_path
+    files:
+      - 30_SYSTEM/SOP/SOP-2026-07-10-0001-Release-Flow.md
+      - 30_SYSTEM/SOP/SOP-2026-07-11-0001-User-Daily-Operations.md
+      - 30_SYSTEM/SOP/SOP-2026-07-11-0003-Pilot-Launch-Checklist.md
+      - 30_SYSTEM/governance/Operating-Model.md
+      - 30_SYSTEM/governance/Pilot-Gate.md
+      - 30_SYSTEM/governance/Rollout.md
+      - 30_SYSTEM/governance/Release/release-checklist.md
+    issue: "F:\Fleet\ 路径引用。Fleet 是多实例 out-of-band 通信机制，需确认新架构下的 Fleet 位置协议"
+    priority: P1
+    action: Phase-5
+
+  # ── P2 规则更新 ────────────────────────────
+  - id: RULE-ARCHITECTURE-AUDIT-STALE
+    category: rule_outdated
+    file: 30_SYSTEM/governance/PAIOS-Architecture-Audit-2026-07-09.md
+    issue: "审计报告引用 F:\PAIOS 路径，当时为 Case-01 feng。现需确认审计结论是否仍适用于 PAIOS-PORTABLE"
+    priority: P2
+    action: review_later
