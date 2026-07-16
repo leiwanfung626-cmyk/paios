@@ -24,6 +24,7 @@ See `30_SYSTEM/validation/stabilization-log-20260715.md` for full scope.
 - [x] ~~Begin Phase 4 real work on PAIOS-PORTABLE~~ (Day 1)
 - [x] ~~Governance Protocol "One Issue, One Packet" approved and active~~ (Day 2)
 - [x] ~~Incident Record + Session-02 merged~~ (Day 2)
+- [x] ~~视频→知识入库：抖音@小戴AI学习「个人知识库应该怎么用」→ Method KB-2026-07-16-0001（Capture Pipeline 合规闭环）~~
 - [ ] Continue Phase 4 real work — use PAIOS for actual projects
 
 ---

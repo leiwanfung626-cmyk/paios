@@ -4,8 +4,8 @@ topic: "视频捕获到知识入库全链路"
 lifecycle: active
 id: "SOP-2026-07-02-0001"
 created: "2026-07-02"
-updated: "2026-07-02"
-revised: "2026-07-02 — Step 2 重写（抖音CSR反爬），新增 Step 2b 语音转写"
+updated: "2026-07-16"
+revised: "2026-07-02 — Step 2 重写（抖音CSR反爬），新增 Step 2b 语音转写 | 2026-07-16 — 服从 Capture Pipeline 硬规则：Step 4/5 直写 20_KNOWLEDGE 作废，改走 inbox→classify_capture 晋升"
 source: "REF-0001 + REF-0002 + REF-0004 实践总结"
 tags: [sop, video, transcript, knowledge-capture, pipeline]
 attributes:
@@ -20,7 +20,7 @@ attributes:
     - "2026-07-06 Codex CLI 教程 (REF-0006) — 修复 ffmpeg PATH + 代理问题，v2.2"
 extensions:
   related_refs: ["REF-0001", "REF-0002", "REF-0004", "REF-0006"]
-  related_principles: ["#4 知识验证", "#8 工具独立"]
+  related_principles: ["#4 知识验证", "#8 工具独立", "Capture Pipeline 硬规则 (2026-07-16)"]
   triggers_direction: "DEC-2026-07-02-0001 方向1（多模态捕获层）"
 ---
 
@@ -29,6 +29,39 @@ extensions:
 ## 适用场景
 
 用户看到有价值的视频（抖音/B站/YouTube），想把内容变成 PAIOS 知识库中的永久资产。
+
+## ⚠️ Capture Pipeline 合规要求（2026-07-16 起生效）
+
+本 SOP 原 Step 4/5 的「直接写入 `20_KNOWLEDGE/...`」行为**已作废**，服从 `00_CAPTURE/Inbox.md` 定义的 **Capture Pipeline 硬规则**：
+
+> AI 日常结构化产出（Reference / Method / Model / Concept / Decision / Packet）
+> **禁止直写** `20_KNOWLEDGE` / `30_SYSTEM` / `40_AUTOMATION`，
+> 必须先进 `00_CAPTURE/inbox/` 再经晋升器路由。
+
+**新流程（取代原 Step 4/5 的直写）**：
+
+1. 在 Step 5 完成深度加工，得到结构化正文（含标准 frontmatter）。
+2. 用 `capture.py` 把成品**暂存**到 `00_CAPTURE/inbox/`：
+   ```bash
+   python 40_AUTOMATION/05_SCRIPTS/capture.py \
+     --title "个人知识库用法-资料型vs认知型" \
+     --source workbuddy \
+     --type research \      # 知识类统一用 research（classify_capture 路由到 20_KNOWLEDGE/research）
+     --keywords 知识库,知识管理,资料型,认知型 \
+     --body-file /tmp/kb_method.md
+   ```
+3. 用 `classify_capture.py --apply` 晋升（默认路由到 `20_KNOWLEDGE/research/`）：
+   ```bash
+   python 40_AUTOMATION/05_SCRIPTS/classify_capture.py --apply
+   ```
+4. **relocation（暂未自动化）**：`classify_capture` 当前 ROUTE 表无 `method/concept/model/reference` 类型，
+   知识成品会落到 `20_KNOWLEDGE/research/`，需手动移动到精确子目录
+   `20_KNOWLEDGE/Platform/<Methods|Models|Concepts|References>/`，并同步更新对应 `_index.md`。
+   > 此 relocation 缺口列为 **Phase-5 改进**（扩展 classify_capture ROUTE），Phase-4 冻结期内不改动脚本。
+5. 回写 `00_CAPTURE/Inbox.md` 标记 `[x]` + `Today.md` 完成项 + memory 日志（原 Step 7）。
+
+> 注：`KB-2026-07-16-0001`（本次触发修订的视频）由 Reasonix 在本 SOP 修订前直写，视为**历史产物（grandfathered）**；
+> 自本修订起，一律走上方 Pipeline。
 
 ## 一键执行脚本
 
@@ -213,8 +246,9 @@ with open('70_TMP/douyin_transcript.txt', 'w', encoding='utf-8') as f:
 ### Step 4 — 结构化写入 Reference（Store）
 
 > 原 Step 4，编号+1。
+> ⚠️ **2026-07-16 起**：不得直写。先按上方「Capture Pipeline 合规要求」暂存+晋升，最终落点 `20_KNOWLEDGE/Platform/References/`。
 
-写入 `20_KNOWLEDGE/References/` 目录，文件名格式：`{Topic}-{Descriptor}.md`
+写入 `20_KNOWLEDGE/Platform/References/` 目录（经 Capture Pipeline 晋升 + relocation），文件名格式：`{Topic}-{Descriptor}.md`
 
 frontmatter 必填字段：
 
@@ -251,14 +285,16 @@ confidence: high | medium | low
 
 ### Step 5 — 深度加工（Process）
 
+> ⚠️ **2026-07-16 起**：本步产出的 Method/Model/Concept/Decision 均须先经「Capture Pipeline 合规要求」入库，不得直写 `20_KNOWLEDGE`。
+
 判断这个 Reference 是否能产出更深层知识：
 
-| 问题 | 如果"是" | 产物 | 位置 |
+| 问题 | 如果"是" | 产物 | 位置（经 Pipeline 晋升 + relocation） |
 |------|---------|------|------|
-| 视频内容能与已有知识对比吗？ | 写对比模型 | Model | 20_KNOWLEDGE/Models/ |
-| 视频引发了改进方向吗？ | 写决策记录 | Decision | 20_KNOWLEDGE/Decisions/ |
-| 视频介绍了一个可操作的方法吗？ | 写方法文档 | Method | 20_KNOWLEDGE/Methods/ |
-| 视频解释了一个概念吗？ | 写概念文档 | Concept | 20_KNOWLEDGE/Concepts/ |
+| 视频内容能与已有知识对比吗？ | 写对比模型 | Model | 20_KNOWLEDGE/Platform/Models/ |
+| 视频引发了改进方向吗？ | 写决策记录 | Decision | 20_KNOWLEDGE/Platform/Decisions/ |
+| 视频介绍了一个可操作的方法吗？ | 写方法文档 | Method | 20_KNOWLEDGE/Platform/Methods/ |
+| 视频解释了一个概念吗？ | 写概念文档 | Concept | 20_KNOWLEDGE/Platform/Concepts/ |
 
 不是每个视频都要产出全部类型。CodeTrust 产出了 1 个 Reference，NotebookLM 产出了 1 Reference + 1 Model + 1 Decision。
 

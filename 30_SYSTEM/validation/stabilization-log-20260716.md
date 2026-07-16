@@ -45,6 +45,12 @@
   - Review: ChatGPT ACCEPTED
   - Status: CLOSED (Reasonix 确认) — 5 stages + 3-iteration budget + lifecycle 已归档
   - 整合已有治理对象：AI-COLLAB-MESSENGER + POCKET-RELAY + POCKET-RELAY-BUDGET
+- D-001 双盘路由设计审查 (Router Design Review):
+  - Pocket: PAIOS-2026-0716-ROUTER-DESIGN-REVIEW-001
+  - Review: Reasonix ACCEPTED_WITH_REFINEMENT
+  - 焦点: 架构一致性 ✅ / Phase-4 合规 ✅ / 决策表 ✅ / Schema ✅ / 归属权 ✅ / 可实现性 ✅
+  - 3 项建议: G 盘路径注册 paths.yaml / review_queue 对齐 / relay_attempts
+  - Status: CLOSED → 已归档 90_ARCHIVE/Packets/
 
 发现:
 - 无新发现（Day 1 的 Runtime Context Gap 已验证，本次事件为已知风险的新实例）
@@ -81,7 +87,7 @@
 | Date | Completed | Findings | Stable? | Phase-5? |
 |------|-----------|----------|---------|----------|
 | 2026-07-15 | Phase 4 initiated + governance packet archived + WorkBuddy handoff created | Runtime Context Gap — AI Engine 无自动 Packet 发现机制 | ✅ | No |
-| 2026-07-16 | Incident record archived + agent behavior calibrated + governance packet sliced + Session-02 merged + Governance Protocol rule + Governance Boundary Review (CASE-002 ACCEPTED) + Pocket Relay Model CLOSED + Flow Integration CLOSED | AI_STARTUP.md path staleness verified; AI agent tendency to overreach confirmed; multi-Agent collaboration risks identified | ✅ | No |
+| 2026-07-16 | Incident record archived + agent behavior calibrated + governance packet sliced + Session-02 merged + Governance Protocol rule + Governance Boundary Review (CASE-002 ACCEPTED) + Pocket Relay Model CLOSED + Flow Integration CLOSED + Router Design Review CLOSED | AI_STARTUP.md path staleness verified; AI agent tendency to overreach confirmed; multi-Agent collaboration risks identified | ✅ | No |
 
 ---
 
@@ -102,3 +108,6 @@
 | 2026-07-15 | governance_packet | ChatGPT 生成 Phase-4 Stabilize 治理交接报文 (PAIOS-2026-0715-PHASE4-STABILIZE-GOVERNANCE-001) | Phase-4 |
 | 2026-07-16 | agent_boundary | Reasonix 两次越界：1) 未验证直接引用过期文档；2) 将 Incident 扩展为架构 Proposal。 | Phase-5 |
 | 2026-07-16 | governance_protocol | "One Issue, One Packet — Modify In Place" 规则已批准生效。所有AI Agent强制执行。 | ACTIVE |
+| 2026-07-16 | agent_boundary | Reasonix 生成越界 Phase-5 Handoff Pocket（治理决策问题出现在认知阶段）。已撤回并记录为治理发现：Phase Boundary Review 缺口。 | Phase-4 |
+| 2026-07-16 | governance_gap | Phase Boundary Review 缺失：AI 审查检查内容正确性但未检查阶段边界。已创建 phase-boundary-check.md 规范。 | Phase-4 (OBSERVATION) |
+| 2026-07-16 | phase_closure | Phase-4 STABILIZE 执行完成。CLOSURE Pocket 封存认知成果。90天观察期启动。 | Phase-4 |
