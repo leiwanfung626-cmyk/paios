@@ -35,6 +35,16 @@
   - Result: ACCEPTED — 追加 Backlog Item 性质为 Feedback Recording ≠ Governance Rule Change
   - Finding: 30_SYSTEM/Governance/ 目录混存 Active Rules + Feedback Artifacts，建议 Phase-5 分离
   - Status: CLOSED → 已归档 90_ARCHIVE/Packets/
+- Pocket Relay Model (AI 多实例协作):
+  - Pocket: PAIOS-2026-0716-AI-COLLAB-MESSENGER-001
+  - Review: ChatGPT ACCEPTED WITH REFINEMENT
+  - Status: CLOSED → 规则 PAIOS-GOV-PACKET-RELAY-001 已归档
+  - Reference: 从 30_SYSTEM/Governance/ 迁移至 90_ARCHIVE/Packets/（遵循 CASE-002 治理发现）
+- Pocket Relay 完整流程整合 (Flow Integration):
+  - Pocket: PAIOS-2026-0716-POCKET-RELAY-FLOW-INTEGRATION-001
+  - Review: ChatGPT ACCEPTED
+  - Status: CLOSED (Reasonix 确认) — 5 stages + 3-iteration budget + lifecycle 已归档
+  - 整合已有治理对象：AI-COLLAB-MESSENGER + POCKET-RELAY + POCKET-RELAY-BUDGET
 
 发现:
 - 无新发现（Day 1 的 Runtime Context Gap 已验证，本次事件为已知风险的新实例）
@@ -71,7 +81,7 @@
 | Date | Completed | Findings | Stable? | Phase-5? |
 |------|-----------|----------|---------|----------|
 | 2026-07-15 | Phase 4 initiated + governance packet archived + WorkBuddy handoff created | Runtime Context Gap — AI Engine 无自动 Packet 发现机制 | ✅ | No |
-| 2026-07-16 | Incident record archived + agent behavior calibrated + governance packet sliced + Session-02 merged + Governance Protocol rule + Governance Boundary Review (CASE-002 ACCEPTED) | AI_STARTUP.md path staleness verified; AI agent tendency to overreach confirmed; multi-Agent collaboration risks identified | ✅ | No |
+| 2026-07-16 | Incident record archived + agent behavior calibrated + governance packet sliced + Session-02 merged + Governance Protocol rule + Governance Boundary Review (CASE-002 ACCEPTED) + Pocket Relay Model CLOSED + Flow Integration CLOSED | AI_STARTUP.md path staleness verified; AI agent tendency to overreach confirmed; multi-Agent collaboration risks identified | ✅ | No |
 
 ---
 

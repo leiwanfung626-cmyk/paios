@@ -6,6 +6,24 @@
 
 ---
 
+## Capture Pipeline 入口（2026-07-16 起）
+
+结构化 AI 产出（文档/ADR/架构分析/研究/决策/Packet）统一经以下入口治理：
+
+- **唯一入口**：`00_CAPTURE/inbox/`（命名 `YYYYMMDD-HHMMSS-source-type-title.md`）
+- **助手**：`40_AUTOMATION/05_SCRIPTS/capture.py`（Stage-1+2，自动写 YAML 元数据）
+- **晋升**：`40_AUTOMATION/05_SCRIPTS/classify_capture.py`（Stage-3，按 type 路由到 20/30/40）
+- **禁止**：AI 日常产出不得直写 `20_KNOWLEDGE` / `30_SYSTEM` / `40_AUTOMATION`，必须先进 inbox 再晋升
+- **原始素材桶**（保留）：`Daily / Images / Voice / Downloads / Imported` 仍可用作快速捕获
+- **处理中间层**：`15_INBOX_PROCESSING/{classified,needs_review,failed}`
+
+> ⚠️ **Capture Pipeline 数据边界**（ChatGPT 审查确认 2026-07-16）：
+> - **排除**：外部工作产出数据 / 组织保密数据 / 受监管记录（按性质而非按盘符）
+> - 禁毒宣传稿等敏感工作数据不走本便携管道，直达 G 盘
+> - G 盘上的个人知识/项目仍可进入管道
+
+---
+
 ## 2026-07-15
 
 - [x] 梁鸿作品集（三册）阅读分析 → 10_WORK/2026-07-15-梁鸿作品集/ ✅
