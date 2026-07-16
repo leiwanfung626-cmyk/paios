@@ -138,3 +138,34 @@ backlog:
     evidence: "真实使用中发现上下文恢复成本"
     priority: P2
     action_phase: Phase-5
+
+  # ── P1 文档过期: AI_STARTUP.md 路径硬编码 ──────────
+  - id: DOC-STALE-AISTARTUP
+    category: documentation_staleness
+    file: AI_STARTUP.md
+    issue: "AI_STARTUP.md 路径硬编码为 E:\PAIOS / E:\QuarkSync\DATA\，与当前 portable 实例 (F:\PAIOS-PORTABLE\Core + ASSETS) 脱节。无版本标记、无过期声明、无指向 paths.yaml 的引用"
+    proposal: "参照 PAIOS-2026-0715-AI-BOOTSTRAP-GOVERNANCE-001: 迁移 AI_STARTUP.md 为基于 paths.yaml 变量的表达，或直接声明 paths.yaml 为路径权威来源。增加 version / updated_at 元字段"
+    source_phase: Phase-4-Stabilize
+    evidence: "Reasonix 2026-07-15 会话: 盲信 AI_STARTUP.md 旧路径，产生认知偏差。已记录至 stabilization-log"
+    priority: P1
+    action_phase: Phase-5
+
+  # ── P2 架构: AI Bootstrap Validation Layer ──────────
+  - id: ARCH-AI-BOOTSTRAP-VALIDATION
+    category: architecture/runtime
+    packet: PAIOS-2026-0715-AI-BOOTSTRAP-GOVERNANCE-001
+    issue: "PAIOS 缺少 AI Bootstrap Validation Layer — Agent 启动时无身份/实例/路径/阶段/权限自动确认流程"
+    proposal: "按治理报文 §7 建立 bootstrap/ 目录: authority-order.yaml, runtime-check.yaml, phase-check.yaml, agent-startup-protocol.md。任何 AI 插入 PAIOS 5 分钟内完成环境校准"
+    source_phase: Phase-4-Stabilize
+    priority: P2
+    action_phase: Phase-5
+
+  # ── P2 治理: Authority Hierarchy 形式化 ────────────
+  - id: GOV-AUTHORITY-HIERARCHY
+    category: governance
+    packet: PAIOS-2026-0715-AI-BOOTSTRAP-GOVERNANCE-001
+    issue: "需要形式化权威等级 (Runtime → Config → Governance → Startup Doc → Knowledge)，纳入 AI 启动协议，防止解释文档覆盖系统事实"
+    proposal: "实现治理报文 §5-§6 定义的 Authority Hierarchy。创建 bootstrap/authority-order.yaml 作为权威来源优先级声明"
+    source_phase: Phase-4-Stabilize
+    priority: P2
+    action_phase: Phase-5
