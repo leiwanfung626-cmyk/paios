@@ -47,21 +47,5 @@ Fleet/
 # ===== 环境自管理 =====
 reasonix.toml
 
-# ===== ASSETS：原素材分层（2026-07-17 确立） =====
-# 铁律：索引(_index.md)与转写稿(.txt)入库保留；二进制原素材(视频/音频/图片)仅留本地，不进 git 防止仓库膨胀
-# 注：docx/pdf/zip 已由全局规则(line 2-4)覆盖，此处枚举媒体类
-ASSETS/**/*.mp4
-ASSETS/**/*.m4a
-ASSETS/**/*.mp3
-ASSETS/**/*.wav
-ASSETS/**/*.avi
-ASSETS/**/*.mov
-ASSETS/**/*.mkv
-ASSETS/**/*.flv
-ASSETS/**/*.png
-ASSETS/**/*.jpg
-ASSETS/**/*.jpeg
-ASSETS/**/*.gif
-ASSETS/**/*.webp
-ASSETS/**/*.bmp
-ASSETS/**/*.tiff
+# 注：ASSETS 原素材桶已迁出 Core，位于 PAIOS-PORTABLE 根级（D:\PAIOS-PORTABLE\ASSETS），
+#     不在本仓库内，故无需在此忽略。若未来在 Core 内重新引入二进制素材，再补回媒体类忽略规则。

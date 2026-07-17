@@ -27,6 +27,7 @@
 ## 2026-07-16
 
 - [x] 抖音 @小戴AI学习「个人知识库应该怎么用」→ 20_KNOWLEDGE/Platform/Methods/Personal-KB-Usage-Data-vs-Cognitive.md ✅
+- [x] 抖音「Vibe Coding项目部署：Docker部署与避坑指南」→ 20_KNOWLEDGE/Platform/Methods/VibeCoding-Docker-Deployment-Guide.md ✅
 
 ## 2026-07-15
 

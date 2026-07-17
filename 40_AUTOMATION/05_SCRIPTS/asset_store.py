@@ -6,7 +6,11 @@ PAIOS ASSETS 入库助手
 把下载的原始素材（视频/音频/图片/转写稿）移动 + 改名 + 分类归档到
 ASSETS/{种类}/{门类}/{年份}/，并登记到 ASSETS/_index.md。
 
+注意：ASSETS 位于 PAIOS-PORTABLE 根级（D:\PAIOS-PORTABLE\ASSETS），与 Core 知识库
+物理分离，绝不在 Core 目录内（"数据不进 Core"）。脚本自动向上定位根目录。
+
 设计原则（来自 Evan 2026-07-17 要求）：
+- ASSETS 根目录：PAIOS-PORTABLE 根级（与 Core 同级），原素材数据不进 Core
 - 原素材只进 ASSETS，绝不进知识库（20_KNOWLEDGE）
 - 分类：种类(video/audio/image/text) - 门类(tech/reading/...) - 年份
 - 命名：{YYYYMMDD}-{门类}-{来源}-{slug}.{ext}
@@ -48,15 +52,21 @@ COL = {
 ID_RE = re.compile(r"AST-(\d{4})-(\d{4})")
 
 
-def detect_root() -> Path:
-    env = os.environ.get("PAIOS_CORE")
+def detect_assets_home() -> Path:
+    """定位 PAIOS-PORTABLE 根目录（同时含 Core 与 ASSETS 子目录），使 ASSETS 落在 Core 之外。"""
+    env = os.environ.get("PAIOS_HOME")
     if env:
         p = Path(env)
-        if (p / "00_CAPTURE").exists():
+        if (p / "ASSETS").exists():
             return p
     here = Path(__file__).resolve()
+    # 向上找同时包含 Core 和 ASSETS 的父目录（即 PAIOS-PORTABLE 根级）
     for parent in [here, *here.parents]:
-        if (parent / "00_CAPTURE").exists():
+        if (parent / "Core").is_dir() and (parent / "ASSETS").is_dir():
+            return parent
+    # 兜底：向上找第一个含 ASSETS 子目录的父目录
+    for parent in [here, *here.parents]:
+        if (parent / "ASSETS").is_dir():
             return parent
     return Path.cwd()
 
@@ -131,8 +141,8 @@ def update_cell(index: Path, asset_id: str, col: str, value: str):
 
 
 def register(args):
-    root = detect_root()
-    assets = root / "ASSETS"
+    home = detect_assets_home()
+    assets = home / "ASSETS"
     index = assets / "_index.md"
 
     category = args.category.lower()
@@ -182,8 +192,8 @@ def register(args):
 
 
 def mark_promoted(args):
-    root = detect_root()
-    index = root / "ASSETS" / "_index.md"
+    home = detect_assets_home()
+    index = home / "ASSETS" / "_index.md"
     ok1 = update_cell(index, args.mark_promoted, "status", "promoted")
     ok2 = True
     if args.module:
