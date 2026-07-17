@@ -4,8 +4,8 @@ topic: "视频捕获到知识入库全链路"
 lifecycle: active
 id: "SOP-2026-07-02-0001"
 created: "2026-07-02"
-updated: "2026-07-16"
-revised: "2026-07-02 — Step 2 重写（抖音CSR反爬），新增 Step 2b 语音转写 | 2026-07-16 — 服从 Capture Pipeline 硬规则：Step 4/5 直写 20_KNOWLEDGE 作废，改走 inbox→classify_capture 晋升"
+updated: "2026-07-17"
+revised: "2026-07-02 — Step 2 重写（抖音CSR反爬），新增 Step 2b 语音转写 | 2026-07-16 — 服从 Capture Pipeline 硬规则：Step 4/5 直写 20_KNOWLEDGE 作废，改走 inbox→classify_capture 晋升 | 2026-07-17 — 新增 Step 2c ASSETS 原素材归档：下载视频/转写稿存入 ASSETS/{种类}/{门类}/{年份}/，原素材禁入知识库，ASSETS/_index.md 为溯源防膨胀唯一权威 | 2026-07-17b — ASSETS 铁律适用范围扩展：所有非禁毒素材（图片/音频/文档/转写稿）均适用，禁毒例外按 D-001 仅落 G 盘"
 source: "REF-0001 + REF-0002 + REF-0004 实践总结"
 tags: [sop, video, transcript, knowledge-capture, pipeline]
 attributes:
@@ -20,7 +20,7 @@ attributes:
     - "2026-07-06 Codex CLI 教程 (REF-0006) — 修复 ffmpeg PATH + 代理问题，v2.2"
 extensions:
   related_refs: ["REF-0001", "REF-0002", "REF-0004", "REF-0006"]
-  related_principles: ["#4 知识验证", "#8 工具独立", "Capture Pipeline 硬规则 (2026-07-16)"]
+  related_principles: ["#4 知识验证", "#8 工具独立", "Capture Pipeline 硬规则 (2026-07-16)", "ASSETS 原素材分层规则 (2026-07-17)"]
   triggers_direction: "DEC-2026-07-02-0001 方向1（多模态捕获层）"
 ---
 
@@ -62,6 +62,35 @@ extensions:
 
 > 注：`KB-2026-07-16-0001`（本次触发修订的视频）由 Reasonix 在本 SOP 修订前直写，视为**历史产物（grandfathered）**；
 > 自本修订起，一律走上方 Pipeline。
+
+## 🗄️ ASSETS 原素材分层铁律（2026-07-17 起生效）
+
+**核心原则**：视频/音频/图片/转写稿等**原始素材**与**知识模块**是两件事，必须分层存放：
+
+| 层 | 内容 | 准入 |
+|----|------|------|
+| `ASSETS/` | 原素材（下载的视频、音频、图片、转写稿） | **只进不出**，分类归档，命名规范 |
+| `20_KNOWLEDGE/` | 经 Capture Pipeline 加工后的模块（Reference/Method/Model/Concept/Decision） | **只收加工品**，原素材禁止直入 |
+
+**为什么**：Phase-4 最大风险是知识库膨胀失控。原素材（尤其是视频二进制）体积大、无结构，直接进知识库会撑爆检索、污染索引。ASSETS 把"原材料"和"成品"隔开，`ASSETS/_index.md` 记录每条原素材 ↔ 其知识模块的映射，是**溯源、去重、防膨胀的唯一权威**。
+
+**分类规则**（详见 `ASSETS/_index.md` 顶部）：
+```
+路径：ASSETS/{种类}/{门类}/{年份}/
+命名：{YYYYMMDD}-{门类}-{来源}-{slug}.{ext}
+
+种类 category：video 视频 | audio 音频 | image 图片 | text 文本(转写稿/文档)
+门类 genre：  tech 科技 | reading 读书 | life 生活 | health 健康
+             study 学习 | drug 禁毒 | growth 个人成长 | work 工作 | other 其他
+来源 source： douyin | bilibili | youtube | other
+```
+> 视频与对应转写稿**共用同一 slug**，便于在索引中互链溯源。
+
+**适用范围（2026-07-17 扩展）**：本铁律不限于视频——一切**非禁毒素材**（图片 / 音频 / 文档扫描 / 网页转存 / 转写稿等"原始生成物"）都先归 ASSETS 再加工，知识库只收加工后的模块。`category` 按素材类型选 video/audio/image/text，其余流程完全一致。
+
+**禁毒例外**：涉密禁毒素材（现场图片/视频/个案文档/业务产出）不进 ASSETS、不进 D 盘知识库，严格按双盘数据边界规则（D-001）仅落 G 盘业务目录。ASSETS 的 `drug` 门类仅预留给公开、非涉密的禁毒科普/方法论素材，Phase-4 冻结期不主动写入。
+
+**操作**：下载/转写完成后，立即经 Step 2c 用 `asset_store.py` 归档到 ASSETS，不要留在 `70_TMP/`。
 
 ## 一键执行脚本
 
@@ -209,7 +238,34 @@ with open('70_TMP/douyin_transcript.txt', 'w', encoding='utf-8') as f:
 
 - 完整文稿 → 分析视频内容、提取关键信息
 - 分段时间戳 → 便于引用视频具体片段
-- 原始转写文件 → 存档在 `70_TMP/douyin_transcript.txt`，归档时清理或移入知识库
+- 原始转写文件 → 经 **Step 2c** 归档到 `ASSETS/text/{门类}/{年份}/`（**原素材绝不进知识库**）
+
+### Step 2c — 原素材归档到 ASSETS（Archive Raw）
+
+> 新增步骤（2026-07-17）。Step 2 下载的视频、Step 2b 转写的文稿，都是**原素材**，必须先归档到 ASSETS，不得留在 `70_TMP/`、更不得进知识库。
+
+**分类判定**（在 Step 2 提取到标题/主题后即可确定门类 genre）：
+- 视频 → `category=video`
+- 转写稿 → `category=text`
+- genre 按内容主题选（如"个人知识库怎么用"属 `tech`）；slug 用短标题标识
+
+**操作（推荐用助手脚本，自动改名+分类+写索引）**：
+```bash
+# 1) 视频：Step 2 下载到 70_TMP 后归档
+python 40_AUTOMATION/05_SCRIPTS/asset_store.py add \
+  --file 70_TMP/douyin_raw.mp4 \
+  --category video --genre tech --source douyin \
+  --slug xiaodai-personal-kb --url "https://v.douyin.com/xxx"
+
+# 2) 转写稿：Step 2b 转写后归档，并回填视频行的「转写稿」列
+python 40_AUTOMATION/05_SCRIPTS/asset_store.py add \
+  --file 70_TMP/douyin_transcript.txt \
+  --category text --genre tech --source douyin \
+  --slug xiaodai-personal-kb --transcript-of AST-2026-0001
+```
+脚本自动分配资产ID（如 `AST-2026-0001`）并追加到 `ASSETS/_index.md`。
+
+**铁律**：从本步起，原素材只存在于 ASSETS。`20_KNOWLEDGE` 只接收 Step 4/5 经 Capture Pipeline 加工后的模块；索引中"对应知识模块"一栏在加工完成后回填（见 Step 2c 后的 promote 命令或 Step 6）。
 
 用 WebSearch 搜索视频主题，找到至少 1 个独立来源验证：
 
@@ -303,11 +359,24 @@ confidence: high | medium | low
 更新对应的 `_index.md`：
 
 ```
+ASSETS/_index.md                    → 回填该原素材的「对应知识模块」列（promote 命令）
 20_KNOWLEDGE/References/_index.md  → 加 REF-XXXX 行
 20_KNOWLEDGE/Models/_index.md      → 加 KB-XXXX 行（如有）
 20_KNOWLEDGE/Decisions/_index.md   → 加 DEC-XXXX 行（如有）
 20_KNOWLEDGE/Concepts/_index.md    → 加 KB-XXXX 行（如有）
 20_KNOWLEDGE/Methods/_index.md     → 加 KB-XXXX 行（如有）
+```
+
+知识模块 frontmatter 应加反向溯源字段，与 ASSETS/_index.md 互链：
+```yaml
+source_asset: AST-2026-0001   # 对应 ASSETS 原素材资产ID
+```
+
+回填示例：
+```bash
+python 40_AUTOMATION/05_SCRIPTS/asset_store.py promote \
+  --mark-promoted AST-2026-0001 \
+  --module "20_KNOWLEDGE/Platform/Methods/Personal-KB-Usage-Data-vs-Cognitive.md"
 ```
 
 ### Step 7 — 日志记录（Evolve）
@@ -576,7 +645,7 @@ PAIOS 跑 Step 1-7：
 
 | 产物 | 类型 | 去向 |
 |------|------|------|
-| 成品视频 | 工作产物 | 70_TMP/ 或外部存储，PAIOS 记录路径 |
+| 成品视频 | 工作产物 | ASSETS/video/{门类}/{年份}/（原素材/产物统一归 ASSETS，绝不直接进知识库） |
 | 制作过程记录 | 工作日志 | 更新 Today.md + memory |
 | 踩坑清单 | 经验 | REF-0003 新增"踩坑"章节 |
 | 工具参数配置 | Decision | 20_KNOWLEDGE/Decisions/ |

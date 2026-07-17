@@ -6,6 +6,7 @@ id: "KB-2026-07-16-0001"
 created: "2026-07-16"
 updated: "2026-07-16"
 source: "抖音 @小戴AI学习 — https://v.douyin.com/VUiqFwxmHls/"
+source_asset: "AST-2026-0001"
 tags: [methods, knowledge-base, knowledge-management, personal-OS]
 attributes:
   media_type: douyin-video
