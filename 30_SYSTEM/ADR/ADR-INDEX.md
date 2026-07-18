@@ -32,6 +32,8 @@
 
 | ADR | Status | Date | Title |
 |-----|--------|------|-------|
+| ADR-0022 | Accepted | 2026-07-18 | Terminology and Positioning（术语与定位） |
+| ADR-0023 | Accepted | 2026-07-18 | Review Cadence & Evolution Review（复盘节律） |
 | ADR-9999 | Accepted | 2026-06-29 | Legacy Retention Policy |
 
 ## Experimental / Historical（实验性 / 已吸收）
