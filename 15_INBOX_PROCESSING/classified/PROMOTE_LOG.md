@@ -15,3 +15,7 @@
 
 ## 2026-07-18
 - 11:52:33 20260718-113340-evan-evolution-review-baseline.md -> 20_KNOWLEDGE/architecture/20260718-113340-evan-evolution-review-baseline.md
+
+## 2026-07-18
+- 16:33:58 20260718-162600-buddy-architecture-model-v1.0.md -> 20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md
+- 16:33:58 20260718-162700-buddy-fim-validation-plan.md -> 20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md
