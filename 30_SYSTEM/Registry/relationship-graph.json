@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-19T15:03:13+0800",
+  "generated_at": "2026-07-19T21:39:00+0800",
   "generator": "relationship_engine v0.1",
   "stats": {
-    "nodes": 89,
+    "nodes": 90,
     "declared_edges": 98,
     "backlinks": 76,
     "supersedes": 1,
     "unresolved": 22,
-    "orphans": 45
+    "orphans": 46
   },
   "nodes": [
     {
@@ -15,623 +15,1234 @@
       "path": "20_KNOWLEDGE/AI设计PPT完整指南.md",
       "title": "AI 设计 PPT 完整操作指南",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "DEC-2026-07-08-0001",
       "path": "20_KNOWLEDGE/Personal/DEC-2026-07-08-360T7-OpenWrt-Architecture.md",
       "title": "决策记录：360 T7 OpenWrt 代理 + 去广告架构",
       "type": "decisions",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "decisions",
+        "openwrt",
+        "360t7",
+        "mihomo",
+        "nikki",
+        "adguardhome",
+        "proxy",
+        "network",
+        "router"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-0010",
       "path": "20_KNOWLEDGE/Personal/Early-Education-0-Year.md",
       "title": "0 岁婴儿早教要点 — 五大感官领域与关键原则",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "育儿",
+        "早教",
+        "0岁",
+        "感官发育",
+        "Growth-OS"
+      ],
+      "summary": "0 岁（新生儿到 1 岁）早教五大领域（视觉/听觉/触觉/运动/语言）的核心方法与关键原则，是 Growth OS 的第一份领域知识种子。",
+      "keywords": [
+        "早教",
+        "婴儿",
+        "0岁",
+        "感官刺激",
+        "亲子互动",
+        "发育里程碑"
+      ]
     },
     {
       "id": "KB-2026-07-02-0002",
       "path": "20_KNOWLEDGE/Personal/Kaoyan-100Day-Simulation.md",
       "title": "考研复习 PAIOS 全程参与模拟 — 100天进化记录",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "simulation",
+        "kaoyan",
+        "study",
+        "dual-cycle",
+        "evolution"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-0008",
       "path": "20_KNOWLEDGE/Personal/OpenWRT-Tutorial-From-Beginner-to-Pro.md",
       "title": "OpenWRT 从入门到精通 — 教程与玩法大全",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "openwrt",
+        "router",
+        "360t7",
+        "mt7981",
+        "opkg",
+        "luci",
+        "network",
+        "proxy",
+        "adguardhome",
+        "usb"
+      ],
+      "summary": "OpenWRT 四阶段系统教程（入门→进阶→高级→精通），含 360 T7 专属信息与实用插件推荐清单，是本次路由器改造的底层参考。",
+      "keywords": [
+        "OpenWRT",
+        "360 T7",
+        "MT7981",
+        "刷机",
+        "opkg",
+        "LuCI",
+        "广告过滤",
+        "科学上网",
+        "内网穿透",
+        "USB扩展",
+        "策略路由"
+      ]
     },
     {
       "id": "proxy-setup-guide",
       "path": "20_KNOWLEDGE/Personal/Proxy-Setup-Guide-一楼PC.md",
       "title": "一楼 PC 翻墙配置指南",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "reading-index",
       "path": "20_KNOWLEDGE/Personal/阅读目录索引.md",
       "title": "阅读目录索引",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-07-10-0003",
       "path": "20_KNOWLEDGE/Platform/Concepts/Growth-OS-Life-Companion.md",
       "title": "Growth OS — 成长伴生系统设计蓝图",
       "type": "concepts",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "concepts",
+        "growth-os",
+        "platform",
+        "life-companion"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Concepts-README",
       "path": "20_KNOWLEDGE/Platform/Concepts/README.md",
       "title": "Concepts — Knowledge Base",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Concepts-_index",
       "path": "20_KNOWLEDGE/Platform/Concepts/_index.md",
       "title": "Concepts — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-06-28T14:33:16Z-XXXX",
       "path": "20_KNOWLEDGE/Platform/Concepts/_template.md",
       "title": "Concepts: Your Title Here",
       "type": "concepts",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "concepts"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "DEC-2026-07-02-0001",
       "path": "20_KNOWLEDGE/Platform/Decisions/DEC-2026-07-02-NotebookLM-Improvement-Directions.md",
       "title": "决策记录：NotebookLM 对 PAIOS 的启示 — 4 个借鉴方向",
       "type": "decisions",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "decisions",
+        "improvement",
+        "multimodal",
+        "verification",
+        "citation"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "paios-value-assessment",
       "path": "20_KNOWLEDGE/Platform/Decisions/PAIOS-价值评估-2026-07-01.md",
       "title": "PAIOS 价值评估报告",
       "type": "decision",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Decisions-README",
       "path": "20_KNOWLEDGE/Platform/Decisions/README.md",
       "title": "Decisions — Knowledge Base",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Decisions-_index",
       "path": "20_KNOWLEDGE/Platform/Decisions/_index.md",
       "title": "Decisions — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "DEC-2026-06-28T14:33:16Z-XXXX",
       "path": "20_KNOWLEDGE/Platform/Decisions/_template.md",
       "title": "Decisions: Your Title Here",
       "type": "decisions",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "decisions"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-07-06-0001",
       "path": "20_KNOWLEDGE/Platform/Methods/AI-Agent-Credits-Token-Saving-7Steps.md",
       "title": "AI Agent 积分/Token 节省 7 步实战法",
       "type": "method",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "method",
+        "cost-optimization",
+        "workbuddy",
+        "token",
+        "agent-mode",
+        "context",
+        "automation"
+      ],
+      "summary": "从老顽童周老师视频提炼的可操作方法论：用对模式、强弱分工、控范围、定结构、管对话、查自动化、严验收。公式：积分=倍率×上下文×反复次数。",
+      "keywords": [
+        "积分节省",
+        "模式选择",
+        "强弱模型",
+        "上下文",
+        "目录结构",
+        "验收",
+        "自动化检查"
+      ]
     },
     {
       "id": "KB-2026-07-16-0001",
       "path": "20_KNOWLEDGE/Platform/Methods/Personal-KB-Usage-Data-vs-Cognitive.md",
       "title": "Methods: 个人知识库的两种用法 — 资料型 vs 认知型",
       "type": "methods",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "methods",
+        "knowledge-base",
+        "knowledge-management",
+        "personal-OS"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Methods-README",
       "path": "20_KNOWLEDGE/Platform/Methods/README.md",
       "title": "Methods — Knowledge Base",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-07-17-0001",
       "path": "20_KNOWLEDGE/Platform/Methods/VibeCoding-Docker-Deployment-Guide.md",
       "title": "Methods: Vibe Coding 项目 Docker 部署与避坑指南",
       "type": "methods",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "methods",
+        "docker",
+        "deployment",
+        "vibe-coding",
+        "devops"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Methods-_index",
       "path": "20_KNOWLEDGE/Platform/Methods/_index.md",
       "title": "Methods — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-06-28T14:33:16Z-XXXX__Methods-_template",
       "path": "20_KNOWLEDGE/Platform/Methods/_template.md",
       "title": "Methods: Your Title Here",
       "type": "methods",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "methods"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Models-README",
       "path": "20_KNOWLEDGE/Platform/Models/README.md",
       "title": "Models — Knowledge Base",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-07-02-0001",
       "path": "20_KNOWLEDGE/Platform/Models/Source-Constraint-Comparison.md",
       "title": "来源约束机制对比模型",
       "type": "models",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "models",
+        "source-constraint",
+        "verification",
+        "comparison"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-Models-_index",
       "path": "20_KNOWLEDGE/Platform/Models/_index.md",
       "title": "Models — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "KB-2026-06-28T14:33:16Z-XXXX__Models-_template",
       "path": "20_KNOWLEDGE/Platform/Models/_template.md",
       "title": "Models: Your Title Here",
       "type": "models",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "models"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-0004",
       "path": "20_KNOWLEDGE/Platform/References/AI-Brain-LLM-Hardware-Display-Setup.md",
       "title": "AI第二大脑搭建教程 — Obsidian知识库 + 自动化整理系统",
       "type": "concept",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "ai",
+        "second-brain",
+        "obsidian",
+        "notion",
+        "knowledge-management",
+        "automation",
+        "productivity",
+        "personal-knowledge-base"
+      ],
+      "summary": "抖音视频教程：手把手搭建「AI第二大脑」—— 用 Obsidian 搭知识库框架， 建立画像/灵魂/身份三文档，划分七大分区，配合自动化定时任务实现知识自动整理进化。",
+      "keywords": [
+        "AI第二大脑",
+        "Obsidian",
+        "黑曜石",
+        "Notion",
+        "知识库",
+        "自动化整理",
+        "七大分区",
+        "画像文档",
+        "灵魂文档",
+        "身份设定",
+        "自动分类",
+        "定时任务"
+      ]
     },
     {
       "id": "REF-0005",
       "path": "20_KNOWLEDGE/Platform/References/Agent-Context-Window-Management.md",
       "title": "Agent 上下文占用率 — Codex/WorkBuddy/Trae 使用提效",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "agent",
+        "context-window",
+        "codex",
+        "workbuddy",
+        "trae",
+        "prompt-engineering",
+        "performance"
+      ],
+      "summary": "Agent 上下文窗口有限，占用率高会导致信息遗忘、响应变慢、成本上升。视频讲解上下文概念、快速积累危害、管理经验三部分。",
+      "keywords": [
+        "上下文",
+        "context",
+        "占用率",
+        "token",
+        "agent",
+        "提效",
+        "codex",
+        "workbuddy",
+        "trae"
+      ]
     },
     {
       "id": "codetrust-audit",
       "path": "20_KNOWLEDGE/Platform/References/Audits/CodeTrust-2026-06-29.md",
       "title": "CodeTrust 环境兼容性检查",
       "type": "audit",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-0001",
       "path": "20_KNOWLEDGE/Platform/References/CodeTrust-AI-CodeReview.md",
       "title": "CodeTrust — AI 代码缺陷检测工具",
       "type": "tool",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "ai",
+        "code-review",
+        "hallucination",
+        "open-source",
+        "typescript"
+      ],
+      "summary": "使用确定性规则引擎检测 AI 生成代码中的幻觉。",
+      "keywords": [
+        "幻影导入",
+        "死逻辑",
+        "过度防御",
+        "确定性检测",
+        "AST",
+        "npm"
+      ]
     },
     {
       "id": "REF-0009",
       "path": "20_KNOWLEDGE/Platform/References/Codex-Best-Practices-OpenAI-Official.md",
       "title": "OpenAI Codex 最佳实践 — 官方教程知识归档",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "codex",
+        "openai",
+        "agent",
+        "agents-md",
+        "mcp",
+        "skills",
+        "automations",
+        "best-practices",
+        "prompt"
+      ],
+      "summary": "基于 OpenAI 官方 Codex Best Practices 整理的实战指南：把 Codex 当持续配置的队友，渐进路径 Prompt→AGENTS.md→config→MCP→Skills→Automations，含八大常见错误与安全红线。",
+      "keywords": [
+        "Codex",
+        "AGENTS.md",
+        "config.toml",
+        "MCP",
+        "Skills",
+        "Automations",
+        "推理等级",
+        "多代理",
+        "worktree",
+        "安全红线"
+      ]
     },
     {
       "id": "codex-cli-tutorial",
       "path": "20_KNOWLEDGE/Platform/References/Codex-CLI-Usage-Jason-Liu-Tutorial.md",
       "title": "Codex CLI 使用技巧（Jason Liu 教程）",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-0003",
       "path": "20_KNOWLEDGE/Platform/References/Douyin-AI-Trends-Distillation-VibeCoding-SuperIndividual.md",
       "title": "AI趋势：蒸馏 + Vibe Coding + 智能体 → 超级个体 / OPC",
       "type": "concept",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "ai",
+        "distillation",
+        "vibe-coding",
+        "agent",
+        "opc",
+        "super-individual",
+        "codex",
+        "2026-trend"
+      ],
+      "summary": "2026年AI技术趋势的综合盘点：从知识蒸馏（模型压缩）到Vibe Coding（AI辅助编程）、 智能体（AI Agent）、Codex，最终导向「超级个体」与「OPC（一人公司）」的崛起。",
+      "keywords": [
+        "蒸馏",
+        "知识蒸馏",
+        "Vibe Coding",
+        "氛围编程",
+        "智能体",
+        "AI Agent",
+        "OPC",
+        "一人公司",
+        "超级个体",
+        "Codex",
+        "模型蒸馏"
+      ]
     },
     {
       "id": "REF-0013",
       "path": "20_KNOWLEDGE/Platform/References/Kaoyan-政治.md",
       "title": "考研政治 — 复习知识库",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "kaoyan",
+        "politics",
+        "政治",
+        "马原",
+        "徐涛"
+      ],
+      "summary": "北京理工大学数据科学考研 · 政治 全程知识库（马原/毛中特/史纲/思修 + 大题框架 + 1000题）",
+      "keywords": [
+        "政治",
+        "马原",
+        "毛中特",
+        "史纲",
+        "思修",
+        "1000题",
+        "大题"
+      ]
     },
     {
       "id": "REF-0011",
       "path": "20_KNOWLEDGE/Platform/References/Kaoyan-数学三.md",
       "title": "考研数学三 — 复习知识库",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "kaoyan",
+        "math",
+        "数学三",
+        "1000题",
+        "强化"
+      ],
+      "summary": "北京理工大学数据科学考研 · 数学三 全程知识库（高数/线代/概率论 + 1000题/真题 + 错题与薄弱点）",
+      "keywords": [
+        "数学三",
+        "高数",
+        "线代",
+        "概率论",
+        "1000题",
+        "真题"
+      ]
     },
     {
       "id": "REF-0014",
       "path": "20_KNOWLEDGE/Platform/References/Kaoyan-数据科学考研择校与难度.md",
       "title": "数据科学考研择校与27考研难度预测 — 山岳老师抖音视频情报",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "kaoyan",
+        "数据科学",
+        "27考研",
+        "择校",
+        "北京理工大学",
+        "山岳老师",
+        "考研情报"
+      ],
+      "summary": "抖音「山岳老师」数据科学考研视频情报：数据科学是真实招生专业、27考研新增硕士点密集（支持'有新增可能很大'判断）、院校择校梯队；BIT 数据科学为目标专业。本环境未跑通语音转写，内容以 WebSearch 兜底提取+多源验证。",
+      "keywords": [
+        "数据科学考研",
+        "27考研",
+        "新增硕士点",
+        "北京理工大学",
+        "复试线",
+        "择校梯队",
+        "山岳老师"
+      ]
     },
     {
       "id": "REF-0012",
       "path": "20_KNOWLEDGE/Platform/References/Kaoyan-统计学.md",
       "title": "考研统计学（专业课）— 复习知识库",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "kaoyan",
+        "statistics",
+        "统计学",
+        "专业课",
+        "贾俊平"
+      ],
+      "summary": "北京理工大学数据科学考研 · 统计学专业课 全程知识库（描述/推断统计 + 假设检验 + 真题 + 错题）",
+      "keywords": [
+        "统计学",
+        "描述统计",
+        "推断统计",
+        "假设检验",
+        "专业课",
+        "真题"
+      ]
     },
     {
       "id": "REF-0010__References-Kaoyan-英语二",
       "path": "20_KNOWLEDGE/Platform/References/Kaoyan-英语二.md",
       "title": "考研英语二 — 复习知识库",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "kaoyan",
+        "english",
+        "英语二",
+        "长难句",
+        "阅读"
+      ],
+      "summary": "北京理工大学数据科学考研 · 英语二 全程知识库（词汇/长难句/阅读/作文/翻译/完形 + 错题与薄弱点）",
+      "keywords": [
+        "英语二",
+        "长难句",
+        "阅读理解",
+        "作文",
+        "翻译",
+        "完形",
+        "词汇"
+      ]
     },
     {
       "id": "REF-0002",
       "path": "20_KNOWLEDGE/Platform/References/NotebookLM-Google-AI-Notebook.md",
       "title": "NotebookLM — Google AI 笔记与来源整理工具",
       "type": "tool",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "ai",
+        "google",
+        "notebook",
+        "research",
+        "gemini",
+        "transcript",
+        "podcast",
+        "free-tool"
+      ],
+      "summary": "Google 推出的免费 AI 研究助手，基于 Gemini 模型， 将 PDF、YouTube、音频、网页等来源转化为可追问、可引用、可输出的智能笔记本。",
+      "keywords": [
+        "来源整理",
+        "转录稿",
+        "Audio Overview",
+        "Slide Deck",
+        "Gemini",
+        "免费顶级模型"
+      ]
     },
     {
       "id": "paios-system-history",
       "path": "20_KNOWLEDGE/Platform/References/PAIOS-System-History-Analysis.md",
       "title": "PAIOS 系统发展历史与分析报告",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-References-README",
       "path": "20_KNOWLEDGE/Platform/References/README.md",
       "title": "References — Knowledge Base",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-0007",
       "path": "20_KNOWLEDGE/Platform/References/WorkBuddy-Credits-Token-Saving-7Steps.md",
       "title": "WorkBuddy 积分/Token 节省 7 步法 — 老顽童周老师实战经验",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "workbuddy",
+        "token",
+        "credits",
+        "cost-optimization",
+        "agent-mode",
+        "context-management",
+        "automation",
+        "paios-relevant"
+      ],
+      "summary": "抖音老顽童周老师分享的 WorkBuddy 省积分/Token 7 步实战法：选对模式、强弱模型分工、控制范围、定义目录、管理对话、定期检查自动化、严格验收。核心公式：积分消耗 = 模型倍率 × 上下文长度 × 任务反复次数。",
+      "keywords": [
+        "积分节省",
+        "Token优化",
+        "ask模式",
+        "plan模式",
+        "craft模式",
+        "强弱模型分工",
+        "上下文管理",
+        "目录结构",
+        "自动化",
+        "验收",
+        "CodeGraph"
+      ]
     },
     {
       "id": "Platform-References-_index",
       "path": "20_KNOWLEDGE/Platform/References/_index.md",
       "title": "References — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "REF-XXXX",
       "path": "20_KNOWLEDGE/Platform/References/_template.md",
       "title": "Your Title Here",
       "type": "tool | concept | reference | article | note",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "一句话摘要 — 用于列表和 grep 预览",
+      "keywords": []
     },
     {
       "id": "photo-archive-cleanup",
       "path": "20_KNOWLEDGE/Platform/References/photo-archive-cleanup/notes.md",
       "title": "照片归档清理方案与进度",
       "type": "reference",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "rebuild-archive-decision",
       "path": "20_KNOWLEDGE/Platform/References/photo-organizer/REBUILD_ARCHIVE.md",
       "title": "重建 face_index 于归档 — 任务决策",
       "type": "decision",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "openwrt-router-fix-sop",
       "path": "20_KNOWLEDGE/Platform/SOP/OpenWrt-二级路由-搬移修复-SOP.md",
       "title": "OpenWrt 二级路由搬移修复 SOP",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "photo-organizer-sop",
       "path": "20_KNOWLEDGE/Platform/SOP/Photo-Organizer-SOP.md",
       "title": "照片整理 SOP",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-SOP-README",
       "path": "20_KNOWLEDGE/Platform/SOP/README.md",
       "title": "SOP — Knowledge Base",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "SOP-2026-07-02-0001",
       "path": "20_KNOWLEDGE/Platform/SOP/Video-to-Knowledge-Pipeline.md",
       "title": "SOP: 视频捕获到知识入库全链路",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "sop",
+        "video",
+        "transcript",
+        "knowledge-capture",
+        "pipeline"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "Platform-SOP-_index",
       "path": "20_KNOWLEDGE/Platform/SOP/_index.md",
       "title": "SOP — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "SOP-2026-06-28T14:33:16Z-XXXX",
       "path": "20_KNOWLEDGE/Platform/SOP/_template.md",
       "title": "SOP: Your Title Here",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "sop"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "RELEASES-1.0.1",
       "path": "20_KNOWLEDGE/RELEASES/1.0.1.md",
       "title": "PAIOS v1.0.1 Release Notes",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "RELEASES-RELEASE-NOTES-TEMPLATE",
       "path": "20_KNOWLEDGE/RELEASES/RELEASE-NOTES-TEMPLATE.md",
       "title": "PAIOS vX.Y.Z Release Notes",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "RELEASES-release-sop",
       "path": "20_KNOWLEDGE/RELEASES/release-sop.md",
       "title": "PAIOS 发布标准操作流程（Release SOP）",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "RELEASES-upgrade-notice-1.0.1",
       "path": "20_KNOWLEDGE/RELEASES/upgrade-notice-1.0.1.md",
       "title": "PAIOS 升级通知 · v1.0.1（统一版）",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "RELEASES-upgrade-receipt-1.0.1",
       "path": "20_KNOWLEDGE/RELEASES/upgrade-receipt-1.0.1.md",
       "title": "PAIOS v1.0.1 升级回执（Upgrade Receipt）",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "RELEASES-upgrade-receipt-v1.0.1",
       "path": "20_KNOWLEDGE/RELEASES/upgrade-receipt-v1.0.1.md",
       "title": "PAIOS v1.0.1 升级回执（Upgrade Receipt）",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
+    },
+    {
+      "id": "References-GitHub-Projects-_index",
+      "path": "20_KNOWLEDGE/References/GitHub-Projects/_index.md",
+      "title": "PAIOS GitHub Projects Observation List",
+      "type": "knowledge",
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "openwrt-lan-lan-deploy",
       "path": "20_KNOWLEDGE/SOP/OpenWrt-LAN-LAN-Deploy.md",
       "title": "OpenWrt LAN-LAN 旁路由部署 SOP",
       "type": "sop",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "path": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "title": "PAIOS Architecture Model v1.0（冻结草案）",
       "type": "architecture",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "architecture-model",
+        "freeze",
+        "layer-diagram",
+        "lifecycle",
+        "packet",
+        "fim",
+        "governance",
+        "platform-instance"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "architecture-20260718-162700-buddy-fim-validation-plan",
       "path": "20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md",
       "title": "FIM 多实例验证计划（C5 验证载体）",
       "type": "architecture",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "fim",
+        "c5",
+        "multi-instance",
+        "validation",
+        "federated-manifest"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "architecture-_index",
       "path": "20_KNOWLEDGE/architecture/_index.md",
       "title": "Architecture — Index",
       "type": "knowledge",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "architecture-paios-evolution-review-2026-07-18",
       "path": "20_KNOWLEDGE/architecture/paios-evolution-review-2026-07-18.md",
       "title": "PAIOS Evolution Review — Architecture Positioning Baseline",
       "type": "architecture",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [
+        "evolution",
+        "positioning",
+        "architecture",
+        "baseline",
+        "innovation-boundary"
+      ],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "architecture-paios-positioning-consensus-v2.1",
       "path": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "title": "PAIOS 定位与创新证据基线 v2.1（仓库证据升级版 · Approved）",
       "type": "architecture",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "prompt-model-comparison",
       "path": "20_KNOWLEDGE/prompt_model_comparison.md",
       "title": "技术选型对比分析提示词模板",
       "type": "prompt",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0002",
       "path": "30_SYSTEM/ADR/ADR-0002-Automation-Platform-Freeze.md",
       "title": "ADR-0002: Automation Platform Freeze",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0003",
       "path": "30_SYSTEM/ADR/ADR-0003-Directory-Architecture.md",
       "title": "ADR-0003: 生命周期层目录架构（Lifecycle Layer Directory Architecture）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0004",
       "path": "30_SYSTEM/ADR/ADR-0004-Knowledge-Layer-Design.md",
       "title": "ADR-0004: 知识层设计（20_KNOWLEDGE）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0005",
       "path": "30_SYSTEM/ADR/ADR-0005-Workflow-Pipeline.md",
       "title": "ADR-0005: 工作流管道（Workflow Pipeline）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0006",
       "path": "30_SYSTEM/ADR/ADR-0006-Metadata-Standard.md",
       "title": "ADR-0006: 元数据标准（Metadata Standard）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0007",
       "path": "30_SYSTEM/ADR/ADR-0007-Lifecycle-Model.md",
       "title": "ADR-0007: 生命周期模型（Lifecycle Model）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0008",
       "path": "30_SYSTEM/ADR/ADR-0008-Automation-Layer.md",
       "title": "ADR-0008: 自动化层设计（Automation Layer）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0009",
       "path": "30_SYSTEM/ADR/ADR-0009-Governance-Model.md",
       "title": "ADR-0009: 治理模型（Governance Model）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0010",
       "path": "30_SYSTEM/ADR/ADR-0010-Evolution-Strategy.md",
       "title": "ADR-0010: 演化策略（Evolution Strategy）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0011",
       "path": "30_SYSTEM/ADR/ADR-0011-Decision-Layer.md",
       "title": "ADR-0011: 决策层结构（Decision Layer）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0012",
       "path": "30_SYSTEM/ADR/ADR-0012-Platform-Application-Architecture.md",
       "title": "ADR-0012: PAIOS 平台化 — Core + Applications 架构",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0013",
       "path": "30_SYSTEM/ADR/ADR-0013-Federated-Instance-Manifest.md",
       "title": "ADR-0013: PAIOS Fleet — 联邦式实例清单（Federated Instance Manifest, FIM）",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0014",
       "path": "30_SYSTEM/ADR/ADR-0014-Upgrade-Mechanism.md",
       "title": "ADR-0014: PAIOS 升级机制（Upgrade Mechanism）— Core / Workspace / Upgrade 三层",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0015",
       "path": "30_SYSTEM/ADR/ADR-0015-Federated-Aggregation-Viewing.md",
       "title": "ADR-0015: 联邦式聚合与查看（Federated Aggregation & Viewing）— 三级架构 + 权限边界",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0016",
       "path": "30_SYSTEM/ADR/ADR-0016-Multi-Instance-Architecture-Baseline.md",
       "title": "ADR-0016: PAIOS 多实例架构基线（4 层模型 + 冻结项）",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0017",
       "path": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "title": "ADR-0017 — Platform Purity & Physical Separation of Core / Workspace / Instance-State",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0018",
       "path": "30_SYSTEM/ADR/ADR-0018-Multi-Instance-Role-Model.md",
       "title": "ADR-0018 — Multi-Instance Role Model (Maintainer / Developer / Pilot User) & One-Way Flow",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0019",
       "path": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "title": "ADR-0019 — AI Engine Role Model (AI Fleet Governance)",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0020",
       "path": "30_SYSTEM/ADR/ADR-0020-Cross-Engine-Trace-Workflow-Inheritance.md",
       "title": "ADR-0020: 跨引擎工作上下文继承标准（Cross-Engine Work Context Inheritance）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0021",
       "path": "30_SYSTEM/ADR/ADR-0021-Engine-Scheduling.md",
       "title": "ADR-0021: 引擎调度层（Engine Scheduling）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0022",
       "path": "30_SYSTEM/ADR/ADR-0022-Terminology-and-Positioning.md",
       "title": "ADR-0022 — PAIOS Terminology and Positioning（术语与定位）",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-0023",
       "path": "30_SYSTEM/ADR/ADR-0023-Review-Cadence.md",
       "title": "ADR-0023 — PAIOS Review Cadence & Evolution Review",
       "type": "adr",
-      "has_frontmatter": true
+      "has_frontmatter": true,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-9999",
       "path": "30_SYSTEM/ADR/ADR-9999-Legacy-Retention-Policy.md",
       "title": "ADR-9999: 历史资产处置策略（Legacy Retention Policy）",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     },
     {
       "id": "ADR-ADR-INDEX",
       "path": "30_SYSTEM/ADR/ADR-INDEX.md",
       "title": "Architecture Decision Record Index",
       "type": "adr",
-      "has_frontmatter": false
+      "has_frontmatter": false,
+      "tags": [],
+      "summary": "",
+      "keywords": []
     }
   ],
   "edges_declared": [
@@ -640,980 +1251,980 @@
       "target": "prompt-model-comparison",
       "raw": "prompt-model-comparison",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/AI设计PPT完整指南.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010",
       "target": "KB-2026-07-10-0003",
       "raw": "Growth-OS-Life-Companion",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Personal/Early-Education-0-Year.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010",
       "target": "ADR-0012",
       "raw": "ADR-0012-Platform-Application-Architecture",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Personal/Early-Education-0-Year.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "proxy-setup-guide",
       "target": "openwrt-lan-lan-deploy",
       "raw": "openwrt-lan-lan-deploy",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Personal/Proxy-Setup-Guide-一楼PC.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-value-assessment",
       "target": "paios-system-history",
       "raw": "paios-system-history",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/Decisions/PAIOS-价值评估-2026-07-01.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-value-assessment",
       "target": "ADR-0017",
       "raw": "ADR-0017",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/Decisions/PAIOS-价值评估-2026-07-01.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "KB-2026-07-06-0001",
       "target": "REF-0007",
       "raw": "REF-0007",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/Methods/AI-Agent-Credits-Token-Saving-7Steps.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "KB-2026-07-06-0001",
       "target": "REF-0005",
       "raw": "REF-0005",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/Methods/AI-Agent-Credits-Token-Saving-7Steps.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "KB-2026-07-06-0001",
       "target": "SOP-2026-07-02-0001",
       "raw": "SOP-2026-07-02-0001",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/Methods/AI-Agent-Credits-Token-Saving-7Steps.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0004",
       "target": "REF-0003",
       "raw": "REF-0003",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/AI-Brain-LLM-Hardware-Display-Setup.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0005",
       "target": "REF-0002",
       "raw": "REF-0002",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Agent-Context-Window-Management.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0005",
       "target": "REF-0003",
       "raw": "REF-0003",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Agent-Context-Window-Management.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0005",
       "target": "REF-0004",
       "raw": "REF-0004",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Agent-Context-Window-Management.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0005",
       "target": "KB-2026-07-02-0001",
       "raw": "KB-2026-07-02-0001",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Agent-Context-Window-Management.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0003",
       "target": "REF-0001",
       "raw": "REF-0001",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Douyin-AI-Trends-Distillation-VibeCoding-SuperIndividual.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
       "target": "REF-0010",
       "raw": "REF-0010",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-政治.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
       "target": "REF-0011",
       "raw": "REF-0011",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-政治.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
       "target": "REF-0012",
       "raw": "REF-0012",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-政治.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
       "target": "REF-0010",
       "raw": "REF-0010",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数学三.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
       "target": "REF-0012",
       "raw": "REF-0012",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数学三.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
       "target": "REF-0013",
       "raw": "REF-0013",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数学三.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0014",
       "target": "REF-0010",
       "raw": "REF-0010",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数据科学考研择校与难度.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0014",
       "target": "REF-0011",
       "raw": "REF-0011",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数据科学考研择校与难度.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0014",
       "target": "REF-0012",
       "raw": "REF-0012",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数据科学考研择校与难度.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0014",
       "target": "REF-0013",
       "raw": "REF-0013",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-数据科学考研择校与难度.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
       "target": "REF-0010",
       "raw": "REF-0010",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-统计学.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
       "target": "REF-0011",
       "raw": "REF-0011",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-统计学.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
       "target": "REF-0013",
       "raw": "REF-0013",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-统计学.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010__References-Kaoyan-英语二",
       "target": "REF-0011",
       "raw": "REF-0011",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-英语二.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010__References-Kaoyan-英语二",
       "target": "REF-0012",
       "raw": "REF-0012",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-英语二.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010__References-Kaoyan-英语二",
       "target": "REF-0013",
       "raw": "REF-0013",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/Kaoyan-英语二.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0002",
       "target": "REF-0001",
       "raw": "REF-0001",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/NotebookLM-Google-AI-Notebook.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-system-history",
       "target": "paios-value-assessment",
       "raw": "paios-value-assessment",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/PAIOS-System-History-Analysis.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-system-history",
       "target": "ADR-0002",
       "raw": "ADR-0002",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/PAIOS-System-History-Analysis.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-system-history",
       "target": "ADR-0017",
       "raw": "ADR-0017",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/PAIOS-System-History-Analysis.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0007",
       "target": "REF-0005",
       "raw": "REF-0005",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/WorkBuddy-Credits-Token-Saving-7Steps.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0007",
       "target": "REF-0004",
       "raw": "REF-0004",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/WorkBuddy-Credits-Token-Saving-7Steps.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0007",
       "target": "SOP-2026-07-02-0001",
       "raw": "SOP-2026-07-02-0001",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/WorkBuddy-Credits-Token-Saving-7Steps.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-archive-cleanup",
       "target": "photo-organizer-sop",
       "raw": "photo-organizer-sop",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/photo-archive-cleanup/notes.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-archive-cleanup",
       "target": "rebuild-archive-decision",
       "raw": "rebuild-archive-decision",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/photo-archive-cleanup/notes.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "rebuild-archive-decision",
       "target": "photo-organizer-sop",
       "raw": "photo-organizer-sop",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/photo-organizer/REBUILD_ARCHIVE.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "rebuild-archive-decision",
       "target": "photo-archive-cleanup",
       "raw": "photo-archive-cleanup",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/References/photo-organizer/REBUILD_ARCHIVE.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "openwrt-router-fix-sop",
       "target": "openwrt-lan-lan-deploy",
       "raw": "openwrt-lan-lan-deploy",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/SOP/OpenWrt-二级路由-搬移修复-SOP.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-organizer-sop",
       "target": "photo-archive-cleanup",
       "raw": "photo-archive-cleanup",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/SOP/Photo-Organizer-SOP.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-organizer-sop",
       "target": "rebuild-archive-decision",
       "raw": "rebuild-archive-decision",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/Platform/SOP/Photo-Organizer-SOP.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "openwrt-lan-lan-deploy",
       "target": "openwrt-router-fix-sop",
       "raw": "openwrt-router-fix-sop",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/SOP/OpenWrt-LAN-LAN-Deploy.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "openwrt-lan-lan-deploy",
       "target": "proxy-setup-guide",
       "raw": "proxy-setup-guide",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/SOP/OpenWrt-LAN-LAN-Deploy.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "architecture-paios-positioning-consensus-v2.1",
       "raw": "paios-positioning-consensus-v2.1",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "__UNRESOLVED__FIM-v1",
       "raw": "FIM-v1",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0002",
       "raw": "ADR-0002",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0007",
       "raw": "ADR-0007",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0009",
       "raw": "ADR-0009",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0012",
       "raw": "ADR-0012",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0013",
       "raw": "ADR-0013",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0016",
       "raw": "ADR-0016",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0022",
       "raw": "ADR-0022",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "ADR-0023",
       "raw": "ADR-0023",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
       "target": "__UNRESOLVED__AI-Packets",
       "raw": "AI-Packets",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162600-buddy-architecture-model-v1.0.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
       "target": "__UNRESOLVED__paios-architecture-model-v1.0",
       "raw": "paios-architecture-model-v1.0",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
       "target": "__UNRESOLVED__FIM-v1",
       "raw": "FIM-v1",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
       "target": "__UNRESOLVED__Multi-Instance-Roadmap",
       "raw": "Multi-Instance-Roadmap",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
       "target": "ADR-0013",
       "raw": "ADR-0013",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
       "target": "ADR-0016",
       "raw": "ADR-0016",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/20260718-162700-buddy-fim-validation-plan.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-evolution-review-2026-07-18",
       "target": "architecture-paios-positioning-consensus-v2.1",
       "raw": "paios-positioning-consensus-v2.1",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-evolution-review-2026-07-18.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-evolution-review-2026-07-18",
       "target": "ADR-0022",
       "raw": "ADR-0022",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-evolution-review-2026-07-18.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-evolution-review-2026-07-18",
       "target": "ADR-0023",
       "raw": "ADR-0023",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-evolution-review-2026-07-18.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
       "target": "Platform-Concepts-README",
       "raw": "README.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
       "target": "__UNRESOLVED__30_SYSTEM/Vision/00_Abstract.md",
       "raw": "30_SYSTEM/Vision/00_Abstract.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
       "target": "ADR-0022",
       "raw": "30_SYSTEM/ADR/ADR-0022-Terminology-and-Positioning.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
       "target": "ADR-0023",
       "raw": "30_SYSTEM/ADR/ADR-0023-Review-Cadence.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
       "target": "__UNRESOLVED__30_SYSTEM/Specifications/FIM-v1.md",
       "raw": "30_SYSTEM/Specifications/FIM-v1.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
       "target": "__UNRESOLVED__30_SYSTEM/Specifications/AI-Packets/*",
       "raw": "30_SYSTEM/Specifications/AI-Packets/*",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/architecture/paios-positioning-consensus-v2.1.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "prompt-model-comparison",
       "target": "ai-ppt-guide",
       "raw": "ai-ppt-guide",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "20_KNOWLEDGE/prompt_model_comparison.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
       "target": "ADR-0012",
       "raw": "ADR-0012-Platform-Application-Architecture.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
       "target": "ADR-0013",
       "raw": "ADR-0013-Federated-Instance-Manifest.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
       "target": "ADR-0014",
       "raw": "ADR-0014-Upgrade-Mechanism.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
       "target": "ADR-0015",
       "raw": "ADR-0015-Federated-Aggregation-Viewing.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
       "target": "ADR-0016",
       "raw": "ADR-0016-Multi-Instance-Architecture-Baseline.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
       "target": "__UNRESOLVED__../Evolution/Case-Studies/CASE-001-Multi-Instance-First-Convergence.md",
       "raw": "../Evolution/Case-Studies/CASE-001-Multi-Instance-First-Convergence.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0017-Platform-Purity-Physical-Separation.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0018",
       "target": "ADR-0017",
       "raw": "ADR-0017-Platform-Purity-Physical-Separation.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0018-Multi-Instance-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0018",
       "target": "__UNRESOLVED__../Governance/Operating-Model.md",
       "raw": "../Governance/Operating-Model.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0018-Multi-Instance-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0018",
       "target": "__UNRESOLVED__../SOP/SOP-2026-07-11-0001-User-Daily-Operations.md",
       "raw": "../SOP/SOP-2026-07-11-0001-User-Daily-Operations.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0018-Multi-Instance-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0018",
       "target": "__UNRESOLVED__../SOP/SOP-2026-07-10-0001-Release-Flow.md",
       "raw": "../SOP/SOP-2026-07-10-0001-Release-Flow.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0018-Multi-Instance-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "ADR-0018",
       "raw": "ADR-0018-Multi-Instance-Role-Model.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "ADR-0017",
       "raw": "ADR-0017-Platform-Purity-Physical-Separation.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "__UNRESOLVED__../Governance/Operating-Model.md",
       "raw": "../Governance/Operating-Model.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "__UNRESOLVED__../Principles.md",
       "raw": "../Principles.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "__UNRESOLVED__../SOP/SOP-2026-07-10-0001-Release-Flow.md",
       "raw": "../SOP/SOP-2026-07-10-0001-Release-Flow.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "__UNRESOLVED__../Governance/AI-Operating-Model.md",
       "raw": "../Governance/AI-Operating-Model.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0019",
       "target": "Platform-Concepts-README",
       "raw": "../Specifications/AI-Packets/README.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0019-AI-Engine-Role-Model.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
       "target": "ADR-0009",
       "raw": "30_SYSTEM/ADR/ADR-0009-Governance-Model.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0022-Terminology-and-Positioning.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
       "target": "__UNRESOLVED__30_SYSTEM/Vision/00_Abstract.md",
       "raw": "30_SYSTEM/Vision/00_Abstract.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0022-Terminology-and-Positioning.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
       "target": "Platform-Concepts-README",
       "raw": "README.md",
       "resolved": true,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0022-Terminology-and-Positioning.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
       "target": "__UNRESOLVED__00_CAPTURE/inbox/20260718-110507-buddy-paios-positioning-consensus.md",
       "raw": "00_CAPTURE/inbox/20260718-110507-buddy-paios-positioning-consensus.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0022-Terminology-and-Positioning.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
       "target": "__UNRESOLVED__30_SYSTEM/Governance/Architecture-Lifecycle.md",
       "raw": "30_SYSTEM/Governance/Architecture-Lifecycle.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0023-Review-Cadence.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
       "target": "__UNRESOLVED__30_SYSTEM/Evolution/Governance-Retrospective-2026Q3.md",
       "raw": "30_SYSTEM/Evolution/Governance-Retrospective-2026Q3.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0023-Review-Cadence.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
       "target": "__UNRESOLVED__30_SYSTEM/Evolution/PAIOS-Retrospective-2026-07-10.md",
       "raw": "30_SYSTEM/Evolution/PAIOS-Retrospective-2026-07-10.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0023-Review-Cadence.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
       "target": "__UNRESOLVED__00_CAPTURE/inbox/20260718-110507-buddy-paios-positioning-consensus.md",
       "raw": "00_CAPTURE/inbox/20260718-110507-buddy-paios-positioning-consensus.md",
       "resolved": false,
-      "confidence": 1.0,
+      "source_file": "30_SYSTEM/ADR/ADR-0023-Review-Cadence.md",
       "source_type": "human_frontmatter",
-      "created_by": "human",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "confidence": 1.0,
+      "created_time": "2026-07-19T21:39:00+0800"
     }
   ],
   "edges_backlinks": [
@@ -1625,7 +2236,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "KB-2026-07-10-0003",
@@ -1635,7 +2246,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0012",
@@ -1645,7 +2256,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "openwrt-lan-lan-deploy",
@@ -1655,7 +2266,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-system-history",
@@ -1665,7 +2276,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
@@ -1675,7 +2286,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0007",
@@ -1685,7 +2296,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0005",
@@ -1695,7 +2306,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "SOP-2026-07-02-0001",
@@ -1705,7 +2316,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0003",
@@ -1715,7 +2326,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0002",
@@ -1725,7 +2336,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0003",
@@ -1735,7 +2346,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0004",
@@ -1745,7 +2356,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "KB-2026-07-02-0001",
@@ -1755,7 +2366,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0001",
@@ -1765,7 +2376,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010",
@@ -1775,7 +2386,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
@@ -1785,7 +2396,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
@@ -1795,7 +2406,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010",
@@ -1805,7 +2416,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
@@ -1815,7 +2426,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
@@ -1825,7 +2436,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010",
@@ -1835,7 +2446,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
@@ -1845,7 +2456,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
@@ -1855,7 +2466,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
@@ -1865,7 +2476,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0010",
@@ -1875,7 +2486,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
@@ -1885,7 +2496,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
@@ -1895,7 +2506,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0011",
@@ -1905,7 +2516,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0012",
@@ -1915,7 +2526,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0013",
@@ -1925,7 +2536,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0001",
@@ -1935,7 +2546,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "paios-value-assessment",
@@ -1945,7 +2556,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0002",
@@ -1955,7 +2566,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
@@ -1965,7 +2576,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0005",
@@ -1975,7 +2586,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "REF-0004",
@@ -1985,7 +2596,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "SOP-2026-07-02-0001",
@@ -1995,7 +2606,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-organizer-sop",
@@ -2005,7 +2616,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "rebuild-archive-decision",
@@ -2015,7 +2626,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-organizer-sop",
@@ -2025,7 +2636,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-archive-cleanup",
@@ -2035,7 +2646,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "openwrt-lan-lan-deploy",
@@ -2045,7 +2656,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "photo-archive-cleanup",
@@ -2055,7 +2666,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "rebuild-archive-decision",
@@ -2065,7 +2676,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "openwrt-router-fix-sop",
@@ -2075,7 +2686,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "proxy-setup-guide",
@@ -2085,7 +2696,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -2095,7 +2706,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0002",
@@ -2105,7 +2716,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0007",
@@ -2115,7 +2726,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0009",
@@ -2125,7 +2736,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0012",
@@ -2135,7 +2746,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0013",
@@ -2145,7 +2756,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0016",
@@ -2155,7 +2766,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
@@ -2165,7 +2776,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
@@ -2175,7 +2786,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0013",
@@ -2185,7 +2796,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0016",
@@ -2195,7 +2806,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -2205,7 +2816,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
@@ -2215,7 +2826,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
@@ -2225,7 +2836,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "Platform-Concepts-README",
@@ -2235,7 +2846,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0022",
@@ -2245,7 +2856,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0023",
@@ -2255,7 +2866,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ai-ppt-guide",
@@ -2265,7 +2876,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0012",
@@ -2275,7 +2886,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0013",
@@ -2285,7 +2896,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0014",
@@ -2295,7 +2906,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0015",
@@ -2305,7 +2916,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0016",
@@ -2315,7 +2926,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
@@ -2325,7 +2936,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0018",
@@ -2335,7 +2946,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0017",
@@ -2345,7 +2956,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "Platform-Concepts-README",
@@ -2355,7 +2966,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "ADR-0009",
@@ -2365,7 +2976,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     },
     {
       "source": "Platform-Concepts-README",
@@ -2375,7 +2986,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     }
   ],
   "edges_supersedes": [
@@ -2387,7 +2998,7 @@
       "confidence": 1.0,
       "source_type": "adr_text_scan",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T15:03:13+0800"
+      "created_time": "2026-07-19T21:39:00+0800"
     }
   ],
   "unresolved": [
@@ -2543,6 +3154,7 @@
     "RELEASES-upgrade-notice-1.0.1",
     "RELEASES-upgrade-receipt-1.0.1",
     "RELEASES-upgrade-receipt-v1.0.1",
+    "References-GitHub-Projects-_index",
     "SOP-2026-06-28T14:33:16Z-XXXX",
     "architecture-_index",
     "codetrust-audit",
