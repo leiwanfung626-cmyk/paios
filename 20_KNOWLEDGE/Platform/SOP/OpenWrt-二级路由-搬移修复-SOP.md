@@ -1,3 +1,10 @@
+---
+id: openwrt-router-fix-sop
+type: sop
+title: OpenWrt 二级路由搬移修复 SOP
+created: 2026-07-01
+related: [openwrt-lan-lan-deploy]
+---
 # OpenWrt 二级路由搬移后 Clash / AdGuard 不生效 — 修复 SOP
 
 ## 适用场景

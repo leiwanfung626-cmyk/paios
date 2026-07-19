@@ -1,12 +1,13 @@
 ---
 title: Architecture Governance
-version: "1.0"
+version: "1.1 (2026-07-19 — Added §7 Knowledge→System Promotion Criteria)"
 status: baseline
 related_invariants: architectural-invariants.md
 related_philosophy: paios-philosophy.md
 related_adr:
   - ADR-0002
 created: 2026-06-29
+updated: 2026-07-19
 ---
 
 # Architecture Governance — 架构治理
@@ -186,8 +187,42 @@ Feedback（记录实际效果，供未来演化参考）
 
 ---
 
-> **关联文档**
-> - `architectural-invariants.md` — 5 条架构不变量
-> - `paios-philosophy.md` — 第一性原理
-> - `Principles.md` — 九大核心原则
-> - `ADR-0002` — Automation Platform Freeze
+## 7. Knowledge → System Promotion Criteria
+
+> 定义：**什么情况下 20_KNOWLEDGE 中的知识资产应该晋升为 30_SYSTEM 的系统原则？**
+> 防止 30_SYSTEM 随时间膨胀成第二个知识库（Round 2 Architecture Review — P3 缺口）。
+
+### 7.1 为什么需要这个标准
+
+20_KNOWLEDGE 是已验证的知识经验（"做了什么、怎么做的"）。
+30_SYSTEM 是系统运行的治理规则（"必须怎么做、不能怎么做"）。
+
+两者边界模糊的风险：好东西就挪进 System → 30_SYSTEM 膨胀 → 系统变厚→治理成本上升。
+
+### 7.2 晋升四条件
+
+一项知识资产**必须同时满足全部 4 条**才能从 Knowledge 晋升为 System：
+
+| # | 条件 | 判断标准 |
+|---|------|---------|
+| 1 | **多模块依赖** | 该资产被至少 **2 个** 不同目录（如 20_KNOWLEDGE/Platform 和 40_AUTOMATION）引用或依赖 |
+| 2 | **改变运行规则** | 该资产定义了 AI/Agent/工作流**必须遵守**的行为约束，不仅仅是建议性参考 |
+| 3 | **有 ADR** | 晋升必须有对应的 ADR 记录决策原因——"为什么这条规则应该成为系统的一部分" |
+| 4 | **经冻结** | 晋升完成后，该资产进入 Frozen 状态，修改需要 L3 变更流程 |
+
+### 7.3 不满足后的处理
+
+| 场景 | 处理 |
+|------|------|
+| 满足 1-2 条但不全 | 留在 20_KNOWLEDGE，标记为 `candidate_for_system` |
+| 无人引用但个人觉得重要 | 留在 Knowledge。系统原则不能靠"感觉重要"来决定 |
+| 曾经是系统但现在过时 | 走 L3 变更，标记 Deprecated，不移回 Knowledge（历史追溯） |
+
+### 7.4 与现有治理的关系
+
+| 概念 | 关系 |
+|------|------|
+| Asset Lifecycle（§3） | Promotion Criteria 决定知识能否从 Knowledge 层进入 System 层的 Active 状态 |
+| Change Control（L1-L3） | 晋升完成后该资产归 L3 管辖（修改需 ADR） |
+| Freeze Policy（§5） | 晋升后自动进入 Frozen 状态，不是"先晋升再决定冻不冻" |
+| Pilot-Gate v1.1 | 此标准是双闸门治理的补充：Stability Gate 确保系统稳定，Promotion Criteria 确保系统精炼 |

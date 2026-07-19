@@ -1,3 +1,10 @@
+---
+id: codex-cli-tutorial
+type: reference
+title: Codex CLI 使用技巧（Jason Liu 教程）
+created: 2026-07-01
+related: []
+---
 # Codex CLI 使用技巧（Jason Liu 教程）
 
 > **来源**：抖音视频（OpenAI 官方教程｜如何把你的 Codex 用到极致）

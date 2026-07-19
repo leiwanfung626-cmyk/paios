@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-07-19T13:32:54+0800",
+  "generated_at": "2026-07-19T15:03:13+0800",
   "generator": "relationship_engine v0.1",
   "stats": {
     "nodes": 89,
-    "declared_edges": 81,
-    "backlinks": 59,
+    "declared_edges": 98,
+    "backlinks": 76,
     "supersedes": 1,
     "unresolved": 22,
-    "orphans": 55
+    "orphans": 45
   },
   "nodes": [
     {
-      "id": "AI设计PPT完整指南",
+      "id": "ai-ppt-guide",
       "path": "20_KNOWLEDGE/AI设计PPT完整指南.md",
       "title": "AI 设计 PPT 完整操作指南",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "type": "reference",
+      "has_frontmatter": true
     },
     {
       "id": "DEC-2026-07-08-0001",
@@ -46,18 +46,18 @@
       "has_frontmatter": true
     },
     {
-      "id": "Personal-Proxy-Setup-Guide-一楼PC",
+      "id": "proxy-setup-guide",
       "path": "20_KNOWLEDGE/Personal/Proxy-Setup-Guide-一楼PC.md",
       "title": "一楼 PC 翻墙配置指南",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "type": "sop",
+      "has_frontmatter": true
     },
     {
-      "id": "Personal-阅读目录索引",
+      "id": "reading-index",
       "path": "20_KNOWLEDGE/Personal/阅读目录索引.md",
       "title": "阅读目录索引",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "type": "reference",
+      "has_frontmatter": true
     },
     {
       "id": "KB-2026-07-10-0003",
@@ -95,11 +95,11 @@
       "has_frontmatter": true
     },
     {
-      "id": "Platform-Decisions-PAIOS-价值评估-2026-07-01",
+      "id": "paios-value-assessment",
       "path": "20_KNOWLEDGE/Platform/Decisions/PAIOS-价值评估-2026-07-01.md",
       "title": "PAIOS 价值评估报告",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "type": "decision",
+      "has_frontmatter": true
     },
     {
       "id": "Platform-Decisions-README",
@@ -207,11 +207,11 @@
       "has_frontmatter": true
     },
     {
-      "id": "Platform-References-Audits-CodeTrust-2026-06-29",
+      "id": "codetrust-audit",
       "path": "20_KNOWLEDGE/Platform/References/Audits/CodeTrust-2026-06-29.md",
-      "title": "CodeTrust Audit — 环境兼容性检查",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "CodeTrust 环境兼容性检查",
+      "type": "audit",
+      "has_frontmatter": true
     },
     {
       "id": "REF-0001",
@@ -228,11 +228,11 @@
       "has_frontmatter": true
     },
     {
-      "id": "Platform-References-Codex-CLI-Usage-Jason-Liu-Tutorial",
+      "id": "codex-cli-tutorial",
       "path": "20_KNOWLEDGE/Platform/References/Codex-CLI-Usage-Jason-Liu-Tutorial.md",
       "title": "Codex CLI 使用技巧（Jason Liu 教程）",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "type": "reference",
+      "has_frontmatter": true
     },
     {
       "id": "REF-0003",
@@ -284,11 +284,11 @@
       "has_frontmatter": true
     },
     {
-      "id": "Platform-References-PAIOS-System-History-Analysis",
+      "id": "paios-system-history",
       "path": "20_KNOWLEDGE/Platform/References/PAIOS-System-History-Analysis.md",
       "title": "PAIOS 系统发展历史与分析报告",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "type": "reference",
+      "has_frontmatter": true
     },
     {
       "id": "Platform-References-README",
@@ -319,32 +319,32 @@
       "has_frontmatter": true
     },
     {
-      "id": "Platform-References-photo-archive-cleanup-notes",
+      "id": "photo-archive-cleanup",
       "path": "20_KNOWLEDGE/Platform/References/photo-archive-cleanup/notes.md",
-      "title": "照片归档清理 — 方案与进度",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "照片归档清理方案与进度",
+      "type": "reference",
+      "has_frontmatter": true
     },
     {
-      "id": "Platform-References-photo-organizer-REBUILD_ARCHIVE",
+      "id": "rebuild-archive-decision",
       "path": "20_KNOWLEDGE/Platform/References/photo-organizer/REBUILD_ARCHIVE.md",
-      "title": "重建 face_index 于归档 — 任务记录",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "重建 face_index 于归档 — 任务决策",
+      "type": "decision",
+      "has_frontmatter": true
     },
     {
-      "id": "Platform-SOP-OpenWrt-二级路由-搬移修复-SOP",
+      "id": "openwrt-router-fix-sop",
       "path": "20_KNOWLEDGE/Platform/SOP/OpenWrt-二级路由-搬移修复-SOP.md",
-      "title": "OpenWrt 二级路由搬移后 Clash / AdGuard 不生效 — 修复 SOP",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "OpenWrt 二级路由搬移修复 SOP",
+      "type": "sop",
+      "has_frontmatter": true
     },
     {
-      "id": "Platform-SOP-Photo-Organizer-SOP",
+      "id": "photo-organizer-sop",
       "path": "20_KNOWLEDGE/Platform/SOP/Photo-Organizer-SOP.md",
-      "title": "照片整理 SOP（Personal Photo Intelligence Pipeline）",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "照片整理 SOP",
+      "type": "sop",
+      "has_frontmatter": true
     },
     {
       "id": "Platform-SOP-README",
@@ -417,11 +417,11 @@
       "has_frontmatter": false
     },
     {
-      "id": "SOP-OpenWrt-LAN-LAN-Deploy",
+      "id": "openwrt-lan-lan-deploy",
       "path": "20_KNOWLEDGE/SOP/OpenWrt-LAN-LAN-Deploy.md",
-      "title": "OpenWrt 放二楼 · LAN-LAN 旁路由部署 SOP（最终版）",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "OpenWrt LAN-LAN 旁路由部署 SOP",
+      "type": "sop",
+      "has_frontmatter": true
     },
     {
       "id": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -459,11 +459,11 @@
       "has_frontmatter": true
     },
     {
-      "id": "prompt_model_comparison",
+      "id": "prompt-model-comparison",
       "path": "20_KNOWLEDGE/prompt_model_comparison.md",
-      "title": "提示词模板：技术选型对比分析报告（model-comparison-analyst）",
-      "type": "knowledge",
-      "has_frontmatter": false
+      "title": "技术选型对比分析提示词模板",
+      "type": "prompt",
+      "has_frontmatter": true
     },
     {
       "id": "ADR-0002",
@@ -636,6 +636,16 @@
   ],
   "edges_declared": [
     {
+      "source": "ai-ppt-guide",
+      "target": "prompt-model-comparison",
+      "raw": "prompt-model-comparison",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
       "source": "REF-0010",
       "target": "KB-2026-07-10-0003",
       "raw": "Growth-OS-Life-Companion",
@@ -643,7 +653,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010",
@@ -653,7 +663,37 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "proxy-setup-guide",
+      "target": "openwrt-lan-lan-deploy",
+      "raw": "openwrt-lan-lan-deploy",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-value-assessment",
+      "target": "paios-system-history",
+      "raw": "paios-system-history",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-value-assessment",
+      "target": "ADR-0017",
+      "raw": "ADR-0017",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "KB-2026-07-06-0001",
@@ -663,7 +703,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "KB-2026-07-06-0001",
@@ -673,7 +713,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "KB-2026-07-06-0001",
@@ -683,7 +723,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0004",
@@ -693,7 +733,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0005",
@@ -703,7 +743,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0005",
@@ -713,7 +753,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0005",
@@ -723,7 +763,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0005",
@@ -733,7 +773,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0003",
@@ -743,7 +783,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -753,7 +793,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -763,7 +803,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -773,7 +813,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -783,7 +823,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -793,7 +833,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -803,7 +843,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0014",
@@ -813,7 +853,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0014",
@@ -823,7 +863,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0014",
@@ -833,7 +873,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0014",
@@ -843,7 +883,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -853,7 +893,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -863,7 +903,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -873,7 +913,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010__References-Kaoyan-英语二",
@@ -883,7 +923,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010__References-Kaoyan-英语二",
@@ -893,7 +933,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010__References-Kaoyan-英语二",
@@ -903,7 +943,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0002",
@@ -913,7 +953,37 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-system-history",
+      "target": "paios-value-assessment",
+      "raw": "paios-value-assessment",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-system-history",
+      "target": "ADR-0002",
+      "raw": "ADR-0002",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-system-history",
+      "target": "ADR-0017",
+      "raw": "ADR-0017",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0007",
@@ -923,7 +993,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0007",
@@ -933,7 +1003,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0007",
@@ -943,7 +1013,97 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-archive-cleanup",
+      "target": "photo-organizer-sop",
+      "raw": "photo-organizer-sop",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-archive-cleanup",
+      "target": "rebuild-archive-decision",
+      "raw": "rebuild-archive-decision",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "rebuild-archive-decision",
+      "target": "photo-organizer-sop",
+      "raw": "photo-organizer-sop",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "rebuild-archive-decision",
+      "target": "photo-archive-cleanup",
+      "raw": "photo-archive-cleanup",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "openwrt-router-fix-sop",
+      "target": "openwrt-lan-lan-deploy",
+      "raw": "openwrt-lan-lan-deploy",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-organizer-sop",
+      "target": "photo-archive-cleanup",
+      "raw": "photo-archive-cleanup",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-organizer-sop",
+      "target": "rebuild-archive-decision",
+      "raw": "rebuild-archive-decision",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "openwrt-lan-lan-deploy",
+      "target": "openwrt-router-fix-sop",
+      "raw": "openwrt-router-fix-sop",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "openwrt-lan-lan-deploy",
+      "target": "proxy-setup-guide",
+      "raw": "proxy-setup-guide",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -953,7 +1113,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -963,7 +1123,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -973,7 +1133,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -983,7 +1143,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -993,7 +1153,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -1003,7 +1163,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -1013,7 +1173,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -1023,7 +1183,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -1033,7 +1193,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -1043,7 +1203,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162600-buddy-architecture-model-v1.0",
@@ -1053,7 +1213,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
@@ -1063,7 +1223,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
@@ -1073,7 +1233,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
@@ -1083,7 +1243,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
@@ -1093,7 +1253,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-20260718-162700-buddy-fim-validation-plan",
@@ -1103,7 +1263,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-evolution-review-2026-07-18",
@@ -1113,7 +1273,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-evolution-review-2026-07-18",
@@ -1123,7 +1283,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-evolution-review-2026-07-18",
@@ -1133,7 +1293,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1143,7 +1303,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1153,7 +1313,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1163,7 +1323,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1173,7 +1333,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1183,7 +1343,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1193,7 +1353,17 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "prompt-model-comparison",
+      "target": "ai-ppt-guide",
+      "raw": "ai-ppt-guide",
+      "resolved": true,
+      "confidence": 1.0,
+      "source_type": "human_frontmatter",
+      "created_by": "human",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1203,7 +1373,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1213,7 +1383,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1223,7 +1393,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1233,7 +1403,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1243,7 +1413,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1253,7 +1423,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0018",
@@ -1263,7 +1433,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0018",
@@ -1273,7 +1443,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0018",
@@ -1283,7 +1453,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0018",
@@ -1293,7 +1463,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1303,7 +1473,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1313,7 +1483,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1323,7 +1493,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1333,7 +1503,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1343,7 +1513,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1353,7 +1523,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0019",
@@ -1363,7 +1533,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1373,7 +1543,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1383,7 +1553,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1393,7 +1563,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1403,7 +1573,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1413,7 +1583,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1423,7 +1593,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1433,7 +1603,7 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1443,10 +1613,20 @@
       "confidence": 1.0,
       "source_type": "human_frontmatter",
       "created_by": "human",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     }
   ],
   "edges_backlinks": [
+    {
+      "source": "prompt-model-comparison",
+      "target": "ai-ppt-guide",
+      "type": "backlink",
+      "via": "backlink-of:ai-ppt-guide->prompt-model-comparison",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
     {
       "source": "KB-2026-07-10-0003",
       "target": "REF-0010",
@@ -1455,7 +1635,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0012",
@@ -1465,7 +1645,37 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "openwrt-lan-lan-deploy",
+      "target": "proxy-setup-guide",
+      "type": "backlink",
+      "via": "backlink-of:proxy-setup-guide->openwrt-lan-lan-deploy",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-system-history",
+      "target": "paios-value-assessment",
+      "type": "backlink",
+      "via": "backlink-of:paios-value-assessment->paios-system-history",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "ADR-0017",
+      "target": "paios-value-assessment",
+      "type": "backlink",
+      "via": "backlink-of:paios-value-assessment->ADR-0017",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0007",
@@ -1475,7 +1685,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0005",
@@ -1485,7 +1695,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "SOP-2026-07-02-0001",
@@ -1495,7 +1705,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0003",
@@ -1505,7 +1715,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0002",
@@ -1515,7 +1725,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0003",
@@ -1525,7 +1735,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0004",
@@ -1535,7 +1745,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "KB-2026-07-02-0001",
@@ -1545,7 +1755,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0001",
@@ -1555,7 +1765,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010",
@@ -1565,7 +1775,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -1575,7 +1785,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -1585,7 +1795,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010",
@@ -1595,7 +1805,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -1605,7 +1815,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -1615,7 +1825,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010",
@@ -1625,7 +1835,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -1635,7 +1845,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -1645,7 +1855,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -1655,7 +1865,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0010",
@@ -1665,7 +1875,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -1675,7 +1885,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -1685,7 +1895,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0011",
@@ -1695,7 +1905,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0012",
@@ -1705,7 +1915,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0013",
@@ -1715,7 +1925,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0001",
@@ -1725,7 +1935,37 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "paios-value-assessment",
+      "target": "paios-system-history",
+      "type": "backlink",
+      "via": "backlink-of:paios-system-history->paios-value-assessment",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "ADR-0002",
+      "target": "paios-system-history",
+      "type": "backlink",
+      "via": "backlink-of:paios-system-history->ADR-0002",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "ADR-0017",
+      "target": "paios-system-history",
+      "type": "backlink",
+      "via": "backlink-of:paios-system-history->ADR-0017",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0005",
@@ -1735,7 +1975,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "REF-0004",
@@ -1745,7 +1985,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "SOP-2026-07-02-0001",
@@ -1755,7 +1995,97 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-organizer-sop",
+      "target": "photo-archive-cleanup",
+      "type": "backlink",
+      "via": "backlink-of:photo-archive-cleanup->photo-organizer-sop",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "rebuild-archive-decision",
+      "target": "photo-archive-cleanup",
+      "type": "backlink",
+      "via": "backlink-of:photo-archive-cleanup->rebuild-archive-decision",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-organizer-sop",
+      "target": "rebuild-archive-decision",
+      "type": "backlink",
+      "via": "backlink-of:rebuild-archive-decision->photo-organizer-sop",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-archive-cleanup",
+      "target": "rebuild-archive-decision",
+      "type": "backlink",
+      "via": "backlink-of:rebuild-archive-decision->photo-archive-cleanup",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "openwrt-lan-lan-deploy",
+      "target": "openwrt-router-fix-sop",
+      "type": "backlink",
+      "via": "backlink-of:openwrt-router-fix-sop->openwrt-lan-lan-deploy",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "photo-archive-cleanup",
+      "target": "photo-organizer-sop",
+      "type": "backlink",
+      "via": "backlink-of:photo-organizer-sop->photo-archive-cleanup",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "rebuild-archive-decision",
+      "target": "photo-organizer-sop",
+      "type": "backlink",
+      "via": "backlink-of:photo-organizer-sop->rebuild-archive-decision",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "openwrt-router-fix-sop",
+      "target": "openwrt-lan-lan-deploy",
+      "type": "backlink",
+      "via": "backlink-of:openwrt-lan-lan-deploy->openwrt-router-fix-sop",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "proxy-setup-guide",
+      "target": "openwrt-lan-lan-deploy",
+      "type": "backlink",
+      "via": "backlink-of:openwrt-lan-lan-deploy->proxy-setup-guide",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1765,7 +2095,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0002",
@@ -1775,7 +2105,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0007",
@@ -1785,7 +2115,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0009",
@@ -1795,7 +2125,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0012",
@@ -1805,7 +2135,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0013",
@@ -1815,7 +2145,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0016",
@@ -1825,7 +2155,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1835,7 +2165,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1845,7 +2175,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0013",
@@ -1855,7 +2185,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0016",
@@ -1865,7 +2195,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "architecture-paios-positioning-consensus-v2.1",
@@ -1875,7 +2205,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1885,7 +2215,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1895,7 +2225,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "Platform-Concepts-README",
@@ -1905,7 +2235,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0022",
@@ -1915,7 +2245,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0023",
@@ -1925,7 +2255,17 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
+    },
+    {
+      "source": "ai-ppt-guide",
+      "target": "prompt-model-comparison",
+      "type": "backlink",
+      "via": "backlink-of:prompt-model-comparison->ai-ppt-guide",
+      "confidence": 1.0,
+      "source_type": "engine_derived",
+      "created_by": "relationship_engine",
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0012",
@@ -1935,7 +2275,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0013",
@@ -1945,7 +2285,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0014",
@@ -1955,7 +2295,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0015",
@@ -1965,7 +2305,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0016",
@@ -1975,7 +2315,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -1985,7 +2325,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0018",
@@ -1995,7 +2335,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0017",
@@ -2005,7 +2345,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "Platform-Concepts-README",
@@ -2015,7 +2355,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "ADR-0009",
@@ -2025,7 +2365,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     },
     {
       "source": "Platform-Concepts-README",
@@ -2035,7 +2375,7 @@
       "confidence": 1.0,
       "source_type": "engine_derived",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     }
   ],
   "edges_supersedes": [
@@ -2047,7 +2387,7 @@
       "confidence": 1.0,
       "source_type": "adr_text_scan",
       "created_by": "relationship_engine",
-      "created_time": "2026-07-19T13:32:54+0800"
+      "created_time": "2026-07-19T15:03:13+0800"
     }
   ],
   "unresolved": [
@@ -2174,7 +2514,6 @@
     "ADR-0021",
     "ADR-9999",
     "ADR-ADR-INDEX",
-    "AI设计PPT完整指南",
     "DEC-2026-06-28T14:33:16Z-XXXX",
     "DEC-2026-07-02-0001",
     "DEC-2026-07-08-0001",
@@ -2184,25 +2523,15 @@
     "KB-2026-07-02-0002",
     "KB-2026-07-16-0001",
     "KB-2026-07-17-0001",
-    "Personal-Proxy-Setup-Guide-一楼PC",
-    "Personal-阅读目录索引",
     "Platform-Concepts-_index",
-    "Platform-Decisions-PAIOS-价值评估-2026-07-01",
     "Platform-Decisions-README",
     "Platform-Decisions-_index",
     "Platform-Methods-README",
     "Platform-Methods-_index",
     "Platform-Models-README",
     "Platform-Models-_index",
-    "Platform-References-Audits-CodeTrust-2026-06-29",
-    "Platform-References-Codex-CLI-Usage-Jason-Liu-Tutorial",
-    "Platform-References-PAIOS-System-History-Analysis",
     "Platform-References-README",
     "Platform-References-_index",
-    "Platform-References-photo-archive-cleanup-notes",
-    "Platform-References-photo-organizer-REBUILD_ARCHIVE",
-    "Platform-SOP-OpenWrt-二级路由-搬移修复-SOP",
-    "Platform-SOP-Photo-Organizer-SOP",
     "Platform-SOP-README",
     "Platform-SOP-_index",
     "REF-0008",
@@ -2215,9 +2544,10 @@
     "RELEASES-upgrade-receipt-1.0.1",
     "RELEASES-upgrade-receipt-v1.0.1",
     "SOP-2026-06-28T14:33:16Z-XXXX",
-    "SOP-OpenWrt-LAN-LAN-Deploy",
     "architecture-_index",
-    "prompt_model_comparison"
+    "codetrust-audit",
+    "codex-cli-tutorial",
+    "reading-index"
   ],
   "warnings": []
 }

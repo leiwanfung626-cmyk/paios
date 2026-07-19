@@ -1,3 +1,10 @@
+---
+id: paios-system-history
+type: reference
+title: PAIOS 系统发展历史与分析报告
+created: 2026-07-16
+related: [paios-value-assessment, ADR-0002, ADR-0017]
+---
 # PAIOS 系统发展历史与分析报告
 
 > **编制依据**：ChatGPT 汇总评估 + 豆包 / 千问 / 元宝 三侧技术主管视角 + Reasonix 全系统产出物清点

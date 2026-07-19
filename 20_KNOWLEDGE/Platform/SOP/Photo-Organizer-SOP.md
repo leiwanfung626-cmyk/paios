@@ -1,3 +1,10 @@
+---
+id: photo-organizer-sop
+type: sop
+title: 照片整理 SOP
+created: 2026-07-10
+related: [photo-archive-cleanup, rebuild-archive-decision]
+---
 # 照片整理 SOP（Personal Photo Intelligence Pipeline）
 
 > **版本**：v1.1 ｜ **整理日期**：2026-07-10 ｜ **状态**：三阶段流水线已跑通，进入人物策展期；架构评审定调为「个人数字智能流水线」雏形

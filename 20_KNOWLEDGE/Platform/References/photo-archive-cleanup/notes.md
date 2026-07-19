@@ -1,3 +1,10 @@
+---
+id: photo-archive-cleanup
+type: reference
+title: 照片归档清理方案与进度
+created: 2026-07-11
+related: [photo-organizer-sop, rebuild-archive-decision]
+---
 # 照片归档清理 — 方案与进度
 
 > **创建**: 2026-07-11

@@ -1,3 +1,10 @@
+---
+id: rebuild-archive-decision
+type: decision
+title: 重建 face_index 于归档 — 任务决策
+created: 2026-07-11
+related: [photo-organizer-sop, photo-archive-cleanup]
+---
 # 重建 face_index 于归档 — 任务记录
 
 ## 决策（2026-07-11, Evan 授权"自行判断最优路径"）

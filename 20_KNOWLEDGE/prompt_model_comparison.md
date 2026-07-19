@@ -1,3 +1,10 @@
+---
+id: prompt-model-comparison
+type: prompt
+title: 技术选型对比分析提示词模板
+created: 2026-07-01
+related: [ai-ppt-guide]
+---
 # 提示词模板：技术选型对比分析报告（model-comparison-analyst）
 
 > 用途：将"对比 X 模型 / 选哪个"类模糊问题，重构为结构化、可决策、带优先级的选型分析。

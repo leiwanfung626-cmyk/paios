@@ -1,3 +1,10 @@
+---
+id: openwrt-lan-lan-deploy
+type: sop
+title: OpenWrt LAN-LAN 旁路由部署 SOP
+created: 2026-07-14
+related: [openwrt-router-fix-sop, proxy-setup-guide]
+---
 # OpenWrt 放二楼 · LAN-LAN 旁路由部署 SOP（最终版）
 
 > 来源 packet：`OPENWRT-FINAL-DEPLOYMENT-ORDER-2026-0714`

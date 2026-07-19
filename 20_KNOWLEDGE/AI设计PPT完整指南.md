@@ -1,3 +1,10 @@
+---
+id: ai-ppt-guide
+type: reference
+title: AI 设计 PPT 完整操作指南
+created: 2026-07-01
+related: [prompt-model-comparison]
+---
 # AI 设计 PPT 完整操作指南
 
 > 最后更新：2026-07-01
