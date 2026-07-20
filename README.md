@@ -5,6 +5,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Status](https://img.shields.io/badge/status-Architecture%20Frozen-blue)](SYSTEM_VERSION.md)
 [![Version](https://img.shields.io/badge/version-v1.0.1-orange)](CHANGELOG.md)
+[![Tests](https://github.com/leiwanfung626-cmyk/paios/actions/workflows/test.yml/badge.svg)](https://github.com/leiwanfung626-cmyk/paios/actions/workflows/test.yml)
 
 ---
 

@@ -1,0 +1,34 @@
+name: PAIOS Tests
+
+on:
+  push:
+    branches: [portable-master]
+  pull_request:
+    branches: [portable-master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Build relationship graph
+        run: python 40_AUTOMATION/05_SCRIPTS/relationship_engine.py build
+
+      - name: Test Relationship Engine
+        run: python 40_AUTOMATION/05_SCRIPTS/test_relationship_engine.py
+
+      - name: Test Usage Tracker
+        run: python 40_AUTOMATION/05_SCRIPTS/test_usage_tracker.py
