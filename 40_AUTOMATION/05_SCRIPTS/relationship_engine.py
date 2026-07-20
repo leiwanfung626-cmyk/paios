@@ -20,6 +20,7 @@ relationship_engine.py — PAIOS 知识关系反向发现引擎 v0.1
   python relationship_engine.py graph --format dot             # 导出 Graphviz DOT
   python relationship_engine.py stats                          # 图统计
   python relationship_engine.py stats --json                   # JSON 格式统计
+  python relationship_engine.py search <query>                 # BM25 + Tag 联合检索
 
 退出码：0 = 成功（含警告）；1 = 错误（冲突/崩溃）
 """
@@ -29,8 +30,10 @@ import os
 import re
 import sys
 import json
+import math
 import glob as glob_module
 from datetime import datetime, timezone, timedelta
+from collections import Counter
 
 # ---------- Try PyYAML, fallback to custom parser ----------
 try:
@@ -454,6 +457,8 @@ class NodeResolver:
             "type": node_type,
             "has_frontmatter": bool(fm),
             "tags": tags,
+            "summary": (fm.get("summary") or "").strip() if isinstance(fm.get("summary"), str) else "",
+            "keywords": fm.get("keywords", []) if isinstance(fm.get("keywords"), list) else [],
             "_filename_stem": filename_stem,
             "_resolved_from": resolved_from,
             "_raw_text": raw_text,
@@ -632,6 +637,8 @@ class TargetResolver:
                     "target": target_id if target_id else f"__UNRESOLVED__{raw_target}",
                     "raw": raw_target,
                     "resolved": target_id is not None,
+                    "source_file": node.get("path", ""),
+                    "source_type": "human_frontmatter",
                 }
                 declared_edges.append(edge)
 
@@ -681,6 +688,9 @@ class GraphBuilder:
                 "title": n["title"],
                 "type": n["type"],
                 "has_frontmatter": n["has_frontmatter"],
+                "tags": n.get("tags", []),
+                "summary": n.get("summary", ""),
+                "keywords": n.get("keywords", []),
             })
 
         all_edge_ids = set()
@@ -789,6 +799,160 @@ def load_graph(path=None):
 
 
 # ==== A-2 resolve_node — 自然语言 → 候选 node_id 精确匹配 ====
+
+# ---------- BM25 评分（纯 Python，无外部依赖） ----------
+
+def _tokenize(text):
+    """简易分词：小写 + 按非字母数字拆分，过滤短词。"""
+    tokens = re.findall(r'[a-zA-Z0-9\u4e00-\u9fff]+', text.lower())
+    return [t for t in tokens if len(t) >= 1]
+
+
+def _build_bm25_index(graph):
+    """从 graph node 构建 BM25 倒排索引。
+    
+    返回：(avgdl, N, idf_map, term_node_map)
+      - avgdl: 平均文档长度（tokens）
+      - N: 文档总数
+      - idf_map: {term: idf_score}
+      - term_node_map: {term: [(node_id, tf), ...]}
+    """
+    N = len(graph.get("nodes", []))
+    if N == 0:
+        return 0.0, 0, {}, {}
+
+    doc_lengths = []
+    term_node_map = {}
+    
+    for node in graph["nodes"]:
+        # 从 title + tags + summary + keywords 拼接文档文本
+        text_parts = [
+            node.get("title", ""),
+            node.get("summary", ""),
+            " ".join(node.get("tags", [])),
+            " ".join(node.get("keywords", [])),
+        ]
+        text = " ".join(p for p in text_parts if p)
+        tokens = _tokenize(text)
+        doc_lengths.append(len(tokens))
+        
+        # 统计 TF
+        tf_counter = Counter(tokens)
+        for term, tf in tf_counter.items():
+            if term not in term_node_map:
+                term_node_map[term] = []
+            term_node_map[term].append((node["id"], tf))
+
+    avgdl = sum(doc_lengths) / N if N > 0 else 0.0
+
+    # 计算 IDF
+    k1 = 1.5
+    b = 0.75
+    idf_map = {}
+    for term, postings in term_node_map.items():
+        df = len(postings)
+        idf_map[term] = math.log((N - df + 0.5) / (df + 0.5) + 1.0)
+
+    return avgdl, N, idf_map, term_node_map
+
+
+def _bm25_score_for_node(node_id, query_tokens, avgdl, N, idf_map, term_node_map):
+    """计算单个 node 的 BM25 评分。"""
+    # 构建该 node 的 token->tf 映射
+    node_tf = {}
+    for term, postings in term_node_map.items():
+        for nid, tf in postings:
+            if nid == node_id:
+                node_tf[term] = tf
+                break
+
+    score = 0.0
+    k1 = 1.5
+    b = 0.75
+    doc_len = sum(node_tf.values()) if node_tf else 0
+
+    for term in query_tokens:
+        if term not in idf_map:
+            continue
+        tf = node_tf.get(term, 0)
+        idf = idf_map[term]
+        score += idf * (tf * (k1 + 1)) / (tf + k1 * (1 - b + b * doc_len / max(avgdl, 1)))
+
+    return score
+
+
+def search_bm25_tags(graph, query):
+    """BM25 + Tag + Title 联合检索。
+    
+    三路并行评分，融合排序：
+      1. BM25 语义评分（title + summary + tags + keywords）
+      2. Tag 精确匹配加分
+      3. Title 子串匹配加分
+    
+    返回：[(node_id, title, score, match_detail), ...]（按综合评分降序）
+    """
+    if not graph.get("nodes"):
+        return []
+
+    query_lower = query.lower().strip()
+    if not query_lower:
+        return []
+
+    query_tokens = _tokenize(query_lower)
+
+    # 构建 BM25 索引（每次搜索重建——对于 <200 节点的图可接受）
+    avgdl, N, idf_map, term_node_map = _build_bm25_index(graph)
+
+    results = []
+    for node in graph["nodes"]:
+        nid = node["id"]
+        title = node.get("title", "")
+        title_lower = title.lower()
+
+        # 1. BM25 评分（0-1 归一化）
+        bm25_raw = _bm25_score_for_node(nid, query_tokens, avgdl, N, idf_map, term_node_map)
+        bm25_score = min(bm25_raw / max(bm25_raw, 1.0), 1.0)  # 简易归一化
+
+        # 2. Tag 匹配加分
+        tag_score = 0.0
+        matched_tags = []
+        tags = node.get("tags", [])
+        if isinstance(tags, list):
+            for t in tags:
+                if isinstance(t, str):
+                    t_lower = t.lower()
+                    # 精确匹配 tag + 前缀匹配
+                    if t_lower == query_lower or query_lower in t_lower:
+                        tag_score = max(tag_score, 0.3)
+                        matched_tags.append(t)
+
+        # 3. Title 子串匹配加分
+        title_score = 0.0
+        if query_lower in title_lower:
+            title_score = 0.2
+        # title 精确匹配更高分
+        if query_lower == title_lower or title_lower.startswith(query_lower):
+            title_score = 0.4
+
+        # 综合评分
+        total_score = bm25_score * 0.4 + tag_score + title_score
+
+        # 构建匹配详情
+        details = []
+        if bm25_score > 0:
+            details.append(f"bm25:{bm25_score:.2f}")
+        if matched_tags:
+            details.append(f"tags:{','.join(matched_tags)}")
+        if title_score > 0:
+            details.append("title_match")
+
+        if total_score > 0:
+            results.append((nid, title, round(total_score, 3), "; ".join(details)))
+
+    # 按综合评分降序，取 Top 15
+    results.sort(key=lambda x: x[2], reverse=True)
+    return results[:15]
+
 
 def resolve_node(graph, query):
     """AI 消费 graph 的入口函数（A-2 合同 v0.1）。
@@ -1008,6 +1172,26 @@ def cmd_stats(args):
     return 0
 
 
+def cmd_search(args):
+    """search — BM25 + Tag 联合检索知识模块。"""
+    graph = load_graph()
+    if graph is None:
+        print("No graph found. Run 'build' first.", file=sys.stderr)
+        return 1
+    query = args.get("node_id", args.get("positional", [None])[0])
+    if not query:
+        print("Usage: relationship_engine.py search <query>", file=sys.stderr)
+        return 1
+    results = search_bm25_tags(graph, query)
+    if not results:
+        print(f"[SEARCH] No results for: {query}")
+        return 0
+    print(f"[SEARCH] Top results for \"{query}\":")
+    for i, (nid, title, score, detail) in enumerate(results, 1):
+        print(f"  {i:2d}. [{nid}] {title}  (score={score:.3f}, {detail})")
+    return 0
+
+
 # ==== 参数解析（轻量级） ====
 
 def parse_args(argv=None):
@@ -1057,6 +1241,7 @@ def main():
         "unresolved": cmd_unresolved,
         "graph": cmd_graph,
         "stats": cmd_stats,
+        "search": cmd_search,
     }
     if cmd not in commands:
         print(f"Unknown command: {cmd}", file=sys.stderr)

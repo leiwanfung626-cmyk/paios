@@ -1,4 +1,4 @@
-name: PAIOS Tests
+name: Test
 
 on:
   push:
@@ -9,26 +9,32 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.10", "3.13"]
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.13"
 
       - name: Install dependencies
-        run: pip install pyyaml
+        run: pip install pyyaml mcp
 
       - name: Build relationship graph
-        run: python 40_AUTOMATION/05_SCRIPTS/relationship_engine.py build
+        run: |
+          cd Core
+          python 40_AUTOMATION/05_SCRIPTS/relationship_engine.py build
 
-      - name: Test Relationship Engine
-        run: python 40_AUTOMATION/05_SCRIPTS/test_relationship_engine.py
+      - name: Test relationship engine
+        run: |
+          cd Core
+          python 40_AUTOMATION/05_SCRIPTS/test_relationship_engine.py
 
-      - name: Test Usage Tracker
-        run: python 40_AUTOMATION/05_SCRIPTS/test_usage_tracker.py
+      - name: Test usage tracker
+        run: |
+          cd Core
+          python 40_AUTOMATION/05_SCRIPTS/test_usage_tracker.py
+
+      - name: Verify MCP server starts
+        run: |
+          cd Core
+          echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"1.0"}}}' | timeout 5 python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py | head -1

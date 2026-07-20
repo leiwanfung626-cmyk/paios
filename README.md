@@ -1,15 +1,15 @@
 # PAIOS
 
-> **A governance-driven AI operating system platform.** Not a tool. Not a config. An OS for your AI life.
+> **Personal AI Operating System** — a governance-driven platform for building your own AI operating system.
 
-[![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Status](https://img.shields.io/badge/status-Architecture%20Frozen-blue)](SYSTEM_VERSION.md)
-[![Version](https://img.shields.io/badge/version-v1.0.1-orange)](CHANGELOG.md)
-[![Tests](https://github.com/leiwanfung626-cmyk/paios/actions/workflows/test.yml/badge.svg)](https://github.com/leiwanfung626-cmyk/paios/actions/workflows/test.yml)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Architecture](https://img.shields.io/badge/architecture-frozen-blue)](30_SYSTEM/ADR/ADR-0002-Automation-Platform-Freeze.md)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)](SYSTEM_VERSION.md)
+[![CI](https://github.com/leiwanfung626-cmyk/paios/actions/workflows/test.yml/badge.svg)](https://github.com/leiwanfung626-cmyk/paios/actions/workflows/test.yml)
 
 ---
 
-## Quick Start (30 seconds)
+## Quick Start
 
 ```bash
 git clone git@github.com:leiwanfung626-cmyk/paios.git
@@ -17,162 +17,166 @@ cd paios/Core
 python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py stats
 ```
 
-You should see:
-```json
-{
-  "total_nodes": 90,
-  "declared_edges": 98,
-  "backlinks": 76,
-  "supersedes": 1,
-  "by_type": { "adr": 24, "reference": 15, "knowledge": 20, ... }
-}
+See `"total_nodes": 91`? You're connected to the PAIOS knowledge graph.
+
+To explore what's inside:
+
+```bash
+# Search the knowledge base
+python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py search "architecture" --top-k 5
+
+# Read a specific module (e.g. ADR on Platform Purity)
+python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py get-module ADR-0017
+
+# See who references whom
+python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py relationships ADR-0017
+
+# List all Architecture Decision Records
+python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py list adr
 ```
 
-If you see `total_nodes`, PAIOS is running. You just queried a **live knowledge graph** of 90 interconnected documents.
+**Prerequisites:** Python >= 3.10. No pip install needed — pure stdlib.
 
 ---
 
 ## What is PAIOS?
 
-PAIOS (Personal AI Operating System) treats your knowledge the way an OS treats files — through a **lifecycle, not a folder hierarchy.**
+PAIOS is not an AI tool. It is a **platform** that treats AI tools (Claude, ChatGPT, Codex, etc.) as interchangeable clients, and your knowledge as the permanent asset.
+
+Think of it as the operating system layer between your raw data and whatever AI you choose to work with:
 
 ```
-00_CAPTURE → 10_WORK → 20_KNOWLEDGE → 30_SYSTEM → 90_ARCHIVE
- (inbox)     (drafts)    (verified)     (rules)     (done)
+AI Tools (clients)  ← interchangeable
+     │
+PAIOS (platform)    ← governance + knowledge graph + automation
+     │
+Your Data           ← the permanent asset
 ```
 
-Everything enters through Inbox. The system routes it through stages — draft, verify, codify, archive — instead of you manually organizing folders. **The directory IS the lifecycle.**
+### How it works
 
-PAIOS is not a ChatGPT wrapper. It's not a prompt library. It's the **operating system** that AI tools (Claude, ChatGPT, Cursor, Codex, Reasonix, WorkBuddy) connect to as clients.
+PAIOS organizes everything through a **lifecycle pipeline**:
 
-> **Tool Independence (Principle #8):** PAIOS is the platform. AI tools are the clients. Switch tools without rebuilding your assets.
+```
+Capture → Work → Knowledge → System → Archive
+```
+
+- **Capture** — every new piece of information enters through a single Inbox
+- **Work** — active projects live in a temporary workspace
+- **Knowledge** — validated content gets promoted to the permanent knowledge base
+- **System** — rules, ADRs, and governance form the platform kernel
+- **Archive** — completed or deprecated work gets archived
+
+The platform doesn't tell you what to think. It just ensures that every decision, reference, and relationship is traceable.
+
+### Core Principles
+
+1. **Everything has exactly one formal location** — no duplicates, no ambiguity
+2. **Workspace is always temporary** — projects come and go; the platform persists
+3. **Knowledge must be validated** — raw information goes through verification before entering the knowledge base
+4. **Tool independence** — PAIOS is the platform; AI tools are clients. Swap tools without rebuilding assets.
+5. **Metadata is the primary classification system** — tags and frontmatter, not folder hierarchy, organize content
+
+[All 10 principles →](30_SYSTEM/Principles.md)
 
 ---
 
 ## What can PAIOS do right now?
 
-| Capability | Description | Status |
-|-----------|-------------|--------|
-| **Relationship Engine** | Bidirectional knowledge graph: 90 nodes, 98 edges, supersedes chain tracing | ✅ v0.1 |
-| **MCP Server** | Query PAIOS from any AI tool: search, get module, relationships, stats — 5 tools | ✅ v0.1 |
-| **Usage Tracker** | Record AI knowledge usage as runtime evidence for system evolution | ✅ v0.1 |
-| **Fleet Model** | Multi-instance federation (Maintainer / Developer / Pilot User) | ✅ v0.1 |
-| **ADR System** | 24 Architecture Decision Records with full traceability | ✅ |
-| **AI Fleet Governance** | 3-layer AI operating model (roles → routing → structured communication) | ✅ v0.1 |
-| **Scheduler** | Engine scheduling with fallback chains + capability mapping | ✅ v0.1 |
+### Relationship Engine
 
-### Try it
+A bidirectional knowledge graph built from your existing Markdown files. 91 nodes, 98 declared edges, 76 backlinks — all auto-generated from `related:` fields.
 
 ```bash
-# Search knowledge (BM25 + tag matching)
-python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py search "OpenWRT" --top-k 5
-
-# Read a module (ADR-0017: Platform Purity Principle)
-python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py get-module ADR-0017
-
-# See what references a node
-python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py relationships ADR-0017
-
-# List all ADRs
-python 40_AUTOMATION/05_SCRIPTS/paios_mcp_server.py list adr
-
-# Build the relationship graph
-python 40_AUTOMATION/05_SCRIPTS/relationship_engine.py build
-
-# Run all tests
-python 40_AUTOMATION/05_SCRIPTS/test_relationship_engine.py
-python 40_AUTOMATION/05_SCRIPTS/test_usage_tracker.py
+python 40_AUTOMATION/05_SCRIPTS/relationship_engine.py stats
+# Nodes: 91 | Declared edges: 98 | Backlinks: 76 | Supersedes: 1
 ```
+
+Tolerates 4 different frontmatter formats, auto-generates reverse edges, and records all broken links for manual repair.
+
+### MCP Server
+
+Exposes the knowledge graph to any AI tool via the Model Context Protocol. 5 tools:
+
+| Tool | What it does |
+|------|-------------|
+| `paios_search_knowledge` | BM25 + tag search across the entire knowledge base |
+| `paios_get_module` | Fetch full content of any module (with body) |
+| `paios_get_relationships` | Show inbound + outbound edges, including supersedes chains |
+| `paios_list_modules` | List all modules by type (adr, reference, concept, etc.) |
+| `paios_get_stats` | Knowledge base stats: nodes, edges, orphans, unresolved refs |
+
+### Usage Tracker
+
+Records how AI tools actually use your knowledge, building a runtime evidence loop:
+
+```bash
+python 40_AUTOMATION/05_SCRIPTS/usage_tracker.py record \
+  --session SESSION-001 --task "architecture review" \
+  --actor Reasonix --action retrieve \
+  --assets "ADR-0017,adr"
+```
+
+Traces last 90 days, then reviewed for promotion into permanent knowledge.
+
+### Architecture Decision Records
+
+24 ADRs documenting every architectural decision — from directory structure to multi-instance federation. Includes supersedes chains, decision traceability, and evidence levels.
+
+```bash
+python 40_AUTOMATION/05_SCRIPTS/relationship_engine.py backlinks ADR-0017
+```
+
+### Multi-Instance Federation
+
+Designed for multiple PAIOS instances (work, personal, study) sharing a common Core platform while keeping Workspace data isolated. Maintainer push → users pull → Manifest reports back.
 
 ---
 
 ## Layer Model
 
-| # | Layer | Directory | Purpose |
-|---|-------|-----------|---------|
-| 00 | **Capture** | `00_CAPTURE/` | All new input enters here. Think before you sort. |
-| 10 | **Work** | `10_WORK/` | Active projects. Temporary by nature (Principle #3). |
-| 20 | **Knowledge** | `20_KNOWLEDGE/` | Verified knowledge. Must pass validation (Principle #4). |
-| 30 | **System** | `30_SYSTEM/` | Platform kernel: ADRs, governance, principles, specs. |
-| 40 | **Automation** | `40_AUTOMATION/` | Scripts, agents, registry, scheduler, MCP server. |
-| 50 | **Data** | `50_DATA/` | Data infrastructure (reserved). |
-| 60 | **External** | `60_EXTERNAL/` | External references. |
-| 70 | **TMP** | `70_TMP/` | Runtime temp files. Delete anytime. |
-| 80 | **History** | `80_HISTORY/` | Engineering journal + release history. |
-| 90 | **Archive** | `90_ARCHIVE/` | Completed tasks, no reuse value. |
-
----
-
-## Core Principles
-
-| # | Principle |
-|---|-----------|
-| 1 | Directories express lifecycle, not content |
-| 2 | Everything has exactly one formal location |
-| 3 | Workspace is always temporary |
-| 8 | **Tool Independence** — platform ≠ AI client |
-| 9 | **Bootstrap First** — AI loads governance before acting |
-| 10 | **Immutable Originals** — never modify source files |
-
-> Full list: [Principles](30_SYSTEM/Principles.md)
+| Layer | Directory | Purpose |
+|-------|-----------|---------|
+| Capture | `00_CAPTURE/` | Single inbox for all incoming information |
+| Work | `10_WORK/` | Active workspace — temporary project area |
+| Knowledge | `20_KNOWLEDGE/` | Permanent knowledge base — validated content |
+| System | `30_SYSTEM/` | Platform kernel — ADRs, governance, principles, SOPs |
+| Automation | `40_AUTOMATION/` | Scripts, agents, registry, scheduler, MCP server |
+| Data | `50_DATA/` | Local data infrastructure (gitignored) |
+| External | `60_EXTERNAL/` | External references, read-only |
+| TMP | `70_TMP/` | Runtime temporary files |
+| History | `80_HISTORY/` | Engineering journal, release history |
+| Archive | `90_ARCHIVE/` | Historical archive |
 
 ---
 
 ## Governance
 
-PAIOS has a complete governance framework in `30_SYSTEM/Governance/`:
+PAIOS has a formal governance framework. All changes are tracked through:
 
-| Area | Description |
-|------|-------------|
-| **ADR** | 24 Architecture Decision Records with full traceability (Evidence → Implements → Frozen By → Supersedes) |
-| **Architecture Lifecycle** | 10-phase closed loop: Evidence → Case → ADR → Blueprint → Freeze → Boundary → Pilot → Rollout → Validate → Retrospective |
-| **Change Control** | L0-L4 impact levels + freeze policy + evidence gates |
-| **AI Operating Model** | 6 AI roles, 7-step standard routing flow, Context Packet v1.0 |
-| **Multi-Instance** | 3 roles (Maintainer / Developer / Pilot User), one-way data flow |
-| **Pilot Gate** | Entry/Exit criteria with 14-day stability requirement |
+- **Architecture Lifecycle** — 10-stage pipeline from Evidence to Retrospective
+- **Change Control** — L1/L2/L3 impact classification with freeze policy
+- **Decision Traceability** — Every ADR links to its evidence, implementation, and superseded predecessors
+- **AI Fleet Model** — 6 AI roles (Architect, Developer, Executor, Architecture Reviewer, Code Reviewer, Auditor) with a 7-step standard flow
+- **Pilot Gate** — Entry/exit criteria for production rollout
 
-> [ADR Index](30_SYSTEM/ADR/ADR-INDEX.md) — [Governance docs](30_SYSTEM/Governance/) — [Documentation](docs/)
-
----
-
-## Automation Scripts
-
-| Script | Description |
-|--------|-------------|
-| `relationship_engine.py` | Bidirectional knowledge graph builder (build → query → DOT export) |
-| `paios_mcp_server.py` | MCP server exposing PAIOS to any AI tool (5 tools, stdio transport) |
-| `usage_tracker.py` | Runtime knowledge usage trace pipeline |
-| `collect_manifest.py` | Federated Instance Manifest collector |
-| `classify_files.py` | Auto-classifier for incoming files |
-| `fim_validator.py` | FIM protocol validator |
-| `capture.py` | Unified capture pipeline |
-| `asset_store.py` | Asset ingestion helper |
+Key documents:
+- [ADR Index](30_SYSTEM/ADR/ADR-INDEX.md) — all 24 decisions
+- [Architecture Lifecycle](30_SYSTEM/Governance/Architecture-Lifecycle.md)
+- [AI Operating Model](30_SYSTEM/Governance/AI-Operating-Model.md)
 
 ---
 
-## Architecture
+## Contributing
 
-PAIOS supports multi-instance federation (ADR-0016~0018):
+PAIOS uses a multi-instance role model. Before contributing, read:
 
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│  Case-01    │     │  Case-02    │     │  Case-03    │
-│  Maintainer │     │  Developer  │     │  Pilot User  │
-│  (read/write)│    │  (fork+PR)  │     │  (read-only) │
-└──────┬──────┘     └──────┬──────┘     └──────┬──────┘
-       │                   │                   │
-       └───────────────────┼───────────────────┘
-                           ▼
-                    ┌──────────────┐
-                    │   Fleet/     │
-                    │  (Federation)│
-                    └──────────────┘
-```
+- [Operating Model](30_SYSTEM/Governance/Operating-Model.md) — roles and data flow
+- [CONTRIBUTING.md](CONTRIBUTING.md) — contribution guide
+- All architectural changes must follow the [Architecture Lifecycle](30_SYSTEM/Governance/Architecture-Lifecycle.md)
 
 ---
 
 ## License
 
-MIT License © 2026 PAIOS Platform Contributors. See [LICENSE](LICENSE).
-
-Built with AI tools (Reasonix, WorkBuddy, ChatGPT, Claude). PAIOS is the platform — AI tools are the clients.
+MIT — see [LICENSE](LICENSE).
